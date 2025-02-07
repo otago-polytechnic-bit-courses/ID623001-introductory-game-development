@@ -134,6 +134,17 @@ To create a **Sprite**, right-click in the **Hierarchy** window, then select **2
 
 ![](../resources/img/01-github-pong-1/01-github-pong-1-6.png)
 
+We are going to create the top wall of the **Pong** game. Name the **Sprite** `TopWall`.
+
+![](../resources/img/01-github-pong-1/01-github-pong-1-7.png)
+
+Click on the `TopWall` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the **Transform** and **Sprite Renderer** components. 
+
+The **Transform** component is used to store the **Position**, **Rotation** and **Scale** of the **Sprite**. The **Sprite Renderer** component is used to render the **Sprite**.
+
+**Task:** Change the **Position** and **Rotation** of the `TopWall` **Sprite**.
+
+![](../resources/img/01-github-pong-1/01-github-pong-1-8.png)
 
 ---
 
