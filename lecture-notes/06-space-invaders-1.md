@@ -6,6 +6,12 @@ Link to the previous class: [Week 05]()
 
 ---
 
+## Space Invaders 1
+
+In this module, you will develop **Space Invaders** using **Unity**. In the **Portfolio** assessment, you will extend the basic functionality of **Space Invaders**.
+
+---
+
 ## Formative Assessment
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:

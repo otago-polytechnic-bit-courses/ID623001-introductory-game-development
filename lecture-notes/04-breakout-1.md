@@ -6,6 +6,12 @@ Link to the previous class: [Week 03]()
 
 ---
 
+## Breakout 1
+
+In this module, you will develop **Breakout** using **Unity**. In the **Portfolio** assessment, you will extend the basic functionality of **Breakout**.
+
+---
+
 ## Formative Assessment
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:
