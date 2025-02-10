@@ -278,7 +278,7 @@ What is happening in the code above?
 
 **Tasks:**
 
-In the code above, there are three **TODO** comments. 
+> **Note:** The code above is not complete.
 
 1. In the `PlayerController` script, add the code to move the `LeftPaddle` **Sprite** down when the **S** key is pressed.
 2. In the `PlayerController` script, add the code to stop the `LeftPaddle` **Sprite** 
@@ -296,6 +296,77 @@ Once you have completed the tasks, click the **Play** button to run the game. Yo
 ---
 
 ### Ball Controller
+
+Like the `LeftPaddle` and `RightPaddle`, you are going to add a **Rigidbody 2D** component to the `Ball` **Sprite** and write a script to move the `Ball` **Sprite**.
+
+In the `Scripts` folder, create a new script called `BallController`. Follow the same steps as above.
+
+Add the following code to the `BallController` script:
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BallController : MonoBehaviour
+{
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float speed;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        transform.position = Vector3.zero;
+
+        float x = 0;
+        float y = 0;
+
+        int randNum = Random.Range(0, 4);
+
+        if (randNum == 0)
+        {
+            // This will move the ball diagonally to the top right
+            x = 1f;
+            y = 1f;
+        }
+        else if (randNum == 1)
+        {
+            // TODO: Move the ball diagonally to the bottom right
+        }
+        else if (randNum == 2)
+        {
+            // TODO: Move the ball diagonally to the top left
+        }
+        else if (randNum == 3)
+        {
+            // TODO: Move the ball diagonally to the bottom left
+        }
+
+        rb.velocity = new Vector2(x, y) * speed;
+    }
+}
+```
+
+What is happening in the code above?
+
+- The `transform.position` is used to set the position of the `Ball` **Sprite** to the centre of the screen, i.e., `(0, 0, 0)`.
+- The `x` and `y` variables are used to store the direction of the `Ball` **Sprite**.
+- The `randNum` variable is used to store a random number between **0** and **3**. This number is used to determine the direction of the `Ball` **Sprite**.
+- If the `randNum` is **0**, the `Ball` **Sprite** moves diagonally to the top right. The `x` and `y` variables are set to **1**.
+
+**Tasks:**
+
+> **Note:** The code above is not complete.
+
+1. In the `BallController` script, add the code to move the `Ball` **Sprite** diagonally to the bottom right when the `randNum` is **1**.
+2. In the `BallController` script, add the code to move the `Ball` **Sprite** diagonally to the top left when the `randNum` is **2**.
+3. In the `BallController` script, add the code to move the `Ball` **Sprite** diagonally to the bottom left when the `randNum` is **3**.
+4. Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Ball Controller (Script)` component. Change the `Rb` variable to the `Rigidbody 2D` component of the `Ball` **Sprite**.
+5. Change the `Speed` variable to **2**.
+
+Once you have completed the tasks, click the **Play** button to run the game. You should see the `Ball` **Sprite** move either diagonally to the top right, bottom right, top left or bottom left. 
+
+> **Note:** The `Ball` **Sprite** will not collide with the walls or paddles. You will add this functionality in the next class.
 
 ---
 
