@@ -206,9 +206,11 @@ How do you know if the **Colliders** are applied correctly? You can click on a *
 
 In this section, you will finally write some code. In the **Assets** folder, right-click and select **Folder**. Name the folder `Scripts`. Double-click on the `Scripts` folder to open it. Right-click in the `Scripts` folder and select **Create** > **C# Script**. Name the script `PlayerController`.
 
-Drag and drop the `PlayerController` script onto the `LeftPaddle` **Sprite** in the **Hierarchy** window. Double-click on the `PlayerController` script to open it in **Visual Studio/Visual Studio Code** or your preferred code editor. 
+![](../resources/img/01-github-pong-1/01-github-pong-1-12.png)
 
-Now, you are going to write the code to move the `LeftPaddle` **Sprite** up and down. 
+Drag and drop the `PlayerController` script onto the `LeftPaddle` and `RightPaddle` **Sprites** in the **Hierarchy** window. Double-click on the `PlayerController` script to open it in **Visual Studio/Visual Studio Code** or your preferred code editor. 
+
+Now, you are going to write the code to move the `LeftPaddle` and `RightPaddle` **Sprites** up and down. 
 
 > **Note:** Throughout this course, you will learn different ways to move **Sprites**. This method is not the most up-to-date way to move **Sprites**. However, it is a good starting point and you will see a lot of tutorials using this method.
 
@@ -272,7 +274,7 @@ What is happening in the code above?
 - The `speed` variable is used to store the speed of the **Sprite**, i.e., how fast the **Sprite** moves.
 - The `direction` variable is used to store the direction of the **Sprite**, i.e., up or down.
 - In the `Update` method, if the **Sprite** is the left paddle, the code checks if the **W** key is pressed. If the **W** key is pressed, the `direction` variable is set to **1**. This moves the **Sprite** up or in the positive Y direction.
-- `rb.velocity` is used to move the **Sprite**. The **X** value is **0** and the **Y** value is the `direction` variable multiplied by the `speed` variable.
+- `rb.velocity` is used to move the **Sprite**. The **X** value is **0**. This means the **Sprite** does not move left or right. The **Y** value is the `direction` variable multiplied by the `speed` variable. 
 
 **Tasks:**
 
@@ -282,6 +284,14 @@ In the code above, there are three **TODO** comments.
 2. In the `PlayerController` script, add the code to stop the `LeftPaddle` **Sprite** 
 3. In the `PlayerController` script, add the code to move the `RightPaddle` **Sprite** with the up and down arrow keys.
 4. In the `PlayerController` script, add the code to stop the `RightPaddle` **Sprite**.
+5. Click on the `LeftPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Player Controller (Script)` component. Change the `Rb` variable to the `Rigidbody 2D` component of the `LeftPaddle` **Sprite**. 
+
+![](../resources/img/01-github-pong-1/01-github-pong-1-13.png)
+
+
+6. Click on the `RightPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Player Controller (Script)` component. Change the `Is Left Paddle` variable to **false**. Change the `Rb` variable to the `Rigidbody 2D` component of the `RightPaddle` **Sprite**.
+
+Once you have completed the tasks, click the **Play** button to run the game. You should be able to move the `LeftPaddle` **Sprite** up and down with the **W** and **S** keys. You should also be able to move the `RightPaddle` **Sprite** up and down with the up and down arrow keys.
 
 ---
 
