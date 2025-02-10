@@ -366,7 +366,7 @@ What is happening in the code above?
 
 Once you have completed the tasks, click the **Play** button to run the game. You should see the `Ball` **Sprite** move either diagonally to the top right, bottom right, top left or bottom left. 
 
-> **Note:** The `Ball` **Sprite** will not collide with the walls or paddles. You will add this functionality in the next class.
+> **Note:** The `Ball` **Sprite** will not collide with the paddles, walls or goals. You will add this functionality in the next class.
 
 ---
 

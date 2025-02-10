@@ -28,11 +28,41 @@ Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector**
 
 ![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-3.png)
 
-Click the **Play** button to test the game. The ball should now bounce off the paddles and walls. You will notice a minor issue where the paddles and ball rotate when they collide. To fix this, click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, check the **Rigidbody 2D > Constraints > Freeze Rotation** box for the **Z** axis. Repeat this process for the `LeftPaddle` and `RightPaddle` **Sprite**.
+Click the **Play** button to test the game. The ball should now bounce off the paddles, walls and goals. You will notice a minor issue where the paddles and ball rotate when they collide. 
+
+To fix this, click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, check the **Rigidbody 2D > Constraints > Freeze Rotation** box for the **Z** axis. Repeat this process for the `LeftPaddle` and `RightPaddle` **Sprite**.
+
+![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-4.png)
+
+Click the **Play** button to test the game. The paddles and ball should no longer rotate when they collide. Again, you will notice a minor issue where the paddles move on the **X** axis when they collide with the ball.
+
+Click on the `LeftPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, check the **Rigidbody 2D > Constraints > Freeze Position** box for the **X** axis. Repeat this process for the `RightPaddle` **Sprite**.
+
+![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-5.png)
+
+---
+
+### Trigger
+
+A **Trigger** is a collider that does not physically interact with other colliders. It is used to detect when other colliders enter or exit its area. For example, you can use a trigger to detect when the ball collides with the left or right goals.
+
+Click on the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. In the **Inspector** window, check the **Box Collider 2D > Is Trigger** box.
+
+![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-6.png)
 
 ---
 
 ### Tag
+
+A **Tag** is a label that you can assign to **GameObjects**. You can use tags to identify **GameObjects** in your scripts. For example, you can use tags to identify the ball, paddles, walls, and goals.
+
+Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, click the **Tag** dropdown menu and select **Add Tag**. Click the **+** button to add a new tag. Name the tag `Ball` and click **Save**. Repeat this process for the `TopWall`, `BottomWall`, `LeftGoal`, `RightGoal`, `LeftPaddle` and `RightPaddle` **Sprites**.
+
+![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-7.png)
+
+Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, click the **Tag** dropdown menu and select the `Ball` tag. Repeat this process for the `TopWall`, `BottomWall`, `LeftGoal`, `RightGoal`, `LeftPaddle` and `RightPaddle` **Sprites**.
+
+![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-8.png)
 
 ---
 
