@@ -130,7 +130,7 @@ You can move the windows in **Unity** by clicking on the **tab** of the window a
 
 ### Sprite
 
-To create a **Sprite**, right-click in the **Hierarchy** window, then select **2D Object** and **Sprite**. 
+To create a **Sprite**, right-click in the **Hierarchy** window, then select **2D Object** > **Sprites** > **Square**. 
 
 ![](../resources/img/01-github-pong-1/01-github-pong-1-6.png)
 
@@ -142,13 +142,44 @@ Click on the `TopWall` **Sprite** in the **Hierarchy** window. In the **Inspecto
 
 The **Transform** component is used to store the **Position**, **Rotation** and **Scale** of the **Sprite**. The **Sprite Renderer** component is used to render the **Sprite**.
 
-**Task:** Change the **Position** and **Rotation** of the `TopWall` **Sprite**.
+**Tasks:** 
+
+1. For the `TopWall` **Sprite**, change the Y **Position** to **5**, X **Scale** to **20** and Y **Scale** to **0.5**.
+2. Create the bottom wall, left goal and right goal **Sprites**. The left goal and right goal should be slightly off the camera view.
+
+After completing the tasks, your **Scene** window should look like this:
 
 ![](../resources/img/01-github-pong-1/01-github-pong-1-8.png)
 
+Now, we have the walls and goals for the **Pong** game. Next, we will create the paddles and ball.
+
+**Tasks:**
+
+1. Create the left paddle **Sprite**. Name the **Sprite** `LeftPaddle`. Change the X **Position** to **-7.3**, X **Scale** to **0.5** and Y **Scale** to **1.5**.
+2. Create the ball **Sprite** using **2D Object** > **Sprites** > **Circle**. Change the X **Scale** to **0.5** and Y **Scale** to **0.5**
+
+After completing the tasks, your **Scene** window should look like this:
+
+![](../resources/img/01-github-pong-1/01-github-pong-1-9.png)
+
 ---
 
-### Rigid Body 
+### Rigidbody 2D
+
+In **ID511001: Programming 2**, you wrote the code to move the paddles and ball. In **Unity**, you can use the **Rigidbody 2D** component to interact with the physics engine. This means you do not have to write the code to move the paddles and ball.
+
+To add a **Rigidbody 2D** component to a **GameObject**, i.e., `LeftPaddle` **Sprite**, click on the **GameObject** in the **Hierarchy** window, then click on the **Add Component** button in the **Inspector** window. Search for **Rigidbody 2D** and click on it.
+
+![](../resources/img/01-github-pong-1/01-github-pong-1-10.png)
+
+Click the **Play** button to run the game. You should see the `LeftPaddle` **Sprite** fall due to gravity.
+
+**Tasks:**
+
+1. To prevent the `LeftPaddle` **Sprite** from falling, change the **Gravity Scale** to **0** in the **Rigidbody 2D** component.
+2. Add a **Rigidbody 2D** component to the `RightPaddle` **Sprite**. Also, change the **Gravity Scale** to **0**.
+
+Click the **Play** button to run the game. You should see the `LeftPaddle` and `RightPaddle` **Sprites** not falling due to gravity.
 
 ---
 
