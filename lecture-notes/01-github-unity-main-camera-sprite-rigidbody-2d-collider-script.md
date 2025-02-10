@@ -65,7 +65,7 @@ Here are some examples of **conventional commits**:
 
 ---
 
-## Pong 1
+## Pong Game
 
 In **ID511001: Programming 2**, you developed **Pong** using **Windows Forms Application**. In this module, you will develop **Pong** using **Unity**. In the **Portfolio** assessment, you will extend the basic functionality of **Pong**.
 
@@ -204,7 +204,7 @@ How do you know if the **Colliders** are applied correctly? You can click on a *
 
 ### Player Controller
 
-In this section, you will finally write some code. In the **Assets** folder, right-click and select **Folder**. Name the folder `Scripts`. Double-click on the `Scripts` folder to open it. Right-click in the `Scripts` folder and select **Create** > **C# Script**. Name the script `PlayerController`.
+In this section, you will finally write some code. In the **Assets** folder, right-click and select **Folder**. Name the folder **Scripts**. Double-click on the **Scripts** folder to open it. Right-click in the **Scripts** folder and select **Create** > **C# Script**. Name the script `PlayerController`.
 
 ![](../resources/img/01-github-pong-1/01-github-pong-1-12.png)
 
@@ -299,7 +299,7 @@ Once you have completed the tasks, click the **Play** button to run the game. Yo
 
 Like the `LeftPaddle` and `RightPaddle`, you are going to add a **Rigidbody 2D** component to the `Ball` **Sprite** and write a script to move the `Ball` **Sprite**.
 
-In the `Scripts` folder, create a new script called `BallController`. Follow the same steps as above.
+In the **Scripts** folder, create a new script called `BallController`. Follow the same steps as above.
 
 Add the following code to the `BallController` script:
 

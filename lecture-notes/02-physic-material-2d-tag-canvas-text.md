@@ -6,12 +6,23 @@ Link to the previous class: [Week 01]()
 
 ---
 
-### Physic Material
+## Pong Game
+
+In this module, you will continue to develop **Pong** using Unity.
+
+---
+
+### Physics Material 2D
+
+**Physics Material 2D** is used to adjust the friction and bounciness of colliders. 
+
+In the **Assets** folder, create a new folder called **Materials**. Double-click the **Materials** folder to open it. Right-click in the **Materials** folder and select **Create > 2D > Physics Material 2D**. Name the material `BallPhysicsMaterial`. 
+
+In the **Inspector** window, change the **Friction** to `0` and the **Bounciness** to `1`. Drag and drop the `BallPhysicsMaterial` onto the `Ball` **Sprite** in the **Hierarchy** window.
 
 ---
 
 ### Tag
-
 
 ---
 
