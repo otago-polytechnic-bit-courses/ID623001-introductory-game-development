@@ -134,7 +134,7 @@ To create a **Sprite**, right-click in the **Hierarchy** window, then select **2
 
 ![](../resources/img/01-github-pong-1/01-github-pong-1-6.png)
 
-We are going to create the top wall of the **Pong** game. Name the **Sprite** `TopWall`.
+You are going to create the top wall of the **Pong** game. Name the **Sprite** `TopWall`.
 
 ![](../resources/img/01-github-pong-1/01-github-pong-1-7.png)
 
@@ -151,7 +151,7 @@ After completing the tasks, your **Scene** window should look like this:
 
 ![](../resources/img/01-github-pong-1/01-github-pong-1-8.png)
 
-Now, we have the walls and goals for the **Pong** game. Next, we will create the paddles and ball.
+Now, you have the walls and goals for the **Pong** game. Next, you will create the paddles and ball.
 
 **Tasks:**
 
@@ -168,7 +168,7 @@ After completing the tasks, your **Scene** window should look like this:
 
 In **ID511001: Programming 2**, you wrote the code to move the paddles and ball. In **Unity**, you can use the **Rigidbody 2D** component to interact with the physics engine. This means you do not have to write the code to move the paddles and ball.
 
-To add a **Rigidbody 2D** component to a **GameObject**, i.e., `LeftPaddle` **Sprite**, click on the **GameObject** in the **Hierarchy** window, then click on the **Add Component** button in the **Inspector** window. Search for **Rigidbody 2D** and click on it.
+To add a **Rigidbody 2D** component to a **Sprite**, i.e., `LeftPaddle` **Sprite**, click on the **Sprite** in the **Hierarchy** window, then click on the **Add Component** button in the **Inspector** window. Search for **Rigidbody 2D** and click on it.
 
 ![](../resources/img/01-github-pong-1/01-github-pong-1-10.png)
 
@@ -185,41 +185,107 @@ Click the **Play** button to run the game. You should see the `LeftPaddle` and `
 
 ### Collider
 
+To detect collisions between **Sprites**, you need to add a **Collider 2D** component to the **Sprites**.
+
+To add a **Collider 2D** component to a **Sprite**, i.e., `LeftPaddle` **Sprite**, click on the **Sprite** in the **Hierarchy** window, then click on the **Add Component** button in the **Inspector** window. Search for **Box Collider 2D** and click on it.
+
+![](../resources/img/01-github-pong-1/01-github-pong-1-11.png)
+
+Click the **Play** button to run the game. You should see the `LeftPaddle` **Sprite** collide with the `BottomWall` **Sprite**.
+
+**Tasks:**
+
+1. Add a **Box Collider 2D** component to the `TopWall`, `BottomWall`, `LeftGoal` and `RightGoal` **Sprites**.
+2. Add a **Circle Collider 2D** component to the `Ball` **Sprite**.
+
+How do you know if the **Colliders** are applied correctly? You can click on a **Sprite** in the **Hierarchy** window, then click on the **Box Collider 2D** or **Circle Collider 2D** > **Edit Collider** button in the **Inspector** window. You should see the **Collider** in the **Scene** window.
+
 ---
 
 ### Player Controller
+
+In this section, you will finally write some code. In the **Assets** folder, right-click and select **Folder**. Name the folder `Scripts`. Double-click on the `Scripts` folder to open it. Right-click in the `Scripts` folder and select **Create** > **C# Script**. Name the script `PlayerController`.
+
+Drag and drop the `PlayerController` script onto the `LeftPaddle` **Sprite** in the **Hierarchy** window. Double-click on the `PlayerController` script to open it in **Visual Studio/Visual Studio Code** or your preferred code editor. 
+
+Now, you are going to write the code to move the `LeftPaddle` **Sprite** up and down. 
+
+> **Note:** Throughout this course, you will learn different ways to move **Sprites**. This method is not the most up-to-date way to move **Sprites**. However, it is a good starting point and you will see a lot of tutorials using this method.
+
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private bool isLeftPaddle = true;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float speed = 2f;
+
+    private float direction;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isLeftPaddle)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                direction = 1f;
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                // TODO: Move the left paddle down
+            }
+            else
+            {
+                // TODO: Stop the left paddle
+            }
+        } 
+        else 
+        {
+            // TODO: Move the right paddle with the up and down arrow keys
+        }
+
+        rb.velocity = new Vector2(0, direction) * speed;
+    }
+}
+```
+
+What is happening in the code above?
+
+- `SerializeField` is used to make the variables visible in the **Inspector** window regardless of their access modifier.
+- The `Start` method is called before the first frame update.
+- The `Update` method is called once per frame.
+- The `isLeftPaddle` variable is used to determine if the **Sprite** is the left paddle.
+- The `rb` variable is used to store the **Rigidbody 2D** component.
+- The `speed` variable is used to store the speed of the **Sprite**, i.e., how fast the **Sprite** moves.
+- The `direction` variable is used to store the direction of the **Sprite**, i.e., up or down.
+- In the `Update` method, if the **Sprite** is the left paddle, the code checks if the **W** key is pressed. If the **W** key is pressed, the `direction` variable is set to **1**. This moves the **Sprite** up or in the positive Y direction.
+- `rb.velocity` is used to move the **Sprite**. The **X** value is **0** and the **Y** value is the `direction` variable multiplied by the `speed` variable.
+
+**Tasks:**
+
+In the code above, there are three **TODO** comments. 
+
+1. In the `PlayerController` script, add the code to move the `LeftPaddle` **Sprite** down when the **S** key is pressed.
+2. In the `PlayerController` script, add the code to stop the `LeftPaddle` **Sprite** when no keys are pressed.
+3. In the `PlayerController` script, add the code to move the `RightPaddle` **Sprite** with the up and down arrow keys.
+
 
 ---
 
 ### Ball Controller
 
 ---
-
-### Physic Material
-
----
-
-### Tag
-
-
----
-
-### Reset Ball
-
----
-
-### Game Manager
-
----
-
-### Canvas
-
----
-
-### Text
-
-
-
 
 ## Formative Assessment
 
