@@ -253,6 +253,8 @@ public class PlayerController : MonoBehaviour
         else 
         {
             // TODO: Move the right paddle with the up and down arrow keys
+
+            // TODO: Stop the right paddle
         }
 
         rb.velocity = new Vector2(0, direction) * speed;
@@ -277,9 +279,9 @@ What is happening in the code above?
 In the code above, there are three **TODO** comments. 
 
 1. In the `PlayerController` script, add the code to move the `LeftPaddle` **Sprite** down when the **S** key is pressed.
-2. In the `PlayerController` script, add the code to stop the `LeftPaddle` **Sprite** when no keys are pressed.
+2. In the `PlayerController` script, add the code to stop the `LeftPaddle` **Sprite** 
 3. In the `PlayerController` script, add the code to move the `RightPaddle` **Sprite** with the up and down arrow keys.
-
+4. In the `PlayerController` script, add the code to stop the `RightPaddle` **Sprite**.
 
 ---
 
