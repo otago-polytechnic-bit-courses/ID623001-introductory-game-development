@@ -18,27 +18,27 @@ In this module, you will continue to develop **Pong** using Unity.
 
 In the **Assets** folder, create a new folder called **Materials**. Double-click the **Materials** folder to open it. Right-click in the **Materials** folder and select **Create > 2D > Physics Material 2D**. Name the material `BallPhysicsMaterial`. 
 
-![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-1.png)
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-1.png)
 
 In the **Inspector** window, change the **Friction** to `0` and the **Bounciness** to `1`. Drag and drop the `BallPhysicsMaterial` onto the `Ball` **Sprite** in the **Hierarchy** window.
 
-![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-2.png)
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-2.png)
 
 Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, change the **Material** to `BallPhysicsMaterial`.
 
-![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-3.png)
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-3.png)
 
 Click the **Play** button to test the game. The ball should now bounce off the paddles, walls and goals. You will notice a minor issue where the paddles and ball rotate when they collide. 
 
 To fix this, click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, check the **Rigidbody 2D > Constraints > Freeze Rotation** box for the **Z** axis. Repeat this process for the `LeftPaddle` and `RightPaddle` **Sprite**.
 
-![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-4.png)
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-4.png)
 
 Click the **Play** button to test the game. The paddles and ball should no longer rotate when they collide. Again, you will notice a minor issue where the paddles move on the **X** axis when they collide with the ball.
 
 Click on the `LeftPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, check the **Rigidbody 2D > Constraints > Freeze Position** box for the **X** axis. Repeat this process for the `RightPaddle` **Sprite**.
 
-![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-5.png)
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-5.png)
 
 ---
 
@@ -48,7 +48,7 @@ A **Trigger** is a collider that does not physically interact with other collide
 
 Click on the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. In the **Inspector** window, check the **Box Collider 2D > Is Trigger** box.
 
-![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-6.png)
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-6.png)
 
 ---
 
@@ -58,11 +58,11 @@ A **Tag** is a label that you can assign to **GameObjects**. You can use tags to
 
 Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, click the **Tag** dropdown menu and select **Add Tag**. Click the **+** button to add a new tag. Name the tag `Ball` and click **Save**. Repeat this process for the `TopWall`, `BottomWall`, `LeftGoal`, `RightGoal`, `LeftPaddle` and `RightPaddle` **Sprites**.
 
-![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-7.png)
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-7.png)
 
 Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, click the **Tag** dropdown menu and select the `Ball` tag. Repeat this process for the `TopWall`, `BottomWall`, `LeftGoal`, `RightGoal`, `LeftPaddle` and `RightPaddle` **Sprites**.
 
-![](../resources/img/unity/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-8.png)
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-8.png)
 
 ---
 
