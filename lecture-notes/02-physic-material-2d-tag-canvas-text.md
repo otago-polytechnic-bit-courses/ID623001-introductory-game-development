@@ -68,9 +68,95 @@ Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector**
 
 ### Reset Ball
 
+In this section, you will create a script that resets the ball when it enters the left or right goals. In the **Scripts** folder, create a new script called `GoalController`. 
+
+Add the following code to the `GoalController` script:
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GoalController : MonoBehaviour
+{
+    [SerializeField] private bool isLeftPaddle;
+    [SerializeField] private BallController ball;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            if (!isLeftPaddle)
+            {
+                // Left paddle scored
+            }
+            else
+            {
+                // Right paddle scored
+            }
+
+            ball.Reset();
+        }
+    }
+}
+```
+
+What is happening in the code above?
+
+- The `OnTriggerEnter2D` method is called when the `Ball` **Sprite** enters the `LeftGoal` or `RightGoal` **Sprite** collider
+- If the `Ball` **Sprite** enters the `LeftGoal` or `RightGoal` **Sprite** collider, the `Reset` method in the `BallController` script is called
+
+Drag and drop the `GoalController` script onto the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `isLeftPaddle` value to `true` and the `ball` value to the `Ball` **Sprite**. Repeat this process for the `RightGoal` **Sprite** but change the `isLeftPaddle` value to `false`.
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-9.png)
+
 ---
 
 ### Game Manager
+
+In this section, you will create a script that keeps track of the left and right paddle scores. In the **Scripts** folder, create a new script called `GameController`. 
+
+Add the following code to the `GameController` script:
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameController : MonoBehaviour
+{
+    private int leftPaddleScore = 0;
+    private int rightPaddleScore = 0;
+
+    public void LeftPaddleScored()
+    {
+        leftPaddleScore++;
+        Debug.Log($"Left Paddle Scored: {leftPaddleScore}");
+    }
+
+    public void RightPaddleScored()
+    {
+        rightPaddleScore++;
+        Debug.Log($"Right Paddle Scored: {rightPaddleScore}");
+    }
+}
+```
+
+> **Note:** The `Debug.Log` method is used to display messages in the **Console** window. You can use this method to debug your scripts. Please remove the `Debug.Log` method calls when you have finished testing your scripts.
+
+In the **Hierarchy** window, create an empty **GameObject**, i.e., **Create Empty** called `Game`. Drag and drop the `GameController` script onto the `Game` **GameObject**. Also, reset the `Game` **GameObject**'s **Transform** values to `0`.
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-10.png)
+
+Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `game` value to the `Game` **GameObject**. Repeat this process for the `RightGoal` **Sprite**.
+
+**Tasks:**
+
+1. In the `GoalController` script, add a reference to the `GameController` script
+2. In the `GoalController` script, call the `LeftPaddleScored` method when the `Ball` **Sprite** enters the `LeftGoal` **Sprite** collider
+3. In the `GoalController` script, call the `RightPaddleScored` method when the `Ball` **Sprite** enters the `RightGoal` **Sprite** collider
+
+Click the **Play** button to test the game. The left and right paddle scores should be displayed in the **Console** window when the ball enters the left or right goals.
 
 ---
 
@@ -79,6 +165,8 @@ Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector**
 ---
 
 ### Text
+
+---
 
 ## Formative Assessment
 
