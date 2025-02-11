@@ -150,6 +150,9 @@ In the **Hierarchy** window, create an empty **GameObject**, i.e., **Create Empt
 
 Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `game` value to the `Game` **GameObject**. Repeat this process for the `RightGoal` **Sprite**.
 
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-11.png)
+
+
 **Tasks:**
 
 1. In the `GoalController` script, add a reference to the `GameController` script
@@ -162,9 +165,48 @@ Click the **Play** button to test the game. The left and right paddle scores sho
 
 ### Canvas
 
----
+The **Canvas** is a **GameObject** that holds all UI elements. You will use the **Canvas** to display the left and right paddle scores.
 
-### Text
+In the **Hierarchy** window, right-click and select **UI > Canvas**. This is also going to create an **EventSystem** **GameObject**. 
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-12.png)
+
+Right-click on the **Canvas** **GameObject** and select **UI > Text - Text Mesh Pro**. 
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-13.png)
+
+You will need to install **Text Mesh Pro** if you have not already done so. 
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-14.png)
+
+You will notice the **Text - Text Mesh Pro** **GameObject** is created as a child of the **Canvas** **GameObject**.
+
+> **Note:** The **EventSystem** **GameObject** is used to manage input from the keyboard, mouse, and touch. You do not need to modify the **EventSystem** **GameObject**.
+
+Zoom out in the **Scene** window to see the **Canvas** **GameObject** and **Text - Text Mesh Pro** **GameObject**. 
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-15.png)
+
+What happens when you resize the **Scene** window? The **Text - Text Mesh Pro** **GameObject** will resize to fit the **Scene** window.
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-16.png)
+
+Click on the **Canvas** **GameObject** in the **Hierarchy** window. In the **Inspector** window, change the **Canvas Scaler > UI Scale Mode** to `Scale With Screen Size` and the **Canvas Scaler > Reference Resolution** to `1920 x 1080`.
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-17.png)
+
+**Tasks:**
+
+1. Rename the **Text - Text Mesh Pro** **GameObject**'s name to `LeftPaddleScoreText`. 
+2. Click on the **Text - Text Mesh Pro** **GameObject** in the **Hierarchy** window and change the **Font Size** to `85`.
+3. Move the **Text - Text Mesh Pro** **GameObject** to an appropriate position on the **Canvas** **GameObject**. 
+4. Change the **Text - Text Mesh Pro** **GameObject**'s **Text** value to `0`.
+5. Repeat the above steps for the right paddle score.
+
+After completing the above tasks, your **Canvas** **GameObject** should look similar to the image below.
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-18.png)
+
 
 ---
 
