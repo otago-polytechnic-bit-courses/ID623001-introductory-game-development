@@ -207,6 +207,41 @@ After completing the above tasks, your **Canvas** **GameObject** should look sim
 
 ![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-18.png)
 
+You are now ready to update the left and right paddle scores in the **Canvas** **GameObject**.
+
+In the `GameController` script, update the `LeftPaddleScored` and `RightPaddleScored` methods to update the left and right paddle scores in the **Canvas** **GameObject**.
+
+```csharp
+// Omitted for brevity
+
+using TMPro;
+
+public class GameController : MonoBehaviour
+{
+    // Omitted for brevity
+
+    [SerializeField] TextMeshProUGUI leftPaddleScoreText;
+    [SerializeField] TextMeshProUGUI rightPaddleScoreText;
+
+    public void LeftPaddleScored()
+    {
+        // Omitted for brevity
+        leftPaddleScoreText.text = leftPaddleScore.ToString();
+    }
+
+    public void RightPaddleScored()
+    {
+        // Omitted for brevity
+        rightPaddleScoreText.text = rightPaddleScore.ToString();
+    }
+}
+```
+
+In the **Inspector** window, drag and drop the `LeftPaddleScoreText` and `RightPaddleScoreText` **Text - Text Mesh Pro** **GameObjects** onto the `GameController` script's `leftPaddleScoreText` and `rightPaddleScoreText` fields.
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-19.png)
+
+Click the **Play** button to test the game. The left and right paddle scores should be displayed in the **Canvas** **GameObject**.
 
 ---
 
