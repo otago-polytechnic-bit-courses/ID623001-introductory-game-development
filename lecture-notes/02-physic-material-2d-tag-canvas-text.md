@@ -255,6 +255,64 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
+### Task 1
+
+Create a center line using a **Sprite**. The center line should be a thin line that runs vertically down the center of the game.
+
+---
+
+### Task 2
+
+When a new game starts, randomise the colour of the ball, paddles, walls, goals and center line. The colour of the walls, goals and center line should be the same.
+
+> **Hint on how to solve this task:** To access a **Sprite**'s **Color** property, you will need to access the **SpriteRenderer** component. 
+
+```csharp
+private SpriteRenderer ballRenderer; 
+
+void Start()
+{
+    ballRenderer = GetComponent<SpriteRenderer>();
+    ballRenderer.color = new Color(Random.value, Random.value, Random.value);
+}
+```
+
+---
+
+### Task 3
+
+When a player presses the **P** key, pause the game. When the game is paused, display **Paused** in the center of the game. When the player presses the **P** key again, unpause the game.
+
+> **Hint on how to solve this task:** To pause the game, you can set the **Time.timeScale** property to `0f`. To unpause the game, you can set the **Time.timeScale** property to `1f`.
+
+---
+
+### Task 4
+
+When a player scores 10 points, stop the game, hide the ball, paddles and center line, and display either **Left Paddle Wins! Press R to Restart** or **Right Paddle Wins! Press R to Restart** in the center of the game.
+
+---
+
+### Task 5
+
+When a player presses the **R** key, restart the game. 
+
+> **Hint on how to solve this task:** To restart the game, you can reload the current scene using the **SceneManager.LoadScene** method.
+
+```csharp
+SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+```
+
+---
+
+### Expected Outputs
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/expected-outputs/02-expected-output-1.png)
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/expected-outputs/02-expected-output-2.png)
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/expected-outputs/02-expected-output-3.png)
+
 ### Submission
 
 Create a new pull request and assign **grayson-orr** to review your practical submission. Please do not merge your own pull request.
