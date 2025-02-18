@@ -2,7 +2,7 @@
 
 ## GitHub
 
-This course will use **GitHub** and **GitHub Classroom** to manage our development. Begin by clicking this link <>. You will be prompted to accept an assignment. Click on the **Accept this assignment** button. **GitHub Classroom** will create a new repository. You will use this repository to submit your formative (non-graded) and summative (graded) assessments.
+This course will use **GitHub** and **GitHub Classroom** to manage our development. Begin by clicking this link [](https://classroom.github.com/a/UvdYWSlH). You will be prompted to accept an assignment. Click on the **Accept this assignment** button. **GitHub Classroom** will create a new repository. You will use this repository to submit your formative (non-graded) and summative (graded) assessments.
 
 ---
 
@@ -51,15 +51,15 @@ You should follow the **conventional commits** convention when committing change
 - **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 - **test**: Adding missing tests or correcting existing tests
 
-The **scope** is a phrase describing the codebase section affected by the change. For example, you can use the scope `javascript` if you are working on the **formative assessment** for **JavaScript**. If you are working on the **formative assessment** for **HTML**, use the scope `html`.
+The **scope** is a phrase describing the codebase section affected by the change. For example, you can use the scope `pong` if you are working on the **formative assessment** for **Pong**. If you are working on the **formative assessment** for **Space Invaders**, use the scope `space invaders`.
 
 The **description** is a short description of the change. It should be written in the imperative mood, meaning it should be written as if you are giving a command or instruction. For example, "add a new feature" instead of "added a new feature".
 
 Here are some examples of **conventional commits**:
 
-- `feat(javascript): add a new feature`
-- `fix(html): fix a bug`
-- `docs(css): update documentation`
+- `feat(pong): add a new feature`
+- `fix(space invaders): fix a bug`
+- `docs(breakout): update documentation`
 
 > **Resource:** <https://www.conventionalcommits.org/en/v1.0.0/>
 
