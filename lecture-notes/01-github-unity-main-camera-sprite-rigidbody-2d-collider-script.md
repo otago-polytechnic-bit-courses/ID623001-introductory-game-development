@@ -204,7 +204,7 @@ How do you know if the **Colliders** are applied correctly? You can click on a *
 
 ### Player Controller
 
-In this section, you will finally write some code. In the **Assets** folder, right-click and select **Folder**. Name the folder **Scripts**. Double-click on the **Scripts** folder to open it. Right-click in the **Scripts** folder and select **Create** > **C# Script**. Name the script `PlayerController`.
+In this section, you will finally write some code. In the **Assets** folder, right-click and select **Folder**. Name the folder **Scripts**. Double-click on the **Scripts** folder to open it. Right-click in the **Scripts** folder and select **Create** > **Scripting** > **MonoBehaviour Script**. Name the script `PlayerController`.
 
 ![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-12.png)
 
