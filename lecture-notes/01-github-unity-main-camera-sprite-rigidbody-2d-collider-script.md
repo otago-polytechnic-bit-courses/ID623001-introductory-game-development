@@ -274,7 +274,7 @@ What is happening in the code above?
 - The `speed` variable is used to store the speed of the **Sprite**, i.e., how fast the **Sprite** moves.
 - The `direction` variable is used to store the direction of the **Sprite**, i.e., up or down.
 - In the `Update` method, if the **Sprite** is the left paddle, the code checks if the **W** key is pressed. If the **W** key is pressed, the `direction` variable is set to **1**. This moves the **Sprite** up or in the positive Y direction.
-- `rb.velocity` is used to move the **Sprite**. The **X** value is **0**. This means the **Sprite** does not move left or right. The **Y** value is the `direction` variable multiplied by the `speed` variable. 
+- `rb.linearVelocity` is used to move the **Sprite** in the Y direction.
 
 **Tasks:**
 
