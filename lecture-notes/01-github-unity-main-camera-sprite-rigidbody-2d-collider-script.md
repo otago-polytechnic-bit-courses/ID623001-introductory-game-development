@@ -258,9 +258,9 @@ public class PlayerController : MonoBehaviour
 
             // TODO: Stop the right paddle
         }
-
-        rb.velocity = new Vector2(0, direction) * speed;
     }
+
+    rb.velocity = new Vector2(0, direction) * speed;
 }
 ```
 
