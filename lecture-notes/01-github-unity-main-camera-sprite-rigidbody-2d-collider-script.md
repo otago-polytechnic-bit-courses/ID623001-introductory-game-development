@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    rb.velocity = new Vector2(0, direction) * speed;
+    rb.linearVelocity = new Vector2(0, direction) * speed;
 }
 ```
 
@@ -342,7 +342,7 @@ public class BallController : MonoBehaviour
             // TODO: Move the ball diagonally to the bottom left
         }
 
-        rb.velocity = new Vector2(x, y) * speed;
+        rb.linearVelocity = new Vector2(x, y) * speed;
     }
 }
 ```
