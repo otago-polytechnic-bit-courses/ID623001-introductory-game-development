@@ -106,7 +106,7 @@ What is happening in the code above?
 - The `OnTriggerEnter2D` method is called when the `Ball` **Sprite** enters the `LeftGoal` or `RightGoal` **Sprite** collider
 - If the `Ball` **Sprite** enters the `LeftGoal` or `RightGoal` **Sprite** collider, the `Reset` method in the `BallController` script is called
 
-Drag and drop the `GoalController` script onto the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `isLeftPaddle` value to `true` and the `ball` value to the `Ball` **Sprite**. Repeat this process for the `RightGoal` **Sprite** but change the `isLeftPaddle` value to `false`.
+Drag and drop the `GoalController` script onto the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `isLeftPaddle` value to `true` and the `ball` value to the `BallController` script. Repeat this process for the `RightGoal` **Sprite** but change the `isLeftPaddle` value to `false`.
 
 ![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-9.png)
 
@@ -148,16 +148,15 @@ In the **Hierarchy** window, create an empty **GameObject**, i.e., **Create Empt
 
 ![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-10.png)
 
-Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `game` value to the `Game` **GameObject**. Repeat this process for the `RightGoal` **Sprite**.
-
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-11.png)
-
-
 **Tasks:**
 
 1. In the `GoalController` script, add a reference to the `GameController` script
-2. In the `GoalController` script, call the `LeftPaddleScored` method when the `Ball` **Sprite** enters the `LeftGoal` **Sprite** collider
-3. In the `GoalController` script, call the `RightPaddleScored` method when the `Ball` **Sprite** enters the `RightGoal` **Sprite** collider
+2. Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `game` value to the `Game` **GameObject**. Repeat this process for the `RightGoal` **Sprite**.
+
+![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-11.png)
+
+3. In the `GoalController` script, call the `LeftPaddleScored` method when the `Ball` **Sprite** enters the `LeftGoal` **Sprite** collider
+4. In the `GoalController` script, call the `RightPaddleScored` method when the `Ball` **Sprite** enters the `RightGoal` **Sprite** collider
 
 Click the **Play** button to test the game. The left and right paddle scores should be displayed in the **Console** window when the ball enters the left or right goals.
 
