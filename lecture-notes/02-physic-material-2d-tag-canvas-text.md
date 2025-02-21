@@ -106,7 +106,7 @@ What is happening in the code above?
 - The `OnTriggerEnter2D` method is called when the `Ball` **Sprite** enters the `LeftGoal` or `RightGoal` **Sprite** collider
 - If the `Ball` **Sprite** enters the `LeftGoal` or `RightGoal` **Sprite** collider, the `Reset` method in the `BallController` script is called
 
-Drag and drop the `GoalController` script onto the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `isLeftPaddle` value to `true` and the `ball` value to the `BallController` script. Repeat this process for the `RightGoal` **Sprite** but change the `isLeftPaddle` value to `false`.
+Drag and drop the `GoalController` script onto the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `isLeftPaddle` value to `true` and the `ball` value to the `Ball` **Sprite**. Repeat this process for the `RightGoal` **Sprite** but change the `isLeftPaddle` value to `false`.
 
 ![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-9.png)
 
