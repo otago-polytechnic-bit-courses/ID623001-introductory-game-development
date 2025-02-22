@@ -183,7 +183,7 @@ Click the **Play** button to run the game. You should see the `LeftPaddle` and `
 
 ---
 
-### Collider
+### Box Collider 2D and Circle Collider 2D
 
 To detect collisions between **Sprites**, you need to add a **Collider 2D** component to the **Sprites**.
 
