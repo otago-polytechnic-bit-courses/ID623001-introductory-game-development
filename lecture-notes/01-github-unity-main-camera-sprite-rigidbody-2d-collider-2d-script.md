@@ -85,7 +85,7 @@ In **ID511001: Programming 2**, you developed **Pong** using **Windows Forms App
 
 ### Unity Version
 
-For this module, you should use **Unity 2022.3.57f1**. You can download this version from the following link: <https://unity3d.com/get-unity/download/archive>.
+For this module, you should use **Unity 6**. You can download this version from the following link: [https://unity3d.com/get-unity/download/archive](https://unity.com/releases/unity-6).
 
 
 ---
