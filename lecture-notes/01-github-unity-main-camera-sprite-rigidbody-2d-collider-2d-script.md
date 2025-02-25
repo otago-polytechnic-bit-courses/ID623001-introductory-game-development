@@ -377,12 +377,6 @@ No formative assessment provided in this topic.
 
 ---
 
-### Submission
-
-Create a new pull request and assign **grayson-orr** to review your practical submission. Please do not merge your own pull request.
-
----
-
 ## Next Class
 
 Link to the next class: [Week 02](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/02-physic-material-2d-tag-canvas-text.md)
