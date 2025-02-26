@@ -234,10 +234,16 @@ In **Grid Snapping**, set the **Grid Size** to `0.5`.
 
 ![](../img/03-images/03-image-5.png)
 
-**Task:**
+**Tasks:**
 
 1. Add six `Brick` **Prefabs** to your scene.
 
 Your scene should look like this:
 
 ![](../img/03-images/03-image-6.png)
+
+2. Create a **GameObject** called `Bricks` and drag all the `Brick` **GameObjects** under it.
+
+![](../img/03-images/03-image-7.png)
+
+---
