@@ -312,10 +312,6 @@ SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 ![](../resources/img/02-physic-material-2d-tag-canvas-text/expected-outputs/02-expected-output-3.png)
 
-### Submission
-
-Create a new pull request and assign **grayson-orr** to review your practical submission. Please do not merge your own pull request.
-
 ---
 
 ## Next Class
