@@ -18,7 +18,7 @@ Setup your scene with `Ball`, `TopWall`, `LeftWall`, `RightWall` and `Paddle` sp
 
 > **Note:** YYou can organise your **GameObjects** in the Hierarchy window. For example, you can create an empty **GameObject** and name it `Walls` and then drag all the wall **GameObjects** under it.
 
-<ADD IMAGE>
+![](../img/03-images/03-image-1.png)
 
 **Task:**
 
@@ -156,8 +156,88 @@ Add a **Rigidbody 2D** and a **Circle Collider 2D** component to the `Ball` spri
 1. Set the `Gravity Scale` to `0`.
 2. Prevent the `Ball` sprite from rotating.
 3. Add a new **Physics Material 2D** called `BounceMaterial` and set the `Bounciness` to `0.987`.
-4. In the **Rigidbody 2D** component, set the `Material` to `BounceMaterial`.
+4. In the **Rigidbody 2D** component, set the `Material` to `BallPhysicsMaterial`.
 
 Create a new script called `BallController` and attach it to the `Ball` sprite.
 
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
+public class BallController : MonoBehaviour
+{
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float speed = 2f;
+
+    Vector2 startPos;
+
+    void Start()
+    {
+        startPos = transform.position;
+
+        Reset();
+    }
+
+    void FixedUpdate()
+    {
+        rb.velocity = rb.velocity.normalized * speed; 
+    }
+
+    public void Reset() 
+    {
+        transform.position = Vector3.zero;
+
+        float x = 0;
+
+        int randNum = Random.Range(0, 2);
+
+        if (randNum == 0)
+        {
+            x = 1f;
+        }
+        else if (randNum == 1)
+        {
+            x = -1f;
+        }
+
+        rb.velocity = new Vector2(x, 1f) * speed;
+    }
+}
+```
+
+---
+
+## Prefabs
+
+**Prefabs** are pre-configured **GameObjects** that you can reuse in your game. 
+
+Create a new sprite called `Brick`. In the **Assets** folder, create a new folder called `Prefabs`.
+
+![](../img/03-images/03-image-2.png)
+
+Drag the `Brick` sprite into the `Prefabs` folder to create a **Prefab**. 
+
+![](../img/03-images/03-image-3.png)
+
+---
+
+## Grid Snap
+
+**Grid Snap** allows you to align **GameObjects** to a grid. This is useful when you want to align **GameObjects** in your scene.
+
+Change the **Toggle Tool Handle Rotation** to **Global** and toggle the visibility of the **Grid**.
+
+![](../img/03-images/03-image-4.png)
+
+In **Grid Snapping**, set the **Grid Size** to `0.5`.
+
+![](../img/03-images/03-image-5.png)
+
+**Task:**
+
+1. Add six `Brick` **Prefabs** to your scene.
+
+Your scene should look like this:
+
+![](../img/03-images/03-image-6.png)
