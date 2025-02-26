@@ -146,3 +146,18 @@ public class PaddleController : MonoBehaviour
 1. In your **Pong** game, update the `PlayerController` script to use the `FixedUpdate` method.
 
 ---
+
+## Ball
+
+Add a **Rigidbody 2D** and a **Circle Collider 2D** component to the `Ball` sprite. 
+
+**Tasks:**
+
+1. Set the `Gravity Scale` to `0`.
+2. Prevent the `Ball` sprite from rotating.
+3. Add a new **Physics Material 2D** called `BounceMaterial` and set the `Bounciness` to `0.987`.
+4. In the **Rigidbody 2D** component, set the `Material` to `BounceMaterial`.
+
+Create a new script called `BallController` and attach it to the `Ball` sprite.
+
+
