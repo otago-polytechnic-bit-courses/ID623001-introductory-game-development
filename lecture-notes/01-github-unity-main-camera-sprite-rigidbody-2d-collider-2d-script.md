@@ -85,7 +85,7 @@ In **ID511001: Programming 2**, you developed **Pong** using **Windows Forms App
 
 ### Unity Version
 
-For this module, you should use **Unity 2022.3.57f1**. You can download this version from the following link: <https://unity3d.com/get-unity/download/archive>.
+For this module, you should use **Unity 6**. You can download this version from the following link: <https://unity.com/releases/unity-6>.
 
 
 ---
@@ -306,7 +306,6 @@ public class BallController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
 
-    // Start is called before the first frame update
     void Start()
     {
         transform.position = Vector3.zero;
@@ -367,12 +366,6 @@ Once you have completed the tasks, click the **Play** button to run the game. Yo
 ## Formative Assessment
 
 No formative assessment provided in this topic.
-
----
-
-### Submission
-
-Create a new pull request and assign **grayson-orr** to review your practical submission. Please do not merge your own pull request.
 
 ---
 

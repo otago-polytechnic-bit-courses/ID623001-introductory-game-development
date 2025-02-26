@@ -65,9 +65,84 @@ public class PaddleController : MonoBehaviour
             direction = 0f;
         }
 
-        rb.linearVelocity = new Vector2(direction, 0) * speed;
+        rb.linearVelocity = new Vector2(direction, 0f) * speed;
     }
 }
 ```
+
+Click the **Play** button to test the game. You should be able to move the `Paddle` sprite left and right.
+
+---
+
+## Multiple Inputs
+
+Currently, the `Paddle` sprite can only be moved using the arrow keys. Let us add support for the `A` and `D` keys. Update the `PaddleController` script as follows:
+
+```csharp
+// Omitted for brevity
+
+public class PaddleController : MonoBehaviour
+{
+    // Omitted for brevity
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            direction = 1f;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            direction = -1f;
+        }
+
+        // Omitted for brevity
+    }
+}
+```
+
+Click the **Play** button to test the game. You should be able to move the `Paddle` sprite left and right using the arrow keys and the `A` and `D` keys.
+
+---
+
+## Fixed Update
+
+The `Update` method is called once per frame. If you are using physics in your game, you should use the `FixedUpdate` method instead. The `FixedUpdate` method is called at a fixed interval and is independent of the frame rate.
+
+Update the `PaddleController` script to use the `FixedUpdate` method:
+
+```csharp
+// Omitted for brevity
+
+public class PaddleController : MonoBehaviour
+{
+    // Omitted for brevity
+
+    void FixedUpdate()
+    {
+        rb.velocity = new Vector2(direction, 0f) * speed;
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            direction = 1f;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            direction = -1f;
+        }
+        else
+        {
+            direction = 0f;
+        }
+    }
+}
+```
+
+**Task:**
+
+1. In your **Pong** game, update the `PlayerController` script to use the `FixedUpdate` method.
 
 ---
