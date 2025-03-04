@@ -1,4 +1,4 @@
-## Week 02
+## Week 03
 
 ## Previous Class
 
