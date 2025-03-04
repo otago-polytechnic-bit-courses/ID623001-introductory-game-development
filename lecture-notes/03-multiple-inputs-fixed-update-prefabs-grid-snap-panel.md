@@ -424,31 +424,37 @@ The `Brick` **prefab's** colour to `Yellow`.
 
 ### Task 2
 
-When a `Brick` **GameObject** is destroyed, increase the score by `10`. Display the score on the screen.
+Create a new `Brick` **Prefab** called `Brick4`. Set the colour to `White`. This brick should be unbreakable. Add some `Brick4` **Prefabs** to your scene.
 
 ---
 
 ### Task 3
 
-When the game starts, the player has `3` lives. When the `Ball` sprite collides with the `KillZone` **GameObject**, reduce the lives by `1`. Display the lives on the screen.
+When a `Brick` **GameObject** is destroyed, increase the score by `10`. Display the score on the screen.
 
 ---
 
 ### Task 4
 
-When the player has no lives left, display the `GameOverPanel` and show the final score.
+When the game starts, the player has `3` lives. When the `Ball` sprite collides with the `KillZone` **GameObject**, reduce the lives by `1`. Display the lives on the screen.
 
 ---
 
 ### Task 5
 
-When the player clicks the `Restart` button, reset the game.
+When the player has no lives left, display the `GameOverPanel`. Show "You Lose!" and the final score.
 
 ---
 
 ### Task 6
 
-Create a new `Brick` **Prefab** called `Brick4`. Set the colour to `White`. This brick should be unbreakable. Add some `Brick4` **Prefabs** to your scene.
+When the player has destroyed all the `Brick` **GameObjects**, display the `GameOverPanel`. Show "You Win!" and the final score.
+
+---
+
+### Task 7
+
+When the player clicks the `Restart` button, reset the game.
 
 ---
 

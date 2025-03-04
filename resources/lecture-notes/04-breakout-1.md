@@ -6,9 +6,17 @@ Link to the previous class: [Week 03]()
 
 ---
 
-## Breakout 1
+## Breakout
 
-In this module, you will develop **Breakout** using **Unity**. In the **Portfolio** assessment, you will extend the basic functionality of **Breakout**.
+In this module, you will continue to develop **Breakout** using Unity.
+
+> **Note:** The following content does not take into account last week's formative assessment. Please ensure you have completed the formative assessment before continuing with this week's content. 
+
+---
+
+## Instantiate Bricks
+
+Last week, you created `Brick`, `Brick1`, and `Brick2` prefabs. You then added these **Prefabs** to the scene. This is not a scalable solution. If you want to add more bricks to the scene, you would have to manually add them to the scene. You can use **Instantiate** to create bricks at runtime.
 
 ---
 

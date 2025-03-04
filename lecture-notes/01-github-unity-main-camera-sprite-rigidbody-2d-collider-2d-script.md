@@ -110,7 +110,7 @@ The **Unity** interface consists of several windows. The **Scene** window is whe
 
 --- 
 
-### Main Camera
+## Main Camera
 
 The **Main Camera** is the camera that renders the scene. It is automatically created when you create a new project. You can adjust the **Main Camera** settings in the **Inspector** window. 
 
@@ -120,7 +120,7 @@ The **Main Camera** is the camera that renders the scene. It is automatically cr
 
 ---
 
-### Move Window
+## Move Window
 
 You can move the windows in **Unity** by clicking on the **tab** of the window and dragging it to a new location. For example, you can move the **Game** window to the right-hand side of the **Scene** window.
 
@@ -128,7 +128,7 @@ You can move the windows in **Unity** by clicking on the **tab** of the window a
 
 ---
 
-### Sprite
+## Sprite
 
 To create a **Sprite**, right-click in the **Hierarchy** window, then select **2D Object** > **Sprites** > **Square**. 
 
@@ -164,7 +164,7 @@ After completing the tasks, your **Scene** window should look like this:
 
 ---
 
-### Rigidbody 2D
+## Rigidbody 2D
 
 In **ID511001: Programming 2**, you wrote the code to move the paddles and ball. In **Unity**, you can use the **Rigidbody 2D** component to interact with the physics engine. This means you do not have to write the code to move the paddles and ball.
 
@@ -183,7 +183,7 @@ Click the **Play** button to run the game. You should see the `LeftPaddle` and `
 
 ---
 
-### Collider 2D
+## Collider 2D
 
 To detect collisions between **Sprites**, you need to add a **Collider 2D** component to the **Sprites**.
 
@@ -202,7 +202,7 @@ How do you know if the **Colliders** are applied correctly? You can click on a *
 
 ---
 
-### Player Controller
+## Player Controller
 
 In this section, you will finally write some code. In the **Assets** folder, right-click and select **Folder**. Name the folder **Scripts**. Double-click on the **Scripts** folder to open it. Right-click in the **Scripts** folder and select **Create** > **Scripting** > **MonoBehaviour Script**. Name the script `PlayerController`.
 
@@ -288,7 +288,7 @@ Once you have completed the tasks, click the **Play** button to run the game. Yo
 
 ---
 
-### Ball Controller
+## Ball Controller
 
 Like the `LeftPaddle` and `RightPaddle`, you are going to add a **Rigidbody 2D** component to the `Ball` **Sprite** and write a script to move the `Ball` **Sprite**.
 

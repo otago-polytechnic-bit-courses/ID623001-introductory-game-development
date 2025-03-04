@@ -12,7 +12,7 @@ In this module, you will continue to develop **Pong** using Unity.
 
 ---
 
-### Physics Material 2D
+## Physics Material 2D
 
 **Physics Material 2D** is used to adjust the friction and bounciness of colliders. 
 
@@ -42,7 +42,7 @@ Click on the `LeftPaddle` **Sprite** in the **Hierarchy** window. In the **Inspe
 
 ---
 
-### Trigger
+## Trigger
 
 A **Trigger** is a collider that does not physically interact with other colliders. It is used to detect when other colliders enter or exit its area. For example, you can use a trigger to detect when the ball collides with the left or right goals.
 
@@ -52,7 +52,7 @@ Click on the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window.
 
 ---
 
-### Tag
+## Tag
 
 A **Tag** is a label that you can assign to **GameObjects**. You can use tags to identify **GameObjects** in your scripts. For example, you can use tags to identify the ball, paddles, walls, and goals.
 
@@ -66,7 +66,7 @@ Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector**
 
 ---
 
-### Reset Ball
+## Reset Ball
 
 In this section, you will create a script that resets the ball when it enters the left or right goals. In the **Scripts** folder, create a new script called `GoalController`. 
 
@@ -112,7 +112,7 @@ Drag and drop the `GoalController` script onto the `LeftGoal` and `RightGoal` **
 
 ---
 
-### Game Manager
+## Game Manager
 
 In this section, you will create a script that keeps track of the left and right paddle scores. In the **Scripts** folder, create a new script called `GameController`. 
 
@@ -162,7 +162,7 @@ Click the **Play** button to test the game. The left and right paddle scores sho
 
 ---
 
-### Canvas
+## Canvas
 
 The **Canvas** is a **GameObject** that holds all UI elements. You will use the **Canvas** to display the left and right paddle scores.
 
