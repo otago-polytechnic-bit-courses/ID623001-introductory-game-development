@@ -226,13 +226,7 @@ Drag the `Brick` sprite into the `Prefabs` folder to create a **Prefab**.
 
 **Grid Snap** allows you to align **GameObjects** to a grid. This is useful when you want to align **GameObjects** in your scene.
 
-Change the **Toggle Tool Handle Rotation** to **Global** and toggle the visibility of the **Grid**.
-
-![](../resources/img/03-images/03-image-4.png)
-
-In **Grid Snapping**, set the **Grid Size** to `0.5`.
-
-![](../resources/img/03-images/03-image-5.png)
+In **Toggle Grid Snapping**, set the **Grid Size** to `0.5` and check **Snap To Grid** to enable **Grid Snap**.
 
 **Tasks:**
 
