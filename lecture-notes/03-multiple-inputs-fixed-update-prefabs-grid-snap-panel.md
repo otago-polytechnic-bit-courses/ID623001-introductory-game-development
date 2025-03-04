@@ -18,7 +18,7 @@ Setup your scene with `Ball`, `TopWall`, `LeftWall`, `RightWall` and `Paddle` sp
 
 > **Note:** YYou can organise your **GameObjects** in the Hierarchy window. For example, you can create an empty **GameObject** and name it `Walls` and then drag all the wall **GameObjects** under it.
 
-![](../img/03-images/03-image-1.png)
+![](../resources/img/03-images/03-image-1.png)
 
 **Task:**
 
@@ -214,11 +214,11 @@ public class BallController : MonoBehaviour
 
 Create a new sprite called `Brick`. In the **Assets** folder, create a new folder called `Prefabs`.
 
-![](../img/03-images/03-image-2.png)
+![](../resources/img/03-images/03-image-2.png)
 
 Drag the `Brick` sprite into the `Prefabs` folder to create a **Prefab**.
 
-![](../img/03-images/03-image-3.png)
+![](../resources/img/03-images/03-image-3.png)
 
 ---
 
@@ -228,11 +228,11 @@ Drag the `Brick` sprite into the `Prefabs` folder to create a **Prefab**.
 
 Change the **Toggle Tool Handle Rotation** to **Global** and toggle the visibility of the **Grid**.
 
-![](../img/03-images/03-image-4.png)
+![](../resources/img/03-images/03-image-4.png)
 
 In **Grid Snapping**, set the **Grid Size** to `0.5`.
 
-![](../img/03-images/03-image-5.png)
+![](../resources/img/03-images/03-image-5.png)
 
 **Tasks:**
 
@@ -240,11 +240,11 @@ In **Grid Snapping**, set the **Grid Size** to `0.5`.
 
 Your scene should look like this:
 
-![](../img/03-images/03-image-6.png)
+![](../resources/img/03-images/03-image-6.png)
 
 2. Create a **GameObject** called `Bricks` and drag all the `Brick` **GameObjects** under it.
 
-![](../img/03-images/03-image-7.png)
+![](../resources/img/03-images/03-image-7.png)
 
 ---
 
@@ -293,7 +293,7 @@ When a `Brick` **GameObject** is destroyed, what do you notice about the **Hiera
 
 1. Create two more `Brick` **Prefabs** called `Brick2` and `Brick3`.
 
-![](../img/03-images/03-image-8.png)
+![](../resources/img/03-images/03-image-8.png)
 
 2. For `Brick2`, set the **Color** to `Red` and for `Brick3`, set the **Color** to `Blue`.
 3. Add some `Brick2` and `Brick3` **Prefabs** to your scene.
@@ -312,7 +312,7 @@ A **Kill Zone** is an area in your game where the player loses a life. In **Brea
 1. Copy the `TopWall` **GameObject** and rename it to `KillZone`.
 2. Set the `KillZone` **GameObject** to the bottom of the screen.
 
-![](../img/03-images/03-image-9.png)
+![](../resources/img/03-images/03-image-9.png)
 
 3. In the `Box Collider 2D` component, set the `Is Trigger` to `true`.
 4. Create a new **Tag** called `KillZone`. Set the **Tag** to `KillZone`.
@@ -341,15 +341,15 @@ You are going to create a **Panel** that will display when the game is over.
 1. Create a new **UI** **Canvas** called `GameOverCanvas`.
 2. Create a new **UI** **Panel** called `GameOverPanel`.
 
-![](../img/03-images/03-image-10.png)
+![](../resources/img/03-images/03-image-10.png)
 
 3. In the `GameOverPanel`, add a **Text - Text Mesh Pro** **GameObject** called `GameOverText` and a **Button - Text Mesh Pro** **GameObject** called `RestartButton`. Set the **Text** of the `GameOverText` to `Game Over` and the **Text** of the `RestartButton` to `Restart`.
 
-![](../img/03-images/03-image-11.png)
+![](../resources/img/03-images/03-image-11.png)
 
 4. Disable the `GameOverPanel` **GameObject**. To do this, in the **Inspector** window, uncheck the **GameObject** checkbox.
 
-![](../img/03-images/03-image-12.png)
+![](../resources/img/03-images/03-image-12.png)
 
 5. Create a new script called `GameController`. In the `GameController` script, add the following code:
 
@@ -374,7 +374,7 @@ public class GameController : MonoBehaviour
 
 6. Create a new **GameObject** called `Game`, attach the `GameController` script to it and set the `GameOverPanel` to the `GameOverPanel` **GameObject**.
 
-![](../img/03-images/03-image-13.png)
+![](../resources/img/03-images/03-image-13.png)
 
 7. In the `BallController` script, add a reference to the `GameController` script. When the `Ball` sprite collides with the `KillZone` **GameObject**, call the `PlayerDied` method.
 
@@ -400,7 +400,7 @@ public class BallController : MonoBehaviour
 
 8. In the `Ball` sprite, set the `Game` to the `Game` **GameObject**.
 
-![](../img/03-images/03-image-14.png)
+![](../resources/img/03-images/03-image-14.png)
 
 Click the **Play** button to test the game. When the `Ball` sprite collides with the `KillZone` **GameObject**, the `GameOverPanel` should be displayed.
 
