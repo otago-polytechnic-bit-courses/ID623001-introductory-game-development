@@ -18,7 +18,7 @@ In this module, you will continue to develop **Breakout** using Unity.
 
 Last week, you created `Brick`, `Brick1`, and `Brick2` prefabs. You then added these **Prefabs** to the scene. This is not a scalable solution. If you want to add more bricks to the scene, you would have to manually add them to the scene. You can use **Instantiate** to create bricks at runtime.
 
-Delete all the `Brick` **GameObjects** from your scene.
+Delete all the `Brick` **GameObjects** in the `Bricks` **GameObject**.
 
 ![](../resources/img/04-images/04-image-1.png)
 
