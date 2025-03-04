@@ -8,7 +8,7 @@ Link to the previous class: [Week 02](https://github.com/otago-polytechnic-bit-c
 
 ## Breakout Game
 
-In this module, you will continue to develop **Breakout** using Unity.
+In this module, you will develop **Breakout** using Unity.
 
 ---
 
