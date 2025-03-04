@@ -250,8 +250,6 @@ You are going to use the `OnCollisionEnter2D` method to detect collisions betwee
 
 1. Add a **Box Collider 2D** component to the `Brick` **Prefab**.
 
-> **Note:** You will need to add a **Box Collider 2D** component to all the `Brick` **GameObjects**.
-
 2. In the `Ball` sprite, create a new **Tag** called `Ball`. Set the **Tag** to `Ball`.
 
 3. Create a new script called `BrickController` and attach it to the `Brick` **Prefab**.
@@ -272,8 +270,6 @@ public class BrickController : MonoBehaviour
     }
 }
 ```
-
-> **Note:** You will need to attach the `BrickController` script to all the `Brick` **GameObjects**.
 
 Click the **Play** button to test the game. When the `Ball` sprite collides with the `Brick` **GameObjects**, the `Brick` **GameObject** should be destroyed. 
 
