@@ -18,27 +18,27 @@ In this module, you will continue to develop **Pong** using Unity.
 
 In the **Assets** folder, create a new folder called **Materials**. Double-click the **Materials** folder to open it. Right-click in the **Materials** folder and select **Create > 2D > Physics Material 2D**. Name the material `BallPhysicsMaterial`. 
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-1.png)
+![](../resources/img/02-images/02-images-1.png)
 
 In the **Inspector** window, change the **Friction** to `0` and the **Bounciness** to `1`. Drag and drop the `BallPhysicsMaterial` onto the `Ball` **Sprite** in the **Hierarchy** window.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-2.png)
+![](../resources/img/02-images/02-images-2.png)
 
 Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, change the **Material** to `BallPhysicsMaterial`.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-3.png)
+![](../resources/img/02-images/02-images-3.png)
 
 Click the **Play** button to test the game. The ball should now bounce off the paddles, walls and goals. You will notice a minor issue where the paddles and ball rotate when they collide. 
 
 To fix this, click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, check the **Rigidbody 2D > Constraints > Freeze Rotation** box for the **Z** axis. Repeat this process for the `LeftPaddle` and `RightPaddle` **Sprite**.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-4.png)
+![](../resources/img/02-images/02-images-4.png)
 
 Click the **Play** button to test the game. The paddles and ball should no longer rotate when they collide. Again, you will notice a minor issue where the paddles move on the **X** axis when they collide with the ball.
 
 Click on the `LeftPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, check the **Rigidbody 2D > Constraints > Freeze Position** box for the **X** axis. Repeat this process for the `RightPaddle` **Sprite**.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-5.png)
+![](../resources/img/02-images/02-images-5.png)
 
 ---
 
@@ -48,7 +48,7 @@ A **Trigger** is a collider that does not physically interact with other collide
 
 Click on the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. In the **Inspector** window, check the **Box Collider 2D > Is Trigger** box.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-6.png)
+![](../resources/img/02-images/02-images-6.png)
 
 ---
 
@@ -58,11 +58,11 @@ A **Tag** is a label that you can assign to **GameObjects**. You can use tags to
 
 Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, click the **Tag** dropdown menu and select **Add Tag**. Click the **+** button to add a new tag. Name the tag `Ball` and click **Save**. Repeat this process for the `TopWall`, `BottomWall`, `LeftGoal`, `RightGoal`, `LeftPaddle` and `RightPaddle` **Sprites**.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-7.png)
+![](../resources/img/02-images/02-images-7.png)
 
 Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, click the **Tag** dropdown menu and select the `Ball` tag. Repeat this process for the `TopWall`, `BottomWall`, `LeftGoal`, `RightGoal`, `LeftPaddle` and `RightPaddle` **Sprites**.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-8.png)
+![](../resources/img/02-images/02-images-8.png)
 
 ---
 
@@ -108,7 +108,7 @@ What is happening in the code above?
 
 Drag and drop the `GoalController` script onto the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window. Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `isLeftPaddle` value to `true` and the `ball` value to the `Ball` **Sprite**. Repeat this process for the `RightGoal` **Sprite** but change the `isLeftPaddle` value to `false`.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-9.png)
+![](../resources/img/02-images/02-images-9.png)
 
 ---
 
@@ -146,14 +146,14 @@ public class GameController : MonoBehaviour
 
 In the **Hierarchy** window, create an empty **GameObject**, i.e., **Create Empty** called `Game`. Drag and drop the `GameController` script onto the `Game` **GameObject**. Also, reset the `Game` **GameObject**'s **Transform** values to `0`.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-10.png)
+![](../resources/img/02-images/02-images-10.png)
 
 **Tasks:**
 
 1. In the `GoalController` script, add a reference to the `GameController` script
 2. Click on the `LeftGoal` **Sprite** in the **Hierarchy** window. Change the `game` value to the `Game` **GameObject**. Repeat this process for the `RightGoal` **Sprite**.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-11.png)
+![](../resources/img/02-images/02-images-11.png)
 
 3. In the `GoalController` script, call the `LeftPaddleScored` method when the `Ball` **Sprite** enters the `LeftGoal` **Sprite** collider
 4. In the `GoalController` script, call the `RightPaddleScored` method when the `Ball` **Sprite** enters the `RightGoal` **Sprite** collider
@@ -168,15 +168,15 @@ The **Canvas** is a **GameObject** that holds all UI elements. You will use the 
 
 In the **Hierarchy** window, right-click and select **UI > Canvas**. This is also going to create an **EventSystem** **GameObject**. 
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-12.png)
+![](../resources/img/02-images/02-images-12.png)
 
 Right-click on the **Canvas** **GameObject** and select **UI > Text - Text Mesh Pro**. 
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-13.png)
+![](../resources/img/02-images/02-images-13.png)
 
 You will need to install **Text Mesh Pro** if you have not already done so. 
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-14.png)
+![](../resources/img/02-images/02-images-14.png)
 
 You will notice the **Text - Text Mesh Pro** **GameObject** is created as a child of the **Canvas** **GameObject**.
 
@@ -184,15 +184,15 @@ You will notice the **Text - Text Mesh Pro** **GameObject** is created as a chil
 
 Zoom out in the **Scene** window to see the **Canvas** **GameObject** and **Text - Text Mesh Pro** **GameObject**. 
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-15.png)
+![](../resources/img/02-images/02-images-15.png)
 
 What happens when you resize the **Scene** window? The **Text - Text Mesh Pro** **GameObject** will resize to fit the **Scene** window.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-16.png)
+![](../resources/img/02-images/02-images-16.png)
 
 Click on the **Canvas** **GameObject** in the **Hierarchy** window. In the **Inspector** window, change the **Canvas Scaler > UI Scale Mode** to `Scale With Screen Size` and the **Canvas Scaler > Reference Resolution** to `1920 x 1080`.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-17.png)
+![](../resources/img/02-images/02-images-17.png)
 
 **Tasks:**
 
@@ -204,7 +204,7 @@ Click on the **Canvas** **GameObject** in the **Hierarchy** window. In the **Ins
 
 After completing the above tasks, your **Canvas** **GameObject** should look similar to the image below.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-18.png)
+![](../resources/img/02-images/02-images-18.png)
 
 You are now ready to update the left and right paddle scores in the **Canvas** **GameObject**.
 
@@ -238,7 +238,7 @@ public class GameController : MonoBehaviour
 
 In the **Inspector** window, drag and drop the `LeftPaddleScoreText` and `RightPaddleScoreText` **Text - Text Mesh Pro** **GameObjects** onto the `GameController` script's `leftPaddleScoreText` and `rightPaddleScoreText` fields.
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/02-physic-material-2d-tag-canvas-text-19.png)
+![](../resources/img/02-images/02-images-19.png)
 
 Click the **Play** button to test the game. The left and right paddle scores should be displayed in the **Canvas** **GameObject**.
 
@@ -306,11 +306,11 @@ SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 ### Expected Outputs
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/expected-outputs/02-expected-output-1.png)
+![](../resources/img/02-images/expected-outputs/02-expected-output-1.png)
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/expected-outputs/02-expected-output-2.png)
+![](../resources/img/02-images/expected-outputs/02-expected-output-2.png)
 
-![](../resources/img/02-physic-material-2d-tag-canvas-text/expected-outputs/02-expected-output-3.png)
+![](../resources/img/02-images/expected-outputs/02-expected-output-3.png)
 
 ---
 

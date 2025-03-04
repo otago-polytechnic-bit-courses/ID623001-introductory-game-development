@@ -94,11 +94,11 @@ For this module, you should use **Unity 6**. You can download this version from 
 
 Open **Unity Hub** and click on the **New project** button. 
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-1.png)
+![](../resources/img/01-images/01-images-1.png)
 
 Select the **2D (Built-In Render Pipeline)** template, name your project `pong` and select a location to save your project. Click on the **Create project** button.
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-2.png)
+![](../resources/img/01-images/01-images-2.png)
 
 ---
 
@@ -106,7 +106,7 @@ Select the **2D (Built-In Render Pipeline)** template, name your project `pong` 
 
 The **Unity** interface consists of several windows. The **Scene** window is where you can view and edit your game world. The **Hierarchy** window displays all the objects in your scene. The **Project** window displays all the assets in your project. The **Inspector** window displays the properties of the selected object. The **Console** window displays messages from **Unity**.
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-3.png)
+![](../resources/img/01-images/01-images-3.png)
 
 --- 
 
@@ -116,7 +116,7 @@ The **Main Camera** is the camera that renders the scene. It is automatically cr
 
 **Task:** Change the **Background** colour of the **Main Camera** to **black**.
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-4.png)
+![](../resources/img/01-images/01-images-4.png)
 
 ---
 
@@ -124,7 +124,7 @@ The **Main Camera** is the camera that renders the scene. It is automatically cr
 
 You can move the windows in **Unity** by clicking on the **tab** of the window and dragging it to a new location. For example, you can move the **Game** window to the right-hand side of the **Scene** window.
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-5.png)
+![](../resources/img/01-images/01-images-5.png)
 
 ---
 
@@ -132,11 +132,11 @@ You can move the windows in **Unity** by clicking on the **tab** of the window a
 
 To create a **Sprite**, right-click in the **Hierarchy** window, then select **2D Object** > **Sprites** > **Square**. 
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-6.png)
+![](../resources/img/01-images/01-images-6.png)
 
 You are going to create the top wall of the **Pong** game. Name the **Sprite** `TopWall`.
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-7.png)
+![](../resources/img/01-images/01-images-7.png)
 
 Click on the `TopWall` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the **Transform** and **Sprite Renderer** components. 
 
@@ -149,7 +149,7 @@ The **Transform** component is used to store the **Position**, **Rotation** and 
 
 After completing the tasks, your **Scene** window should look like this:
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-8.png)
+![](../resources/img/01-images/01-images-8.png)
 
 Now, you have the walls and goals for the **Pong** game. Next, you will create the paddles and ball.
 
@@ -160,7 +160,7 @@ Now, you have the walls and goals for the **Pong** game. Next, you will create t
 
 After completing the tasks, your **Scene** window should look like this:
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-9.png)
+![](../resources/img/01-images/01-images-9.png)
 
 ---
 
@@ -170,7 +170,7 @@ In **ID511001: Programming 2**, you wrote the code to move the paddles and ball.
 
 To add a **Rigidbody 2D** component to a **Sprite**, i.e., `LeftPaddle` **Sprite**, click on the **Sprite** in the **Hierarchy** window, then click on the **Add Component** button in the **Inspector** window. Search for **Rigidbody 2D** and click on it.
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-10.png)
+![](../resources/img/01-images/01-images-10.png)
 
 Click the **Play** button to run the game. You should see the `LeftPaddle` **Sprite** fall due to gravity.
 
@@ -189,7 +189,7 @@ To detect collisions between **Sprites**, you need to add a **Collider 2D** comp
 
 To add a **Collider 2D** component to a **Sprite**, i.e., `LeftPaddle` **Sprite**, click on the **Sprite** in the **Hierarchy** window, then click on the **Add Component** button in the **Inspector** window. Search for **Box Collider 2D** and click on it.
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-11.png)
+![](../resources/img/01-images/01-images-11.png)
 
 Click the **Play** button to run the game. You should see the `LeftPaddle` **Sprite** collide with the `BottomWall` **Sprite**.
 
@@ -206,7 +206,7 @@ How do you know if the **Colliders** are applied correctly? You can click on a *
 
 In this section, you will finally write some code. In the **Assets** folder, right-click and select **Folder**. Name the folder **Scripts**. Double-click on the **Scripts** folder to open it. Right-click in the **Scripts** folder and select **Create** > **Scripting** > **MonoBehaviour Script**. Name the script `PlayerController`.
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-12.png)
+![](../resources/img/01-images/01-images-12.png)
 
 Drag and drop the `PlayerController` script onto the `LeftPaddle` and `RightPaddle` **Sprites** in the **Hierarchy** window. Double-click on the `PlayerController` script to open it in **Visual Studio/Visual Studio Code** or your preferred code editor. 
 
@@ -279,7 +279,7 @@ What is happening in the code above?
 4. In the `PlayerController` script, add the code to stop the `RightPaddle` **Sprite**.
 5. Click on the `LeftPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Player Controller (Script)` component. Change the `Rb` variable to the `Rigidbody 2D` component of the `LeftPaddle` **Sprite**. 
 
-![](../resources/img/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script/01-github-unity-main-camera-sprite-rigidbody-2d-collider-script-13.png)
+![](../resources/img/01-images/01-images-13.png)
 
 
 6. Click on the `RightPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Player Controller (Script)` component. Change the `Is Left Paddle` variable to **false**. Change the `Rb` variable to the `Rigidbody 2D` component of the `RightPaddle` **Sprite**.
