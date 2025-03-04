@@ -74,13 +74,13 @@ public class BrickSpawner : MonoBehaviour
 
 Let's break down the code:
 
-1. `GameObject firstBrick = brickPrefabs[0];` - We get the first `Brick` **Prefab** to calculate the width and height of the bricks.
-2. `float brickWidth = firstBrick.GetComponent<SpriteRenderer>().bounds.size.x;` - This is the width of the `Brick` **Prefab**.
-3. `float brickHeight = firstBrick.GetComponent<SpriteRenderer>().bounds.size.y;` - This is the height of the `Brick` **Prefab**.
-4. `float gap = 0.5f;` - This is the gap between the bricks.
-5. `float totalWidth = columns * brickWidth + (columns - 1) * gap;` - This is the total width of the bricks.
-6. `float startX = -totalWidth / 2 + brickWidth / 2;` - This is the starting X position of the bricks. We subtract `totalWidth / 2` to align the bricks correctly. We then add `brickWidth / 2` to align the bricks correctly.
-7. `float startY = 5f - (brickHeight / 2) - 0.5f;` - This is the starting Y position of the bricks. The `5f` is the height of the `TopWall` **GameObject**. We subtract `brickHeight / 2` to align the bricks correctly. We then subtract `0.5f` to give some space between the bricks and the `TopWall` **GameObject**.
+1. `GameObject firstBrick = brickPrefabs[0];` - Get the first `Brick` **Prefab** to calculate the width and height of the bricks.
+2. `float brickWidth = firstBrick.GetComponent<SpriteRenderer>().bounds.size.x;` - Get the width of the `Brick` **Prefab**.
+3. `float brickHeight = firstBrick.GetComponent<SpriteRenderer>().bounds.size.y;` - Get the height of the `Brick` **Prefab**.
+4. `float gap = 0.5f;` - The gap between the bricks.
+5. `float totalWidth = columns * brickWidth + (columns - 1) * gap;` - The total width of the bricks.
+6. `float startX = -totalWidth / 2 + brickWidth / 2;` - The starting X position of the bricks. We subtract `totalWidth / 2` to align the bricks correctly. We then add `brickWidth / 2` to align the bricks correctly.
+7. `float startY = 5f - (brickHeight / 2) - 0.5f;` - The starting Y position of the bricks. The `5f` is the height of the `TopWall` **GameObject**. We subtract `brickHeight / 2` to align the bricks correctly. We then subtract `0.5f` to give some space between the bricks and the `TopWall` **GameObject**.
 8. Loop through the rows and columns to create the bricks. We calculate the X and Y positions of the bricks. We then instantiate the bricks at the calculated positions.
 
 Attach the `BrickSpawner` script to the `Bricks` **GameObject**. Set the `Brick Prefabs` size to `3` and add the `Brick`, `Brick1`, and `Brick2` **Prefabs** to the `Brick Prefabs` array. 
