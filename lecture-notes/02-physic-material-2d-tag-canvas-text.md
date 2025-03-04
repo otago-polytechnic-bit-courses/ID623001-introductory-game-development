@@ -316,4 +316,4 @@ SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 ## Next Class
 
-Link to the next class: [Week 03]()
+Link to the next class: [Week 03](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/03-multiple-inputs-fixed-update-prefabs-grid-snap-panel.md)

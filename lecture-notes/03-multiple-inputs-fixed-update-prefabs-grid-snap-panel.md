@@ -418,14 +418,40 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
-Implement a scoring system. When a `Brick` **GameObject** is destroyed, increase the score by `10`. Display the score on the screen.
+The `Brick` **prefab's** colour to `Yellow`.
 
 ---
 
 ### Task 2
 
-Implement a life system. A player starts with `3` lives. When the `Ball` sprite collides with the `KillZone` **GameObject**, reduce the number of lives by `1`. Display the number of lives on the screen.
+When a `Brick` **GameObject** is destroyed, increase the score by `10`. Display the score on the screen.
 
 ---
 
 ### Task 3
+
+When the game starts, the player has `3` lives. When the `Ball` sprite collides with the `KillZone` **GameObject**, reduce the lives by `1`. Display the lives on the screen.
+
+---
+
+### Task 4
+
+When the player has no lives left, display the `GameOverPanel` and show the final score.
+
+---
+
+### Task 5
+
+When the player clicks the `Restart` button, reset the game.
+
+---
+
+### Task 6
+
+Create a new `Brick` **Prefab** called `Brick4`. Set the colour to `White`. This brick should be unbreakable. Add some `Brick4` **Prefabs** to your scene.
+
+---
+
+## Next Class
+
+Link to the next class: [Week 04]()
