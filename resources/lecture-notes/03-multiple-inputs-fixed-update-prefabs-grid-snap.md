@@ -403,3 +403,29 @@ public class BallController : MonoBehaviour
 ![](../img/03-images/03-image-14.png)
 
 Click the **Play** button to test the game. When the `Ball` sprite collides with the `KillZone` **GameObject**, the `GameOverPanel` should be displayed.
+
+---
+
+## Formative Assessment
+
+Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:
+
+- If you provide an AI tool with a prompt that is not refined enough, it may generate a not-so-useful response
+- Do not trust the AI tool's responses blindly. You **must** still use your judgement and may need to do additional research to determine if the response is correct
+- Acknowledge what AI tool you have used. In the assessment's repository **README.md** file, please include what prompt(s) you provided to the AI tool and how you used the response(s) to help you with your work
+
+---
+
+### Task 1
+
+Implement a scoring system. When a `Brick` **GameObject** is destroyed, increase the score by `10`. Display the score on the screen.
+
+---
+
+### Task 2
+
+Implement a life system. A player starts with `3` lives. When the `Ball` sprite collides with the `KillZone` **GameObject**, reduce the number of lives by `1`. Display the number of lives on the screen.
+
+---
+
+### Task 3
