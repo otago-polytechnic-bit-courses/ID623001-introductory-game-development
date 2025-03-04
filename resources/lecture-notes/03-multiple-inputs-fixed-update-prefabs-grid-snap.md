@@ -28,11 +28,11 @@ Setup your scene with `Ball`, `TopWall`, `LeftWall`, `RightWall` and `Paddle` sp
 
 ## Paddle
 
-Add a **Rigidbody 2D** and a **Box Collider 2D** component to the `Paddle` sprite. 
+Add a **Rigidbody 2D** and a **Box Collider 2D** component to the `Paddle` sprite.
 
 **Tasks:**
 
-1. Set the `Gravity Scale` to `0`. 
+1. Set the `Gravity Scale` to `0`.
 2. Prevent the `Paddle` sprite from rotating.
 3. Prevent the `Paddle` sprite from moving in the Y-axis.
 
@@ -149,7 +149,7 @@ public class PaddleController : MonoBehaviour
 
 ## Ball
 
-Add a **Rigidbody 2D** and a **Circle Collider 2D** component to the `Ball` sprite. 
+Add a **Rigidbody 2D** and a **Circle Collider 2D** component to the `Ball` sprite.
 
 **Tasks:**
 
@@ -181,10 +181,10 @@ public class BallController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = rb.velocity.normalized * speed; 
+        rb.velocity = rb.velocity.normalized * speed;
     }
 
-    public void Reset() 
+    public void Reset()
     {
         transform.position = Vector3.zero;
 
@@ -210,13 +210,13 @@ public class BallController : MonoBehaviour
 
 ## Prefabs
 
-**Prefabs** are pre-configured **GameObjects** that you can reuse in your game. 
+**Prefabs** are pre-configured **GameObjects** that you can reuse in your game.
 
 Create a new sprite called `Brick`. In the **Assets** folder, create a new folder called `Prefabs`.
 
 ![](../img/03-images/03-image-2.png)
 
-Drag the `Brick` sprite into the `Prefabs` folder to create a **Prefab**. 
+Drag the `Brick` sprite into the `Prefabs` folder to create a **Prefab**.
 
 ![](../img/03-images/03-image-3.png)
 
@@ -247,3 +247,153 @@ Your scene should look like this:
 ![](../img/03-images/03-image-7.png)
 
 ---
+
+## Destroy Bricks
+
+You are going to use the `OnCollisionEnter2D` method to detect collisions between the `Ball` and the `Brick` **GameObjects**.
+
+**Tasks:**
+
+1. Add a **Box Collider 2D** component to the `Brick` **Prefab**.
+
+> **Note:** You will need to add a **Box Collider 2D** component to all the `Brick` **GameObjects**.
+
+2. In the `Ball` sprite, create a new **Tag** called `Ball`. Set the **Tag** to `Ball`.
+
+3. Create a new script called `BrickController` and attach it to the `Brick` **Prefab**.
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BrickController : MonoBehaviour
+{
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            Destroy(gameObject);
+        }
+    }
+}
+```
+
+> **Note:** You will need to attach the `BrickController` script to all the `Brick` **GameObjects**.
+
+Click the **Play** button to test the game. When the `Ball` sprite collides with the `Brick` **GameObjects**, the `Brick` **GameObject** should be destroyed. 
+
+When a `Brick` **GameObject** is destroyed, what do you notice about the **Hierarchy** window?
+
+---
+
+## Creating More Bricks
+
+**Tasks:**
+
+1. Create two more `Brick` **Prefabs** called `Brick2` and `Brick3`.
+
+![](../img/03-images/03-image-8.png)
+
+2. For `Brick2`, set the **Color** to `Red` and for `Brick3`, set the **Color** to `Blue`.
+3. Add some `Brick2` and `Brick3` **Prefabs** to your scene.
+4. In the `BrickController` script, add a new `SerializedField` called `health` and set it to `1`.
+5. Set the `health` of `Brick2` to `2` and the `health` of `Brick3` to `3`.
+6. In the `BrickController` script, update the `OnCollisionEnter2D` method to reduce the `health` of the `Brick` **GameObject**. If the `health` is less than or equal to `0`, destroy the `Brick` **GameObject**. You also need to change the **Color** of the `Brick` **GameObject** based on the `health`. For example, if the `health` is `1`, set the **Color** to `White`, if the `health` is `2`, set the **Color** to `Red` and so forth.
+
+---
+
+## Kill Zone
+
+A **Kill Zone** is an area in your game where the player loses a life. In **Breakout**, the **Kill Zone** is the bottom of the screen.
+
+**Tasks:**
+
+1. Copy the `TopWall` **GameObject** and rename it to `KillZone`.
+2. Set the `KillZone` **GameObject** to the bottom of the screen.
+
+![](../img/03-images/03-image-9.png)
+
+3. In the `Box Collider 2D` component, set the `Is Trigger` to `true`.
+4. Create a new **Tag** called `KillZone`. Set the **Tag** to `KillZone`.
+5. In the `BallController` script, add a new `OnTriggerEnter2D` method to detect collisions between the `Ball` and the `KillZone` **GameObject**. 
+
+```csharp
+private void OnTriggerEnter2D(Collider2D collision)
+{
+    if (collision.gameObject.CompareTag("KillZone"))
+    {
+        Debug.Log("Ball hit the Kill Zone");
+    }
+}
+```
+
+Click the **Play** button to test the game. When the `Ball` sprite collides with the `KillZone` **GameObject**, you should see the message `Ball hit the Kill Zone` in the **Console** window.
+
+---
+
+## Panel
+
+You are going to create a **Panel** that will display when the game is over.
+
+**Tasks:**
+
+1. Create a new **UI** **Canvas** called `GameOverCanvas`.
+2. Create a new **UI** **Panel** called `GameOverPanel`.
+
+![](../img/03-images/03-image-10.png)
+
+3. In the `GameOverPanel`, add a **Text - Text Mesh Pro** **GameObject** called `GameOverText` and a **Button - Text Mesh Pro** **GameObject** called `RestartButton`. Set the **Text** of the `GameOverText` to `Game Over` and the **Text** of the `RestartButton` to `Restart`.
+
+![](../img/03-images/03-image-11.png)
+
+4. Disable the `GameOverPanel` **GameObject**. To do this, in the **Inspector** window, uncheck the **GameObject** checkbox.
+
+![](../img/03-images/03-image-12.png)
+
+5. Create a new script called `GameController`. In the `GameController` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public class GameController : MonoBehaviour
+{
+    [SerializeField] private GameObject gameOverPanel;
+
+    public void PlayerDied()
+    {
+        GameOver();
+    }
+
+    private void GameOver()
+    {
+        gameOverPanel.SetActive(true);
+    }
+}
+```
+
+6. Create a new **GameObject** called `Game` and attach the `GameController` script to it.
+
+![](../img/03-images/03-image-13.png)
+
+7. In the `BallController` script, add a reference to the `GameController` script. When the `Ball` sprite collides with the `KillZone` **GameObject**, call the `PlayerDied` method.
+
+```csharp
+// Omitted for brevity
+
+public class BallController : MonoBehaviour
+{
+    // Omitted for brevity
+    [SerializeField] private GameController game;
+
+    // Omitted for brevity
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("KillZone"))
+        {
+            game.PlayerDied();
+        }
+    }
+}
+```
