@@ -120,7 +120,7 @@ public class PaddleController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(direction, 0f) * speed;
+        rb.linearVelocity = new Vector2(direction, 0f) * speed;
     }
 
     void Update()
@@ -181,7 +181,7 @@ public class BallController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = rb.velocity.normalized * speed;
+        rb.linearVelocity = rb.linearVelocity.normalized * speed;
     }
 
     public void Reset()
@@ -201,7 +201,7 @@ public class BallController : MonoBehaviour
             x = -1f;
         }
 
-        rb.velocity = new Vector2(x, 1f) * speed;
+        rb.linearVelocity = new Vector2(x, 1f) * speed;
     }
 }
 ```
