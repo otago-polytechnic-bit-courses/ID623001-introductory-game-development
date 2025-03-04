@@ -372,7 +372,7 @@ public class GameController : MonoBehaviour
 }
 ```
 
-6. Create a new **GameObject** called `Game` and attach the `GameController` script to it.
+6. Create a new **GameObject** called `Game`, attach the `GameController` script to it and set the `GameOverPanel` to the `GameOverPanel` **GameObject**.
 
 ![](../img/03-images/03-image-13.png)
 
@@ -397,3 +397,9 @@ public class BallController : MonoBehaviour
     }
 }
 ```
+
+8. In the `Ball` sprite, set the `Game` to the `Game` **GameObject**.
+
+![](../img/03-images/03-image-14.png)
+
+Click the **Play** button to test the game. When the `Ball` sprite collides with the `KillZone` **GameObject**, the `GameOverPanel` should be displayed.
