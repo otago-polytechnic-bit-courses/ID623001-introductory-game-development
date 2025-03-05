@@ -347,9 +347,7 @@ public class BrickSpawner : MonoBehaviour
             case "Random":
                 brickFactory = new RandomBrickFactory(brickPrefabs);
                 break;
-            case "Alternating":
-                brickFactory = new AlternatingBrickFactory(brickPrefabs);
-                break;
+            // Add other factory types here
             default:
                 break;
         }
@@ -362,9 +360,7 @@ public class BrickSpawner : MonoBehaviour
             case "Basic":
                 formationStrategy = new BasicFormationStrategy();
                 break;
-            case "X":
-                formationStrategy = new XFormationStrategy();
-                break;
+            // Add other formation types here
             default:
                 break;
         }
@@ -392,9 +388,69 @@ public class BrickSpawner : MonoBehaviour
 
 In the `BrickSpawner` script, you have added two new fields: `formationType` and `factoryType`. These fields will be used to set the formation and factory types in the Unity Inspector. You have also added two new fields: `brickFactory` and `formationStrategy`. These fields will be used to store the brick factory and formation strategy objects.
 
+**Tasks:**
+
+1. In the `SetBrickFactory` method, create a new `AlternatingBrickFactory` object if the `factoryType` is set to `Alternating`.
+2. In the `SetFormationStrategy` method, create a new `XFormationStrategy` object if the `formationType` is set to `X`.
+
 Click the **Play** button to test the game. You should see the bricks being created at runtime.
 
 ---
+
+## Adding Audio
+
+In the **Assets** folder, create a new folder called `Audio`. Copy and paste the files in the **04-audio** folder into the `Audio` folder.
+
+![](../resources/img/04-images/04-image-6.png)
+
+---
+
+## Audio Controller
+
+In the **Assets > Scripts** folder, create a new folder called `Audio`. In the `Audio` folder, create a new script called `AudioController`. 
+
+![](../resources/img/04-images/04-image-7.png)
+
+In the `AudioController` script, add the following code:
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AudioController : MonoBehaviour
+{
+    public static AudioController instance;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip wallSound;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void PlaySound(string soundType)
+    {
+        switch (soundType)
+        {
+            case "Wall":
+                audioSource.PlayOneShot(wallSound);
+                break;
+            // Add other sound types here
+            default:
+                break;
+        }
+    }
+}
+```
 
 ## Formative Assessment
 
