@@ -8,7 +8,7 @@ Link to the previous class: [Week 02](https://github.com/otago-polytechnic-bit-c
 
 ## Breakout Game
 
-In this module, you will develop **Breakout** using Unity.
+In this module, you will develop **Breakout** using **Unity**. Create a new **Unity** project using the **2D (Built-In Render Pipeline)** template. Name your project `breakout` and select a location to save your project. Click on the **Create project** button.
 
 ---
 

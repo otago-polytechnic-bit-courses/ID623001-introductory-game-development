@@ -313,6 +313,8 @@ public class XFormationStrategy : IFormationStrategy
 }
 ```
 
+![](../resources/img/04-images/04-image-5.png)
+
 ---
 
 ## Brick Spawner
@@ -358,10 +360,10 @@ public class BrickSpawner : MonoBehaviour
         switch (type)
         {
             case "Basic":
-                formationStrategy = new BasicFormation();
+                formationStrategy = new BasicFormationStrategy();
                 break;
             case "X":
-                formationStrategy = new XFormation();
+                formationStrategy = new XFormationStrategy();
                 break;
             default:
                 break;

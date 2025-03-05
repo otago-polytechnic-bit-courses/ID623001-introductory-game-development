@@ -8,7 +8,7 @@ Link to the previous class: [Week 01](https://github.com/otago-polytechnic-bit-c
 
 ## Pong Game
 
-In this module, you will continue to develop **Pong** using Unity.
+In this module, you will continue to develop **Pong** using **Unity**.
 
 ---
 
