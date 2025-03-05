@@ -210,7 +210,11 @@ public class AlternatingBrickFactory : BrickFactory
 
 This factory will create bricks in an alternating manner. For example, if you have three brick prefabs, it will create the first brick prefab, then the second brick prefab, and then the third brick prefab. It will then start over and create the first brick prefab again.
 
-In the `Factories` folder, create a new script called `RandomBrickFactory`. In the `RandomBrickFactory` script, add the following code:
+In the `Factories` folder, create a new script called `RandomBrickFactory`. 
+
+![](../resources/img/04-images/04-image-4.png)
+
+In the `RandomBrickFactory` script, add the following code:
 
 ```csharp
 // Omitted for brevity
@@ -232,8 +236,6 @@ public class RandomBrickFactory : BrickFactory
 ```
 
 This factory will create bricks randomly. It will randomly select a brick prefab from the array of brick prefabs.
-
-![](../resources/img/04-images/04-image-4.png)
 
 ---
 
@@ -284,7 +286,11 @@ public class BasicFormationStrategy : IFormationStrategy
 }
 ```
 
-This class will generate bricks in a basic formation. In the `Formations` folder, create a new script called `XFormationStrategy`. In the `XFormationStrategy` script, add the following code:
+This class will generate bricks in a basic formation. In the `Formations` folder, create a new script called `XFormationStrategy`. 
+
+![](../resources/img/04-images/04-image-5.png)
+
+In the `XFormationStrategy` script, add the following code:
 
 ```csharp
 // Omitted for brevity
@@ -314,8 +320,6 @@ public class XFormationStrategy : IFormationStrategy
     }
 }
 ```
-
-![](../resources/img/04-images/04-image-5.png)
 
 ---
 
