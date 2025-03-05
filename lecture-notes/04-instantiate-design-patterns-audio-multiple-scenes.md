@@ -429,11 +429,7 @@ The **Singleton Pattern** is a creational design pattern that ensures that a cla
 
 ## Audio Controller
 
-In the **Assets > Scripts** folder, create a new script called `AudioController`.
-
-![](../resources/img/04-images/04-image-7.png)
-
-In the `AudioController` script, add the following code:
+In the **Assets > Scripts** folder, create a new script called `AudioController`. In the `AudioController` script, add the following code:
 
 ```csharp
 using System.Collections;
@@ -511,7 +507,7 @@ public class BallController : MonoBehaviour
 
 In the **Hierarchy** window, create an empty **GameObject** called `Audio`. Attach the `AudioController` script to the `AudioController` **GameObject**. In the `Audio` **GameObject**, create an **Audio Source** component. 
 
-![](../resources/img/04-images/04-image-8.png)
+![](../resources/img/04-images/04-image-7.png)
 
 Assign the `Audio Source` and `Wall Sound` fields in the `AudioController` script.
 
