@@ -485,7 +485,21 @@ public class BallController : MonoBehaviour
 }
 ```
 
+> **Note:** You will need to create a **Tag** called `Wall` and assign it to the `TopWall`, `LeftWall`, and `RightWall` **GameObjects**.
+
 ---
+
+## Audio Source
+
+In the **Hierarchy** window, create an empty **GameObject** called `Audio`. Attach the `AudioController` script to the `AudioController` **GameObject**. In the `Audio` **GameObject**, create an **Audio Source** component. 
+
+![](../resources/img/04-images/04-image-8.png)
+
+Assign the `Audio Source` and `Wall Sound` fields in the `AudioController` script.
+
+![](../resources/img/04-images/04-image-9.png)
+
+Click the **Play** button to test the game. You should hear the wall sound when the ball collides with the walls.
 
 ## Formative Assessment
 
