@@ -154,7 +154,13 @@ Click the **Play** button to test the game. You should see the bricks being crea
 
 ---
 
-## Factory Pattern
+## Design Patterns
+
+Design patterns are reusable solutions to common problems in software design. They are templates that you can use to solve problems when designing your software.
+
+---
+
+### Factory Pattern
 
 Currently, the `Instantiate` method is being called within the `GenerateBasicFormation` and `GenerateXFormation` methods. It is fine for small projects, but it is not a scalable solution. If you want to create different formations, you would have to create a new method for each formation. You can use design patterns to solve this problem. You will use two design patterns: **Factory Pattern** and **Strategy Pattern**. The **Factory Pattern** will be used to create bricks and the **Strategy Pattern** will be used to create different formations.
 
@@ -239,7 +245,7 @@ This factory will create bricks randomly. It will randomly select a brick prefab
 
 ---
 
-## Strategy Pattern
+### Strategy Pattern
 
 The **Strategy Pattern** is a design pattern that defines a family of algorithms, encapsulates each algorithm and makes the algorithms interchangeable within that family. 
 
