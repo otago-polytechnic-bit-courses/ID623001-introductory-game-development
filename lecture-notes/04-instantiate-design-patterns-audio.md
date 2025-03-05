@@ -231,7 +231,7 @@ public class RandomBrickFactory : BrickFactory
 
 This factory will create bricks randomly. It will randomly select a brick prefab from the array of brick prefabs.
 
-![](../resources/img/04-images/04-image-3.png)
+![](../resources/img/04-images/04-image-4.png)
 
 ---
 
