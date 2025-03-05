@@ -515,9 +515,19 @@ In the **Hierarchy** window, create an empty **GameObject** called `Audio`. Atta
 
 Assign the `Audio Source` and `Wall Sound` fields in the `AudioController` script.
 
-![](../resources/img/04-images/04-image-9.png)
+![](../resources/img/04-images/04-image-8.png)
 
 Click the **Play** button to test the game. You should hear the wall sound when the ball collides with the walls.
+
+---
+
+## Multiple Scenes
+
+**Unity** allows you to create multiple scenes in a project. You can use multiple scenes to organise your project and to create different parts of your game.
+
+
+
+---
 
 ## Formative Assessment
 
