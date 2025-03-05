@@ -505,7 +505,7 @@ public class BallController : MonoBehaviour
 
 ## Audio Source
 
-In the **Hierarchy** window, create an empty **GameObject** called `Audio`. Attach the `AudioController` script to the `AudioController` **GameObject**. In the `Audio` **GameObject**, create an **Audio Source** component. 
+In the **Hierarchy** window, create an empty **GameObject** called `Audio`. Attach the `AudioController` script to the `AudioController` **GameObject**. In the `Audio` **GameObject**, create an **Audio Source** **GameObject** and name it `Sound`.
 
 ![](../resources/img/04-images/04-image-7.png)
 
