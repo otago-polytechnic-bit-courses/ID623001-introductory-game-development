@@ -45,7 +45,7 @@ public class BrickSpawner : MonoBehaviour
         GenerateBasicFormation();
     }
 
-    private void GenerateBasicBrickFormation()
+    private void GenerateBasicFormation()
     {
         GameObject firstBrick = brickPrefabs[0];
         float brickWidth = firstBrick.GetComponent<SpriteRenderer>().bounds.size.x;
@@ -62,9 +62,9 @@ public class BrickSpawner : MonoBehaviour
             for (int col = 0; col < columns; col++)
             {
                 int randomIndex = Random.Range(0, brickPrefabs.Length);
-                float xPosition = startX + col * (brickWidth + gap);
-                float yPosition = startY - row * (brickHeight + gap);
-                Vector2 position = new Vector2(xPosition, yPosition);
+                float xPos = startX + col * (brickWidth + gap);
+                float yPos = startY - row * (brickHeight + gap);
+                Vector2 position = new Vector2(xPos, yPos);
                 Instantiate(brickPrefabs[randomIndex], position, Quaternion.identity);
             }
         }
@@ -86,6 +86,309 @@ Let's break down the code:
 Attach the `BrickSpawner` script to the `Bricks` **GameObject**. Set the `Brick Prefabs` size to `3` and add the `Brick`, `Brick1`, and `Brick2` **Prefabs** to the `Brick Prefabs` array. 
 
 ![](../resources/img/04-images/04-image-3.png)
+
+Click the **Play** button to test the game. You should see the bricks being created at runtime.
+
+---
+
+## Creating Different Formations
+
+You can create different formations of bricks. Here is an example of an X formation:
+
+```csharp
+// Omitted for brevity
+
+public class BrickSpawner : MonoBehaviour
+{
+    // Omitted for brevity
+
+    void Start()
+    {
+        // GenerateBasicFormation();
+        GenerateXFormation();
+    }
+
+    // Omitted for brevity
+
+    private void GenerateXFormation()
+    {
+        GameObject firstBrick = brickPrefabs[0];
+        float brickWidth = firstBrick.GetComponent<SpriteRenderer>().bounds.size.x;
+        float brickHeight = firstBrick.GetComponent<SpriteRenderer>().bounds.size.y;
+
+        float gap = 0.5f;
+
+        float totalWidth = columns * brickWidth + (columns - 1) * gap;
+        float startX = -totalWidth / 2 + brickWidth / 2;
+        float startY = 5f - (brickHeight / 2) - 0.5f;
+
+        for (int row = 0; row < rows; row++)
+        {
+            // From top-left to bottom-right
+            int leftCol = row;
+            if (leftCol < columns)
+            {
+                float xPos = startX + leftCol * (brickWidth + gap);
+                float yPos = startY - row * (brickHeight + gap);
+                Vector2 position = new Vector2(xPos, yPos);
+                int randomIndex = Random.Range(0, brickPrefabs.Length);
+                Instantiate(brickPrefabs[randomIndex], position, Quaternion.identity);
+            }
+
+            // From top-right to bottom-left
+            int rightCol = columns - row - 1;
+            if (rightCol >= 0)
+            {
+                float xPos = startX + rightCol * (brickWidth + gap);
+                float yPos = startY - row * (brickHeight + gap);
+                Vector2 position = new Vector2(xPos, yPos);
+                int randomIndex = Random.Range(0, brickPrefabs.Length);
+                Instantiate(brickPrefabs[randomIndex], position, Quaternion.identity);
+            }
+        }
+    }
+}
+```
+
+---
+
+## Factory Pattern
+
+Currently, the `Instantiate` method is being called within the `GenerateBasicFormation` and `GenerateXFormation` methods. It is fine for small projects, but it is not a scalable solution. If you want to create different formations, you would have to create a new method for each formation. You can use design patterns to solve this problem. You will use two design patterns: **Factory Pattern** and **Strategy Pattern**. The **Factory Pattern** will be used to create bricks and the **Strategy Pattern** will be used to create different formations.
+
+The **Factory Pattern** is a creational design pattern that provides an interface for creating objects in a superclass but allows subclasses to alter the type of objects that will be created.
+
+---
+
+### Brick Factory
+
+You are going to do some refactoring. In the **Assets > Scripts > Brick** folder, create a new folder called `Factories`. In the `Factories` folder, create a new script called `BrickFactory`. In the `BrickFactory` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public abstract class BrickFactory
+{
+    protected GameObject[] brickPrefabs;
+
+    public BrickFactory(GameObject[] brickPrefabs)
+    {
+        this.brickPrefabs = brickPrefabs;
+    }
+
+    public abstract GameObject CreateBrick(Vector2 position);
+}
+```
+
+This is an abstract class that has an abstract method called `CreateBrick`. You will create concrete classes that inherit from this class and implement the `CreateBrick` method.
+
+--- 
+
+### Concrete Factory Classes
+
+You will create two concrete classes that inherit from the `BrickFactory` class. In the `Factories` folder, create a new script called `AlternatingBrickFactory`. In the `AlternatingBrickFactory` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public class AlternatingBrickFactory : BrickFactory
+{
+    private int counter = 0;
+
+    public AlternatingBrickFactory(GameObject[] brickPrefabs) : base(brickPrefabs) { }
+
+    public override GameObject CreateBrick(Vector2 position)
+    {
+        int index = counter % brickPrefabs.Length;
+        counter++;
+        return Object.Instantiate(brickPrefabs[index], position, Quaternion.identity);
+    }
+}
+```
+
+This factory will create bricks in an alternating manner. For example, if you have three brick prefabs, it will create the first brick prefab, then the second brick prefab, and then the third brick prefab. It will then start over and create the first brick prefab again.
+
+In the `Factories` folder, create a new script called `RandomBrickFactory`. In the `RandomBrickFactory` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RandomBrickFactory : BrickFactory
+{
+    public RandomBrickFactory(GameObject[] brickPrefabs) : base(brickPrefabs) { }
+
+    public override GameObject CreateBrick(Vector2 position)
+    {
+        int randomIndex = Random.Range(0, brickPrefabs.Length);
+        return Object.Instantiate(brickPrefabs[randomIndex], position, Quaternion.identity);
+    }
+}
+```
+
+This factory will create bricks randomly. It will randomly select a brick prefab from the array of brick prefabs.
+
+![](../resources/img/04-images/04-image-3.png)
+
+---
+
+## Strategy Pattern
+
+The **Strategy Pattern** is a design pattern that defines a family of algorithms, encapsulates each algorithm, and makes the algorithms interchangeable within that family. 
+
+---
+
+### Brick Formation
+
+In the **Assets > Scripts > Brick** folder, create a new folder called `Formations`. In the `Formations` folder, create a new script called `IFormationStrategy`. In the `IFormationStrategy` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public interface IFormationStrategy
+{
+    void Generate(BrickFactory brickFactory, int rows, int columns, Vector2 startPosition, float brickWidth, float brickHeight, float gap);
+}
+```
+
+This interface has a method called `Generate`. You will create concrete classes that implement this interface.
+
+---
+
+### Concrete Strategy Classes
+
+You will create two concrete classes that implement the `IFormationStrategy` interface. In the `Formations` folder, create a new script called `BasicFormationStrategy`. In the `BasicFormationStrategy` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public class BasicFormationStrategy : IFormationStrategy
+{
+    public void Generate(BrickFactory brickFactory, int rows, int columns, Vector2 startPosition, float brickWidth, float brickHeight, float gap)
+    {
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < columns; col++)
+            {
+                float xPos = startPosition.x + col * (brickWidth + gap);
+                float yPos = startPosition.y - row * (brickHeight + gap);
+                brickFactory.CreateBrick(new Vector2(xPos, yPos));
+            }
+        }
+    }
+}
+```
+
+This class will generate bricks in a basic formation. In the `Formations` folder, create a new script called `XFormationStrategy`. In the `XFormationStrategy` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public class XFormationStrategy : IFormationStrategy
+{
+    public void Generate(BrickFactory brickFactory, int rows, int columns, Vector2 startPosition, float brickWidth, float brickHeight, float gap)
+    {
+        for (int row = 0; row < rows; row++)
+        {
+            int leftCol = row;
+            if (leftCol < columns)
+            {
+                float xPos = startPosition.x + leftCol * (brickWidth + gap);
+                float yPos = startPosition.y - row * (brickHeight + gap);
+                brickFactory.CreateBrick(new Vector2(xPos, yPos));
+            }
+
+            int rightCol = columns - row - 1;
+            if (rightCol >= 0)
+            {
+                float xPos = startPosition.x + rightCol * (brickWidth + gap);
+                float yPos = startPosition.y - row * (brickHeight + gap);
+                brickFactory.CreateBrick(new Vector2(xPos, yPos));
+            }
+        }
+    }
+}
+```
+
+---
+
+## Brick Spawner
+
+In the `BrickSpawner` script, update the code as follows:
+
+```csharp
+// Omitted for brevity
+
+public class BrickSpawner : MonoBehaviour
+{
+    // Omitted for brevity
+    [SerializeField] private string formationType = "Basic";
+    [SerializeField] private string factoryType = "Random";
+
+    private BrickFactory brickFactory;
+    private IFormationStrategy formationStrategy;
+    
+    void Start()
+    {
+        SetBrickFactory(factoryType);
+        SetFormationStrategy(formationType);
+        GenerateBricks();
+    }
+
+    private void SetBrickFactory(string type)
+    {
+        switch (type)
+        {
+            case "Random":
+                brickFactory = new RandomBrickFactory(brickPrefabs);
+                break;
+            case "Alternating":
+                brickFactory = new AlternatingBrickFactory(brickPrefabs);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void SetFormationStrategy(string type)
+    {
+        switch (type)
+        {
+            case "Basic":
+                formationStrategy = new BasicFormation();
+                break;
+            case "X":
+                formationStrategy = new XFormation();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void GenerateBricks()
+    {
+        if (formationStrategy == null || brickFactory == null)
+        {
+            return;
+        }
+
+        GameObject firstBrick = brickPrefabs[0];
+        float brickWidth = firstBrick.GetComponent<SpriteRenderer>().bounds.size.x;
+        float brickHeight = firstBrick.GetComponent<SpriteRenderer>().bounds.size.y;
+        float gap = 0.5f;
+
+        float totalWidth = columns * brickWidth + (columns - 1) * gap;
+        Vector2 startPosition = new Vector2(-totalWidth / 2 + brickWidth / 2, 5f - (brickHeight / 2) - 0.5f);
+
+        formationStrategy.Generate(brickFactory, rows, columns, startPosition, brickWidth, brickHeight, gap);
+    }
+}
+```
+
+In the `BrickSpawner` script, you have added two new fields: `formationType` and `factoryType`. These fields will be used to set the formation and factory types in the Unity Inspector. You have also added two new fields: `brickFactory` and `formationStrategy`. These fields will be used to store the brick factory and formation strategy objects.
 
 Click the **Play** button to test the game. You should see the bricks being created at runtime.
 
