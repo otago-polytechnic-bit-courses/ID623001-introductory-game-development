@@ -521,8 +521,6 @@ Click the **Play** button to test the game. You should hear the wall sound when 
 
 **Unity** allows you to create multiple scenes in a project. You can use multiple scenes to organise your project and to create different parts of your game.
 
-
-
 ---
 
 ## Formative Assessment
