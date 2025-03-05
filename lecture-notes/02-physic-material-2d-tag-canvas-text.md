@@ -54,7 +54,7 @@ Click on the `LeftGoal` and `RightGoal` **Sprites** in the **Hierarchy** window.
 
 ## Tag
 
-A **Tag** is a label that you can assign to **GameObjects**. You can use tags to identify **GameObjects** in your scripts. For example, you can use tags to identify the ball, paddles, walls, and goals.
+A **Tag** is a label that you can assign to **GameObjects**. You can use tags to identify **GameObjects** in your scripts. For example, you can use tags to identify the ball, paddles, walls and goals.
 
 Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, click the **Tag** dropdown menu and select **Add Tag**. Click the **+** button to add a new tag. Name the tag `Ball` and click **Save**. Repeat this process for the `TopWall`, `BottomWall`, `LeftGoal`, `RightGoal`, `LeftPaddle` and `RightPaddle` **Sprites**.
 
@@ -180,7 +180,7 @@ You will need to install **Text Mesh Pro** if you have not already done so.
 
 You will notice the **Text - Text Mesh Pro** **GameObject** is created as a child of the **Canvas** **GameObject**.
 
-> **Note:** The **EventSystem** **GameObject** is used to manage input from the keyboard, mouse, and touch. You do not need to modify the **EventSystem** **GameObject**.
+> **Note:** The **EventSystem** **GameObject** is used to manage input from the keyboard, mouse and touch. You do not need to modify the **EventSystem** **GameObject**.
 
 Zoom out in the **Scene** window to see the **Canvas** **GameObject** and **Text - Text Mesh Pro** **GameObject**. 
 
@@ -288,7 +288,7 @@ When a player presses the **P** key, pause the game. When the game is paused, di
 
 ### Task 4
 
-When a player scores 10 points, stop the game, hide the ball, paddles and center line, and display either **Left Paddle Wins! Press R to Restart** or **Right Paddle Wins! Press R to Restart** in the center of the game.
+When a player scores 10 points, stop the game, hide the ball, paddles and center line and display either **Left Paddle Wins! Press R to Restart** or **Right Paddle Wins! Press R to Restart** in the center of the game.
 
 ---
 

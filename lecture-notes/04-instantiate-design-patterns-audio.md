@@ -16,7 +16,7 @@ In this module, you will continue to develop **Breakout** using Unity.
 
 ## Instantiate Bricks
 
-Last week, you created `Brick`, `Brick1`, and `Brick2` prefabs. You then added these **Prefabs** to the scene. This is not a scalable solution. If you want to add more bricks to the scene, you would have to manually add them to the scene. You can use **Instantiate** to create bricks at runtime.
+Last week, you created `Brick`, `Brick1` and `Brick2` prefabs. You then added these **Prefabs** to the scene. This is not a scalable solution. If you want to add more bricks to the scene, you would have to manually add them to the scene. You can use **Instantiate** to create bricks at runtime.
 
 Delete all the `Brick` **GameObjects** in the `Bricks` **GameObject**.
 
@@ -83,7 +83,7 @@ Let's break down the code:
 7. `float startY = 5f - (brickHeight / 2) - 0.5f;` - The starting Y position of the bricks. The `5f` is the height of the `TopWall` **GameObject**. We subtract `brickHeight / 2` to align the bricks correctly. We then subtract `0.5f` to give some space between the bricks and the `TopWall` **GameObject**.
 8. Loop through the rows and columns to create the bricks. We calculate the X and Y positions of the bricks. We then instantiate the bricks at the calculated positions.
 
-Attach the `BrickSpawner` script to the `Bricks` **GameObject**. Set the `Brick Prefabs` size to `3` and add the `Brick`, `Brick1`, and `Brick2` **Prefabs** to the `Brick Prefabs` array. 
+Attach the `BrickSpawner` script to the `Bricks` **GameObject**. Set the `Brick Prefabs` size to `3` and add the `Brick`, `Brick1` and `Brick2` **Prefabs** to the `Brick Prefabs` array. 
 
 ![](../resources/img/04-images/04-image-3.png)
 
@@ -208,7 +208,7 @@ public class AlternatingBrickFactory : BrickFactory
 }
 ```
 
-This factory will create bricks in an alternating manner. For example, if you have three brick prefabs, it will create the first brick prefab, then the second brick prefab, and then the third brick prefab. It will then start over and create the first brick prefab again.
+This factory will create bricks in an alternating manner. For example, if you have three brick prefabs, it will create the first brick prefab, then the second brick prefab and then the third brick prefab. It will then start over and create the first brick prefab again.
 
 In the `Factories` folder, create a new script called `RandomBrickFactory`. 
 
@@ -241,7 +241,7 @@ This factory will create bricks randomly. It will randomly select a brick prefab
 
 ## Strategy Pattern
 
-The **Strategy Pattern** is a design pattern that defines a family of algorithms, encapsulates each algorithm, and makes the algorithms interchangeable within that family. 
+The **Strategy Pattern** is a design pattern that defines a family of algorithms, encapsulates each algorithm and makes the algorithms interchangeable within that family. 
 
 ---
 
@@ -497,7 +497,7 @@ public class BallController : MonoBehaviour
 }
 ```
 
-> **Note:** You will need to create a **Tag** called `Wall` and assign it to the `TopWall`, `LeftWall`, and `RightWall` **GameObjects**.
+> **Note:** You will need to create a **Tag** called `Wall` and assign it to the `TopWall`, `LeftWall` and `RightWall` **GameObjects**.
 
 ---
 
