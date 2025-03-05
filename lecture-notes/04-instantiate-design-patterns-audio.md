@@ -529,9 +529,9 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Submission
+### Task 1
 
-Create a new pull request and assign **grayson-orr** to review your practical submission. Please do not merge your own pull request.
+When the ball collides with the paddle, bricks and kill zone, play the appropriate sound.
 
 ---
 
