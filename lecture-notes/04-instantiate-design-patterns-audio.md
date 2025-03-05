@@ -468,6 +468,12 @@ public class AudioController : MonoBehaviour
 }
 ```
 
+What does the code do?
+
+1. `public static AudioController Instance;` - A static field that holds the instance of the `AudioController` script.
+2. `void Awake()` - A Unity method that is called when the script instance is being loaded. In this method, you check if the `Instance` field is `null`. If it is `null`, you assign `this` to the `Instance` field. If it is not `null`, you destroy the `GameObject`.
+3. `public void PlaySound(string soundType)` - A method that plays a sound based on the `soundType` parameter. In this method, you use a `switch` statement to play different sounds based on the `soundType` parameter.
+
 --- 
 
 ## Play Sound
