@@ -405,6 +405,16 @@ In the **Assets** folder, create a new folder called `Audio`. Copy and paste the
 
 ---
 
+## Singleton Pattern
+
+You will create an `AudioController` script that will play audio in the game. You will use the **Singleton Pattern** to ensure that only one instance of the `AudioController` script exists in the game.
+
+The **Singleton Pattern** is a creational design pattern that ensures that a class has only one instance and provides a global point of access to that instance. 
+
+> **Note:** Where possible, you should use the **Singleton Pattern** sparingly. It can make code harder to test and maintain.
+
+---
+
 ## Audio Controller
 
 In the **Assets > Scripts** folder, create a new folder called `Audio`. In the `Audio` folder, create a new script called `AudioController`. 
@@ -451,6 +461,31 @@ public class AudioController : MonoBehaviour
     }
 }
 ```
+
+--- 
+
+## Play Sound
+
+In the `BallController` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public class BallController : MonoBehaviour
+{
+    // Omitted for brevity
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            AudioController.Instance.PlaySound("Wall");
+        }
+    }
+}
+```
+
+---
 
 ## Formative Assessment
 
