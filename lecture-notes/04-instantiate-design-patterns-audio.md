@@ -411,7 +411,7 @@ You will create an `AudioController` script that will play audio in the game. Yo
 
 The **Singleton Pattern** is a creational design pattern that ensures that a class has only one instance and provides a global point of access to that instance. 
 
-> **Note:** Where possible, you should use the **Singleton Pattern** sparingly. It can make code harder to test and maintain.
+> **Note:** Where possible, you should use the **Singleton Pattern** sparingly. It can make code harder to test and maintain. 
 
 ---
 
@@ -430,16 +430,16 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    public static AudioController instance;
+    public static AudioController Instance;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip wallSound;
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
