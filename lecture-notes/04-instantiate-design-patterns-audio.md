@@ -423,7 +423,7 @@ The **Singleton Pattern** is a creational design pattern that ensures that a cla
 
 ## Audio Controller
 
-In the **Assets > Scripts** folder, create a new folder called `Audio`. In the `Audio` folder, create a new script called `AudioController`. 
+In the **Assets > Scripts** folder, create a new script called `AudioController`.
 
 ![](../resources/img/04-images/04-image-7.png)
 
