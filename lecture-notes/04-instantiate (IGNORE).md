@@ -2,7 +2,7 @@
 
 ## Previous Class
 
-Link to the previous class: [Week 03]()
+Link to the previous class: [Week 03](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/03-multiple-inputs-fixed-update-prefabs-grid-snap-panel.md)
 
 ---
 
