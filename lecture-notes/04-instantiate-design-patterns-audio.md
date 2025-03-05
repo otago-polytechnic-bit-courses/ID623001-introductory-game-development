@@ -150,6 +150,8 @@ public class BrickSpawner : MonoBehaviour
 }
 ```
 
+Click the **Play** button to test the game. You should see the bricks being created in an X formation at runtime.
+
 ---
 
 ## Factory Pattern
