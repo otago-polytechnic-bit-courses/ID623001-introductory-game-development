@@ -612,7 +612,9 @@ Create a new scene called `SettingsScene`. In the `SettingsScene`, create a simp
 
 ### Task 4 (Independent Research)
 
-
+Display a timer in the right-hand corner of the screen. The timer should start when the ball is launched and stop when the player has no lives left. The time should be displayed in minutes and seconds. In the `GameOverPanel`, display the time.
+ 
+---
 
 ## Next Class
 
