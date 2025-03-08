@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private bool isLeftPaddle = true;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 10f;
 
     private float direction;
     
@@ -304,7 +304,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 5f;
 
     void Start()
     {
@@ -354,7 +354,7 @@ What is happening in the code above?
 2. In the `BallController` script, add the code to move the `Ball` **Sprite** diagonally to the top left when the `randNum` is **2**.
 3. In the `BallController` script, add the code to move the `Ball` **Sprite** diagonally to the bottom left when the `randNum` is **3**.
 4. Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Ball Controller (Script)` component. Change the `Rb` variable to the `Rigidbody 2D` component of the `Ball` **Sprite**.
-5. Change the `Speed` variable to **2**.
+5. Change the `Speed` variable to **5**.
 6. You going to make the code in the `Start` method reusable. Add a new `public` method called `Reset` and move the code from the `Start` method to the `Reset` method. Call the `Reset` method in the `Start` method.
 
 Once you have completed the tasks, click the **Play** button to run the game. You should see the `Ball` **Sprite** move either diagonally to the top right, bottom right, top left or bottom left. 

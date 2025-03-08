@@ -46,7 +46,7 @@ using UnityEngine;
 public class PaddleController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 10f;
 
     private float direction;
 
@@ -168,7 +168,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 5f;
 
     Vector2 startPos;
 
