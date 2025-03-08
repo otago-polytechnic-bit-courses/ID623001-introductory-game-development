@@ -610,6 +610,10 @@ Create a new scene called `SettingsScene`. In the `SettingsScene`, create a simp
 
 ---
 
+### Task 4 (Independent Research)
+
+
+
 ## Next Class
 
 Link to the next class: [Week 05]()

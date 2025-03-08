@@ -260,7 +260,7 @@ Create a center line using a **Sprite**. The center line should be a thin line t
 
 ---
 
-### Task 2
+### Task 2 (Independent Research)
 
 When a new game starts, randomise the colour of the ball, paddles, walls, goals and center line. The colour of the walls, goals and center line should be the same.
 
@@ -292,7 +292,7 @@ When a player scores 10 points, stop the game, hide the ball, paddles and center
 
 ---
 
-### Task 5
+### Task 5 (Independent Research)
 
 When a player presses the **R** key, restart the game. 
 
