@@ -523,6 +523,65 @@ Click the **Play** button to test the game. You should hear the wall sound when 
 
 ---
 
+### Creating a New Scene
+
+In the **Assets > Scenes** folder, create a new scene called `MainMenuScene`. 
+
+![](../resources/img/04-images/04-image-9.png)
+
+You should see the `MainMenuScene` and `SampleScene` scenes in the **Scenes** folder.
+
+![](../resources/img/04-images/04-image-10.png)
+
+Delete the `SampleScene` scene from the **Hierarchy** window.
+
+![](../resources/img/04-images/04-image-11.png)
+
+---
+
+### Build Settings
+
+In the **File** menu, click on **Build Settings**. In the **Build Settings** window, click on the **Add Open Scenes** button to add the `MainMenuScene` scene to the build settings.
+
+![](../resources/img/04-images/04-image-12.png)
+
+**Task:** 
+
+1. In the `MainMenuScene`, create a simple **UI** to include a title, i.e., **Breakout** and button, i.e., **Play**. Refer to the screenshot below for an example.
+
+![](../resources/img/04-images/04-image-13.png)
+
+---
+
+### Main Menu Controller
+
+In the **Assets > Scripts** folder, create a new script called `MainMenuController` and attach it to the `MainCamera` **GameObject**. In the `MainMenuController` script, add the following code:
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenuController : MonoBehaviour
+{
+    public void Play()
+    {
+        SceneManager.LoadSceneAsync(1); // 0 = MainMenuScene, 1 = SampleScene
+    }
+}
+```
+
+The `Play` method loads the `SampleScene` scene when the **Play** button is clicked.
+
+![](../resources/img/04-images/04-image-14.png)
+
+In the `Button` component, click on the **+** button to add an **On Click** event. Drag the `MainCamera` **GameObject** to the **Object** field. In the **Function** field, select `MainMenuController` and then select the `Play` method.
+
+![](../resources/img/04-images/04-image-15.png)
+
+---
+
 ## Formative Assessment
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:
@@ -536,6 +595,18 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 ### Task 1
 
 When the ball collides with the paddle, bricks and kill zone, play the appropriate sound.
+
+---
+
+### Task 2
+
+Create a button in the `MainMenuScene` that allows the player to quit the game.
+
+---
+
+### Task 3
+
+Create a new scene called `SettingsScene`. In the `SettingsScene`, create a simple **UI** to include a title, i.e., **Settings** and button, i.e., **Go Back**. The button should allow the player to return to the `MainMenuScene`.
 
 ---
 
