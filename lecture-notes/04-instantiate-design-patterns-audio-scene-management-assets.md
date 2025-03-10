@@ -582,6 +582,28 @@ In the `Button` component, click on the **+** button to add an **On Click** even
 
 ---
 
+## Assets
+
+You are going to download and import assets from **Kenney.nl**, a website that provides free game assets.
+
+Go to the following link: [https://kenney.nl/assets/puzzle-pack](https://kenney.nl/assets/puzzle-pack)
+
+![](../resources/img/04-images/04-image-16.png)
+
+Click on **Continue without donating...** to download the assets.
+
+![](../resources/img/04-images/04-image-17.png)
+
+In the **Assets** folder, create a new folder called `Sprites`. Unzip the downloaded file and copy the `Puzzle Pack` folder into the `Sprites` folder.
+
+![](../resources/img/04-images/04-image-18.png)
+
+Add the `SampleScene` back to the **Hierarchy** window. Click on the `Ball` **GameObject** and change the `Sprite Renderer` **Sprite** to the `ballBlue` sprite.
+
+![](../resources/img/04-images/04-image-19.png)
+
+---
+
 ## Formative Assessment
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:
@@ -614,6 +636,12 @@ Create a new scene called `SettingsScene`. In the `SettingsScene`, create a simp
 
 Display a timer in the right-hand corner of the screen. The timer should start when the ball is launched and stop when the player has no lives left. The time should be displayed in minutes and seconds. In the `GameOverPanel`, display the time.
  
+---
+
+### Task 5
+
+Update the **UI** to use the **Sprites** from the `Puzzle Pack` assets.
+
 ---
 
 ## Next Class
