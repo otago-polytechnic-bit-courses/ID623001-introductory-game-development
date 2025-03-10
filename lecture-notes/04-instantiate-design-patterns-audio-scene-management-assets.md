@@ -632,15 +632,15 @@ Create a new scene called `SettingsScene`. In the `SettingsScene`, create a simp
 
 ---
 
-### Task 4 (Independent Research)
+### Task 4 
 
-Display a timer in the right-hand corner of the screen. The timer should start when the ball is launched and stop when the player has no lives left. The time should be displayed in minutes and seconds. In the `GameOverPanel`, display the time.
+Update the `Sprite Renderer` **Sprite** for the `Paddle`, `Brick`, `Brick1` and `Brick2` **GameObjects** and `Image` **Source Image** for the `PlayButton` **GameObject** to use the sprites from the `Puzzle Pack` folder. 
  
 ---
 
-### Task 5
+### Task 5( Independent Research)
 
-Update the **UI** to use the **Sprites** from the `Puzzle Pack` assets.
+Display a timer in the right-hand corner of the screen. The timer should start when the ball is launched and stop when the player has no lives left. The time should be displayed in minutes and seconds. In the `GameOverPanel`, display the time.
 
 ---
 
