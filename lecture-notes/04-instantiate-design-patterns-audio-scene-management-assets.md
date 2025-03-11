@@ -638,7 +638,7 @@ Update the `Sprite Renderer` **Sprite** for the `Paddle`, `Brick`, `Brick1` and 
  
 ---
 
-### Task 5( Independent Research)
+### Task 5 (Independent Research)
 
 Display a timer in the right-hand corner of the screen. The timer should start when the ball is launched and stop when the player has no lives left. The time should be displayed in minutes and seconds. In the `GameOverPanel`, display the time.
 
