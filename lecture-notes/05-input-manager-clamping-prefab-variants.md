@@ -224,6 +224,20 @@ To create a **Prefab Variant**, right-click on the `Enemy` **Prefab** in the **P
 
 ![](../resources/img/05-images/05-image-5.png)
 
+---
+
+## Moving Enemies
+
+**Tasks:**
+
+1. Create a new **GameObject** for the wall. 
+2. Drag and drop the wall **GameObject** into the **Prefabs** folder to create a prefab.
+3. Add a **Box Collider 2D** component to the wall **Prefab**. Set the **Is Trigger** property to **true**.
+4. Create a new **Tag** called `Wall` and assign it to the wall **Prefab**.
+5. Create a parent **GameObject** called `Walls` in the **Hierarchy**. In the `Walls` **GameObject**, add a left wall and a right wall as children.
+
+![](../resources/img/05-images/05-image-6.png)
+
 
 ---
 

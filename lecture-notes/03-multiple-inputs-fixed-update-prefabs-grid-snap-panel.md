@@ -16,7 +16,7 @@ In this module, you will develop **Breakout** using **Unity**. Create a new **Un
 
 Setup your scene with `Ball`, `TopWall`, `LeftWall`, `RightWall` and `Paddle` sprites.
 
-> **Note:** You can organise your **GameObjects** in the Hierarchy window. For example, you can create an empty **GameObject** and name it `Walls` and then drag all the wall **GameObjects** under it.
+> **Note:** You can organise your **GameObjects** in the **Hierarchy**. For example, you can create an empty **GameObject** and name it `Walls` and then drag all the wall **GameObjects** under it.
 
 ![](../resources/img/03-images/03-image-1.png)
 
@@ -273,7 +273,7 @@ public class BrickController : MonoBehaviour
 
 Click the **Play** button to test the game. When the `Ball` sprite collides with the `Brick` **GameObjects**, the `Brick` **GameObject** should be destroyed. 
 
-When a `Brick` **GameObject** is destroyed, what do you notice about the **Hierarchy** window?
+When a `Brick` **GameObject** is destroyed, what do you notice about the **Hierarchy**?
 
 ---
 
@@ -318,7 +318,7 @@ private void OnTriggerEnter2D(Collider2D collision)
 }
 ```
 
-Click the **Play** button to test the game. When the `Ball` sprite collides with the `KillZone` **GameObject**, you should see the message `Ball hit the Kill Zone` in the **Console** window.
+Click the **Play** button to test the game. When the `Ball` sprite collides with the `KillZone` **GameObject**, you should see the message `Ball hit the Kill Zone` in the **Console**.
 
 ---
 
@@ -337,7 +337,7 @@ You are going to create a **Panel** that will display when the game is over.
 
 ![](../resources/img/03-images/03-image-11.png)
 
-4. Disable the `GameOverPanel` **GameObject**. To do this, in the **Inspector** window, uncheck the **GameObject** checkbox.
+4. Disable the `GameOverPanel` **GameObject**. To do this, in the **Inspector**, uncheck the **GameObject** checkbox.
 
 ![](../resources/img/03-images/03-image-12.png)
 

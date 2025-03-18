@@ -104,7 +104,7 @@ Select the **2D (Built-In Render Pipeline)** template, name your project `pong` 
 
 ### Unity Interface
 
-The **Unity** interface consists of several windows. The **Scene** window is where you can view and edit your game world. The **Hierarchy** window displays all the objects in your scene. The **Project** window displays all the assets in your project. The **Inspector** window displays the properties of the selected object. The **Console** window displays messages from **Unity**.
+The **Unity** interface consists of several windows. The **Scene** is where you can view and edit your game world. The **Hierarchy** displays all the objects in your scene. The **Project** displays all the assets in your project. The **Inspector** displays the properties of the selected object. The **Console** displays messages from **Unity**.
 
 ![](../resources/img/01-images/01-images-3.png)
 
@@ -112,7 +112,7 @@ The **Unity** interface consists of several windows. The **Scene** window is whe
 
 ## Main Camera
 
-The **Main Camera** is the camera that renders the scene. It is automatically created when you create a new project. You can adjust the **Main Camera** settings in the **Inspector** window. 
+The **Main Camera** is the camera that renders the scene. It is automatically created when you create a new project. You can adjust the **Main Camera** settings in the **Inspector**. 
 
 **Task:** Change the **Background** colour of the **Main Camera** to **black**.
 
@@ -122,7 +122,7 @@ The **Main Camera** is the camera that renders the scene. It is automatically cr
 
 ## Move Window
 
-You can move the windows in **Unity** by clicking on the **tab** of the window and dragging it to a new location. For example, you can move the **Game** window to the right-hand side of the **Scene** window.
+You can move the windows in **Unity** by clicking on the **tab** of the window and dragging it to a new location. For example, you can move the **Game** to the right-hand side of the **Scene**.
 
 ![](../resources/img/01-images/01-images-5.png)
 
@@ -130,7 +130,7 @@ You can move the windows in **Unity** by clicking on the **tab** of the window a
 
 ## Sprite
 
-To create a **Sprite**, right-click in the **Hierarchy** window, then select **2D Object** > **Sprites** > **Square**. 
+To create a **Sprite**, right-click in the **Hierarchy**, then select **2D Object** > **Sprites** > **Square**. 
 
 ![](../resources/img/01-images/01-images-6.png)
 
@@ -138,7 +138,7 @@ You are going to create the top wall of the **Pong** game. Name the **Sprite** `
 
 ![](../resources/img/01-images/01-images-7.png)
 
-Click on the `TopWall` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the **Transform** and **Sprite Renderer** components. 
+Click on the `TopWall` **Sprite** in the **Hierarchy**. In the **Inspector**, you should see the **Transform** and **Sprite Renderer** components. 
 
 The **Transform** component is used to store the **Position**, **Rotation** and **Scale** of the **Sprite**. The **Sprite Renderer** component is used to render the **Sprite**.
 
@@ -147,7 +147,7 @@ The **Transform** component is used to store the **Position**, **Rotation** and 
 1. For the `TopWall` **Sprite**, change the Y **Position** to **5**, X **Scale** to **20** and Y **Scale** to **0.5**.
 2. Create the bottom wall, left goal and right goal **Sprites**. The left goal and right goal should be slightly off the camera view.
 
-After completing the tasks, your **Scene** window should look like this:
+After completing the tasks, your **Scene** should look like this:
 
 ![](../resources/img/01-images/01-images-8.png)
 
@@ -158,7 +158,7 @@ Now, you have the walls and goals for the **Pong** game. Next, you will create t
 1. Create the left paddle **Sprite**. Name the **Sprite** `LeftPaddle`. Change the X **Position** to **-7.3**, X **Scale** to **0.5** and Y **Scale** to **1.5**.
 2. Create the ball **Sprite** using **2D Object** > **Sprites** > **Circle**. Change the X **Scale** to **0.5** and Y **Scale** to **0.5**
 
-After completing the tasks, your **Scene** window should look like this:
+After completing the tasks, your **Scene** should look like this:
 
 ![](../resources/img/01-images/01-images-9.png)
 
@@ -168,7 +168,7 @@ After completing the tasks, your **Scene** window should look like this:
 
 In **ID511001: Programming 2**, you wrote the code to move the paddles and ball. In **Unity**, you can use the **Rigidbody 2D** component to interact with the physics engine. This means you do not have to write the code to move the paddles and ball.
 
-To add a **Rigidbody 2D** component to a **Sprite**, i.e., `LeftPaddle` **Sprite**, click on the **Sprite** in the **Hierarchy** window, then click on the **Add Component** button in the **Inspector** window. Search for **Rigidbody 2D** and click on it.
+To add a **Rigidbody 2D** component to a **Sprite**, i.e., `LeftPaddle` **Sprite**, click on the **Sprite** in the **Hierarchy**, then click on the **Add Component** button in the **Inspector**. Search for **Rigidbody 2D** and click on it.
 
 ![](../resources/img/01-images/01-images-10.png)
 
@@ -187,7 +187,7 @@ Click the **Play** button to run the game. You should see the `LeftPaddle` and `
 
 To detect collisions between **Sprites**, you need to add a **Collider 2D** component to the **Sprites**.
 
-To add a **Collider 2D** component to a **Sprite**, i.e., `LeftPaddle` **Sprite**, click on the **Sprite** in the **Hierarchy** window, then click on the **Add Component** button in the **Inspector** window. Search for **Box Collider 2D** and click on it.
+To add a **Collider 2D** component to a **Sprite**, i.e., `LeftPaddle` **Sprite**, click on the **Sprite** in the **Hierarchy**, then click on the **Add Component** button in the **Inspector**. Search for **Box Collider 2D** and click on it.
 
 ![](../resources/img/01-images/01-images-11.png)
 
@@ -198,7 +198,7 @@ Click the **Play** button to run the game. You should see the `LeftPaddle` **Spr
 1. Add a **Box Collider 2D** component to the `TopWall`, `BottomWall`, `LeftGoal` and `RightGoal` **Sprites**.
 2. Add a **Circle Collider 2D** component to the `Ball` **Sprite**.
 
-How do you know if the **Colliders** are applied correctly? You can click on a **Sprite** in the **Hierarchy** window, then click on the **Box Collider 2D** or **Circle Collider 2D** > **Edit Collider** button in the **Inspector** window. You should see the **Collider** in the **Scene** window.
+How do you know if the **Colliders** are applied correctly? You can click on a **Sprite** in the **Hierarchy**, then click on the **Box Collider 2D** or **Circle Collider 2D** > **Edit Collider** button in the **Inspector**. You should see the **Collider** in the **Scene**.
 
 ---
 
@@ -208,7 +208,7 @@ In this section, you will finally write some code. In the **Assets** folder, rig
 
 ![](../resources/img/01-images/01-images-12.png)
 
-Drag and drop the `PlayerController` script onto the `LeftPaddle` and `RightPaddle` **Sprites** in the **Hierarchy** window. Double-click on the `PlayerController` script to open it in **Visual Studio/Visual Studio Code** or your preferred code editor. 
+Drag and drop the `PlayerController` script onto the `LeftPaddle` and `RightPaddle` **Sprites** in the **Hierarchy**. Double-click on the `PlayerController` script to open it in **Visual Studio/Visual Studio Code** or your preferred code editor. 
 
 Now, you are going to write the code to move the `LeftPaddle` and `RightPaddle` **Sprites** up and down. 
 
@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
 
 What is happening in the code above?
 
-- `SerializeField` is used to make the variables visible in the **Inspector** window regardless of their access modifier.
+- `SerializeField` is used to make the variables visible in the **Inspector** regardless of their access modifier.
 - The `Start` method is called before the first frame update.
 - The `Update` method is called once per frame.
 - The `isLeftPaddle` variable is used to determine if the **Sprite** is the left paddle.
@@ -277,12 +277,12 @@ What is happening in the code above?
 2. In the `PlayerController` script, add the code to stop the `LeftPaddle` **Sprite** 
 3. In the `PlayerController` script, add the code to move the `RightPaddle` **Sprite** with the up and down arrow keys.
 4. In the `PlayerController` script, add the code to stop the `RightPaddle` **Sprite**.
-5. Click on the `LeftPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Player Controller (Script)` component. Change the `Rb` variable to the `Rigidbody 2D` component of the `LeftPaddle` **Sprite**. 
+5. Click on the `LeftPaddle` **Sprite** in the **Hierarchy**. In the **Inspector**, you should see the `Player Controller (Script)` component. Change the `Rb` variable to the `Rigidbody 2D` component of the `LeftPaddle` **Sprite**. 
 
 ![](../resources/img/01-images/01-images-13.png)
 
 
-6. Click on the `RightPaddle` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Player Controller (Script)` component. Change the `Is Left Paddle` variable to **false**. Change the `Rb` variable to the `Rigidbody 2D` component of the `RightPaddle` **Sprite**.
+6. Click on the `RightPaddle` **Sprite** in the **Hierarchy**. In the **Inspector**, you should see the `Player Controller (Script)` component. Change the `Is Left Paddle` variable to **false**. Change the `Rb` variable to the `Rigidbody 2D` component of the `RightPaddle` **Sprite**.
 
 Once you have completed the tasks, click the **Play** button to run the game. You should be able to move the `LeftPaddle` **Sprite** up and down with the **W** and **S** keys. You should also be able to move the `RightPaddle` **Sprite** up and down with the up and down arrow keys.
 
@@ -353,7 +353,7 @@ What is happening in the code above?
 1. In the `BallController` script, add the code to move the `Ball` **Sprite** diagonally to the bottom right when the `randNum` is **1**.
 2. In the `BallController` script, add the code to move the `Ball` **Sprite** diagonally to the top left when the `randNum` is **2**.
 3. In the `BallController` script, add the code to move the `Ball` **Sprite** diagonally to the bottom left when the `randNum` is **3**.
-4. Click on the `Ball` **Sprite** in the **Hierarchy** window. In the **Inspector** window, you should see the `Ball Controller (Script)` component. Change the `Rb` variable to the `Rigidbody 2D` component of the `Ball` **Sprite**.
+4. Click on the `Ball` **Sprite** in the **Hierarchy**. In the **Inspector**, you should see the `Ball Controller (Script)` component. Change the `Rb` variable to the `Rigidbody 2D` component of the `Ball` **Sprite**.
 5. Change the `Speed` variable to **5**.
 6. You going to make the code in the `Start` method reusable. Add a new `public` method called `Reset` and move the code from the `Start` method to the `Reset` method. Call the `Reset` method in the `Start` method.
 

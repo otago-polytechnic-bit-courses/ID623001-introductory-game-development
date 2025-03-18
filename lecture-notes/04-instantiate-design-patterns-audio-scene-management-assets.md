@@ -505,7 +505,7 @@ public class BallController : MonoBehaviour
 
 ## Audio Source
 
-In the **Hierarchy** window, create an empty **GameObject** called `Audio`. Attach the `AudioController` script to the `AudioController` **GameObject**. In the `Audio` **GameObject**, create an **Audio Source** **GameObject** and name it `Sound`.
+In the **Hierarchy**, create an empty **GameObject** called `Audio`. Attach the `AudioController` script to the `AudioController` **GameObject**. In the `Audio` **GameObject**, create an **Audio Source** **GameObject** and name it `Sound`.
 
 ![](../resources/img/04-images/04-image-7.png)
 
@@ -533,7 +533,7 @@ You should see the `MainMenuScene` and `SampleScene` scenes in the **Scenes** fo
 
 ![](../resources/img/04-images/04-image-10.png)
 
-Delete the `SampleScene` scene from the **Hierarchy** window.
+Delete the `SampleScene` scene from the **Hierarchy**.
 
 ![](../resources/img/04-images/04-image-11.png)
 
@@ -541,7 +541,7 @@ Delete the `SampleScene` scene from the **Hierarchy** window.
 
 ### Build Settings
 
-In the **File** menu, click on **Build Settings**. In the **Build Settings** window, click on the **Add Open Scenes** button to add the `MainMenuScene` scene to the build settings.
+In the **File** menu, click on **Build Settings**. In the **Build Settings**, click on the **Add Open Scenes** button to add the `MainMenuScene` scene to the build settings.
 
 ![](../resources/img/04-images/04-image-12.png)
 
@@ -598,7 +598,7 @@ In the **Assets** folder, create a new folder called `Sprites`. Unzip the downlo
 
 ![](../resources/img/04-images/04-image-18.png)
 
-Add the `SampleScene` back to the **Hierarchy** window. Click on the `Ball` **GameObject** and change the `Sprite Renderer` **Sprite** to the `ballBlue` sprite.
+Add the `SampleScene` back to the **Hierarchy**. Click on the `Ball` **GameObject** and change the `Sprite Renderer` **Sprite** to the `ballBlue` sprite.
 
 ![](../resources/img/04-images/04-image-19.png)
 
