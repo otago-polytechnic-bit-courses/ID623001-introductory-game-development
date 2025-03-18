@@ -233,11 +233,74 @@ To create a **Prefab Variant**, right-click on the `Enemy` **Prefab** in the **P
 1. Create a new **GameObject** for the wall. 
 2. Drag and drop the wall **GameObject** into the **Prefabs** folder to create a prefab.
 3. Add a **Box Collider 2D** component to the wall **Prefab**. Set the **Is Trigger** property to **true**.
-4. Create a new **Tag** called `Wall` and assign it to the wall **Prefab**.
-5. Create a parent **GameObject** called `Walls` in the **Hierarchy**. In the `Walls` **GameObject**, add a left wall and a right wall as children.
+4. Add a **Rigidbody 2D** component to the wall **Prefab**. Set the **Body Type** property to **Kinematic**.
+5. Create a new **Tag** called `Wall` and assign it to the wall **Prefab**.
+6. Create a parent **GameObject** called `Walls` in the **Hierarchy**. In the `Walls` **GameObject**, add a left wall and a right wall as children.
 
 ![](../resources/img/05-images/05-image-6.png)
 
+7. Create a new script called `EnemiesController` and attach it to the `Enemies` **GameObject**. In the `EnemiesController` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public class EnemiesController : MonoBehaviour
+{
+    [SerializeField] float speed = 1f;
+
+    Vector3 direction = Vector3.right;
+    float counter = 0;
+
+    void Update()
+    {
+        counter += Time.deltaTime;
+        transform.position += direction * speed * Time.deltaTime;
+    }
+
+    public void ChangeDirection()
+    {
+        if (counter > 0.5f)
+        {
+            direction *= -1f;
+            counter = 0;
+            transform.position += Vector3.down;
+        }
+    }
+}
+```
+
+What does this code do?
+
+- The `speed` variable is used to control the speed of the enemies.
+- The `direction` variable is used to store the direction in which the enemies are moving.
+- The `counter` variable is used to keep track of the time since the last direction change.
+- In the `Update` method, increment the `counter` value by `Time.deltaTime` and move the enemies in the current direction.
+- The `ChangeDirection` method is used to change the direction of the enemies. If the `counter` value is greater than 0.5 seconds, change the direction of the enemies, reset the `counter` value and move the enemies down.
+
+In the `EnemyController` script, add the following code:
+
+```csharp
+// Omitted for brevity
+
+public class EnemyController : MonoBehaviour
+{
+    [SerializeField] EnemiesController enemiesController;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Omitted for brevity
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {            
+            enemiesController.ChangeDirection();
+        }
+    }
+}
+```
+
+In the `Enemy` and `Enemy2` **Prefabs**, add the `EnemyController` script and assign the `EnemiesController` script to the `enemiesController` variable.
+
+Click on the **Play** button to test the enemy movement. The enemies should move left and right, change direction and move down when they collide with the walls.
 
 ---
 
