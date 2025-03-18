@@ -16,7 +16,7 @@ In this module, you will develop **Breakout** using **Unity**. Create a new **Un
 
 Setup your scene with `Ball`, `TopWall`, `LeftWall`, `RightWall` and `Paddle` sprites.
 
-> **Note:** YYou can organise your **GameObjects** in the Hierarchy window. For example, you can create an empty **GameObject** and name it `Walls` and then drag all the wall **GameObjects** under it.
+> **Note:** You can organise your **GameObjects** in the Hierarchy window. For example, you can create an empty **GameObject** and name it `Walls` and then drag all the wall **GameObjects** under it.
 
 ![](../resources/img/03-images/03-image-1.png)
 
