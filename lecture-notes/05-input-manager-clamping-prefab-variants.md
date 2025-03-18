@@ -139,7 +139,7 @@ Click on the **Play** button to test the laser movement. The laser should move u
 
 ---
 
-## Instantiating Player Laser
+## Player Laser
 
 **Tasks:**
 
@@ -298,7 +298,7 @@ public class EnemyController : MonoBehaviour
 }
 ```
 
-In the `Enemy` and `Enemy2` **Prefabs**, add the `EnemyController` script and assign the `EnemiesController` script to the `enemiesController` variable.
+In the `Enemy` and `Enemy2` **Prefabs**, add the `EnemyController` script and assign the `EnemiesController` script to the `EnemiesController` field.
 
 Click on the **Play** button to test the enemy movement. The enemies should move left and right, change direction and move down when they collide with the walls.
 
