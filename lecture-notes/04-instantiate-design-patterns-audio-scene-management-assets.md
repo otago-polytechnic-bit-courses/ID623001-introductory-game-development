@@ -301,27 +301,27 @@ In the `XFormationStrategy` script, add the following code:
 ```csharp
 // Omitted for brevity
 
-public class XFormationStrategy : IFormationStrategy
+public void Generate(BrickFactory brickFactory, int rows, int columns, Vector2 startPosition, float brickWidth, float brickHeight, float gap)
 {
-    public void Generate(BrickFactory brickFactory, int rows, int columns, Vector2 startPosition, float brickWidth, float brickHeight, float gap)
-    {
-        for (int row = 0; row < rows; row++)
-        {
-            int leftCol = row;
-            if (leftCol < columns)
-            {
-                float xPos = startPosition.x + leftCol * (brickWidth + gap);
-                float yPos = startPosition.y - row * (brickHeight + gap);
-                brickFactory.CreateBrick(new Vector2(xPos, yPos));
-            }
+    float totalWidth = columns * (brickWidth + gap) - gap; 
+    float halfWidth = totalWidth / 2; 
 
-            int rightCol = columns - row - 1;
-            if (rightCol >= 0)
-            {
-                float xPos = startPosition.x + rightCol * (brickWidth + gap);
-                float yPos = startPosition.y - row * (brickHeight + gap);
-                brickFactory.CreateBrick(new Vector2(xPos, yPos));
-            }
+    for (int row = 0; row < rows; row++)
+    {
+        int leftCol = row;
+        if (leftCol < columns)
+        {
+            float xPos = startPosition.x - halfWidth + leftCol * (brickWidth + gap) + brickWidth / 2;
+            float yPos = startPosition.y - row * (brickHeight + gap);
+            brickFactory.CreateBrick(new Vector2(xPos, yPos));
+        }
+
+        int rightCol = columns - row - 1;
+        if (rightCol >= 0 && rightCol != leftCol) 
+        {
+            float xPos = startPosition.x - halfWidth + rightCol * (brickWidth + gap) + brickWidth / 2;
+            float yPos = startPosition.y - row * (brickHeight + gap);
+            brickFactory.CreateBrick(new Vector2(xPos, yPos));
         }
     }
 }
