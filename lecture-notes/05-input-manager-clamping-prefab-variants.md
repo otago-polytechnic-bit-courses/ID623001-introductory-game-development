@@ -8,7 +8,7 @@ Link to the previous class: [Week 04](https://github.com/otago-polytechnic-bit-c
 
 ## Space Invaders Game
 
-In this module, you will develop **Space Invaders** using **Unity**. Create a new **Unity** project using the **2D (Built-In Render Pipeline)** template. Name your project `breakout` and select a location to save your project. Click on the **Create project** button.
+In this module, you will develop **Space Invaders** using **Unity**. Create a new **Unity** project using the **2D (Built-In Render Pipeline)** template. Name your project `space-invaders` and select a location to save your project. Click on the **Create project** button.
 
 ---
 

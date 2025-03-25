@@ -136,15 +136,15 @@ Click on the **Play** button to test the game. The enemies should now fire laser
 
 ---
 
-## Firebase
-
-In this module, you will learn how to use **Firebase** in **Unity**. **Firebase** is a platform developed by **Google** for creating mobile and web applications. It provides a variety of services, including authentication, real-time databases, cloud storage, and more.
+## API Integration
 
 ---
 
-## Firebase Setup
+## Player Prefs
 
-1. Go to the [Firebase Console](https://console.firebase.google.com/).
+---
+
+## Saving and Loading
 
 ---
 
