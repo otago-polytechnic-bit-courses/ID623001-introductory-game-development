@@ -22,14 +22,14 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{College of Engineering, Construction and Living Sciences\\Bachelor of Information Technology}
-\lfoot{Portfolio\\Version 4, Semester One, 2025}
+\lfoot{Portfolio\\Version 1, Semester One, 2025}
 \rfoot{\thepage}
  
 \begin{document}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=50mm]{../../resources/img/logo.png}
+	\includegraphics[width=50mm]{../../resources/img/logo.jpg}
 \end{figure}
 
 \title{College of Engineering, Construction and Living Sciences\\Bachelor of Information Technology\\ID623001: Introductory Game Development\\Level 6, Credits 15\\\textbf{Portfolio}}
@@ -37,7 +37,7 @@
 \maketitle
 
 \section*{Assessment Overview}
-In this \textbf{individual} assessment, you will develop \textbf{four} games using \textbf{C\#} and \textbf{Unity}. You will build the core mechanics for each game in class using the provided \textbf{lecture notes}. You will be given \textbf{assessment tasks} to implement in your learner-managed time. These tasks are at a beginner to intermediate level. In addition, marks will be allocated for code quality and best practices, and documentation.
+In this \textbf{individual/group} assessment, you will develop \textbf{four} games. In addition, marks will be allocated for code quality and best practices, documentation and \textbf{Git} usage.
 
 \section*{Learning Outcomes}
 At the successful completion of this course, learners will be able to:
@@ -54,7 +54,7 @@ At the successful completion of this course, learners will be able to:
 \end{tabular}
 
 \section*{Conditions of Assessment}
-You will complete this assessment during your learner-managed time. However, there will be time during class to discuss the requirements and your progress on this assessment. This assessment will need to be completed by \textbf{Monday 9th June} at \textbf{4.59 PM}. 
+You will complete this assessment during your learner-managed time. However, there will be time during class to discuss the requirements and your progress on this assessment. This assessment will need to be completed by \textbf{Monday 9th June} at \textbf{7.59 AM}. 
 
 \section*{Pass Criteria}
 This assessment is criterion-referenced (CRA) with a cumulative pass mark of \textbf{50\%} over all assessments in \textbf{ID623001: Introductory Game Development}.
@@ -78,7 +78,7 @@ Failure to do this may result in a mark of \textbf{zero} for this assessment.
 The school's process concerning submissions, extensions, resubmissions and resits complies with \textbf{Otago Polytechnic} policies. Learners can view policies on the \textbf{Otago Polytechnic} website located at \href{https://www.op.ac.nz/about-us/governance-and-management/policies}{https://www.op.ac.nz/about-us/governance-and-management/policies}.
 
 \section*{Submission}
-You \textbf{must} submit all application files via \textbf{GitHub Classroom}. Here is the URL to the repository you will use for your submission – \href{https://classroom.github.com/a/UvdYWSlH}{https://classroom.github.com/a/UvdYWSlH}. If you do not have not one, create a \textbf{.gitignore} and add the ignored files in this resource - \href{https://raw.githubusercontent.com/github/gitignore/main/Unity.gitignore}{https://raw.githubusercontent.com/github/gitignore/main/Unity.gitignore}. The latest application files in the \textbf{main} branch will be used to mark against the \textbf{Functionality} criterion. Please test before you submit. Partial marks \textbf{will not} be given for incomplete functionality. Late submissions will incur a \textbf{10\% penalty per day}, rolling over at \textbf{8.00 AM}. 
+You \textbf{must} submit all application files via \textbf{GitHub Classroom}. Here is the URL to the repository you will use for your submission – \href{https://classroom.github.com/a/UvdYWSlH}{https://classroom.github.com/a/UvdYWSlH}. Late submissions will incur a \textbf{10\% penalty per day}, rolling over at \textbf{8.00 AM}. 
 
 \section*{Extensions}
 Familiarise yourself with the assessment due date. Extensions will \textbf{only} be granted if you are unable to complete the assessment by the due date because of \textbf{unforeseen circumstances outside your control}. The length of the extension granted will depend on the circumstances and \textbf{must} be negotiated with the course lecturer before the assessment due date. A medical certificate or support letter may be needed. Extensions will not be granted for poor time management or pressure of other assessments.
@@ -87,29 +87,215 @@ Familiarise yourself with the assessment due date. Extensions will \textbf{only}
 Resits and reassessments \textbf{are not} applicable in \textbf{ID623001: Introductory Game Development}.
 
 \section*{Instructions}
-\subsection*{Functionality - Learning Outcome 1 (50\%)}
+\subsection*{Functionality - Learning Outcome 1 (55\%)}
+\textbf{Pong - 10\% (Individual)}
 \begin{itemize}
-	\item 
+    \item Build and publish the game to \textbf{itch.io}.
+	\item Implement the fundamental mechanics of the game, including:
+	\begin{itemize}
+        \item Main menu - The game should have a main menu with options to start the game, view the high scores and exit the game.
+        \item Paddle movement - The player should be able to move the paddle up and down using the \textbf{W} and \textbf{S} keys using the \textbf{Unity} input system.
+        \item Ball movement
+        \item Collisions - The ball should bounce off the top and bottom walls and the paddles.
+        \item Score system - One point should be awarded to the player who scores a goal.
+        \item Score display - The scores of both players should be displayed on the screen.
+        \item High scores - The game should store and display the top \textbf{10} high scores.
+        \item Pause and resume - The player should be able to pause and resume the game using the \textbf{P} key.
+        \item Sound effects - The game should have sound effects for the ball bouncing off the walls and paddles, scoring a goal and the game ending.
+        \item Game over - The game should end when a player reaches a score of \textbf{10}.
+        \item End game menu - The game should have an end game menu with options to play again, view the high scores and exit the game.
+    \end{itemize}
+    \item Tier 2 mechanics. Select \textbf{three} mechanics from the list below):
+    \begin{itemize}
+        \item AI paddle - An AI paddle that moves up and down.
+        \item Difficulty levels - Easy, medium and hard difficulty levels that adjust the speed of the AI paddle.
+        \item Ball speed - The speed of the ball should increase after a certain number of goals.
+        \item Countdown timer - A countdown timer that starts the game after a certain number of seconds.
+        \item Customisation - Asset options for the paddles and ball.
+        \item Music - Background music that plays during the game.
+    \end{itemize}
+    \item Tier 3 mechanics. Select \textbf{two} mechanics from the list below):
+    \begin{itemize}
+        \item Multiple rounds - Best 3 out of 5 rounds to win the game.
+        \item Power-ups - Random drops that allow the player to increase the size of the paddle and slow down the ball.
+        \item Trail effects - Trail effects for the ball.
+        \item Sound settings - Options to adjust the volume of the sound effects and music.
+    \end{itemize}
+    \item Three mechanics of your choice. These mechanics should be different from the ones listed above. 
+\end{itemize}
+
+\textbf{Breakout - 15\% (Individual)}
+\begin{itemize}
+    \item Build and publish the game to \textbf{itch.io}.
+    \item Implement the fundamental mechanics of the game, including:
+    \begin{itemize}
+        \item Main menu - The game should have a main menu with options to start the game, view the high scores and exit the game.
+        \item Paddle movement - The player should be able to move the paddle left and right using the \textbf{A} and \textbf{D} keys using the \textbf{Unity} input system.
+        \item Ball movement
+        \item Collisions - The ball should bounce off the walls, paddle and bricks.
+        \item Brick formation - The game should have a 10 x 4 grid of bricks.
+        \item Brick health - Each brick should have a health value that determines how many hits it can take before being destroyed.
+        \item Score system - One point should be awarded to the player who destroys a brick.
+        \item Score display - The score of the player should be displayed on the screen.
+        \item Live system - The player should have \textbf{3} lives. 
+        \item Lives display - The lives of the player should be displayed on the screen.
+        \item High scores - The game should store and display the top \textbf{10} high scores.
+        \item Sound effects - The game should have sound effects for the ball bouncing off the walls, paddle and bricks, scoring a point and the game ending.
+        \item Pause and resume - The player should be able to pause and resume the game using the \textbf{P} key.
+        \item Game over - The game should end when the player destroys all the bricks or loses all their lives.
+        \item End game menu - The game should have an end game menu with options to play again, view the high scores and exit the game. 
+    \end{itemize}
+	
+    \item Tier 2 mechanics. Select \textbf{three} mechanics from the list below):
+    \begin{itemize}
+        \item Difficulty levels - Easy, medium and hard difficulty levels that adjust the speed of the ball and health of the bricks.
+        \item Ball speed - The speed of the ball should increase after a certain number of goals.
+        \item Countdown timer - A countdown timer that starts the game after a certain number of seconds.
+        \item Customisation - Asset options for the paddle and ball.
+        \item Music - Background music that plays during the game.
+    \end{itemize}
+    \item Tier 3 mechanics. Select \textbf{two} mechanics from the list below):
+    \begin{itemize}
+        \item Time limit - A time limit to complete the game.
+        \item Three levels - Three levels with different brick formations.
+        \item Moving bricks - Bricks that move horizontally.
+        \item Sound settings - Options to adjust the volume of the sound effects and music.
+        \item Animated effects - Animated destruction effects for the bricks. 
+        \item Power-ups - Random drops that allow the player to shoot multiple balls, increase the size of the paddle and slow down the ball.
+    \end{itemize}
+    \item Three mechanics of your choice. These mechanics should be different from the ones listed above.
+\end{itemize}
+
+\textbf{Space Invaders - 15\% (Individual)}
+\begin{itemize}
+    \item Build and publish the game to \textbf{itch.io}.
+    \item Implement the fundamental mechanics of the game, including:
+    \begin{itemize}
+        \item \item Main menu - The game should have a main menu with options to start the game, view the high scores and exit the game.
+        \item Ship movement - The player should be able to move the ship left and right using the \textbf{A} and \textbf{D} keys using the \textbf{Unity} input system.
+        \item Collisions - Collisions between the ship, bullets and enemies.
+        \item Enemy formation - The game should have a 10 x 4 grid of enemies.
+        \item Enemy movement - The enemies should move left and right and down when they reach the edge of the screen.
+        \item Shooting - The player and enemies should be able to shoot bullets.
+        \item Score system - One point should be awarded to the player who destroys an alien.
+        \item Score display - The score of the player should be displayed on the screen.
+        \item Live system - The player should have \textbf{3} lives.
+        \item Lives display - The lives of the player should be displayed on the screen.
+        \item Player name - The player should be able to enter their name before starting the game. If a name is not entered, get a random name from the \textbf{Random User Generator API}.
+        \item High scores - The game should store and display the top \textbf{10} high scores.
+        \item Sound effects - The game should have sound effects for the ship shooting bullets, the enemies shooting bullets, the enemies being destroyed, the ship being destroyed and the game ending.
+        \item Pause and resume - The player should be able to pause and resume the game using the \textbf{P} key.
+        \item Game over - The game should end when the player destroys all the enemies or loses all their lives.
+        \item End game menu - The game should have an end game menu with options to play again, view the high scores and exit the game.
+    \end{itemize}
+	
+    \item Tier 2 mechanics. Select \textbf{three} mechanics from the list below):
+    \begin{itemize}
+        \item Difficulty levels - Easy, medium and hard difficulty levels that adjust the speed of the enemies and the number of enemies.
+        \item Bullet speed - The speed of the bullets should increase after a certain number of enemies are destroyed.
+        \item Customisation - Asset options for the ship, enemies, bullets and background.
+        \item Music - Background music that plays during the game.
+        \item UFO - A UFO that moves across the top of the screen and gives the player bonus points when destroyed.
+        \item Parallax scrolling - A parallax scrolling effect for the background.
+        \item Stat tracking - Statistics that track the player's accuracy and the number of enemies destroyed.
+        \item Accessibility settings - Dyslexia-friendly font and colour-blind mode.
+    \end{itemize}
+
+    \item Tier 3 mechanics. Select \textbf{two} mechanics from the list below):
+    \begin{itemize}
+        \item Boss battles - Boss enemies that have unique attack patterns and abilities.
+        \item Bunkers - Bunkers that protect the player from alien bullets. The bunkers should have health values that decrease when hit by bullets.
+        \item Animated effects - Animated destruction effects for the enemies and ship.
+        \item Story mode - A simple narrative that explains the player's mission.
+        \item Sound settings - Options to adjust the volume of the sound effects and music.
+        \item Enemy formations - Different alien formations that move in unique patterns.
+        \item Achievement system - Achievements that reward the player for completing specific tasks.
+    \end{itemize}
+
+    \item Four mechanics of your choice. These mechanics should be different from the ones listed above.
+\end{itemize}
+
+\textbf{RogueLike - 15\% (Group)}
+\begin{itemize}
+    \item Build and publish the game to \textbf{itch.io}.
+    \item Implement the fundamental mechanics of the game, including:
+    \begin{itemize}
+        \item Main menu - The game should have a main menu with options to start the game, view the high scores and exit the game.
+        \item Player movement - The player should be able to move up, down, left and right using the \textbf{W}, \textbf{S}, \textbf{A} and \textbf{D} keys using the \textbf{Unity} input system.
+        \item Enemy movement - The enemies should move towards the player when they are in range.
+        \item Combat - The player and enemies should be able to attack each other.
+        \item Health system - The player and enemies should have health values that decrease when attacked.
+        \item Score system - One point should be awarded to the player who defeats an enemy.
+        \item Score display - The score of the player should be displayed on the screen.
+        \item Live system - The player should have \textbf{3} lives.
+        \item Lives display - The lives of the player should be displayed on the screen.
+        \item Inventory system - The player should be able to pick up items that increase their health and damage.
+        \item High scores - The game should store and display the top \textbf{10} high scores.
+        \item Sound effects - The game should have sound effects for the player attacking, the enemies attacking, the player being attacked and the game ending.
+        \item Pause and resume - The player should be able to pause and resume the game using the \textbf{P} key.
+        \item Game over - The game should end when the player defeats all the enemies or loses all their lives.
+        \item End game menu - The game should have an end game menu with options to play again, view the high scores and exit the game.
+    \end{itemize}
+	
+    \item Tier 2 mechanics. Select \textbf{three} mechanics from the list below):
+    \begin{itemize}
+        \item Difficulty levels - Easy, medium and hard difficulty levels that adjust the health and damage of the enemies.
+        \item Item variety - Different items that provide unique effects to the player.
+        \item Customisation - Asset options for the player, enemies and items.
+        \item Music - Background music that plays during the game.
+        \item Random generation - Randomly generated levels that change each playthrough.
+        \item Events - Random events that occur during the game.
+        \item Multiple levels - Multiple levels with different enemy types and layouts.
+    \end{itemize}
+
+    \item Tier 3 mechanics. Select \textbf{two} mechanics from the list below):
+    \begin{itemize}
+        \item Boss battles - Boss enemies that have unique attack patterns and abilities.
+        \item Animated effects - Animated effects for the player attacking, the enemies attacking and the game ending.
+        \item Sound settings - Options to adjust the volume of the sound effects and music.
+        \item Fog of war - A fog of war effect that hides parts of the map until the player explores them.
+        \item Minimap - A minimap that shows the layout of the level and the player's position.
+        \item Teleportation - Teleportation pads that allow the player to move between different parts of the level.
+    \end{itemize}
+    \item Three mechanics of your choice. These mechanics should be different from the ones listed above.
 \end{itemize}
 
 \subsection*{Code Quality and Best Practices - Learning Outcome 1 (40\%)}
 \begin{itemize}
-    \item Project Structure (10\%) - The codebase should be well-organised with a clear and logical structure that separates concerns and promotes reusability and maintainability.
-	\item Naming Conventions (5\%) - File, class, method, variable, constant and property names should be clear, descriptive and consistent across the codebase. 
-    \item Documentation and Comments (5\%) - The codebase should be well-documented using the \textbf{XML} documentation format with comments that explain complex logic and clarify the purpose of classes, methods or complex sections. 
-    \item Code Formatting (5\%) - Consistent indentation and spacing should be used across the codebase. It includes ensuring proper indentation for code blocks, following a standard format for braces and adding blank lines between sections. 
-    \item Dead Code (5\%) - The codebase should not contain unused or redundant files, classes, methods, variables, constants or properties. Keeping unnecessary codebase around can lead to confusion, clutter and potential bugs down the line.
-    \item Performance and Scalability (10\%) - The codebase should be optimised for performance, using efficient algorithms and data structures to minimise bottlenecks. 
+    \item Project Structure - The codebase should be well-organised with a clear and logical structure that separates concerns and promotes reusability and maintainability.
+	\item Naming Conventions - File, class, method, variable, constant and property names should be clear, descriptive and consistent across the codebase. 
+    \item Documentation and Comments - The codebase should be well-documented using the \textbf{XML} documentation format with comments that explain complex logic and clarify the purpose of classes, methods or complex sections. 
+    \item Code Formatting - Consistent indentation and spacing should be used across the codebase. It includes ensuring proper indentation for code blocks, following a standard format for braces and adding blank lines between sections. 
+    \item Dead Code - The codebase should not contain unused or redundant files, classes, methods, variables, constants or properties. Keeping unnecessary codebase around can lead to confusion, clutter and potential bugs down the line.
+    \item Performance and Scalability - The codebase should be optimised for performance, using efficient algorithms and data structures to minimise bottlenecks. 
 \end{itemize}
 
-\subsection*{Documentation - Learning Outcome 1 (5\%)}
-\begin{itemize}
-	\item A \textbf{GitHub} project board to help you organise and prioritise your development work. The course lecturer needs to see consistent use of the \textbf{GitHub} project board for the duration of the assessment.
-\end{itemize} 
+\subsection*{Documentation and Git Usage - Learning Outcome 1 (5\%)}
+	\begin{itemize}
+		\item \textbf{GitHub} issues to help you organise and prioritise your
+			development work. The course lecturer needs to see consistent use of \textbf{GitHub}
+			issues for the duration of the assessment.
+		\item Provide URLs to the games on \textbf{itch.io} in your repository
+			\textbf{README.md} file
+		\item Use of \textbf{Markdown}, i.e., headings, bold text, code blocks, etc.    
+		\item Correct spelling and grammar.
+		\item A \textbf{.gitignore} file containing the ignored files in this
+			resource -\\
+			\href{https://raw.githubusercontent.com/github/gitignore/main/Unity.gitignore}{https://raw.githubusercontent.com/github/gitignore/main/Unity.gitignore}. 
+		\item Your \textbf{Git commit messages} should:
+			\begin{itemize}
+				\item Reflect the context of each functional requirement change.
+				\item Be formatted using an appropriate naming convention style.
+			\end{itemize}
+	\end{itemize}
 
-\subsection*{Additional Information}
-\begin{itemize}
-    \item \textbf{Do not} rewrite your \textbf{Git} history. It is important that the course lecturer can see how you worked on your assessment over time. 
-    \item You need to show the course lecturer the initial \textbf{GitHub} project board before you start your development work. Following this, you need to show the course lecturer your \textbf{GitHub} project board at the end of each week.
-\end{itemize} 
+	\subsection*{Additional Information}
+	\begin{itemize}
+		\item \textbf{Do not} rewrite your \textbf{Git} history. It is important
+			that the course lecturer can see how you worked on your assessment over
+			time.
+		\item You need to show the course lecturer the initial \textbf{GitHub} issues before you start your development work. Following this,
+			you need to show the course lecturer your \textbf{GitHub} 
+			issues at the end of each week.
+	\end{itemize}
 \end{document}

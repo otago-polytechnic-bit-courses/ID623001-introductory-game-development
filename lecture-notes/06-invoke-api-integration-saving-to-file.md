@@ -253,7 +253,7 @@ What does this code do?
 - The `WinGame` method calls the `SaveDataToFile` method when the player wins the game.
 - The `SaveDataToFile` method saves the user's login UUID and username to a text file. The file is saved in the `Assets` folder.
 
-In the `EnemyController` script, update the `WinGame` method to the following:
+In the `EnemyController` script, add a reference to the `APIController` script and update the `WinGame` method to the following:
 
 ```csharp
 // Omitted for brevity
@@ -264,6 +264,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] APIController apiController;
 
     // Omitted for brevity
+
+    void Start()
+    {
+        apiController = FindObjectOfType<APIController>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
