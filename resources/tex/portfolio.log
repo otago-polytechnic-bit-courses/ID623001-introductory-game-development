@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.2.10)  1 APR 2025 07:54
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.2.10)  2 APR 2025 10:40
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -489,10 +489,10 @@ Package rerunfilecheck Info: File `portfolio.out' has not changed.
 Here is how much of TeX's memory you used:
  11190 strings out of 476919
  217216 string characters out of 5821840
- 590776 words of memory out of 5000000
+ 591776 words of memory out of 5000000
  31037 multiletter control sequences out of 15000+600000
  406726 words of font info for 62 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  81i,11n,89p,642b,450s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/annabel/Desktop/ID623001-introductory-game-development/resources/tex/portfolio.xdv (7 pages, 182396 bytes).
+Output written on /Users/annabel/Desktop/ID623001-introductory-game-development/resources/tex/portfolio.xdv (7 pages, 182332 bytes).
