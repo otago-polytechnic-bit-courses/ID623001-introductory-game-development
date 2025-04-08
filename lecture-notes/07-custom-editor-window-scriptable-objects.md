@@ -165,6 +165,12 @@ Create room node types for the following rooms:
 
 ---
 
+### Task 2
+
+Create a room node graph that has two large rooms, four small rooms, two treasure rooms, two trap rooms and one boss room. 
+
+---
+
 ## Next Class
 
 Link to the next class: [Week 08]()
