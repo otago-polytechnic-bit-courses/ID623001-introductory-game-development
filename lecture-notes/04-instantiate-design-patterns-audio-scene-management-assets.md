@@ -646,4 +646,4 @@ Display a timer in the right-hand corner of the screen. The timer should start w
 
 ## Next Class
 
-Link to the next class: [Week 05]()
+Link to the next class: [Week 05](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/05-input-manager-clamping-prefab-variants.md)

@@ -306,4 +306,4 @@ Click on the **Play** button to test the enemy movement. The enemies should move
 
 ## Next Class
 
-Link to the next class: [Week 06]()
+Link to the next class: [Week 06](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/06-invoke-api-integration-saving-to-file.md)

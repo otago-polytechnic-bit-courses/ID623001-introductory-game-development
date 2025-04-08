@@ -293,4 +293,4 @@ Click on the **Play** button to test the game. When the player wins the game, th
 
 ## Next Class
 
-Link to the next class: [Week 07]()
+Link to the next class: [Week 07](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/07-custom-editor-window-scriptable-objects.md))
