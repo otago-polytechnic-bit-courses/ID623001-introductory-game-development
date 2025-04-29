@@ -173,4 +173,4 @@ Create a room node graph that has two large rooms, four small rooms, two treasur
 
 ## Next Class
 
-Link to the next class: [Week 08]()
+Link to the next class: [Week 08](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/08-cinemachine-pixel-perfect-layers-tilemaps.md)
