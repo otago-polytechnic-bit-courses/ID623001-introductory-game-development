@@ -76,7 +76,9 @@ Name the new **Scriptable Object** `RoomNodeTypeList`. In the `RoomNodeTypeList`
   - `RoomNodeType_Entrance`
   - `RoomNodeType_None`
 
-![](../resources/img/06-images/06-image-1.png)
+![](../resources/img/07-images/07-image-1.png)
+
+> **Note:** Feel free to come up with your own room node types. The above list is just a suggestion.
 
 ---
 
@@ -118,7 +120,7 @@ This script is a singleton that allows you to access the `RoomNodeTypeList` scri
 
 In the **Assets > Prefabs > GameResources > Resources** folder, create a new prefab called `GameResources` and attach the `GameResources` script to it. Set the `Room Node Type List` field to the `RoomNodeTypeList` scriptable object.
 
-![](../resources/img/06-images/06-image-2.png)
+![](../resources/img/07-images/07-image-2.png)
 
 ---
 
@@ -126,21 +128,21 @@ In the **Assets > Prefabs > GameResources > Resources** folder, create a new pre
 
 In the **Assets > ScriptableObjectAssets > DungeonRoomNodeGraphs** folder, right-click on the window and select **Create > ScriptableObjects > Dungeon > Room Node Graph**. 
 
-![](../resources/img/06-images/06-image-3.png)
+![](../resources/img/07-images/07-image-3.png)
 
 Double-click on the `RoomNodeGraph` scriptable object to open the **Node Graph Editor**.
 
 Right-click on the window and select **Create Room Node**. 
 
-![](../resources/img/06-images/06-image-4.png)
+![](../resources/img/07-images/07-image-4.png)
 
 This will create an entrance and none node.
 
-![](../resources/img/06-images/06-image-5.png)
+![](../resources/img/07-images/07-image-5.png)
 
 Create a corridor and boss room node. Join the entrance node to the corridor node, and the corridor node to the boss room node.
 
-![](../resources/img/06-images/06-image-6.png)
+![](../resources/img/07-images/07-image-6.png)
 
 ---
 
