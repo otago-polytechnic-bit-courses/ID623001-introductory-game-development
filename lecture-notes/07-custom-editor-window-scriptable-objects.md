@@ -2,7 +2,7 @@
 
 ## Previous Class
 
-Link to the previous class: [Week 07](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/06-invoke-api-integration-saving-to-file.md)
+Link to the previous class: [Week 06](https://github.com/otago-polytechnic-bit-courses/ID623001-introductory-game-development/blob/main-s1-25/lecture-notes/06-invoke-api-integration-saving-to-file.md)
 
 ---
 
