@@ -122,4 +122,4 @@ Write the code that allows the player character to swap between two weapons. The
 
 ## Next Class
 
-Link to the next class: [Week 07]()
+Link to the next class: [Week 08]()
