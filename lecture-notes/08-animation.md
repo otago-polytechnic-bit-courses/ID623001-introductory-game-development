@@ -254,6 +254,8 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
+You will notice that the player moves faster when moving diagonally. This is because the player is moving in both the `X` and `Y` directions at the same time. Write the code to normalise the movement vector so that the player moves at a constant speed in all directions.
+
 ---
 
 ## Next Class
