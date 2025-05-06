@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
 What is happening in the code above?
 
--`Vector3 mousePosition` variable stores the current position of the mouse in screen space.
+- `Vector3 mousePosition` variable stores the current position of the mouse in screen space.
 - `Vector3 cursorPoint` variable converts the player's position from world space to screen space using the `WorldToScreenPoint` method of the camera.
 - `Vector2 offset` variable calculates the difference between the mouse position and the player position.
 - `float angle` variable calculates the angle between the player and the mouse position using the `Mathf.Atan2` method.
