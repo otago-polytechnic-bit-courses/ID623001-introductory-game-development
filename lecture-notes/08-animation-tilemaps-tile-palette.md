@@ -242,6 +242,70 @@ Click on the **Play** button. Move the player around the screen. You should see 
 
 ---
 
+## Tilemaps
+
+**Tilemaps** are a way to create 2D environments using tiles. Tiles are small images that can be used to create larger images. Unity has a built-in tilemap system that allows you to create tilemaps easily.
+
+To create a tilemap, go to **GameObject > 2D Object > Tilemap > Rectangular**. 
+
+![](../resources/img/08-images/08-image-22.png)
+
+This will create a new `Grid` **Game Object** with a `Tilemap` **Game Object** inside it. The `Grid` **Game Object** is used to define the size of the tilemap and the `Tilemap` **Game Object** is used to store the tiles.
+
+![](../resources/img/08-images/08-image-23.png)
+
+---
+
+### Tile Palette
+
+**Tile Palettes** are used to create and edit tiles. A tile palette is a collection of tiles that can be used to create a tilemap. You can create a tile palette by dragging and dropping images into the tile palette.
+
+To create a tile palette, go to **Window > 2D > Tile Palette**. This will open the **Tile Palette** window.
+
+![](../resources/img/08-images/08-image-24.png)
+
+Create a new tile palette by clicking on the **Create New Palette** button. 
+
+![](../resources/img/08-images/08-image-25.png)
+
+In the **Create New Palette** window, name the tile palette `Dungeon 3` and click on the **Create** button.
+
+![](../resources/img/08-images/08-image-26.png)
+
+Save the tile palette in the `Assets > Tilesets > Dungeon 3` folder. 
+
+![](../resources/img/08-images/08-image-27.png)
+
+Drag and drop the `Dungeon 3 Tiles` **Sprite Sheet** into the tile palette. This will create a new tile palette with the tiles from the sprite sheet.
+
+![](../resources/img/08-images/08-image-28.png)
+
+You should see the `Dungeon 3` tile palette in the **Tile Palette** window.
+
+![](../resources/img/08-images/08-image-29.png)
+
+Click on **Paint with basic brush** and select a tile from the tile palette. 
+
+**Tasks:** 
+
+1. Create a room using the tiles from the tile palette. Here is an example of a room created using the tiles from the tile palette.
+
+![](../resources/img/08-images/08-image-30.png)
+
+2. Add a `Tilemap Collider 2D` component to the `Tilemap` **Game Object**. This will allow the player to collide with the tiles in the tilemap. Set the **Used By Composite** checkbox to `true`. This will allow the `Tilemap Collider 2D` to be used by the `Composite Collider 2D` component.
+
+3. Add a `Composite Collider 2D` component to the `Tilemap` **Game Object**. This will allow the player to collide with the tiles in the tilemap as a single collider. 
+
+> **Note:** When you add a `Composite Collider 2D` component, a `Rigidbody 2D` component will be added automatically. 
+
+4. In the `Rigidbody 2D` component, set the **Body Type** to `Kinematic`. This will allow the player to collide with the tiles in the tilemap without being affected by gravity.
+
+5. Click on `Dungeon 3 Tiles_24` in `Assets > Tilesets > Dungeon 3`. In the **Inspector** window, set the **Collider Type** to `None`. This will allow the player to walk on the tiles in the tilemap without colliding with them.
+
+![](../resources/img/08-images/08-image-31.png)
+
+---
+
 ## Formative Assessment
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:
