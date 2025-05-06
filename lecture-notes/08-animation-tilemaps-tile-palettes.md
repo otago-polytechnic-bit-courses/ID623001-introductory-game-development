@@ -300,7 +300,7 @@ Click on **Paint with basic brush** and select a tile from the tile palette.
 
 4. In the `Rigidbody 2D` component, set the **Body Type** to `Kinematic`. This will allow the player to collide with the tiles in the tilemap without being affected by gravity.
 
-5. Click on `Dungeon 3 Tiles_24` in `Assets > Tilesets > Dungeon 3`. In the **Inspector** window, set the **Collider Type** to `None`. This will allow the player to walk on the tiles in the tilemap without colliding with them.
+5. Click on `Dungeon 3 Tiles_24` in the `Assets > Tilesets > Dungeon 3` folder. In the **Inspector** window, set the **Collider Type** to `None`. This will allow the player to walk on the tiles in the tilemap without colliding with them.
 
 ![](../resources/img/08-images/08-image-31.png)
 
