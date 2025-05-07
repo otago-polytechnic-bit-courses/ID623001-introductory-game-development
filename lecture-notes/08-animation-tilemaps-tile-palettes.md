@@ -131,27 +131,25 @@ In the **Hierarchy** window, select the `Player` object. In the **Animation** wi
 
 ![](../resources/img/08-images/08-image-5.png)
 
-In this animation clip, the gun will move up and down while the player is idle. 
-
-Drag the slider from `0` to `0.2`. 
+In this animation clip, the gun will move up and down while the player is idle. In the **Hierarchy** window, select the `Guns_0` **Game Object**. Drag the slider from `0` to `0.2`. 
 
 ![](../resources/img/08-images/08-image-6.png)
 
 Click the **Record** button in the **Animation** window. This will start recording the animation.
 
-![](../resources/img/08-images/08-image-7.png)
-
-In the **Hierarchy** window, select the `Guns_0` **Game Object**. In the **Inspector** window, change the `Y` position of the `Guns_0` **Game Object** to `-0.1`. This will move the gun down.
-
-![](../resources/img/08-images/08-image-8.png)
+In the **Inspector** window, change the `Y` position of the `Guns_0` **Game Object** to `-0.1`. This will move the gun down.
 
 You should see a new **Property** in the **Animation** window called `Guns_0 : Position` and two keyframes. The first keyframe is at `0` and the second keyframe is at `0.2`.
 
 ![](../resources/img/08-images/08-image-9.png)
 
-Move the slider to `0.4`. Click on the first keyframe and, copy and paste. 
+Move the slider to `0.4` and create a new keyframe. Change the `Y` position of the `Guns_0` **Game Object** to `0`.  
 
 ![](../resources/img/08-images/08-image-10.png)
+
+In the first keyframe, change the `Y` position of the `Guns_0` **Game Object** to `0`. 
+
+![](../resources/img/08-images/08-image-7.png)
 
 ---
 
