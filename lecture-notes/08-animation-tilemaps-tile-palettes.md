@@ -232,6 +232,8 @@ public class PlayerController : MonoBehaviour
 }
 ```
 
+> **Note:** You may have a different variable name for the `movement` variable.
+
 In the **Hierarchy** window, select the `Player` object. In the **Inspector** window, drag and drop the `Animator` component into the `Animator` field of the `PlayerController` script.
 
 ![](../resources/img/08-images/08-image-21.png)
