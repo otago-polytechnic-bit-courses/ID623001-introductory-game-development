@@ -26,11 +26,9 @@ public class PlayerController : MonoBehaviour
 {    
     // Omitted for brevity
 
-    [SerializeField] 
-    private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
 
-    [SerializeField]
-    private Transform gunTransform;
+    [SerializeField] private Transform gunTransform;
 
     private Camera mainCamera;
 
