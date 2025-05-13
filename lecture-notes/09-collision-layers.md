@@ -13,6 +13,30 @@ In this module, you will continue to develop **Rogue-Like** using Unity.
 > **Note:** The following content does not take into account last week's formative assessment. Please ensure you have completed the formative assessment before continuing with this week's content. 
 ---
 
+## Player
+
+In the `PlayerController` **Script**, add the following code:
+
+```csharp
+public static PlayerController Instance;
+
+void Awake()
+{
+    if (Instance == null)
+    {
+        Instance = this;
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
+```
+
+This will allow you to access the `PlayerController` class from other classes. For example, you can access the `PlayerController` class from the `EnemyController` class.
+
+---
+
 ## Enemy
 
 Create a **Game Object** for an enemy. The setup should be similar to the player.
@@ -75,6 +99,7 @@ Create a **Game Object** for a bullet. A bullet should have a **Box Collider 2D*
 
 1. Write the code to make the bullet **Game Object** move in the direction it is facing. The bullet **Game Object** should be destroyed when it collides with an enemy. 
 2. Drag and drop the bullet **Game Object** into the **Prefabs** folder. Delete the bullet **Game Object** from the **Hierarchy**.
+3. Write the code to make the `Player` **Game Object** shoot a bullet. The bullet should be instantiated at the `Player` **Game Object** position and move in the direction the `Player` is facing.
 
 ---
 
