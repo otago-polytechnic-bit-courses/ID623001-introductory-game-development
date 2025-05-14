@@ -149,4 +149,50 @@ Click on the `Play` button. You should see a series of rooms generated in a rand
 
 ![](../resources/img/10-images/10-image-6.png)
 
+> **Note:** You will notice that some rooms are overlapping. This is because the `LevelGenerator` is generating rooms in a random direction without checking if the room already exists. 
+
 ---
+
+## Overlapping Rooms
+
+To prevent overlapping rooms, you need to check if the room already exists before generating it. 
+
+**Tasks:**
+1. Create a new layer called `RoomLayout` and assign it to the `RoomLayout` **Prefab**.
+2. Add a `BoxCollider2D` component to the `RoomLayout` **Prefab** and set the `Size X` to `3` and `Size Y` to `3`.
+
+In the `LevelGenerator` script, add the following code:
+
+```cs
+// Omitted for brevity
+
+public class LevelGenerator : MonoBehaviour
+{
+    // Omitted for brevity
+
+    [SerializeField] private LayerMask roomLayerMask;
+
+    void Start()
+    {
+        // Omitted for brevity
+
+        for (int i = 0; i < distanceToEnd; i++)
+        {
+            // Omitted for brevity
+
+            while (Physics2D.OverlapCircle(generationPoint.position, 0.2f, roomLayerMask))
+            {
+                MoveGenerationPoint();
+            }
+        }
+    }
+
+    // Omitted for brevity
+}
+```
+
+What is happening in the code above?
+
+The `Physics2D.OverlapCircle` method is used to check if there is already a room at the `GenerationPoint` position. If there is, the `MoveGenerationPoint` method is called to move the `GenerationPoint` to a new position.
+
+Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping. Press `R` to regenerate the rooms.
