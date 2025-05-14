@@ -11,6 +11,7 @@ Link to the previous class: [Week 08](https://github.com/otago-polytechnic-bit-c
 In this module, you will continue to develop **Rogue-Like** using Unity.
 
 > **Note:** The following content does not take into account last week's formative assessment. Please ensure you have completed the formative assessment before continuing with this week's content. 
+
 ---
 
 ## Player
@@ -217,6 +218,7 @@ In the **Hierarchy** window, click on any **Game Object**. In the **Inspector** 
 In the **Project Settings** window, click on **Physics 2D**. In the **Layer Collision Matrix**, uncheck the following boxes:
 
 - Player and PlayerBullet
+- PlayerBullet and PlayerBullet
 
 ![](../resources/img/09-images/09-image-8.png)
 
