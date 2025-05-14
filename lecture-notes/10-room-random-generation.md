@@ -195,6 +195,8 @@ What is happening in the code above?
 
 The `Physics2D.OverlapCircle` method is used to check if there is already a room at the `GenerationPoint` position. If there is, the `MoveGenerationPoint` method is called to move the `GenerationPoint` to a new position.
 
+In the **Hierarchy** window, click on the `LevelGenerator` **Game Object** and in the **Inspector** window, click on the `Room Layer Mask` field and select the `RoomLayout` layer.
+
 Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping. Press `R` to regenerate the rooms.
 
 ---
