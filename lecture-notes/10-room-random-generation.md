@@ -199,4 +199,7 @@ In the **Hierarchy** window, click on the `LevelGenerator` **Game Object** and i
 
 Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping. Press `R` to regenerate the rooms.
 
+![](../resources/img/10-images/10-image-7.png)
+
 ---
+
