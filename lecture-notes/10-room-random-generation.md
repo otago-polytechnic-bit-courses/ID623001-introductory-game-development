@@ -382,5 +382,3 @@ Click on the `Play` button. You should see the outlines of the rooms generated a
 ## Tilemap Room Outlines
 
 You should have the knowledge to create a tilemap outline for the rooms. Use the `BasicRoom` **Prefab** to support your tilemap outlines.
-
-
