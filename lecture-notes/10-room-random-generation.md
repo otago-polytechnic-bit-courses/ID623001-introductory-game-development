@@ -180,6 +180,9 @@ public class LevelGenerator : MonoBehaviour
         {
             // Omitted for brevity
 
+            direction = (Direction)Random.Range(0, 4);
+            MoveGenerationPoint();
+
             while (Physics2D.OverlapCircle(generationPoint.position, 0.2f, roomLayerMask))
             {
                 MoveGenerationPoint();
