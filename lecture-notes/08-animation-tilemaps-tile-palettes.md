@@ -304,7 +304,7 @@ Click on **Paint with basic brush** and select a tile from the tile palette.
 
 ---
 
-## Formative Assessment
+## Exercises
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:
 
