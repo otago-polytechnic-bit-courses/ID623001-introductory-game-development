@@ -365,7 +365,7 @@ Once you have completed the tasks, click the **Play** button to run the game. Yo
 
 ## Exercises
 
-No formative assessment provided in this topic.
+No exercises provided in this topic.
 
 ---
 
