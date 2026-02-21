@@ -6,7 +6,7 @@
 
 | Section      | Link                                                                                     |
 | ------------ | ---------------------------------------------------------------------------------------- |
-| GitHub       | [GitHub Classroom - ID607001-S1-26](https://classroom.github.com/a/your-assignment-link) |
+| GitHub       | [GitHub Classroom - ID623002-S1-26](https://classroom.github.com/a/your-assignment-link) |
 | Code Example | [Code Example](code-example)                                                             |
 | Next Class   | [Week 02](../week-02-unity-physics-collision)                                            |
 
@@ -36,7 +36,7 @@
 
 ## C# and Unity
 
-C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic — movement, collision, animation, UI — is expressed through C# scripts attached to **GameObjects** via **MonoBehaviour**. This week we cover the mathematical foundations that underpin every system you will build in Unity.
+C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic, e.g., movement, collision, animation, UI, etc., are expressed through C# scripts attached to **GameObjects** via **MonoBehaviour**. 
 
 > Resource: <https://docs.unity3d.com/Manual/index.html>
 
@@ -47,7 +47,7 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 ```csharp
 using UnityEngine;
 
-public class MathDemo : MonoBehaviour
+public class Demo : MonoBehaviour
 {
     void Start()
     {
@@ -78,7 +78,7 @@ The simplest coordinate system is the **number line**: a single axis with a defi
 In Unity, individual axes behave like number lines. A GameObject's x-position is a signed scalar value on the x-axis of the world coordinate system.
 
 ```csharp
-float xPos = transform.position.x; // a single value on the x number line
+float xPos = transform.position.x;
 float yPos = transform.position.y;
 float zPos = transform.position.z;
 ```
@@ -87,7 +87,7 @@ float zPos = transform.position.z;
 
 ### 2D Cartesian Space
 
-Two perpendicular number lines — the **x-axis** (horizontal) and **y-axis** (vertical) — intersect at the **origin** (0, 0) to form a 2D coordinate system. Any point P in the plane is specified uniquely by an ordered pair **(x, y)**.
+Two perpendicular number lines - the **x-axis** (horizontal) and **y-axis** (vertical) intersect at the **origin** (0, 0) to form a 2D coordinate system. Any point P in the plane is specified uniquely by an ordered pair **(x, y)**.
 
 In Unity 2D projects positions are represented as `Vector2`:
 
@@ -101,7 +101,7 @@ Debug.Log($"X: {playerPos.x}, Y: {playerPos.y}"); // X: 3.0, Y: -1.5
 
 ### 3D Cartesian Space
 
-3D space adds a third axis — the **z-axis** — perpendicular to both x and y. Every point in 3D is an ordered triple **(x, y, z)**. Unity uses a **left-handed** coordinate system:
+3D space adds a third axis, the **z-axis** perpendicular to both x and y. Every point in 3D is an ordered triple **(x, y, z)**. Unity uses a **left-handed** coordinate system:
 
 | Axis | Direction                 |
 | ---- | ------------------------- |
@@ -172,7 +172,6 @@ In Unity these are used constantly. For circular motion, aiming and computing an
 
 ```csharp
 float angle = 45f * Mathf.Deg2Rad;
-
 float s = Mathf.Sin(angle);
 float c = Mathf.Cos(angle);
 
@@ -359,7 +358,7 @@ Vector3 P = new Vector3(1f, 2f, 3f);
 Vector3 Q = new Vector3(4f, 6f, 3f);
 float dist = Vector3.Distance(P, Q);
 
-Debug.Log($"Distance from P to Q: {dist}"); // Distance from P to Q: 5
+Debug.Log($"Distance from P to Q: {dist}"); // Distance from P to Q: 5 
 ```
 
 ---
@@ -631,7 +630,7 @@ Test cases:
 ```csharp
 float DegreesToRadians(float degrees)
 {
-    // Your code here — use Mathf.PI
+    // Write your code here
 }
 ```
 
@@ -652,7 +651,7 @@ Test cases:
 ```csharp
 float VectorMagnitude(Vector3 v)
 {
-    // Your code here — use Mathf.Sqrt
+    // Write your code here
 }
 ```
 
@@ -672,7 +671,7 @@ Test cases:
 ```csharp
 Vector3 Normalise(Vector3 v)
 {
-    // Your code here — guard against the zero vector
+    // Write your code here
 }
 ```
 
@@ -692,7 +691,7 @@ Test cases:
 ```csharp
 float Distance(Vector3 a, Vector3 b)
 {
-    // Your code here — use your VectorMagnitude method or Mathf.Sqrt
+    // Write your code here
 }
 ```
 
@@ -713,7 +712,7 @@ Test cases:
 ```csharp
 float DotProduct(Vector3 a, Vector3 b)
 {
-    // Your code here
+    // Write your code here
 }
 ```
 
@@ -722,8 +721,7 @@ Then write a second method:
 ```csharp
 float AngleBetween(Vector3 a, Vector3 b)
 {
-    // Use DotProduct to compute the angle in degrees
-    // Hint: θ = arccos(a · b) for unit vectors — use Mathf.Acos and Mathf.Clamp
+    // Write your code here
 }
 ```
 
