@@ -4,12 +4,11 @@
 
 ## Important Links
 
-| Section       | Link                                                                                     |
-| ------------- | ---------------------------------------------------------------------------------------- |
-| GitHub        | [GitHub Classroom - ID607001-S1-26](https://classroom.github.com/a/your-assignment-link) |
-| Lecture Video | [Week 01 Lecture Video]()                                                                |
-| Code Example  | [Code Example](code-example)                                                             |
-| Next Class    | [Week 02](../week-02-unity-physics-collision)                                            |
+| Section      | Link                                                                                     |
+| ------------ | ---------------------------------------------------------------------------------------- |
+| GitHub       | [GitHub Classroom - ID607001-S1-26](https://classroom.github.com/a/your-assignment-link) |
+| Code Example | [Code Example](code-example)                                                             |
+| Next Class   | [Week 02](../week-02-unity-physics-collision)                                            |
 
 ---
 
@@ -52,18 +51,18 @@ public class MathDemo : MonoBehaviour
 {
     void Start()
     {
-        // Runs once before the first frame — good for initialisation
-        Debug.Log("Hello from Unity!");
+        // Runs once before the first frame — use for initialisation
+        Debug.Log("Hello, Unity!");
     }
 
     void Update()
     {
-        // Runs once per frame — home of most per-frame maths and input
+        // Runs once per frame — use for input handling and non-physics updates
     }
 
     void FixedUpdate()
     {
-        // Runs at a fixed physics timestep — use for Rigidbody and force calculations
+        // Runs at a fixed physics timestep — use for physics updates and consistent movement
     }
 }
 ```
@@ -74,7 +73,7 @@ public class MathDemo : MonoBehaviour
 
 ### 1D Mathematics
 
-The simplest coordinate system is the **number line**: a single axis with a defined origin (0), a positive direction, and a unit of length. Every real number corresponds to exactly one point on this line.
+The simplest coordinate system is the **number line**: a single axis with a defined origin (0), a positive direction and a unit of length. Every real number corresponds to exactly one point on this line.
 
 In Unity, individual axes behave like number lines. A GameObject's x-position is a signed scalar value on the x-axis of the world coordinate system.
 
@@ -94,8 +93,8 @@ In Unity 2D projects positions are represented as `Vector2`:
 
 ```csharp
 Vector2 playerPos = new Vector2(3f, -1.5f);
-Debug.Log(playerPos.x); // 3
-Debug.Log(playerPos.y); // -1.5
+
+Debug.Log($"X: {playerPos.x}, Y: {playerPos.y}"); // X: 3.0, Y: -1.5
 ```
 
 ---
@@ -125,7 +124,7 @@ Vector3 origin  = Vector3.zero;     // ( 0,  0,  0)
 
 ---
 
-### Angles, Degrees, and Radians
+### Angles, Degrees and Radians
 
 Angles measure the amount of rotation between two directions. Two units are commonly used:
 
@@ -143,10 +142,10 @@ Unity's trigonometric functions (`Mathf.Sin`, `Mathf.Cos`, etc.) take values in 
 
 ```csharp
 float degrees = 90f;
-float radians = degrees * Mathf.Deg2Rad; // 1.5708...
-float back    = radians * Mathf.Rad2Deg; // 90
+float radians = degrees * Mathf.Deg2Rad;
+float back = radians * Mathf.Rad2Deg;
 
-Debug.Log(Mathf.PI); // 3.14159...
+Debug.Log($"Degrees: {degrees}, Radians: {radians}, Back to Degrees: {back}"); // Degrees: 90, Radians: 1.5708, Back to Degrees: 90
 ```
 
 ---
@@ -164,22 +163,26 @@ tan(θ) = opposite / adjacent = sin(θ) / cos(θ)
 Key identities to remember:
 
 ```
-sin²(θ) + cos²(θ) = 1 (Pythagorean identity)
-sin(−θ) = −sin(θ)     (sin is an odd function)
-cos(−θ) = cos(θ)      (cos is an even function)
+sin²(θ) + cos²(θ) = 1
+sin(−θ) = −sin(θ)
+cos(−θ) = cos(θ)
 ```
 
-In Unity these are used constantly — for circular motion, aiming, and computing angles between directions:
+In Unity these are used constantly. For circular motion, aiming and computing angles between directions:
 
 ```csharp
 float angle = 45f * Mathf.Deg2Rad;
 
-float s = Mathf.Sin(angle);  // ~0.707
-float c = Mathf.Cos(angle);  // ~0.707
+float s = Mathf.Sin(angle);
+float c = Mathf.Cos(angle);
 
-// Inverse trig: recover an angle from a known ratio
-float theta = Mathf.Asin(0.5f)  * Mathf.Rad2Deg; // 30°
-float phi   = Mathf.Atan2(1f, 1f) * Mathf.Rad2Deg; // 45°
+Debug.Log($"sin(45°) = {s:F3}, cos(45°) = {c:F3}"); // sin(45°) = 0.707, cos(45°) = 0.707
+
+// Inverse trig functions return angles in radians
+float theta = Mathf.Asin(0.5f)  * Mathf.Rad2Deg;
+float phi   = Mathf.Atan2(1f, 1f) * Mathf.Rad2Deg;
+
+Debug.Log($"Asin(0.5) = {theta}°, Atan2(1, 1) = {phi}°"); // Asin(0.5) = 30°, Atan2(1, 1) = 45°
 ```
 
 > **Use `Mathf.Atan2(y, x)` instead of `Mathf.Atan(y/x)`** — it correctly handles all four quadrants and avoids division by zero when x = 0.
@@ -194,8 +197,8 @@ float phi   = Mathf.Atan2(1f, 1f) * Mathf.Rad2Deg; // 45°
 
 A **vector** is a quantity with both **magnitude** (size) and **direction**. This distinguishes it from a **scalar**, which has magnitude only.
 
-- **Scalar example:** "The enemy has 80 health points."
-- **Vector example:** "The projectile is moving 12 m/s to the north-east."
+- **Scalar example:** The player's health (e.g. 75 HP) is a scalar. It has no direction, just a value.
+- **Vector example:** The enemy's velocity (e.g. (3, 0, 0) m/s) is a vector. It has a speed of 3 m/s and points in the positive x direction.
 
 Vectors are written in bold (**v**) or with an arrow (v→). In Unity, `Vector2` and `Vector3` are the built-in vector types.
 
@@ -205,17 +208,17 @@ Vectors are written in bold (**v**) or with an arrow (v→). In Unity, `Vector2`
 
 This is a conceptually important distinction that trips people up early:
 
-- A **point** describes a **location** in space — it has no length or direction on its own.
-- A **vector** describes a **displacement** or **direction** — it has no fixed position.
+- A **point** describes a **location** in space. It has no length or direction on its own.
+- A **vector** describes a **displacement** or **direction**. It has no fixed position.
 
 In Unity both are stored as `Vector3`, but they mean different things depending on context. `transform.position` is a point. `transform.forward` is a vector.
 
 ```csharp
-Vector3 pointA = new Vector3(1f, 0f, 0f); // a position in space
-Vector3 pointB = new Vector3(4f, 3f, 0f); // another position
+Vector3 pointA = new Vector3(1f, 0f, 0f); // A point at (1, 0, 0) in world space
+Vector3 pointB = new Vector3(4f, 3f, 0f); // Another point at (4, 3, 0) in world space
+Vector3 displacement = pointB - pointA; // A vector from A to B, with magnitude equal to the distance between them
 
-// Subtracting two points gives a displacement VECTOR from A to B
-Vector3 displacement = pointB - pointA;   // (3, 3, 0)
+Debug.Log($"Point A: {pointA}, Point B: {pointB}, Displacement: {displacement}");
 ```
 
 ---
@@ -228,12 +231,14 @@ Negating a vector **reverses its direction** while keeping its magnitude:
 −v = (−x, −y, −z)
 ```
 
+Formula breakdown:
+
+1. Each component of the vector v is multiplied by -1, which flips the sign of each component.
+
 ```csharp
 Vector3 v = new Vector3(1f, -2f, 3f);
 Vector3 neg = -v; // (-1, 2, -3)
 ```
-
-Useful for finding the direction _away_ from a target, or reversing an applied force.
 
 ---
 
@@ -245,10 +250,17 @@ Multiplying a vector by a scalar **k** scales its length by |k|. If k < 0 the di
 k·v = (k·x,  k·y,  k·z)
 ```
 
+Formula breakdown:
+
+1. Each component of the vector v is multiplied by the scalar k.
+2. If k > 1, the vector is stretched (longer). If 0 < k < 1, the vector is shrunk (shorter). If k < 0, the vector is reversed and scaled by |k|.
+
 ```csharp
-Vector3 forward = Vector3.forward;   // (0, 0, 1)
-Vector3 fast = forward * 10f;     // (0, 0, 10) — 10 units forward
-Vector3 back = forward * -1f;     // (0, 0, -1) — reversed
+Vector3 forward = Vector3.forward;
+Vector3 fast = forward * 10f;
+Vector3 back = forward * -1f;
+
+Debug.Log($"Forward: {forward}, Fast: {fast}, Back: {back}"); // Forward: (0, 0, 1), Fast: (0, 0, 10), Back: (0, 0, -1)
 ```
 
 ---
@@ -262,13 +274,19 @@ a + b = (ax + bx,  ay + by,  az + bz)
 a − b = (ax − bx,  ay − by,  az − bz)
 ```
 
+Forumla breakdown:
+
+1. For addition, add the corresponding components of vectors a and b to get the components of the resultant vector.
+2. For subtraction, subtract the corresponding components of vector b from vector a to get the components of the resultant vector.
+
 The vector **from point A to point B** is always `B − A`:
 
 ```csharp
 Vector3 A = new Vector3(1f, 0f, 0f);
 Vector3 B = new Vector3(4f, 3f, 0f);
+Vector3 AtoB = B - A;
 
-Vector3 AtoB = B - A; // (3, 3, 0) — direction and distance from A to B
+Debug.Log($"Vector from A to B: {AtoB}"); // Vector from A to B: (3, 3, 0)
 ```
 
 ---
@@ -281,19 +299,19 @@ The magnitude (length) of a vector is calculated using the **Pythagorean theorem
 |v| = √(x² + y² + z²)
 ```
 
+Formula breakdown:
+
+1. Square each component of the vector to get x², y² and z².
+2. Sum these squared components to get x² + y² + z².
+3. Take the square root of this sum to get the magnitude |v|.
+
 ```csharp
 Vector3 v = new Vector3(3f, 4f, 0f);
+float mag = v.magnitude;
+float magSq = v.sqrMagnitude;
 
-float mag   = v.magnitude;      // 5.0  (classic 3-4-5 right triangle)
-float magSq = v.sqrMagnitude;   // 25.0 — no square root, cheaper to compute
+Debug.Log($"Magnitude: {mag}, Squared Magnitude: {magSq}"); // Magnitude: 5, Squared Magnitude: 25
 ```
-
-> **Performance tip:** `sqrMagnitude` avoids the costly square root. When comparing distances (e.g. "is the enemy within range?"), compare squared distances instead:
->
-> ```csharp
-> // Instead of: Vector3.Distance(a, b) < 5f
-> if ((B - A).sqrMagnitude < 25f) { /* within range */ }
-> ```
 
 ---
 
@@ -305,16 +323,21 @@ A **unit vector** has a magnitude of exactly 1. It expresses a **pure direction*
 v̂ = v / |v|
 ```
 
-```csharp
-Vector3 v    = new Vector3(3f, 4f, 0f);
-Vector3 vHat = v.normalized; // (0.6, 0.8, 0.0) — magnitude is 1
+Formula breakdown:
 
-// Common pattern — move toward a target at a fixed speed:
+1. Calculate the magnitude |v| of the vector v.
+2. Divide each component of v by its magnitude to get the normalised vector v̂.
+
+```csharp
+Vector3 v = new Vector3(3f, 4f, 0f);
+Vector3 vHat = v.normalized;
 Vector3 dir = (target.position - transform.position).normalized;
 transform.position += dir * speed * Time.deltaTime;
+
+Debug.Log($"Original: {v}, Normalised: {vHat}"); // Original: (3, 4, 0), Normalised: (0.6, 0.8, 0)
 ```
 
-> **Warning:** Never normalise the zero vector — it has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but mathematically is undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
+> **Note:** Never normalise the zero vector. It has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but mathematically is undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
 
 ---
 
@@ -326,12 +349,17 @@ The distance between two points P and Q is the magnitude of the displacement vec
 d(P, Q) = |Q − P| = √((Qx−Px)² + (Qy−Py)² + (Qz−Pz)²)
 ```
 
+Formula breakdown:
+
+1. Subtract the coordinates of P from Q to get the displacement vector Q − P.
+2. Calculate the magnitude of this displacement vector using the formula for vector magnitude.
+
 ```csharp
 Vector3 P = new Vector3(1f, 2f, 3f);
 Vector3 Q = new Vector3(4f, 6f, 3f);
+float dist = Vector3.Distance(P, Q);
 
-float dist = Vector3.Distance(P, Q); // 5.0
-// Equivalent to: (Q - P).magnitude
+Debug.Log($"Distance from P to Q: {dist}"); // Distance from P to Q: 5
 ```
 
 ---
@@ -369,20 +397,17 @@ For **unit vectors** this simplifies to `θ = arccos(a · b)`, which is why norm
 ```csharp
 Vector3 forward = transform.forward;
 Vector3 toEnemy = (enemy.position - transform.position).normalized;
-
 float dot = Vector3.Dot(forward, toEnemy);
 
 if (dot > 0.5f)
-    Debug.Log("Enemy is in front (within ~60°)");
+    Debug.Log("Enemy is in front");
 else if (dot < 0f)
-    Debug.Log("Enemy is behind us");
+    Debug.Log("Enemy is behind");
 
-// Recover the angle in degrees:
 float angle = Mathf.Acos(Mathf.Clamp(dot, -1f, 1f)) * Mathf.Rad2Deg;
-Debug.Log($"Angle to enemy: {angle:F1}°");
-```
 
-> **`Mathf.Clamp`** is required before `Acos` — floating-point rounding can push the dot product slightly outside [−1, 1], which would cause `Acos` to return `NaN`.
+Debug.Log($"Angle to enemy: {angle}°");
+```
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Vector3.Dot.html>
 
@@ -404,16 +429,15 @@ The magnitude of the result equals:
 |a × b| = |a| |b| sin(θ)
 ```
 
-The direction follows the **left-hand rule** in Unity (since Unity is left-handed). The cross product is used to find surface normals, determine left/right relative orientation, and build rotation axes.
+The direction follows the **left-hand rule** in Unity. The cross product is used to find surface normals, determine left/right relative orientation and build rotation axes.
 
 ```csharp
-Vector3 a = new Vector3(1f, 0f, 0f); // right
-Vector3 b = new Vector3(0f, 1f, 0f); // up
-
+Vector3 a = new Vector3(1f, 0f, 0f);
+Vector3 b = new Vector3(0f, 1f, 0f);
 Vector3 c = Vector3.Cross(a, b);
-Debug.Log(c); // (0, 0, 1) — forward, perpendicular to both
 
-// Practical use: determine if an enemy is to the left or right of the player
+Debug.Log($"Cross Product: {c}"); // Cross Product: (0, 0, 1)
+
 Vector3 toEnemy = (enemy.position - transform.position).normalized;
 Vector3 cross   = Vector3.Cross(transform.forward, toEnemy);
 
@@ -433,30 +457,27 @@ else
 
 A single global coordinate system quickly becomes impractical. When a sword is attached to a character's hand, it is far easier to describe the sword's position _relative to the hand_ than relative to the entire world. Unity maintains several coordinate spaces simultaneously:
 
-| Space                    | Description                                                            |
-| ------------------------ | ---------------------------------------------------------------------- |
-| **World space**          | The global fixed coordinate system. All objects ultimately exist here. |
-| **Object (local) space** | Relative to a specific GameObject's own position and orientation.      |
-| **Camera space**         | Relative to the camera — used in rendering and screen-space effects.   |
+| Space            | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| **World space**  | The global fixed coordinate system. All objects ultimately exist here. |
+| **Local space**  | Relative to a specific GameObject's own position and orientation.      |
+| **Camera space** | Relative to the camera — used in rendering and screen-space effects.   |
 
 ---
 
 ### World vs. Local in Unity
 
 ```csharp
-// World space — absolute position and direction in the scene
 Vector3 worldPos = transform.position;
-Vector3 worldFwd = transform.forward; // the object's forward in world space
-
-// Local space — position relative to this object's parent
+Vector3 worldFwd = transform.forward;
 Vector3 localPos = transform.localPosition;
+Vector3 worldPoint = transform.TransformPoint(new Vector3(0f, 1f, 0f));
+Vector3 localPoint = transform.InverseTransformPoint(worldPoint);
 
-// Convert between spaces
-Vector3 worldPoint = transform.TransformPoint(new Vector3(0f, 1f, 0f));  // local → world
-Vector3 localPoint = transform.InverseTransformPoint(worldPoint);         // world → local
+Debug.Log($"World Position: {worldPos}, Local Position: {localPos}, Local Point: {localPoint}"); // World Position: (x, y, z), Local Position: (0, 0, 0)
 ```
 
-Understanding which space a vector lives in is one of the most common sources of bugs in Unity — always be explicit about whether you are working in world or local space.
+Understanding which space a vector lives in is one of the most common sources of bugs in Unity. Always be explicit about whether you are working in world or local space.
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Transform.html>
 
@@ -467,27 +488,18 @@ Understanding which space a vector lives in is one of the most common sources of
 Unity's `Mathf` class provides game-relevant maths utilities. All values are `float`.
 
 ```csharp
-// Clamp — keep a value within a range (essential for health, speed limits, etc.)
 float health = Mathf.Clamp(currentHealth, 0f, 100f);
-
-// Absolute value
-float dist = Mathf.Abs(-5f); // 5
-
-// Powers and roots
-float squared = Mathf.Pow(4f, 2f); // 16
-float root    = Mathf.Sqrt(16f);   // 4
-
-// Rounding
-float a = Mathf.Round(3.7f); // 4
-float b = Mathf.Floor(3.9f); // 3
-float c = Mathf.Ceil(3.1f);  // 4
-
-// Random float in range [min, max)
+float dist = Mathf.Abs(-5f);
+float squared = Mathf.Pow(4f, 2f);
+float root = Mathf.Sqrt(16f);
+float a = Mathf.Round(3.7f);
+float b = Mathf.Floor(3.9f);
+float c = Mathf.Ceil(3.1f);
 float roll = Random.Range(0f, 1f);
+float lowest = Mathf.Min(3f, 7f, 1f);
+float highest = Mathf.Max(3f, 7f, 1f);
 
-// Min and Max
-float lowest  = Mathf.Min(3f, 7f, 1f); // 1
-float highest = Mathf.Max(3f, 7f, 1f); // 7
+Debug.Log($"Clamped Health: {health}, Abs: {dist}, Pow: {squared}, Sqrt: {root}, Round: {a}, Floor: {b}, Ceil: {c}, Random: {roll}, Min: {lowest}, Max: {highest}"); // Clamped Health: (clamped value), Abs: 5, Pow: 16, Sqrt: 4, Round: 4, Floor: 3, Ceil: 4, Random: (random value), Min: 1, Max: 7
 ```
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Mathf.html>
@@ -496,7 +508,7 @@ float highest = Mathf.Max(3f, 7f, 1f); // 7
 
 ## Interpolation
 
-Interpolation computes a value that sits **between** two known values. It is used constantly in games for smooth movement, fading effects, and animation blending.
+Interpolation computes a value that sits **between** two known values. It is used constantly in games for smooth movement, fading effects and animation blending.
 
 ---
 
@@ -511,17 +523,14 @@ Lerp(a, b, t) = a + t·(b − a) = (1−t)·a + t·b
 When t = 0 the result is a; when t = 1 the result is b; when t = 0.5 the result is the midpoint.
 
 ```csharp
-// Scalars
-float health = Mathf.Lerp(0f, 100f, 0.25f); // 25 — 25% of the way from 0 to 100
-
-// Vectors — smoothly move toward a target each frame
+float health = Mathf.Lerp(0f, 100f, 0.25f);
 transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * 5f);
+Color col = Color.Lerp(Color.red, Color.blue, 0.5f);
 
-// Colours
-Color col = Color.Lerp(Color.red, Color.blue, 0.5f); // purple
+Debug.Log($"Health: {health}, Position: {transform.position}, Colour: {col}"); // Health: 25, Position: (interpolated position), Colour: (0.5, 0, 0.5)
 ```
 
-> **Note:** Using `Time.deltaTime * speed` as the t value each frame produces an exponential ease-out (the object slows as it approaches the target) rather than a constant-speed move. For constant speed use `Vector3.MoveTowards` instead.
+> **Note:** Using `Time.deltaTime * speed` as the t value each frame produces an exponential ease-out rather than a constant-speed move. For constant speed use `Vector3.MoveTowards` instead.
 
 ---
 
@@ -530,16 +539,15 @@ Color col = Color.Lerp(Color.red, Color.blue, 0.5f); // purple
 `Mathf.SmoothDamp` and `Vector3.SmoothDamp` give a physically natural ease-in/ease-out feel and are the go-to for camera following and UI animations:
 
 ```csharp
-// SmoothDamp — requires a velocity variable that it manages internally
-private Vector3 _velocity = Vector3.zero;
+private Vector3 velocity = Vector3.zero; // SmoothDamp requires a reference velocity variable that it updates each frame
 
 void Update()
 {
     transform.position = Vector3.SmoothDamp(
-        transform.position, // current
-        targetPos,          // target
-        ref _velocity,      // internal velocity (managed by Unity)
-        0.3f                // approximate time to reach target in seconds
+        transform.position, // Current position
+        targetPos,          // Target position
+        ref velocity,       // Reference to velocity, modified by SmoothDamp
+        0.3f                // Smooth time, i.e. how long it takes to reach the target approximately
     );
 }
 ```
@@ -550,7 +558,7 @@ void Update()
 
 ## Circular Motion
 
-Uniform circular motion — moving along a circle at constant speed — is one of the most common patterns in games (orbiting cameras, patrol paths, spinning objects). Given a radius **r** and an angle **θ** (in radians), a point on a circle centred at the origin is:
+Uniform circular motion, i.e., moving in a circle at constant speed, is one of the most common patterns in games. Given a radius **r** and an angle **θ** (in radians), a point on a circle centred at the origin is:
 
 ```
 x = r · cos(θ)
@@ -566,19 +574,17 @@ The angle advances over time as:
 where **ω** (omega) is the **angular velocity** in radians per second.
 
 ```csharp
-public float radius       = 3f;
-public float angularSpeed = 2f; // radians per second
+public float radius = 3f;
+public float angularSpeed = 2f; // Radians per second
 
 private float _angle = 0f;
 
 void Update()
 {
     _angle += angularSpeed * Time.deltaTime;
-
     float x = radius * Mathf.Cos(_angle);
     float z = radius * Mathf.Sin(_angle);
-
-    transform.position = new Vector3(x, 0f, z); // orbit in the XZ plane
+    transform.position = new Vector3(x, 0f, z); // Moves the object in a circle on the XZ plane
 }
 ```
 

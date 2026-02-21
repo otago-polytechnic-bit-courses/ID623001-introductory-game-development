@@ -199,7 +199,7 @@ What is happening in the code above?
 
 In the `OnTriggerEnter2D` method, we are checking if the player has entered the trigger collider of the room. If the player has entered the trigger collider, we call the `ChangeTarget` method of the `CameraController` class and pass in the transform of the room as the new target.
 
-Create a new **Game Object** called `RoomTrigger` and add a **Box Collider 2D** component to it. Set the `Is Trigger` property to true, and set the `Size - X` property to `16` and the `Size - Y` property to `8`.
+Create a new **Game Object** called `RoomTrigger` and add a **Box Collider 2D** component to it. Set the `Is Trigger` property to true and set the `Size - X` property to `16` and the `Size - Y` property to `8`.
 
 ![](../resources/img/09-images/09-image-7.png)
 

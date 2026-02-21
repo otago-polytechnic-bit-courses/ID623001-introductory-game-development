@@ -252,7 +252,7 @@ public class LevelGenerator : MonoBehaviour
 
 > **Note:** Please carefully read the code comments to understand what is happening in the code above.
 
-Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping, and the last room should be red. Press `R` to regenerate the rooms.
+Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping and the last room should be red. Press `R` to regenerate the rooms.
 
 ![](../resources/img/10-images/10-image-8.png)
 
