@@ -748,6 +748,9 @@ Test cases:
 - `DotProduct(Vector3.right, Vector3.right)` should return `1`
 - `DotProduct(Vector3.right, Vector3.up)` should return `0`
 - `DotProduct(Vector3.right, Vector3.left)` should return `-1`
+- `AngleBetween(Vector3.right, Vector3.right)` should return `0`
+- `AngleBetween(Vector3.right, Vector3.up)` should return `90`
+- `AngleBetween(Vector3.right, Vector3.left)` should return `180`
 
 ```csharp
 float DotProduct(Vector3 a, Vector3 b)
