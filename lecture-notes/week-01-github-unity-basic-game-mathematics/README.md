@@ -51,18 +51,18 @@ public class Demo : MonoBehaviour
 {
     void Start()
     {
-        // Runs once before the first frame — use for initialisation
+        // Runs once before the first frame. This is used for initialisation
         Debug.Log("Hello, Unity!");
     }
 
     void Update()
     {
-        // Runs once per frame — use for input handling and non-physics updates
+        // Runs once per frame. This is used for input handling and non-physics updates
     }
 
     void FixedUpdate()
     {
-        // Runs at a fixed physics timestep — use for physics updates and consistent movement
+        // Runs at a fixed physics timestep. This is used for physics updates and consistent movement
     }
 }
 ```
