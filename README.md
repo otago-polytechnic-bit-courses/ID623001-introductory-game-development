@@ -8,7 +8,7 @@
 
 | Level | Credits | Prerequisite            | Timetable                                                            |
 | ----- | ------- | ----------------------- | -------------------------------------------------------------------- |
-| 6     | 15      | ID511001: Programming 2 | Monday 8 AM - 9.45 AM in D202 and Wednesday 10 AM - 11.45 AM in D202 |
+| 6     | 15      | ID511001: Programming 2 | Monday 8:00 AM - 9:45 AM in D202 and Wednesday 10:00 AM - 11:45 AM in D202 |
 
 ## Teaching Staff
 
