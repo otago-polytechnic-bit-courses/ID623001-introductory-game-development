@@ -119,6 +119,14 @@ Vector3 forward = Vector3.forward;  // ( 0,  0,  1)
 Vector3 origin  = Vector3.zero;     // ( 0,  0,  0)
 ```
 
+How would you represent the left, down and back directions? Try it yourself before checking the answer.
+
+```csharp
+Vector3 left    = Vector3.left;     // (-1,  0,  0)
+Vector3 down    = Vector3.down;     // ( 0, -1,  0)
+Vector3 back    = Vector3.back;     // ( 0,  0, -1)
+```
+
 > Resource: <https://docs.unity3d.com/Manual/class-Transform.html>
 
 ---
@@ -209,6 +217,8 @@ This is a conceptually important distinction that trips people up early:
 - A **point** describes a **location** in space. It has no length or direction on its own.
 - A **vector** describes a **displacement** or **direction**. It has no fixed position.
 
+When should you use each? If you are describing where something is, use a point. If you are describing how something moves or faces, use a vector.
+
 In Unity both are stored as `Vector3`, but they mean different things depending on context. `transform.position` is a point. `transform.forward` is a vector.
 
 ```csharp
@@ -261,6 +271,8 @@ Vector3 back = forward * -1f;
 Debug.Log($"Forward: {forward}, Fast: {fast}, Back: {back}"); // Forward: (0, 0, 1), Fast: (0, 0, 10), Back: (0, 0, -1)
 ```
 
+
+
 ---
 
 ### Vector Addition and Subtraction
@@ -287,6 +299,8 @@ Vector3 AtoB = B - A;
 Debug.Log($"Vector from A to B: {AtoB}"); // Vector from A to B: (3, 3, 0)
 ```
 
+Why is it `B − A` and not `A − B`? Because we want a vector that points from A to B. Subtracting A from B gives us the correct direction. If we did `A − B`, we would get a vector that points from B to A, which is the opposite direction.
+
 ---
 
 ### Vector Magnitude (Length)
@@ -310,6 +324,14 @@ float magSq = v.sqrMagnitude;
 
 Debug.Log($"Magnitude: {mag}, Squared Magnitude: {magSq}"); // Magnitude: 5, Squared Magnitude: 25
 ```
+
+What is the calculation for the magnitude of the vector (3, 4, 0)? 
+
+```|v| = √(3² + 4² + 0²) = √(9 + 16 + 0) = √25 = 5```
+
+What is the squared magnitude? 
+
+```|v|² = 3² + 4² + 0² = 9 + 16 + 0 = 25```
 
 ---
 
@@ -337,6 +359,17 @@ Debug.Log($"Original: {v}, Normalised: {vHat}"); // Original: (3, 4, 0), Normali
 
 > **Note:** Never normalise the zero vector. It has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but mathematically is undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
 
+Why is normalisation important? It allows us to work with directions without worrying about scale. For example, when moving an object towards a target, we want to move in the correct direction but control the speed separately. Normalising the direction vector gives us a unit vector that points in the right direction, which we can then multiply by our desired speed. What if we didn't normalise? If we just used the raw vector from the object to the target, the speed would vary based on how far away the target is, which is usually not what we want.
+
+What happens when you don't normalise a direction vector before using it for movement? The object will move faster when it's farther from the target and slower as it gets closer, which can lead to inconsistent and undesirable movement behavior.
+
+Is this an issue when moving in ordinal directions (e.g., directly along the x or z axis)? No, because in those cases the direction vector already has a magnitude of 1 (e.g., (1, 0, 0) or (0, 0, 1)). However, for diagonal movement (e.g., towards a target at (1, 0, 1)), the direction vector would have a magnitude greater than 1 (e.g., (1, 0, 1) has a magnitude of √2), which would cause faster movement if not normalised.
+
+where does √2 come from? For a vector like (1, 0, 1), the magnitude is calculated as:
+
+```|v| = √(1² + 0² + 1²) = √(1 + 0 + 1) = √2 ≈ 1.414
+```
+
 ---
 
 ### The Distance Formula
@@ -358,6 +391,12 @@ Vector3 Q = new Vector3(4f, 6f, 3f);
 float dist = Vector3.Distance(P, Q);
 
 Debug.Log($"Distance from P to Q: {dist}"); // Distance from P to Q: 5 
+```
+
+write the formula using the components of P and Q:
+
+```
+d(P, Q) = √((4−1)² + (6−2)² + (3−3)²) = √(3² + 4² + 0²) = √(9 + 16 + 0) = √25 = 5
 ```
 
 ---
@@ -406,6 +445,8 @@ float angle = Mathf.Acos(Mathf.Clamp(dot, -1f, 1f)) * Mathf.Rad2Deg;
 
 Debug.Log($"Angle to enemy: {angle}°");
 ```
+
+value that represents the relationship between the player's forward direction and the direction to the enemy.
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Vector3.Dot.html>
 
