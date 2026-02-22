@@ -6,8 +6,8 @@
 
 ## Course Information
 
-| Level | Credits | Prerequisite            | Timetable                                                            |
-| ----- | ------- | ----------------------- | -------------------------------------------------------------------- |
+| Level | Credits | Prerequisite            | Timetable                                                                  |
+| ----- | ------- | ----------------------- | -------------------------------------------------------------------------- |
 | 6     | 15      | ID511001: Programming 2 | Monday 8:00 AM - 9:45 AM in D202 and Wednesday 10:00 AM - 11:45 AM in D202 |
 
 ## Teaching Staff
@@ -56,25 +56,25 @@ At the successful completion of this course, learners will be able to:
 
 ## Provisional Schedule
 
-| Week             | Topics                                |
-| ---------------- | ------------------------------------- |
+| Week             | Topics                                   |
+| ---------------- | ---------------------------------------- |
 | 1/Tahi           | GitHub, Unity and Basic Game Mathematics |
-| 2/Rua            | Breakout 1                            |
-| 3/Toru           | Breakout 2                            |
-| 4/Whā            | Breakout 3                            |
-| 5/Rima           | Space Invaders 1                      |
-| 6/Ono            | Space Invaders 2                      |
-| 7/Whitu          | Space Invaders 3                      |
-| 8/Waru           | Rogue-Like 1                          |
-|                  | Mid Semester Break                    |
-| 9/Iwa            | Rogue-Like 2                          |
-| 10/Tekau         | Rogue-Like 3                          |
-| 11/Tekau mā tahi | Deployment                            |
-| 12/Tekau mā rua  | Assessment Work                       |
-| 13/Tekau mā toru | Assessment Work                       |
-| 14/Tekau mā whā  | Assessment Work                       |
-| 15/Tekau mā rima | Assessment Work                       |
-| 16/Tekau mā ono  | Assessment Marking                    |
+| 2/Rua            | Breakout 1                               |
+| 3/Toru           | Breakout 2                               |
+| 4/Whā            | Breakout 3                               |
+| 5/Rima           | Space Invaders 1                         |
+| 6/Ono            | Space Invaders 2                         |
+| 7/Whitu          | Space Invaders 3                         |
+|                  | Mid Semester Break                       |
+| 8/Waru           | Rogue-Like 1                             |
+| 9/Iwa            | Rogue-Like 2                             |
+| 10/Tekau         | Rogue-Like 3                             |
+| 11/Tekau mā tahi | Deployment                               |
+| 12/Tekau mā rua  | Assessment Work                          |
+| 13/Tekau mā toru | Assessment Work                          |
+| 14/Tekau mā whā  | Assessment Work                          |
+| 15/Tekau mā rima | Assessment Work                          |
+| 16/Tekau mā ono  | Assessment Marking                       |
 
 ## Resources
 
