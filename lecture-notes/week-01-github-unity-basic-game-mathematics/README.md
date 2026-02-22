@@ -7,7 +7,6 @@
 | Section      | Link                                                                                     |
 | ------------ | ---------------------------------------------------------------------------------------- |
 | GitHub       | [GitHub Classroom - ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho) |
-| Code Example | [Code Example](code-example)                                                             |
 | Next Class   | [Week 02](../week-02-unity-physics-collision)                                            |
 
 ---
