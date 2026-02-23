@@ -41,27 +41,39 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 
 ---
 
+### Installer and Project Setup
+
+1. Download and install Unity Hub from <https://unity.com/download>.
+2. In Unity Hub, go to the "Installs" tab and click "Install Editor". Install the recommended LTS (Long Term Support) version of Unity. This ensures you have a stable and widely supported version for development.
+![](<../../resources (ignore)/img/week-01-github-unity-basic-game-mathematics/00.png>)
+3. Once Unity is installed, go to the "Projects" tab and click "New Project". 
+
+
+
+
+---
+
 ### MonoBehaviour Lifecycle
 
 ```csharp
 using UnityEngine;
 
-public class Demo : MonoBehaviour
+public class ExampleScript : MonoBehaviour
 {
     void Start()
     {
-        // Runs once before the first frame. This is used for initialisation
-        Debug.Log("Hello, Unity!");
+        // Runs once when the script is first enabled. This is used for initialisation
+        Debug.Log("Hello, World!");
     }
 
     void Update()
     {
-        // Runs once per frame. This is used for input handling and non-physics updates
+        // Runs every frame. This is used for regular updates like input handling and non-physics movement
     }
 
     void FixedUpdate()
     {
-        // Runs at a fixed physics timestep. This is used for physics updates and consistent movement
+        // Runs at a fixed time interval. This is used for physics updates and anything that needs consistent timing
     }
 }
 ```
