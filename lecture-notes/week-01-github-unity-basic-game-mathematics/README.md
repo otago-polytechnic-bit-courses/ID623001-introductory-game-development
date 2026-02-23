@@ -527,13 +527,13 @@ Understanding which space a vector lives in is one of the most common sources of
 Unity's `Mathf` class provides game-relevant maths utilities. All values are `float`.
 
 ```csharp
-float health = Mathf.Clamp(currentHealth, 0f, 100f);
-float dist = Mathf.Abs(-5f);
+float health = Mathf.Clamp(currentHealth, 0f, 100f); // Clamp is used to restrict a value to a specified range. If currentHealth is less than 0, health will be set to 0. If currentHealth is greater than 100, health will be set to 100. Otherwise, health will be equal to currentHealth. We will use Clamp in Space Invaders to keep the enemy's fleet within the screen bounds and to prevent the player's health from going below 0 or above 100.
+float dist = Mathf.Abs(-5f); // Abs returns the absolute value of a number, which is the distance from zero on the number line. In this case, Abs(-5) returns 5, because -5 is 5 units away from 0.
 float squared = Mathf.Pow(4f, 2f);
 float root = Mathf.Sqrt(16f);
 float a = Mathf.Round(3.7f);
-float b = Mathf.Floor(3.9f);
-float c = Mathf.Ceil(3.1f);
+float b = Mathf.Floor(3.9f); // Floor rounds down to the nearest whole number, so 3.9 becomes 3.0
+float c = Mathf.Ceil(3.1f); // Ceil rounds up to the nearest whole number, so 3.1 becomes 4.0
 float roll = Random.Range(0f, 1f);
 float lowest = Mathf.Min(3f, 7f, 1f);
 float highest = Mathf.Max(3f, 7f, 1f);
