@@ -1,4 +1,4 @@
-# Week 01
+# Week 01.1
 
 ---
 
@@ -7,7 +7,7 @@
 | Section      | Link                                                                                     |
 | ------------ | ---------------------------------------------------------------------------------------- |
 | GitHub       | [GitHub Classroom - ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho) |
-| Next Class   | [Week 02](../week-02-unity-physics-collision)                                            |
+| Next Class   | [Week 01.2](../week-01.2-breakout-1/README.md)                                            |
 
 ---
 
