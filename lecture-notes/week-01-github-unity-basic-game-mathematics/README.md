@@ -248,6 +248,11 @@ Vector3 v = new Vector3(1f, -2f, 3f);
 Vector3 neg = -v; // (-1, 2, -3)
 ```
 
+Here are some examples of how this is used in games:
+
+- To move an object in the opposite direction, e.g. knockback
+- To calculate the vector from point B to point A as `A − B` instead of `B − A`
+
 ---
 
 ### Scalar Multiplication
@@ -271,7 +276,10 @@ Vector3 back = forward * -1f;
 Debug.Log($"Forward: {forward}, Fast: {fast}, Back: {back}"); // Forward: (0, 0, 1), Fast: (0, 0, 10), Back: (0, 0, -1)
 ```
 
+Here are some examples of how this is used in games:
 
+- To control the speed of movement by scaling a direction vector
+- To apply forces in physics by scaling a direction vector by the force magnitude
 
 ---
 
@@ -327,11 +335,15 @@ Debug.Log($"Magnitude: {mag}, Squared Magnitude: {magSq}"); // Magnitude: 5, Squ
 
 What is the calculation for the magnitude of the vector (3, 4, 0)? 
 
-```|v| = √(3² + 4² + 0²) = √(9 + 16 + 0) = √25 = 5```
+```
+|v| = √(3² + 4² + 0²) = √(9 + 16 + 0) = √25 = 5
+```
 
 What is the squared magnitude? 
 
-```|v|² = 3² + 4² + 0² = 9 + 16 + 0 = 25```
+```
+|v|² = 3² + 4² + 0² = 9 + 16 + 0 = 25
+```
 
 ---
 
@@ -359,16 +371,12 @@ Debug.Log($"Original: {v}, Normalised: {vHat}"); // Original: (3, 4, 0), Normali
 
 > **Note:** Never normalise the zero vector. It has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but mathematically is undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
 
-Why is normalisation important? It allows us to work with directions without worrying about scale. For example, when moving an object towards a target, we want to move in the correct direction but control the speed separately. Normalising the direction vector gives us a unit vector that points in the right direction, which we can then multiply by our desired speed. What if we didn't normalise? If we just used the raw vector from the object to the target, the speed would vary based on how far away the target is, which is usually not what we want.
+If you implement eight-directional movement and do not normalise the input vector, diagonal movement will be faster than horizontal/vertical movement. Why? Because the magnitude of the diagonal vector (e.g. (1, 1)) is √(1² + 1²) = √2 ≈ 1.414, which is greater than 1. Normalising it gives a unit vector in the same direction, ensuring consistent speed in all directions.
 
-What happens when you don't normalise a direction vector before using it for movement? The object will move faster when it's farther from the target and slower as it gets closer, which can lead to inconsistent and undesirable movement behavior.
+Here are some examples of how this is used in games:
 
-Is this an issue when moving in ordinal directions (e.g., directly along the x or z axis)? No, because in those cases the direction vector already has a magnitude of 1 (e.g., (1, 0, 0) or (0, 0, 1)). However, for diagonal movement (e.g., towards a target at (1, 0, 1)), the direction vector would have a magnitude greater than 1 (e.g., (1, 0, 1) has a magnitude of √2), which would cause faster movement if not normalised.
-
-where does √2 come from? For a vector like (1, 0, 1), the magnitude is calculated as:
-
-```|v| = √(1² + 0² + 1²) = √(1 + 0 + 1) = √2 ≈ 1.414
-```
+- Moving an object towards a target at a constant speed
+- Calculating the direction to an enemy for aiming
 
 ---
 
@@ -398,6 +406,11 @@ write the formula using the components of P and Q:
 ```
 d(P, Q) = √((4−1)² + (6−2)² + (3−3)²) = √(3² + 4² + 0²) = √(9 + 16 + 0) = √25 = 5
 ```
+
+Here are some examples of how this is used in games:
+
+- Calculating how far the player is from an enemy
+- Determining if an object is within a certain range
 
 ---
 
@@ -446,7 +459,10 @@ float angle = Mathf.Acos(Mathf.Clamp(dot, -1f, 1f)) * Mathf.Rad2Deg;
 Debug.Log($"Angle to enemy: {angle}°");
 ```
 
-value that represents the relationship between the player's forward direction and the direction to the enemy.
+Here are some examples of how this is used in games:
+
+- Determining if an enemy is in front of or behind the player
+- Calculating the angle between the player's facing direction and a target for aiming
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Vector3.Dot.html>
 
@@ -485,6 +501,11 @@ if (cross.y > 0f)
 else
     Debug.Log("Enemy is to the left");
 ```
+
+Here are some examples of how this is used in games:
+
+- Calculating surface normals for lighting and physics
+- Determining if an enemy is to the left or right of the player
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Vector3.Cross.html>
 
@@ -548,6 +569,13 @@ Debug.Log($"Clamped Health: {health}, Abs: {dist}, Pow: {squared}, Sqrt: {root},
 ## Interpolation
 
 Interpolation computes a value that sits **between** two known values. It is used constantly in games for smooth movement, fading effects and animation blending.
+
+Here are some examples of how this is used in games:
+
+- Smoothly following a player with the camera
+- Fading UI elements in and out
+- Blending between animation states
+
 
 ---
 
@@ -626,6 +654,12 @@ void Update()
     transform.position = new Vector3(x, 0f, z); // Moves the object in a circle on the XZ plane
 }
 ```
+
+Here are some examples of how this is used in games:
+
+- Enemy ships circling the player
+- Planets orbiting a star
+- Spinning coins or power-ups
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Mathf.Sin.html>
 
@@ -745,12 +779,9 @@ Write a method that computes the **dot product** of two vectors without using `V
 
 Test cases:
 
-- `DotProduct(Vector3.right, Vector3.right)` should return `1`
-- `DotProduct(Vector3.right, Vector3.up)` should return `0`
-- `DotProduct(Vector3.right, Vector3.left)` should return `-1`
-- `AngleBetween(Vector3.right, Vector3.right)` should return `0`
-- `AngleBetween(Vector3.right, Vector3.up)` should return `90`
-- `AngleBetween(Vector3.right, Vector3.left)` should return `180`
+- `AngleBetween(Vector3.right, Vector3.right)` should return `0` as they are the same direction
+- `AngleBetween(Vector3.right, Vector3.up)` should return `90` as they are perpendicular
+- `AngleBetween(Vector3.right, Vector3.left)` should return `180` as they are opposite
 
 ```csharp
 float DotProduct(Vector3 a, Vector3 b)
@@ -768,4 +799,4 @@ float AngleBetween(Vector3 a, Vector3 b)
 }
 ```
 
-> Hint: `a · b = ax·bx + ay·by + az·bz`. For the angle, normalise both vectors first and clamp the dot product to [−1, 1] before passing to `Mathf.Acos`.
+> Hint: `a · b = ax·bx + ay·by + az·bz`. For the angle, normalise both vectors first and clamp the dot product to [−1, 1] before passing to `Mathf.Acos`. Remember to convert the result of `Mathf.Acos` from radians to degrees.
