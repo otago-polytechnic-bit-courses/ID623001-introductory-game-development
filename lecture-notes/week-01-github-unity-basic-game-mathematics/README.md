@@ -35,7 +35,7 @@
 
 ## C# and Unity
 
-C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic, e.g., movement, collision, animation, UI, etc., are expressed through C# scripts attached to **GameObjects** via **MonoBehaviour**. 
+C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic, e.g., movement, collision, animation, UI, etc., are expressed through C# scripts attached to GameObjects via MonoBehaviour. 
 
 > Resource: <https://docs.unity3d.com/Manual/index.html>
 
@@ -72,7 +72,7 @@ public class Demo : MonoBehaviour
 
 ### 1D Mathematics
 
-The simplest coordinate system is the **number line**: a single axis with a defined origin (0), a positive direction and a unit of length. Every real number corresponds to exactly one point on this line.
+The simplest coordinate system is the number line: a single axis with a defined origin (0), a positive direction and a unit of length. Every real number corresponds to exactly one point on this line.
 
 In Unity, individual axes behave like number lines. A GameObject's x-position is a signed scalar value on the x-axis of the world coordinate system.
 
@@ -86,7 +86,7 @@ float zPos = transform.position.z;
 
 ### 2D Cartesian Space
 
-Two perpendicular number lines - the **x-axis** (horizontal) and **y-axis** (vertical) intersect at the **origin** (0, 0) to form a 2D coordinate system. Any point P in the plane is specified uniquely by an ordered pair **(x, y)**.
+Two perpendicular number lines - the x-axis (horizontal) and y-axis (vertical) intersect at the origin (0, 0) to form a 2D coordinate system. Any point P in the plane is specified uniquely by an ordered pair (x, y).
 
 In Unity 2D projects positions are represented as `Vector2`:
 
@@ -100,7 +100,7 @@ Debug.Log($"X: {playerPos.x}, Y: {playerPos.y}"); // X: 3.0, Y: -1.5
 
 ### 3D Cartesian Space
 
-3D space adds a third axis, the **z-axis** perpendicular to both x and y. Every point in 3D is an ordered triple **(x, y, z)**. Unity uses a **left-handed** coordinate system:
+3D space adds a third axis, the z-axis perpendicular to both x and y. Every point in 3D is an ordered triple (x, y, z). Unity uses a left-handed coordinate system:
 
 | Axis | Direction                 |
 | ---- | ------------------------- |
@@ -108,7 +108,7 @@ Debug.Log($"X: {playerPos.x}, Y: {playerPos.y}"); // X: 3.0, Y: -1.5
 | +y   | Up                        |
 | +z   | Forward (into the screen) |
 
-> **Left-handed vs Right-handed:** In a right-handed system (standard mathematics and OpenGL), +z points _out of_ the screen. Unity's left-handed system has +z pointing _into_ the screen. This affects how cross products work — the result points in the opposite direction compared to a right-handed system. Keep this in mind when working with physics or importing assets from other tools.
+> Left-handed vs Right-handed: In a right-handed system (standard mathematics and OpenGL), +z points _out of_ the screen. Unity's left-handed system has +z pointing _into_ the screen. This affects how cross products work — the result points in the opposite direction compared to a right-handed system. Keep this in mind when working with physics or importing assets from other tools.
 
 Unity provides convenient constants for the cardinal directions:
 
@@ -135,8 +135,8 @@ Vector3 back    = Vector3.back;     // ( 0,  0, -1)
 
 Angles measure the amount of rotation between two directions. Two units are commonly used:
 
-- **Degrees:** A full rotation is 360°.
-- **Radians:** A full rotation is 2π ≈ 6.2832 rad. One radian is the angle formed when the arc length along a circle equals the radius of that circle.
+- Degrees: A full rotation is 360°.
+- Radians: A full rotation is 2π ≈ 6.2832 rad. One radian is the angle formed when the arc length along a circle equals the radius of that circle.
 
 The conversion between them is:
 
@@ -145,7 +145,7 @@ radians = degrees × (π / 180)
 degrees = radians × (180 / π)
 ```
 
-Unity's trigonometric functions (`Mathf.Sin`, `Mathf.Cos`, etc.) take values in **radians**. Use `Mathf.Deg2Rad` and `Mathf.Rad2Deg` to convert:
+Unity's trigonometric functions (`Mathf.Sin`, `Mathf.Cos`, etc.) take values in radians. Use `Mathf.Deg2Rad` and `Mathf.Rad2Deg` to convert:
 
 ```csharp
 float degrees = 90f;
@@ -191,7 +191,7 @@ float phi   = Mathf.Atan2(1f, 1f) * Mathf.Rad2Deg;
 Debug.Log($"Asin(0.5) = {theta}°, Atan2(1, 1) = {phi}°"); // Asin(0.5) = 30°, Atan2(1, 1) = 45°
 ```
 
-> **Use `Mathf.Atan2(y, x)` instead of `Mathf.Atan(y/x)`** — it correctly handles all four quadrants and avoids division by zero when x = 0.
+> Use `Mathf.Atan2(y, x)` instead of `Mathf.Atan(y/x)` — it correctly handles all four quadrants and avoids division by zero when x = 0.
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Mathf.html>
 
@@ -201,12 +201,12 @@ Debug.Log($"Asin(0.5) = {theta}°, Atan2(1, 1) = {phi}°"); // Asin(0.5) = 30°,
 
 ### What is a Vector?
 
-A **vector** is a quantity with both **magnitude** (size) and **direction**. This distinguishes it from a **scalar**, which has magnitude only.
+A vector is a quantity with both magnitude (size) and direction. This distinguishes it from a scalar, which has magnitude only.
 
-- **Scalar example:** The player's health (e.g. 75 HP) is a scalar. It has no direction, just a value.
-- **Vector example:** The enemy's velocity (e.g. (3, 0, 0) m/s) is a vector. It has a speed of 3 m/s and points in the positive x direction.
+- Scalar example: The player's health (e.g. 75 HP) is a scalar. It has no direction, just a value.
+- Vector example: The enemy's velocity (e.g. (3, 0, 0) m/s) is a vector. It has a speed of 3 m/s and points in the positive x direction.
 
-Vectors are written in bold (**v**) or with an arrow (v→). In Unity, `Vector2` and `Vector3` are the built-in vector types.
+Vectors are written in bold (v) or with an arrow (v→). In Unity, `Vector2` and `Vector3` are the built-in vector types.
 
 ---
 
@@ -214,8 +214,8 @@ Vectors are written in bold (**v**) or with an arrow (v→). In Unity, `Vector2`
 
 This is a conceptually important distinction that trips people up early:
 
-- A **point** describes a **location** in space. It has no length or direction on its own.
-- A **vector** describes a **displacement** or **direction**. It has no fixed position.
+- A point describes a location in space. It has no length or direction on its own.
+- A vector describes a displacement or direction. It has no fixed position.
 
 When should you use each? If you are describing where something is, use a point. If you are describing how something moves or faces, use a vector.
 
@@ -233,7 +233,7 @@ Debug.Log($"Point A: {pointA}, Point B: {pointB}, Displacement: {displacement}")
 
 ### Vector Negation
 
-Negating a vector **reverses its direction** while keeping its magnitude:
+Negating a vector reverses its direction while keeping its magnitude:
 
 ```
 −v = (−x, −y, −z)
@@ -257,7 +257,7 @@ Here are some examples of how this is used in games:
 
 ### Scalar Multiplication
 
-Multiplying a vector by a scalar **k** scales its length by |k|. If k < 0 the direction is also reversed:
+Multiplying a vector by a scalar k scales its length by |k|. If k < 0 the direction is also reversed:
 
 ```
 k·v = (k·x,  k·y,  k·z)
@@ -285,7 +285,7 @@ Here are some examples of how this is used in games:
 
 ### Vector Addition and Subtraction
 
-Vectors add and subtract **component-wise**. Geometrically, addition places vectors head-to-tail; the result is the **resultant** vector:
+Vectors add and subtract component-wise. Geometrically, addition places vectors head-to-tail; the result is the resultant vector:
 
 ```
 a + b = (ax + bx,  ay + by,  az + bz)
@@ -297,7 +297,7 @@ Forumla breakdown:
 1. For addition, add the corresponding components of vectors a and b to get the components of the resultant vector.
 2. For subtraction, subtract the corresponding components of vector b from vector a to get the components of the resultant vector.
 
-The vector **from point A to point B** is always `B − A`:
+The vector from point A to point B is always `B − A`:
 
 ```csharp
 Vector3 A = new Vector3(1f, 0f, 0f);
@@ -313,7 +313,7 @@ Why is it `B − A` and not `A − B`? Because we want a vector that points from
 
 ### Vector Magnitude (Length)
 
-The magnitude (length) of a vector is calculated using the **Pythagorean theorem** extended to 3D:
+The magnitude (length) of a vector is calculated using the Pythagorean theorem extended to 3D:
 
 ```
 |v| = √(x² + y² + z²)
@@ -349,7 +349,7 @@ What is the squared magnitude?
 
 ### Unit Vectors and Normalisation
 
-A **unit vector** has a magnitude of exactly 1. It expresses a **pure direction** with no scale information. Any non-zero vector can be normalised by dividing by its magnitude:
+A unit vector has a magnitude of exactly 1. It expresses a pure direction with no scale information. Any non-zero vector can be normalised by dividing by its magnitude:
 
 ```
 v̂ = v / |v|
@@ -369,7 +369,7 @@ transform.position += dir * speed * Time.deltaTime;
 Debug.Log($"Original: {v}, Normalised: {vHat}"); // Original: (3, 4, 0), Normalised: (0.6, 0.8, 0)
 ```
 
-> **Note:** Never normalise the zero vector. It has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but mathematically is undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
+> Note: Never normalise the zero vector. It has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but mathematically is undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
 
 If you implement eight-directional movement and do not normalise the input vector, diagonal movement will be faster than horizontal/vertical movement. Why? Because the magnitude of the diagonal vector (e.g. (1, 1)) is √(1² + 1²) = √2 ≈ 1.414, which is greater than 1. Normalising it gives a unit vector in the same direction, ensuring consistent speed in all directions.
 
@@ -416,7 +416,7 @@ Here are some examples of how this is used in games:
 
 ### The Dot Product
 
-The **dot product** of two vectors is defined algebraically as:
+The dot product of two vectors is defined algebraically as:
 
 ```
 a · b = ax·bx + ay·by + az·bz
@@ -434,7 +434,7 @@ where θ is the angle between the two vectors. Rearranging gives the angle direc
 θ = arccos( (a · b) / (|a| |b|) )
 ```
 
-For **unit vectors** this simplifies to `θ = arccos(a · b)`, which is why normalising before a dot product is so common.
+For unit vectors this simplifies to `θ = arccos(a · b)`, which is why normalising before a dot product is so common.
 
 | Value of `a · b` (unit vectors) | Meaning                          |
 | ------------------------------- | -------------------------------- |
@@ -470,7 +470,7 @@ Here are some examples of how this is used in games:
 
 ### The Cross Product
 
-The **cross product** is a 3D-only operation. It takes two vectors and returns a third vector that is **perpendicular to both**:
+The cross product is a 3D-only operation. It takes two vectors and returns a third vector that is perpendicular to both:
 
 ```
 a × b = (ay·bz − az·by,
@@ -484,7 +484,7 @@ The magnitude of the result equals:
 |a × b| = |a| |b| sin(θ)
 ```
 
-The direction follows the **left-hand rule** in Unity. The cross product is used to find surface normals, determine left/right relative orientation and build rotation axes.
+The direction follows the left-hand rule in Unity. The cross product is used to find surface normals, determine left/right relative orientation and build rotation axes.
 
 ```csharp
 Vector3 a = new Vector3(1f, 0f, 0f);
@@ -519,9 +519,9 @@ A single global coordinate system quickly becomes impractical. When a sword is a
 
 | Space            | Description                                                            |
 | ---------------- | ---------------------------------------------------------------------- |
-| **World space**  | The global fixed coordinate system. All objects ultimately exist here. |
-| **Local space**  | Relative to a specific GameObject's own position and orientation.      |
-| **Camera space** | Relative to the camera — used in rendering and screen-space effects.   |
+| World space  | The global fixed coordinate system. All objects ultimately exist here. |
+| Local space  | Relative to a specific GameObject's own position and orientation.      |
+| Camera space | Relative to the camera — used in rendering and screen-space effects.   |
 
 ---
 
@@ -568,7 +568,7 @@ Debug.Log($"Clamped Health: {health}, Abs: {dist}, Pow: {squared}, Sqrt: {root},
 
 ## Interpolation
 
-Interpolation computes a value that sits **between** two known values. It is used constantly in games for smooth movement, fading effects and animation blending.
+Interpolation computes a value that sits between two known values. It is used constantly in games for smooth movement, fading effects and animation blending.
 
 Here are some examples of how this is used in games:
 
@@ -581,7 +581,7 @@ Here are some examples of how this is used in games:
 
 ### Linear Interpolation (Lerp)
 
-**Linear interpolation** between values a and b by parameter t (where t ∈ [0, 1]) is:
+Linear interpolation between values a and b by parameter t (where t ∈ [0, 1]) is:
 
 ```
 Lerp(a, b, t) = a + t·(b − a) = (1−t)·a + t·b
@@ -597,7 +597,7 @@ Color col = Color.Lerp(Color.red, Color.blue, 0.5f);
 Debug.Log($"Health: {health}, Position: {transform.position}, Colour: {col}"); // Health: 25, Position: (interpolated position), Colour: (0.5, 0, 0.5)
 ```
 
-> **Note:** Using `Time.deltaTime * speed` as the t value each frame produces an exponential ease-out rather than a constant-speed move. For constant speed use `Vector3.MoveTowards` instead.
+> Note: Using `Time.deltaTime * speed` as the t value each frame produces an exponential ease-out rather than a constant-speed move. For constant speed use `Vector3.MoveTowards` instead.
 
 ---
 
@@ -625,7 +625,7 @@ void Update()
 
 ## Circular Motion
 
-Uniform circular motion, i.e., moving in a circle at constant speed, is one of the most common patterns in games. Given a radius **r** and an angle **θ** (in radians), a point on a circle centred at the origin is:
+Uniform circular motion, i.e., moving in a circle at constant speed, is one of the most common patterns in games. Given a radius r and an angle θ (in radians), a point on a circle centred at the origin is:
 
 ```
 x = r · cos(θ)
@@ -638,7 +638,7 @@ The angle advances over time as:
 θ(t) = θ₀ + ω·t
 ```
 
-where **ω** (omega) is the **angular velocity** in radians per second.
+where ω (omega) is the angular velocity in radians per second.
 
 ```csharp
 public float radius = 3f;
@@ -692,7 +692,7 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
-Write a method that converts an angle in degrees to radians **without** using `Mathf.Deg2Rad`, then verify against Unity's constant.
+Write a method that converts an angle in degrees to radians without using `Mathf.Deg2Rad`, then verify against Unity's constant.
 
 Test cases:
 
@@ -714,7 +714,7 @@ float DegreesToRadians(float degrees)
 
 ### Task 2
 
-Write a method that computes the **magnitude** of a 3D vector **without** using `.magnitude` or `Vector3.Distance`.
+Write a method that computes the magnitude of a 3D vector without using `.magnitude` or `Vector3.Distance`.
 
 Test cases:
 
@@ -735,7 +735,7 @@ float VectorMagnitude(Vector3 v)
 
 ### Task 3
 
-Write a method that **normalises** a vector without using `.normalized`.
+Write a method that normalises a vector without using `.normalized`.
 
 Test cases:
 
@@ -755,7 +755,7 @@ Vector3 Normalise(Vector3 v)
 
 ### Task 4
 
-Write a method that computes the **distance** between two 3D points without using `Vector3.Distance`.
+Write a method that computes the distance between two 3D points without using `Vector3.Distance`.
 
 Test cases:
 
@@ -775,7 +775,7 @@ float Distance(Vector3 a, Vector3 b)
 
 ### Task 5
 
-Write a method that computes the **dot product** of two vectors without using `Vector3.Dot`, then uses the result to determine the angle between them.
+Write a method that computes the dot product of two vectors without using `Vector3.Dot`, then uses the result to determine the angle between them.
 
 Test cases:
 
