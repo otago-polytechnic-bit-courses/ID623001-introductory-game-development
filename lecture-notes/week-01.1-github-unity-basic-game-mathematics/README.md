@@ -4,10 +4,10 @@
 
 ## Important Links
 
-| Section      | Link                                                                                     |
-| ------------ | ---------------------------------------------------------------------------------------- |
-| GitHub       | [GitHub Classroom - ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho) |
-| Next Class   | [Week 01.2](../week-01.2-breakout-1/README.md)                                            |
+| Section    | Link                                                                         |
+| ---------- | ---------------------------------------------------------------------------- |
+| GitHub     | [GitHub Classroom - ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho) |
+| Next Class | [Week 01.2](../week-01.2-breakout-1/README.md)                               |
 
 ---
 
@@ -35,7 +35,7 @@
 
 ## C# and Unity
 
-C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic, e.g., movement, collision, animation, UI, etc., are expressed through C# scripts attached to GameObjects via MonoBehaviour. 
+C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic, e.g., movement, collision, animation, UI, etc., are expressed through C# scripts attached to GameObjects via MonoBehaviour.
 
 > Resource: <https://docs.unity3d.com/Manual/index.html>
 
@@ -43,40 +43,65 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 
 ### Installer and Project Setup
 
-1. Download and install Unity Hub from <https://unity.com/download>.
-2. In Unity Hub, go to the "Installs" tab and click "Install Editor". Install the recommended LTS (Long Term Support) version of Unity. This ensures you have a stable and widely supported version for development.
-![](<../../resources (ignore)/img/week-01-github-unity-basic-game-mathematics/00.png>)
-3. Once Unity is installed, go to the "Projects" tab and click "New Project". 
+1.  Download and install Unity Hub from <https://unity.com/download>.
+2.  In Unity Hub, go to the "Installs" tab and click "Install Editor". Install the recommended LTS (Long Term Support) version of Unity. This ensures you have a stable and widely supported version for development.
 
+![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/00.png>)
 
+3.  Once Unity is installed, go to the "Projects" tab and click "New Project". Choose the "Universal 2D" template, name your project and select a location on your computer to save it. Then click "Create project".
 
+![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/01.png>)
 
----
+4.  Unity will open with your new project. You should see the Unity Editor interface with a default scene loaded. There are several panels:
 
-### MonoBehaviour Lifecycle
+    - The Scene view where you can see and edit your game world
+    - The Game view where you can preview your game
+    - The Hierarchy which lists all GameObjects in the scene
+    - The Inspector which shows properties of selected GameObjects
+    - The Project window which shows all assets in your project
+
+![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/02.png>)
+
+5. In the Hierarchy panel, right-click and select "2D Object > Sprite > Circle".
+
+![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/03.png>)
+
+6. In the Project panel, right-click and select "Create > Folder". Name it "Scripts". 
+
+![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/04.png>)
+
+7. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "Demo". Double-click the script to open it in your code editor, e.g., Visual Studio or Visual Studio Code. In the `Start()` method, add the following:
 
 ```csharp
 using UnityEngine;
 
-public class ExampleScript : MonoBehaviour
+public class Demo : MonoBehaviour
 {
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Runs once when the script is first enabled. This is used for initialisation
         Debug.Log("Hello, World!");
     }
 
+    // Update is called once per frame
     void Update()
     {
-        // Runs every frame. This is used for regular updates like input handling and non-physics movement
-    }
-
-    void FixedUpdate()
-    {
-        // Runs at a fixed time interval. This is used for physics updates and anything that needs consistent timing
+        
     }
 }
 ```
+
+![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/05.png>)
+
+8. Drag and drop the `Demo` script from the Project panel onto the Circle GameObject in the Hierarchy panel. This attaches the script to the Circle, making it a component of that GameObject.
+
+![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/06.png>)
+
+9. Click the Play button at the top of the Unity Editor to run the game. You should see "Hello, World!" printed in the Console panel.
+
+![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/07.png>)
+
+10. You may notice an asterisk (*) next to the scene name in the Hierarchy panel. This indicates that the scene has unsaved changes. It is recommended that every time you make changes to your scene, you save it.
 
 ---
 
@@ -345,13 +370,13 @@ float magSq = v.sqrMagnitude;
 Debug.Log($"Magnitude: {mag}, Squared Magnitude: {magSq}"); // Magnitude: 5, Squared Magnitude: 25
 ```
 
-What is the calculation for the magnitude of the vector (3, 4, 0)? 
+What is the calculation for the magnitude of the vector (3, 4, 0)?
 
 ```
 |v| = √(3² + 4² + 0²) = √(9 + 16 + 0) = √25 = 5
 ```
 
-What is the squared magnitude? 
+What is the squared magnitude?
 
 ```
 |v|² = 3² + 4² + 0² = 9 + 16 + 0 = 25
@@ -410,7 +435,7 @@ Vector3 P = new Vector3(1f, 2f, 3f);
 Vector3 Q = new Vector3(4f, 6f, 3f);
 float dist = Vector3.Distance(P, Q);
 
-Debug.Log($"Distance from P to Q: {dist}"); // Distance from P to Q: 5 
+Debug.Log($"Distance from P to Q: {dist}"); // Distance from P to Q: 5
 ```
 
 write the formula using the components of P and Q:
@@ -529,8 +554,8 @@ Here are some examples of how this is used in games:
 
 A single global coordinate system quickly becomes impractical. When a sword is attached to a character's hand, it is far easier to describe the sword's position _relative to the hand_ than relative to the entire world. Unity maintains several coordinate spaces simultaneously:
 
-| Space            | Description                                                            |
-| ---------------- | ---------------------------------------------------------------------- |
+| Space        | Description                                                            |
+| ------------ | ---------------------------------------------------------------------- |
 | World space  | The global fixed coordinate system. All objects ultimately exist here. |
 | Local space  | Relative to a specific GameObject's own position and orientation.      |
 | Camera space | Relative to the camera — used in rendering and screen-space effects.   |
@@ -587,7 +612,6 @@ Here are some examples of how this is used in games:
 - Smoothly following a player with the camera
 - Fading UI elements in and out
 - Blending between animation states
-
 
 ---
 
