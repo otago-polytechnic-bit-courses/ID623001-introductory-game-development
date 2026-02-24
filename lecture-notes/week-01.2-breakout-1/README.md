@@ -47,10 +47,10 @@ Breakout is a classic arcade game where the player controls a paddle to bounce a
 ```csharp
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))] // This attribute ensures that a Rigidbody2D component is attached to the GameObject. If it is not already attached, Unity will add one automatically
 public class BallController : MonoBehaviour
 {
-    [Header("Movement Settings")]
+    [Header("Movement Settings")] // This adds a header in the Inspector panel to group related variables together
     // You can adjust this value in the Inspector panel
     [SerializeField] private float speed = 5f;
 
