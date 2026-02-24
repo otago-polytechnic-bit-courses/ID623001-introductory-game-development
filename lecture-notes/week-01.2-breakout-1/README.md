@@ -57,6 +57,7 @@ public class BallController : MonoBehaviour
     // You can not adjust this value in the Inspector panel
     private Rigidbody2D rb;
 
+    // Called when the script instance is being loaded. This happens before the `Start()` method and is used to initialise variables or states before the game starts. It is called only once during the lifetime of the script instance
     private void Awake()
     {
         // Get the Rigidbody2D component attached to the Ball GameObject
