@@ -49,8 +49,10 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    // You can adjust this value in the Inspector panel
     [SerializeField] private float speed = 5f;
 
+    // You can not adjust this value in the Inspector panel
     private Rigidbody2D rb;
 
     private void Awake()
