@@ -73,6 +73,8 @@ public class BallController : MonoBehaviour
 }
 ```
 
+If you look at the Inspector panel for the Ball GameObject, you should see a new component called "Ball Controller" with a "Speed" field. You can adjust the speed of the ball by changing the value in this field.
+
 8. Drag and drop the `BallController` script from the Project panel onto the Ball GameObject in the Hierarchy panel.
 9. Click the Play button at the top of the Unity Editor to run the game. You should see the ball bouncing around the scene.
 
@@ -103,6 +105,23 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
+The `Start()` method has two concerns: setting the initial direction of the ball and setting the initial speed of the ball. Refactor the `Start()` method to separate these concerns into two methods: `SetInitialDirection()` and `SetInitialSpeed()`. The `Start()` method should call these two methods to set up the ball's initial movement.
+
 ---
 
 ### Task 2
+
+Change the background color of the scene to a color of your choice. You can do this by selecting the "Main Camera" GameObject in the Hierarchy panel and changing the "Background" colour in the Inspector panel.
+
+---
+
+### Task 3
+
+Currently, the Ball GameObject position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the ball's initial position to 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates. The bottom of the screen in screen coordinates is (0, 0), so you can set the ball's position to (0, 20) in world coordinates.
+
+---
+
+### Task 4
+
+Currently, the Ball GameObject colour is white. In the `Start()` method of the `BallController` script, set the ball's colour to a random colour each time the game starts. You can do this by accessing the `SpriteRenderer` component of the Ball GameObject and setting its `color` property to a new `Color` with random RGB values.
+
