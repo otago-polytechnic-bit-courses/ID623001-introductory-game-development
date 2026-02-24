@@ -55,19 +55,23 @@ public class BallController : MonoBehaviour
 
     private void Awake()
     {
+        // Get the Rigidbody2D component attached to the Ball GameObject
         rb = GetComponent<Rigidbody2D>(); 
     }
 
     private void Start()
     {
+        // Set the initial direction of the ball to a random direction
         Vector2 direction = new Vector2(
-            Random.Range(-1f, 1f), 1f).normalized; 
+            Random.Range(-1f, 1f), 1f).normalized; // Normalise to ensure the direction has a magnitude of 1
 
+        // Set the initial velocity of the ball based on the direction and speed
         rb.linearVelocity = direction * speed;
     }
 
     private void FixedUpdate()
     {
+        // Ensure the ball maintains a constant speed by normalising the velocity and multiplying by the speed
         rb.linearVelocity = rb.linearVelocity.normalized * speed;
     }
 }
