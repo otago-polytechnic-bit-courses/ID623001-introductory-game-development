@@ -64,6 +64,7 @@ public class BallController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); 
     }
 
+    // Called before the first frame update. This is used to set up the initial state of the game. It is called only once during the lifetime of the script instance
     private void Start()
     {
         // Set the initial direction of the ball to a random direction
@@ -74,6 +75,7 @@ public class BallController : MonoBehaviour
         rb.linearVelocity = direction * speed;
     }
 
+    // Called at a fixed time interval and is used for physics updates. It is called multiple times per second, depending on the physics settings of the project
     private void FixedUpdate()
     {
         // Ensure the ball maintains a constant speed by normalising the velocity and multiplying by the speed
