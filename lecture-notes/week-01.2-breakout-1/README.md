@@ -47,8 +47,10 @@ Breakout is a classic arcade game where the player controls a paddle to bounce a
 ```csharp
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BallController : MonoBehaviour
 {
+    [Header("Movement Settings")]
     // You can adjust this value in the Inspector panel
     [SerializeField] private float speed = 5f;
 
