@@ -86,6 +86,12 @@ If you look at the Inspector panel for the Ball GameObject, you should see a new
 
 ---
 
+### Serialize Field
+
+The `[SerializeField]` attribute allows you to keep a variable `private` while still exposing it in the Unity Inspector for editing. This means that other scripts can not access or modify a variable directly, which can help to encapsulate the data and prevent unintended side effects. On the other hand, if you make a variable `public`, it can be accessed and modified by any other script, which may not be desirable if you want to maintain control over how a variable is used. Choosing between `[SerializeField]` and `public` depends on whether you want to allow other scripts to access the variable or if you want to keep it private while still allowing it to be edited in the Inspector.
+
+---
+
 ## Exercises
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
