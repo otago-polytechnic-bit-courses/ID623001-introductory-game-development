@@ -123,7 +123,7 @@ The `Start()` method has two concerns: setting the initial direction of the ball
 
 ### Task 2
 
-Create a variable called `size` in the `BallController` script to represent the size of the ball. In the `Start()` method, set the ball's scale to a random value between 0.5 and 1 using this variable. You can do this by setting the `transform.localScale` property of the Ball GameObject to a new `Vector3` with the random size for all three dimensions (x, y, z). Make sure that the x and y dimensions are the same to maintain the circular shape of the ball.
+Create a variable called `size` in the `BallController` script to represent the size of the ball. In the `Start()` method, set the ball's scale to a random value between 0.5 and 1 using this variable. You can do this by setting the `transform.localScale` property of the Ball GameObject to a new `Vector2` with the random size for both the x and y axes.
 
 ---
 
