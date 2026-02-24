@@ -66,7 +66,7 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/03.png>)
 
-6. In the Project panel, right-click and select "Create > Folder". Name it "Scripts". 
+6. In the Assets folder, right-click and select "Create > Folder". Name it "Scripts".
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/04.png>)
 
@@ -702,8 +702,6 @@ Here are some examples of how this is used in games:
 ---
 
 ## Exercises
-
-Create a Unity project and attach a C# script called `Week01Tasks.cs` to a GameObject in your scene. Implement each method below and verify your output in the Unity Console using `Debug.Log()`.
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
 
