@@ -70,7 +70,7 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/04.png>)
 
-7. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "Demo". Double-click the script to open it in your code editor, e.g., Visual Studio or Visual Studio Code. In the `Start()` method, add the following:
+7. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "Demo". Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. In the `Start()` method, add the following:
 
 ```csharp
 using UnityEngine;
