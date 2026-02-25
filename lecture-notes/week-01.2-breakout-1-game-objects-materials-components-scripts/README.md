@@ -6,7 +6,7 @@
 
 | Section    | Link                                                                         |
 | ---------- | ---------------------------------------------------------------------------- |
-| Next Class | [Week 02]()                               |
+| Next Class | [Week 02](../week-01.2-breakout-1-game-objects-materials-components-scripts/README.md)
 
 ---
 
