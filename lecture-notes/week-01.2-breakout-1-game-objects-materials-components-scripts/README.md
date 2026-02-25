@@ -47,24 +47,19 @@ Breakout is a classic arcade game where the player controls a paddle to bounce a
 ```csharp
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))] // Ensure a Rigidbody2D component is attached to the GameObject. If it is not already attached, Unity will add one automatically
+[RequireComponent(typeof(Rigidbody2D))] 
 public class BallController : MonoBehaviour
 {
-    [Header("Movement Settings")] // Adds a header in the Inspector panel to group related variables together
-    // You can adjust this value in the Inspector panel
+    [Header("Movement Settings")] 
     [SerializeField] private float speed = 5f;
 
-    // You can not adjust this value in the Inspector panel
     private Rigidbody2D rb;
 
-    // Called when the script instance is being loaded. This happens before the `Start()` method and is used to initialise variables or states before the game starts. It is called only once during the lifetime of the script instance
     private void Awake()
     {
-        // Get the Rigidbody2D component attached to the Ball GameObject
         rb = GetComponent<Rigidbody2D>(); 
     }
 
-    // Called before the first frame update. This is used to set up the initial state of the game. It is called only once during the lifetime of the script instance
     private void Start()
     {
         // Set the initial direction of the ball to a random direction
@@ -75,7 +70,6 @@ public class BallController : MonoBehaviour
         rb.linearVelocity = direction * speed;
     }
 
-    // Called at a fixed time interval and is used for physics updates. It is called multiple times per second, depending on the physics settings of the project
     private void FixedUpdate()
     {
         // Ensure the ball maintains a constant speed by normalising the velocity and multiplying by the speed
@@ -91,9 +85,22 @@ If you look at the Inspector panel for the Ball GameObject, you should see a new
 
 ---
 
-### Serialize Field
+### Life Cycle of a MonoBehaviour Script
 
-The `[SerializeField]` attribute allows you to keep a variable `private` while still exposing it in the Unity Inspector for editing. This means that other scripts can not access or modify a variable directly, which can help to encapsulate the data and prevent unintended side effects. On the other hand, if you make a variable `public`, it can be accessed and modified by any other script, which may not be desirable if you want to maintain control over how a variable is used. Choosing between `[SerializeField]` and `public` depends on whether you want to allow other scripts to access the variable or if you want to keep it private while still allowing it to be edited in the Inspector.
+In a MonoBehaviour script, there are several special methods that are called by Unity at specific points in the game's lifecycle. These methods include:
+
+- `Awake()`: Called when the script instance is being loaded. This happens before the `Start()` method and is used to initialise variables or states before the game starts. It is called only once during the lifetime of the script instance.
+- `Start()`: Called before the first frame update. This is used to set up the initial state of the game. It is called only once during the lifetime of the script instance.
+- `Update()`: Called once per frame. This is used for regular updates, such as checking for input or moving objects. The frequency of this method depends on the frame rate of the game.
+- `FixedUpdate()`: Called at a fixed time interval and is used for physics updates. It is called multiple times per second, depending on the physics settings of the project.
+
+---
+
+### Useful Attributes
+
+- `[SerializeField]`: This attribute allows you to serialize a private field, making it visible and editable in the Unity Inspector. This is useful for keeping variables private while still allowing designers to tweak values in the editor.
+- `[Header("Header Name")]`: This attribute adds a header above the field in the Unity Inspector, which can be used to group related fields together for better organisation and readability.
+- `[RequireComponent(typeof(ComponentType))]`: This attribute ensures that the specified component is added to the GameObject when the script is attached. If the component is not already present, Unity will automatically add it. This is useful for ensuring that necessary components are always present on a GameObject.
 
 ---
 
