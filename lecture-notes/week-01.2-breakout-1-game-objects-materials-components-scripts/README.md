@@ -16,7 +16,7 @@ Breakout is a classic arcade game where the player controls a paddle to bounce a
 
 ---
 
-### Project Setup
+## Project Setup
 
 1. Open Unity Hub and create a new "2D Universal" project. Name it "Breakout".
 2. In the root directory of your project, add a Unity `.gitignore` file to exclude unnecessary files from version control. Add, commit and push the `.gitignore` file to your GitHub repository. Then add, commit and push the Unity project files to your GitHub repository.
@@ -24,7 +24,7 @@ Breakout is a classic arcade game where the player controls a paddle to bounce a
 
 ---
 
-### Ball 
+## Ball Game Object
 
 1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Circle". Name the GameObject "Ball". 
 2. In the Materials folder, right-click and select "Create > 2D > Physics Material 2D". Name it "BallBounce". 
@@ -85,7 +85,7 @@ If you look at the Inspector panel for the Ball GameObject, you should see a new
 
 ---
 
-### Life Cycle of a MonoBehaviour Script
+## Lifecycle of a MonoBehaviour Script
 
 In a MonoBehaviour script, there are several special methods that are called by Unity at specific points in the game's lifecycle. These methods include:
 
@@ -96,7 +96,7 @@ In a MonoBehaviour script, there are several special methods that are called by 
 
 ---
 
-### Useful Attributes
+## Useful Attributes
 
 - `[SerializeField]`: This attribute allows you to serialize a private field, making it visible and editable in the Unity Inspector. This is useful for keeping variables private while still allowing designers to tweak values in the editor.
 - `[Header("Header Name")]`: This attribute adds a header above the field in the Unity Inspector, which can be used to group related fields together for better organisation and readability.
