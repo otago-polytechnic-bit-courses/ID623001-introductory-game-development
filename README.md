@@ -58,7 +58,7 @@ At the successful completion of this course, learners will be able to:
 
 | Week             | Topics                                            |
 | ---------------- | ------------------------------------------------- |
-| 1/Tahi           | GitHub, Unity, Basic Game Mathematics, Breakout 1 |
+| 1/Tahi           | GitHub, Unity, Basic Game Mathematics and Breakout 1 |
 | 2/Rua            | Breakout 2                                        |
 | 3/Toru           | Breakout 3                                        |
 | 4/Whā            | Space Invaders 1                                  |

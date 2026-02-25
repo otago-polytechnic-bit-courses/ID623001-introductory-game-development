@@ -140,11 +140,11 @@ Change the background color of the scene to a color of your choice. You can do t
 
 ### Task 4
 
-Currently, the Ball GameObject position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the ball's initial position to 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates. The bottom of the screen in screen coordinates is (0, 0), so you can set the ball's position to (0, 20) in world coordinates.
+Currently, the Ball GameObject position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the ball's initial position to 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates. 
 
 ---
 
 ### Task 5
 
-Currently, the Ball GameObject colour is white. In the `Start()` method of the `BallController` script, set the ball's colour to a random colour each time the game starts. You can do this by accessing the `SpriteRenderer` component of the Ball GameObject and setting its `color` property to a new `Color` with random RGB values.
+Currently, the Ball GameObject colour is white. In the `Start()` method of the `BallController` script, set the ball's colour to a random colour each time the game starts. You can do this by accessing the `SpriteRenderer` component of the Ball GameObject and setting its `color` property to a new `Color` with random RGB values. Ensure there is contrast between the ball and the background colour for better visibility.
 

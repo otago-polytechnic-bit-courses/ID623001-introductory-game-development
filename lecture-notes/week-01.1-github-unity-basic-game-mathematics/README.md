@@ -7,7 +7,7 @@
 | Section    | Link                                                                         |
 | ---------- | ---------------------------------------------------------------------------- |
 | GitHub     | [GitHub Classroom - ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho) |
-| Next Class | [Week 01.2](../week-01.2-breakout-1/README.md)                               |
+| Next Class | [Week 01.2](lecture-notes/week-01.2-breakout-1-materials-components-scripts/README.md)                               |
 
 ---
 
