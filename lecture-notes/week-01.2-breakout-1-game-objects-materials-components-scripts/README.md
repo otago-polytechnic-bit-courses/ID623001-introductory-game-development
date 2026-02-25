@@ -94,6 +94,8 @@ In a MonoBehaviour script, there are several special methods that are called by 
 - `Update()`: Called once per frame. This is used for regular updates, such as checking for input or moving objects. The frequency of this method depends on the frame rate of the game.
 - `FixedUpdate()`: Called at a fixed time interval and is used for physics updates. It is called multiple times per second, depending on the physics settings of the project.
 
+> Resource: [Unity - MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
+
 ---
 
 ## Useful Attributes
@@ -101,6 +103,8 @@ In a MonoBehaviour script, there are several special methods that are called by 
 - `[SerializeField]`: This attribute allows you to serialize a private field, making it visible and editable in the Unity Inspector. This is useful for keeping variables private while still allowing designers to tweak values in the editor.
 - `[Header("Header Name")]`: This attribute adds a header above the field in the Unity Inspector, which can be used to group related fields together for better organisation and readability.
 - `[RequireComponent(typeof(ComponentType))]`: This attribute ensures that the specified component is added to the GameObject when the script is attached. If the component is not already present, Unity will automatically add it. This is useful for ensuring that necessary components are always present on a GameObject.
+
+> Resource: [Unity - Attributes](https://docs.unity3d.com/Manual/Attributes.html)
 
 ---
 
