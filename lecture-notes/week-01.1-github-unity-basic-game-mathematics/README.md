@@ -4,10 +4,10 @@
 
 ## Important Links
 
-| Section    | Link                                                                         |
-| ---------- | ---------------------------------------------------------------------------- |
-| GitHub     | [GitHub Classroom - ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho) |
-| Next Class | [Week 01.2](lecture-notes/week-01.2-breakout-1-materials-components-scripts/README.md)                               |
+| Section    | Link                                                                                   |
+| ---------- | -------------------------------------------------------------------------------------- |
+| GitHub     | [GitHub Classroom - ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho)           |
+| Next Class | [Week 01.2](lecture-notes/week-01.2-breakout-1-materials-components-scripts/README.md) |
 
 ---
 
@@ -53,7 +53,6 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/01.png>)
 
 4.  Unity will open with your new project. You should see the Unity Editor interface with a default scene loaded. There are several panels:
-
     - The Scene view where you can see and edit your game world
     - The Game view where you can preview your game
     - The Hierarchy which lists all GameObjects in the scene
@@ -86,7 +85,7 @@ public class Demo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
 ```
@@ -101,7 +100,7 @@ public class Demo : MonoBehaviour
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/07.png>)
 
-10. You may notice an asterisk (*) next to the scene name in the Hierarchy panel. This indicates that the scene has unsaved changes. It is recommended that every time you make changes to your scene, you save it.
+10. You may notice an asterisk (\*) next to the scene name in the Hierarchy panel. This indicates that the scene has unsaved changes. It is recommended that every time you make changes to your scene, you save it.
 
 ---
 

@@ -4,9 +4,9 @@
 
 ## Important Links
 
-| Section    | Link                                                                         |
-| ---------- | ---------------------------------------------------------------------------- |
-| Next Class | [Week 02](../week-01.2-breakout-1-game-objects-materials-components-scripts/README.md)
+| Section    | Link                                                                                   |
+| ---------- | -------------------------------------------------------------------------------------- |
+| Next Class | [Week 02](../week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
 
 ---
 
@@ -20,44 +20,44 @@ Breakout is a classic arcade game where the player controls a paddle to bounce a
 
 1. Open Unity Hub and create a new "2D Universal" project. Name it "Breakout".
 2. In the root directory of your project, add a Unity `.gitignore` file to exclude unnecessary files from version control. Add, commit and push the `.gitignore` file to your GitHub repository. Then add, commit and push the Unity project files to your GitHub repository.
-3. In the Assets folder, create two new folders: "Materials" and "Scripts". 
+3. In the Assets folder, create two new folders: "Materials" and "Scripts".
 
 ---
 
 ## Ball Game Object
 
-1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Circle". Name the GameObject "Ball". 
-2. In the Materials folder, right-click and select "Create > 2D > Physics Material 2D". Name it "BallBounce". 
+1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Circle". Name the GameObject "Ball".
+2. In the Materials folder, right-click and select "Create > 2D > Physics Material 2D". Name it "BallBounce".
 3. In the Inspector panel, set the:
-    - `Friction` to 0 to prevent the ball from slowing down when it collides with other objects
-    - `Bounciness` to 1 to make the ball bounce back with the same speed after colliding with other objects
-    - `Bounce Combine` to "Maximum" to ensure the ball bounces as much as possible when colliding with other objects
-    - `Friction Combine` to "Minimum" to ensure the ball does not experience any friction when colliding with other objects
-4. Add two components to the Ball GameObject: `Rigidbody2D` and `CircleCollider2D`. 
-    - `Rigidbody2D` allows the ball to be affected by physics, such as gravity and collisions.
-    - `CircleCollider2D` defines the shape of the ball for collision detection.
+   - `Friction` to 0 to prevent the ball from slowing down when it collides with other objects
+   - `Bounciness` to 1 to make the ball bounce back with the same speed after colliding with other objects
+   - `Bounce Combine` to "Maximum" to ensure the ball bounces as much as possible when colliding with other objects
+   - `Friction Combine` to "Minimum" to ensure the ball does not experience any friction when colliding with other objects
+4. Add two components to the Ball GameObject: `Rigidbody2D` and `CircleCollider2D`.
+   - `Rigidbody2D` allows the ball to be affected by physics, such as gravity and collisions.
+   - `CircleCollider2D` defines the shape of the ball for collision detection.
 5. In the Inspector panel, set the `Rigidbody2D` component's:
-    - `Gravity Scale` to 0 so the ball does not fall due to gravity
-    - `Collision Detection` to "Continuous" to prevent the ball from passing through objects at high speeds
-    - `Interpolate` to "Interpolate" to smooth out the ball's movement
-    - `Constraints > Freeze Rotation` to true to prevent the ball from spinning
+   - `Gravity Scale` to 0 so the ball does not fall due to gravity
+   - `Collision Detection` to "Continuous" to prevent the ball from passing through objects at high speeds
+   - `Interpolate` to "Interpolate" to smooth out the ball's movement
+   - `Constraints > Freeze Rotation` to true to prevent the ball from spinning
 6. In the Inspector panel, set the `CircleCollider2D` component's `Material` to "BallBounce" to apply the physics material.
 7. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "BallController". Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. Add the following code:
 
 ```csharp
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))] 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BallController : MonoBehaviour
 {
-    [Header("Movement Settings")] 
+    [Header("Movement Settings")]
     [SerializeField] private float speed = 5f;
 
     private Rigidbody2D rb;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -133,7 +133,7 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
-The `Start()` method has two concerns: setting the initial direction of the ball and setting the initial speed of the ball. Refactor the `Start()` method to separate these concerns into two methods: `SetInitialDirection()` and `SetInitialSpeed()`. The `Start()` method should call these two methods to set up the ball's initial movement.
+The `Start()` method has two concerns: setting the initial direction of the ball and setting the initial speed of the ball. Refactor the `Start()` method to separate these concerns into two methods: `InitialDirection()` and `InitialSpeed()`. The `Start()` method should call these two methods to set up the ball's initial movement.
 
 ---
 
@@ -151,11 +151,10 @@ Change the background color of the scene to a color of your choice. You can do t
 
 ### Task 4
 
-Currently, the Ball GameObject position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the ball's initial position to 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates. 
+Currently, the Ball GameObject position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the ball's initial position to 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates.
 
 ---
 
 ### Task 5
 
 Currently, the Ball GameObject colour is white. In the `Start()` method of the `BallController` script, set the ball's colour to a random colour each time the game starts. You can do this by accessing the `SpriteRenderer` component of the Ball GameObject and setting its `color` property to a new `Color` with random RGB values. Ensure there is contrast between the ball and the background colour for better visibility.
-
