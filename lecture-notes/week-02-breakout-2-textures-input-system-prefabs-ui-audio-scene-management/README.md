@@ -4,13 +4,17 @@
 
 ## Important Links
 
-| Section    | Link                                                                            |
-| ---------- | ------------------------------------------------------------------------------- |
-| Next Class | [Week 03](lecture-notes/week-03-breakout-3-ui-audio-scene-management/README.md) |
+| Section    | Link                                                                                            |
+| ---------- | ----------------------------------------------------------------------------------------------- |
+| Next Class | [Week 03](lecture-notes/week-03-breakout-3-scriptable-objects-player-preferences-build-release) |
 
 ---
 
 ## Ball Game Object
+
+---
+
+### Textures
 
 ---
 
@@ -22,7 +26,23 @@
 
 ---
 
+### Input System
+
+---
+
 ## Bricks Game Objects
+
+---
+
+### Prefabs
+
+---
+
+## UI and Audio
+
+---
+
+## Scene Management
 
 ---
 
