@@ -43,7 +43,7 @@ Breakout is a classic arcade game where the player controls a paddle to bounce a
    - `Interpolate` to "Interpolate" to smooth out the ball's movement
    - `Constraints > Freeze Rotation` to true to prevent the ball from spinning
 6. In the Inspector panel, set the `CircleCollider2D` component's `Material` to "BallBounce" to apply the physics material.
-7. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "BallController". Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. Add the following code:
+7. In the Scripts folder, create a new script called "BallController". Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;

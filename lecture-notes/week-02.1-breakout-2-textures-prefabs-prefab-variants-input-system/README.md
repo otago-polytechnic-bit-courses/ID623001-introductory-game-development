@@ -14,7 +14,7 @@
 ## Walls Game Objects
 
 1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Rectangle". Name the GameObject "Walls". This will be the parent GameObject for all the wall GameObjects in the scene.
-2. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "WallController". Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. Add the following code:
+2. In the Scripts folder, create a new script called "WallController". Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -132,6 +132,38 @@ In the Inspector panel, change the "Speed" field of the Ball Controller componen
 ![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/06.png>)
 
 > Resource: [Unity Manual: Prefab Variants](https://docs.unity3d.com/Manual/PrefabVariants.html)
+
+---
+
+## Instantiating Prefabs
+
+In the Hierarchy panel, delete the Ball GameObject. We will instantiate the Ball prefab at runtime using a script. In the Scripts folder, create a new script called "GameManager". Open the script in your code editor and add the following code:
+
+```csharp
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    [Header("Prefab Settings")]
+    [SerializeField] private BallController fastBallPrefab;
+    [SerializeField] private BallController slowBallPrefab;
+
+    private BallController currentBall;
+
+    private void Start()
+    {
+        currentBall = Instantiate(fastBallPrefab, Vector2.zero, Quaternion.identity);
+    }
+}
+``` 
+
+In the Hierarchy panel, create an empty GameObject and name it "GameManager". Drag and drop the `GameManager` script from the Project panel onto the GameManager GameObject in the Hierarchy panel. In the Inspector panel for the GameManager GameObject, you should see a new component called "Game Manager" with two fields: "Fast Ball Prefab" and "Slow Ball Prefab". Drag and drop the FastBall prefab into the "Fast Ball Prefab" field and the SlowBall prefab into the "Slow Ball Prefab" field.
+
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/07.png>)
+
+Click the Play button at the top of the Unity Editor to run the game. You should see a fast ball instantiated in the scene. You can stop the game and change the prefab that is instantiated in the `GameManager` script to the slow ball prefab to see a slow ball instantiated in the scene.
+
+> Resource: [Unity Manual: Instantiating Prefabs](https://docs.unity3d.com/Manual/InstantiatingPrefabs.html)
 
 ---
 
