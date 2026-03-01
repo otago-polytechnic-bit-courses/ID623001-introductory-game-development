@@ -296,5 +296,3 @@ Click the Play button at the top of the Unity Editor to run the game. You should
 Clean-up the Prefabs folder by creating subfolders for the different types of prefabs. For example, you can create a "Balls" subfolder for the ball prefabs, a "Paddles" subfolder for the paddle prefabs, and a "Bricks" subfolder for the brick prefabs. Move the prefabs into their respective subfolders to keep your project organised.
 
 ![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/12.png>)
-
----
