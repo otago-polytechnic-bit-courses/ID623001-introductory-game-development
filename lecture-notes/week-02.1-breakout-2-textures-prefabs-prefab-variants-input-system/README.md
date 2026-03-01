@@ -267,7 +267,7 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
-Create two new prefab variants for the Paddle GameObject with different sprites and speeds. For example, a red and fast paddle, and a blue and slow paddle. Instantiate one of the new prefab variants in the scene using the `GameManager` script instead of the original Paddle prefab.
+Create two new prefab variants for the Paddle GameObject with different sprites and speeds. For example, a red and fast paddle, and a blue and slow paddle. Instantiate one of the new prefab variants in the scene using the `GameManager` script.
 
 ---
 
