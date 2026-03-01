@@ -6,7 +6,8 @@
 
 | Section    | Link                                                                                   |
 | ---------- | -------------------------------------------------------------------------------------- |
-| Next Class | [Week 02](../week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
+| Previous Class | [Week 01.1](../week-01.1-github-unity-basic-game-mathematics/README.md) |
+| Next Class | [Week 02.1](../week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
 
 ---
 
@@ -52,7 +53,9 @@ public class BallController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float minHorizontalVelocity = 0.3f;
 
+    [Header("Physics Settings")]
     private Rigidbody2D rb;
 
     private void Awake()
@@ -70,7 +73,15 @@ public class BallController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = rb.linearVelocity.normalized * speed; // Maintain a constant speed
+        Vector2 velocity = rb.linearVelocity.normalized * speed; // Maintain a constant speed
+
+        if (Mathf.Abs(velocity.x) < minHorizontalVelocity) // Prevent the ball from moving vertically
+        {
+            velocity.x = minHorizontalVelocity * Mathf.Sign(velocity.x == 0 ? 1 : velocity.x);
+            velocity = velocity.normalized * speed;
+        }
+
+        rb.linearVelocity = velocity;
     }
 }
 ```
