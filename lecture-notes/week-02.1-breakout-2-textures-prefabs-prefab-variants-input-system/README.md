@@ -273,10 +273,14 @@ Create two new prefab variants for the Paddle GameObject with different sprites 
 
 ### Task 2
 
-Create a new input action for starting the game. For example, you can create a "Start" action that is triggered when the player presses the Space key.
+Create the following input actions:
+
+- "Start Game" action that is triggered by the Space key. When this action is triggered, it should instantiate the ball prefab and start the game.
+- "Pause Game" action that is triggered by the P key. When this action is triggered, it should pause the game by setting `Time.timeScale` to 0.
+- "Resume Game" action that is triggered by the R key. When this action is triggered, it should resume the game by setting `Time.timeScale` back to 1.
 
 ---
 
-### Task 3
+### Task 4
 
 Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create a new prefab for the bricks and instantiate multiple instances of the brick prefab to create the rows of bricks.
