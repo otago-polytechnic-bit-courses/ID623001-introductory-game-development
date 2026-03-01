@@ -284,3 +284,17 @@ Create the following input actions:
 ### Task 3
 
 Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create prefab variants for the bricks to easily create multiple rows with different sprites. We will cover collision detection and destroying the bricks in the next class.
+
+Click the Play button at the top of the Unity Editor to run the game. You should see the bricks at the top of the screen.
+
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/11.png>)
+
+---
+
+### Task 4
+
+Clean-up the Prefabs folder by creating subfolders for the different types of prefabs. For example, you can create a "Balls" subfolder for the ball prefabs, a "Paddles" subfolder for the paddle prefabs, and a "Bricks" subfolder for the brick prefabs. Move the prefabs into their respective subfolders to keep your project organised.
+
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/12.png>)
+
+---
