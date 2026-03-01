@@ -283,4 +283,4 @@ Create the following input actions:
 
 ### Task 3
 
-Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create prefab variants for the bricks to easily create multiple rows with different sprites. 
+Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create prefab variants for the bricks to easily create multiple rows with different sprites. We will cover collision detection and destroying the bricks in the next class.
