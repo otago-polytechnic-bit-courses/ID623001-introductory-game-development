@@ -94,7 +94,7 @@ In a MonoBehaviour script, there are several special methods that are called by 
 - `Update()`: Called once per frame. This is used for regular updates, such as checking for input or moving objects. The frequency of this method depends on the frame rate of the game.
 - `FixedUpdate()`: Called at a fixed time interval and is used for physics updates. It is called multiple times per second, depending on the physics settings of the project.
 
-> Resource: [Unity - MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
+> Resource: [Unity Manual: MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
 
 ---
 
@@ -104,7 +104,7 @@ In a MonoBehaviour script, there are several special methods that are called by 
 - `[Header("Header Name")]`: This attribute adds a header above the field in the Unity Inspector, which can be used to group related fields together for better organisation and readability.
 - `[RequireComponent(typeof(ComponentType))]`: This attribute ensures that the specified component is added to the GameObject when the script is attached. If the component is not already present, Unity will automatically add it. This is useful for ensuring that necessary components are always present on a GameObject.
 
-> Resource: [Unity - Attributes](https://docs.unity3d.com/Manual/Attributes.html)
+> Resource: [Unity Manual: Attributes](https://docs.unity3d.com/Manual/Attributes.html)
 
 ---
 
@@ -141,11 +141,15 @@ The `Start()` method has two concerns: setting the initial direction of the ball
 
 Create a variable in the `BallController` script to represent the size of the ball. In the `Start()` method, set the ball's scale to a random value. You can do this by setting the `transform.localScale` property of the Ball GameObject to a new `Vector2` with the random size for both the x and y axes.
 
+> Resource: [Unity Manual: Transform.localScale](https://docs.unity3d.com/ScriptReference/Transform-localScale.html)
+
 ---
 
 ### Task 3
 
 Change the background color of the scene to a color of your choice. You can do this by selecting the "Main Camera" GameObject in the Hierarchy panel and changing the "Background" colour in the Inspector panel.
+
+> Resource: [Unity Manual: Camera](https://docs.unity3d.com/Manual/class-Camera.html
 
 ---
 
@@ -153,8 +157,12 @@ Change the background color of the scene to a color of your choice. You can do t
 
 Currently, the Ball GameObject's position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the Ball GameObject's position initial 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates.
 
+> Resource: [Unity Manual: Camera.ScreenToWorldPoint](https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html)
+
 ---
 
 ### Task 5
 
 Currently, the Ball GameObject's colour is white. In the `Start()` method of the `BallController` script, set the ball's colour to a random colour each time the game starts. You can do this by accessing the `SpriteRenderer` component of the Ball GameObject and setting its `color` property to a new `Color` with random RGB values. Ensure there is contrast between the ball and the background colour for better visibility.
+
+> Resource: [Unity Manual: SpriteRenderer](https://docs.unity3d.com/Manual/class-SpriteRenderer.html)
