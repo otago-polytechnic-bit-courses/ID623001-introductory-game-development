@@ -242,6 +242,41 @@ public class PaddleController : MonoBehaviour
 
 ---
 
+## Tags
+
+Tags are a way to categorise GameObjects in Unity. They allow you to assign a label to a GameObject, which can be used to identify and group GameObjects in your scripts. For example, you can assign the "Ball" tag to the Ball GameObject, and then use that tag to identify the ball in your scripts.
+
+1. In the Unity Editor, go to "Edit > Project Settings > Tags and Layers". In the "Tags" section, click the "+" button to add a new tag. Name the new tag "Ball".
+2. In the Hierarchy panel, select the Ball GameObject. In the Inspector panel, set the "Tag" field to "Ball".
+
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/10.png>)
+
+---
+
+## Triggers
+
+1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Square". Name the GameObject "Brick".
+2. Add a BoxCollider2D component to the Brick GameObject. 
+3. Create a new script called "BrickController". Open the script in your code editor and add the following code:
+
+```csharp
+using UnityEngine;
+
+public class BrickController : MonoBehaviour
+{
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball")) // Destroy the brick if it collides with the ball
+            Destroy(gameObject);
+    }
+}
+``` 
+
+4. Drag and drop the `BrickController` script from the Project panel onto the Brick GameObject in the Hierarchy panel.
+5. Click the Play button at the top of the Unity Editor to run the game. You should see that when the ball collides with the brick, the brick is destroyed.
+
+---
+
 ## Exercises
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
@@ -283,11 +318,13 @@ Create the following input actions:
 
 ### Task 3
 
-Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create prefab variants for the bricks to easily create multiple rows with different sprites. We will cover collision detection and destroying the bricks in the next class.
+Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create prefab variants for the bricks to easily create multiple rows with different sprites.
 
-Click the Play button at the top of the Unity Editor to run the game. You should see the bricks at the top of the screen.
+You may need to do some refactoring when it comes to file structure. For example, the course lecturer's solution has a `Brick` script for collision detection and a `BrickController` script for spawning the bricks. You can choose to do it differently if you want.
 
-![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/11.png>)
+Click the Play button at the top of the Unity Editor to run the game. You should see the bricks at the top of the screen. 
+
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/12.png>)
 
 ---
 
@@ -295,4 +332,4 @@ Click the Play button at the top of the Unity Editor to run the game. You should
 
 Clean-up the Prefabs folder by creating subfolders for the different types of prefabs. For example, you can create a "Balls" subfolder for the ball prefabs, a "Paddles" subfolder for the paddle prefabs, and a "Bricks" subfolder for the brick prefabs. Move the prefabs into their respective subfolders to keep your project organised.
 
-![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/12.png>)
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/13.png>)
