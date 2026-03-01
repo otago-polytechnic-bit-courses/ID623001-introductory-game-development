@@ -21,7 +21,7 @@ using UnityEngine;
 
 public class WallController : MonoBehaviour
 {
-    [Header("Wall Settings")]    
+    [Header("Wall Settings")]
     [SerializeField] private float wallThickness = 0.5f;
 
     [Header("Physics Settings")]
@@ -123,7 +123,7 @@ In the Project panel, create a new folder called "Prefabs". Drag and drop the Ba
 
 Prefab variants are a special type of prefab that allows you to create variations of a prefab while still maintaining a connection to the original prefab. This means that if you make changes to the original prefab, those changes will be reflected in all of its variants.
 
-To create a prefab variant, right-click on the Ball prefab in the Prefabs folder and select "Create > Prefab Variant". Name the new prefab "FastBall". 
+To create a prefab variant, right-click on the Ball prefab in the Prefabs folder and select "Create > Prefab Variant". Name the new prefab "FastBall".
 
 ![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/05.png>)
 
@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
         currentBall = Instantiate(slowBallPrefab, Vector2.zero, Quaternion.identity);
     }
 }
-``` 
+```
 
 In the Hierarchy panel, create an empty GameObject and name it "GameManager". Drag and drop the `GameManager` script from the Project panel onto the GameManager GameObject in the Hierarchy panel. In the Inspector panel for the GameManager GameObject, you should see a new component called "Game Manager" with two fields: "Fast Ball Prefab" and "Slow Ball Prefab". Drag and drop the FastBall prefab into the "Fast Ball Prefab" field and the SlowBall prefab into the "Slow Ball Prefab" field.
 
@@ -170,8 +170,8 @@ Click the Play button at the top of the Unity Editor to run the game. You should
 ## Paddle Game Object
 
 1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Square". Name the GameObject "Paddle".
-2. Change the Paddle GameObject's scale and position. It is recommended you do it programmatically in a script, but for now, you can do it manually in the Inspector panel. 
-3. Do not forget to add a BoxCollider2D component and a Rigidbody2D component. Think about what properties you need to set for the Rigidbody2D component. 
+2. Change the Paddle GameObject's scale and position. It is recommended you do it programmatically in a script, but for now, you can do it manually in the Inspector panel.
+3. Do not forget to add a BoxCollider2D component and a Rigidbody2D component. Think about what properties you need to set for the Rigidbody2D component.
 
 ---
 
@@ -179,11 +179,11 @@ Click the Play button at the top of the Unity Editor to run the game. You should
 
 The Input System is a package in Unity that provides a new way to handle input from various devices, such as keyboards, mice, gamepads and touchscreens. It offers a more flexible and powerful way to manage input compared to the old Input Manager. It allows you to define input actions and bind them to specific controls, making it easier to handle complex input scenarios.
 
-1. In the Assets folder, double-click the InputSystem_Actions file to open the Input Actions editor. In the editor, you can define input actions and bind them to specific controls. 
+1. In the Assets folder, double-click the InputSystem_Actions file to open the Input Actions editor. In the editor, you can define input actions and bind them to specific controls.
 2. Create a new action map called "Paddle". You should see two default action maps called "Player" and "UI". Feel free to delete these action maps if you do not need them.
 3. In the Paddle action map, create a new action called "Move". Set the action type to "Value" and the control type to "Axis".
 4. In the "Move" action, add a 1D positive/negative binding. Set the positive binding to the D key and the negative binding to the A key.
-5. Save the asset and close the Input Actions editor. 
+5. Save the asset and close the Input Actions editor.
 
 ![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/08.png>)
 
@@ -232,7 +232,7 @@ public class PaddleController : MonoBehaviour
 ```
 
 7. Drag and drop the `PaddleController` script from the Project panel onto the Paddle GameObject in the Hierarchy panel.
-9. In the Inspector panel for the Paddle GameObject, add a new component called "Player Input". Set the "Behavior" field to "Invoke Unity Events". Expand the "Events > Paddle" section. You should see the "Move" action that you created in the Input Actions editor. Click the "+" button to add a new event listener for the "Move" action. Drag and drop the Paddle GameObject from the Hierarchy panel into the object field of the new event listener. In the function dropdown, select "PaddleController > OnMove".
+8. In the Inspector panel for the Paddle GameObject, add a new component called "Player Input". Set the "Behavior" field to "Invoke Unity Events". Expand the "Events > Paddle" section. You should see the "Move" action that you created in the Input Actions editor. Click the "+" button to add a new event listener for the "Move" action. Drag and drop the Paddle GameObject from the Hierarchy panel into the object field of the new event listener. In the function dropdown, select "PaddleController > OnMove".
 
 ![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/10.png>)
 
@@ -267,18 +267,16 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
+Create two new prefab variants for the Paddle GameObject with different sprites and speeds. For example, a red and fast paddle, and a blue and slow paddle. Instantiate one of the new prefab variants in the scene using the `GameManager` script instead of the original Paddle prefab.
+
 ---
 
 ### Task 2
+
+Create a new input action for starting the game. For example, you can create a "Start" action that is triggered when the player presses the Space key.
 
 ---
 
 ### Task 3
 
----
-
-### Task 4
-
----
-
-### Task 5
+Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create a new prefab for the bricks and instantiate multiple instances of the brick prefab to create the rows of bricks.
