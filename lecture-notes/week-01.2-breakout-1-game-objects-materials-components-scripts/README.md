@@ -62,18 +62,15 @@ public class BallController : MonoBehaviour
 
     private void Start()
     {
-        // Set the initial direction of the ball to a random direction
         Vector2 direction = new Vector2(
-            Random.Range(-1f, 1f), 1f).normalized; // Normalise to ensure the direction has a magnitude of 1
+            Random.Range(-1f, 1f), 1f).normalized; // Random upward direction
 
-        // Set the initial velocity of the ball based on the direction and speed
-        rb.linearVelocity = direction * speed;
+        rb.linearVelocity = direction * speed; 
     }
 
     private void FixedUpdate()
     {
-        // Ensure the ball maintains a constant speed by normalising the velocity and multiplying by the speed
-        rb.linearVelocity = rb.linearVelocity.normalized * speed;
+        rb.linearVelocity = rb.linearVelocity.normalized * speed; // Maintain a constant speed
     }
 }
 ```

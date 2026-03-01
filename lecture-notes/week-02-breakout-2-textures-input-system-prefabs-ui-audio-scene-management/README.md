@@ -28,11 +28,57 @@
 
 ### Kenny's Assets
 
-> Resource: [Kenney's Assets](https://kenney.nl/assets) 
+> Resource: [Kenney's Assets](https://kenney.nl/assets)
 
 ---
 
-## Wall Game Objects
+## Walls Game Objects
+
+1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Rectangle". Name the GameObject "Walls". This will be the parent GameObject for all the wall GameObjects in the scene.
+2. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "WallsController". Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. Add the following code:
+
+```csharp
+using UnityEngine;
+
+public class WallController : MonoBehaviour
+{
+    [SerializeField] private float wallThickness = 0.5f;
+    [SerializeField] private PhysicsMaterial2D ballBounceMaterial;
+
+    private void Start()
+    {
+        Camera camera = Camera.main;
+
+        float height = camera.orthographicSize * 2f;
+        float width = height * camera.aspect;
+
+        CreateWall("Left Wall",
+            new Vector2(-width / 2f - wallThickness / 2f, 0f),
+            new Vector2(wallThickness, height));
+
+        // TODO: Create the right, top and bottom walls
+    }
+
+    private void CreateWall(string name, Vector2 position, Vector2 size)
+    {
+        GameObject wall = new GameObject(name); // Child of the Walls GameObject
+        wall.transform.parent = transform;
+        wall.transform.position = position;
+
+        BoxCollider2D collider = wall.AddComponent<BoxCollider2D>();
+        collider.size = size;
+
+        if (ballBounceMaterial != null)
+        {
+            collider.sharedMaterial = ballBounceMaterial;
+        }
+    }
+}
+```
+
+3. Drag and drop the `WallsController` script from the Project panel onto the Walls GameObject in the Hierarchy panel.
+4. In the Inspector panel for the Walls GameObject, you should see a new component called "Wall Controller" with a "Wall Thickness" field and a "Ball Bounce Material" field. Drag and drop the "BallBounce" physics material from the Materials folder into the "Ball Bounce Material" field.
+5. Click the Play button at the top of the Unity Editor to run the game. In the Hierarchy panel, you should see that the Walls GameObject has a child GameObject called "Left Wall" with a BoxCollider2D component. 
 
 ---
 
