@@ -281,6 +281,6 @@ Create the following input actions:
 
 ---
 
-### Task 4
+### Task 3
 
 Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create a new prefab for the bricks and instantiate multiple instances of the brick prefab to create the rows of bricks.
