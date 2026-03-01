@@ -191,7 +191,7 @@ The Input System is a package in Unity that provides a new way to handle input f
 
 ![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/09.png>)
 
-6. If you have not already, create a new script called "PaddleController". Open the script in your code editor and add the following code:
+7. If you have not already, create a new script called "PaddleController". Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -231,8 +231,8 @@ public class PaddleController : MonoBehaviour
 }
 ```
 
-7. Drag and drop the `PaddleController` script from the Project panel onto the Paddle GameObject in the Hierarchy panel.
-8. In the Inspector panel for the Paddle GameObject, add a new component called "Player Input". Set the "Behavior" field to "Invoke Unity Events". Expand the "Events > Paddle" section. You should see the "Move" action that you created in the Input Actions editor. Click the "+" button to add a new event listener for the "Move" action. Drag and drop the Paddle GameObject from the Hierarchy panel into the object field of the new event listener. In the function dropdown, select "PaddleController > OnMove".
+8. Drag and drop the `PaddleController` script from the Project panel onto the Paddle GameObject in the Hierarchy panel.
+9. In the Inspector panel for the Paddle GameObject, add a new component called "Player Input". Set the "Behavior" field to "Invoke Unity Events". Expand the "Events > Paddle" section. You should see the "Move" action that you created in the Input Actions editor. Click the "+" button to add a new event listener for the "Move" action. Drag and drop the Paddle GameObject from the Hierarchy panel into the object field of the new event listener. In the function dropdown, select "PaddleController > OnMove".
 
 ![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/10.png>)
 
