@@ -16,6 +16,20 @@
 
 ### Textures
 
+> Resource: [Unity Manual: Textures](https://docs.unity3d.com/Manual/class-Texture.html)
+
+---
+
+### Sprite Atlas
+
+> Resource: [Unity Manual: Sprite Atlas](https://docs.unity3d.com/Manual/class-SpriteAtlas.html)
+
+---
+
+### Kenny's Assets
+
+> Resource: [Kenney's Assets](https://kenney.nl/assets) 
+
 ---
 
 ## Wall Game Objects
@@ -28,6 +42,8 @@
 
 ### Input System
 
+> Resource: [Unity Manual: Input System](https://docs.unity3d.com/Manual/com.unity.inputsystem.html)
+
 ---
 
 ## Bricks Game Objects
@@ -36,13 +52,35 @@
 
 ### Prefabs
 
+> Resource: [Unity Manual: Prefabs](https://docs.unity3d.com/Manual/Prefabs.html)
+
+---
+
+### Prefab Variants
+
+> Resource: [Unity Manual: Prefab Variants](https://docs.unity3d.com/Manual/PrefabVariants.html)
+
 ---
 
 ## UI and Audio
 
 ---
 
+### UI
+
+> Resource: [Unity Manual: UI](https://docs.unity3d.com/Manual/UISystem.html)
+
+---
+
+### Audio
+
+> Resource: [Unity Manual: Audio](https://docs.unity3d.com/Manual/Audio.html)
+
+---
+
 ## Scene Management
+
+> Resource: [Unity Manual: Scene Management](https://docs.unity3d.com/Manual/SceneManagement.html)
 
 ---
 

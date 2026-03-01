@@ -133,13 +133,13 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
-The `Start()` method has two concerns: setting the initial direction of the ball and setting the initial speed of the ball. Refactor the `Start()` method to separate these concerns into two methods: `InitialDirection()` and `InitialSpeed()`. The `Start()` method should call these two methods to set up the ball's initial movement.
+The `Start()` method has two concerns: setting the initial direction of the ball and setting the initial speed of the ball. Refactor the `Start()` method to separate these concerns into two methods.
 
 ---
 
 ### Task 2
 
-Create a variable called `size` in the `BallController` script to represent the size of the ball. In the `Start()` method, set the ball's scale to a random value between 0.5 and 1 using this variable. You can do this by setting the `transform.localScale` property of the Ball GameObject to a new `Vector2` with the random size for both the x and y axes.
+Create a variable in the `BallController` script to represent the size of the ball. In the `Start()` method, set the ball's scale to a random value. You can do this by setting the `transform.localScale` property of the Ball GameObject to a new `Vector2` with the random size for both the x and y axes.
 
 ---
 
@@ -151,10 +151,10 @@ Change the background color of the scene to a color of your choice. You can do t
 
 ### Task 4
 
-Currently, the Ball GameObject position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the ball's initial position to 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates.
+Currently, the Ball GameObject's position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the Ball GameObject's position initial 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates.
 
 ---
 
 ### Task 5
 
-Currently, the Ball GameObject colour is white. In the `Start()` method of the `BallController` script, set the ball's colour to a random colour each time the game starts. You can do this by accessing the `SpriteRenderer` component of the Ball GameObject and setting its `color` property to a new `Color` with random RGB values. Ensure there is contrast between the ball and the background colour for better visibility.
+Currently, the Ball GameObject's colour is white. In the `Start()` method of the `BallController` script, set the ball's colour to a random colour each time the game starts. You can do this by accessing the `SpriteRenderer` component of the Ball GameObject and setting its `color` property to a new `Color` with random RGB values. Ensure there is contrast between the ball and the background colour for better visibility.
