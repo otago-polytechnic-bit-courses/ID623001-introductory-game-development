@@ -10,32 +10,10 @@
 
 ---
 
-## Ball Game Object
-
----
-
-### Textures
-
-> Resource: [Unity Manual: Textures](https://docs.unity3d.com/Manual/class-Texture.html)
-
----
-
-### Sprite Atlas
-
-> Resource: [Unity Manual: Sprite Atlas](https://docs.unity3d.com/Manual/class-SpriteAtlas.html)
-
----
-
-### Kenny's Assets
-
-> Resource: [Kenney's Assets](https://kenney.nl/assets)
-
----
-
 ## Walls Game Objects
 
 1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Rectangle". Name the GameObject "Walls". This will be the parent GameObject for all the wall GameObjects in the scene.
-2. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "WallsController". Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. Add the following code:
+2. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "WallController". Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. Add the following code:
 
 ```csharp
 using UnityEngine;
@@ -76,13 +54,57 @@ public class WallController : MonoBehaviour
 }
 ```
 
-3. Drag and drop the `WallsController` script from the Project panel onto the Walls GameObject in the Hierarchy panel.
+3. Drag and drop the `WallController` script from the Project panel onto the Walls GameObject in the Hierarchy panel.
 4. In the Inspector panel for the Walls GameObject, you should see a new component called "Wall Controller" with a "Wall Thickness" field and a "Ball Bounce Material" field. Drag and drop the "BallBounce" physics material from the Materials folder into the "Ball Bounce Material" field.
+
+![](<../../resources (ignore)/img/week-02-breakout-2-textures-input-system-prefabs-ui-audio-scene-management/00.png>)
+
 5. Click the Play button at the top of the Unity Editor to run the game. In the Hierarchy panel, you should see that the Walls GameObject has a child GameObject called "Left Wall" with a BoxCollider2D component. 
+
+![](<../../resources (ignore)/img/week-02-breakout-2-textures-input-system-prefabs-ui-audio-scene-management/01.png>)
+
+---
+
+## Kenny's Assets
+
+Kenny's Assets is a collection of free game assets that you can use in your projects. It includes a wide variety of textures, sprites, audio files and more. 
+
+In the week-02-breakout-2-textures-input-system-prefabs-ui-audio-scene-management folder, you will find a subfolder called "Sprites". This folder contains a collection of textures that you can use to replace the default sprites for the Ball, Paddle and Bricks GameObjects.
+
+> Resource: [Kenney's Assets](https://kenney.nl/assets)
+
+---
+
+## Textures
+
+Textures are images that can be applied to GameObjects in Unity. They can be used to add colour, detail and realism to your game. In Unity, textures are represented by the `Texture` class. There are different types of textures, such as `Texture2D`, `Texture3D` and `Cubemap`, each with its own specific use cases.
+
+1. Copy and paste the "Sprites" folder from the week-02-breakout-2-textures-input-system-prefabs-ui-audio-scene-management folder into the Assets folder of your Unity project.
+
+2. In the "Sprites" folder, you will find a texture called "ballBlue.png". Set the following:
+    - Sprite Mode: Single
+    - Pixels Per Unit: 22
+    - Filter Mode: Point (no filter)
+    - Max Size: 32
+    - Format: RGBA 32 bit
+
+Click the Apply button to save the changes.
+
+![](<../../resources (ignore)/img/week-02-breakout-2-textures-input-system-prefabs-ui-audio-scene-management/02.png>)
+
+3. In the Hierarchy panel, select the Ball GameObject. Drag and drop the "ballBlue" sprite from the Sprites folder in the Project panel onto the Sprite Renderer component of the Ball GameObject in the Inspector panel. 
+4. Click the Play button at the top of the Unity Editor to run the game.
+
+![](<../../resources (ignore)/img/week-02-breakout-2-textures-input-system-prefabs-ui-audio-scene-management/03.png>)
+
+> Resource: [Unity Manual: Textures](https://docs.unity3d.com/Manual/class-Texture.html)
 
 ---
 
 ## Paddle Game Object
+
+1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Square". Name the GameObject "Paddle".
+2. 
 
 ---
 
