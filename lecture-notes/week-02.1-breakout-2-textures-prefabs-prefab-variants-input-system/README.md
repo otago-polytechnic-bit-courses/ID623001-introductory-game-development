@@ -253,7 +253,9 @@ Tags are a way to categorise GameObjects in Unity. They allow you to assign a la
 
 ---
 
-## Triggers
+## Collision Detection
+
+Collision detection is the process of detecting when two or more GameObjects in a game collide with each other. In Unity, collision detection is handled by the physics engine. When two GameObjects with colliders come into contact with each other, the physics engine detects the collision and can trigger events or apply forces based on the collision. For example, you can use collision detection to destroy a brick when the ball collides with it.
 
 1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Square". Name the GameObject "Brick".
 2. Add a BoxCollider2D component to the Brick GameObject. 
