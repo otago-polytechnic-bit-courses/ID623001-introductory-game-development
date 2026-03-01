@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        currentBall = Instantiate(fastBallPrefab, Vector2.zero, Quaternion.identity);
+        currentBall = Instantiate(slowBallPrefab, Vector2.zero, Quaternion.identity);
     }
 }
 ``` 
@@ -161,7 +161,7 @@ In the Hierarchy panel, create an empty GameObject and name it "GameManager". Dr
 
 ![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/07.png>)
 
-Click the Play button at the top of the Unity Editor to run the game. You should see a fast ball instantiated in the scene. You can stop the game and change the prefab that is instantiated in the `GameManager` script to the slow ball prefab to see a slow ball instantiated in the scene.
+Click the Play button at the top of the Unity Editor to run the game. You should see a slow ball instantiated in the scene. You can stop the game and change the prefab that is instantiated in the `GameManager` script to the fast ball prefab to see a fast ball instantiated in the scene.
 
 > Resource: [Unity Manual: Instantiating Prefabs](https://docs.unity3d.com/Manual/InstantiatingPrefabs.html)
 
@@ -170,17 +170,75 @@ Click the Play button at the top of the Unity Editor to run the game. You should
 ## Paddle Game Object
 
 1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Square". Name the GameObject "Paddle".
-2.
+2. Change the Paddle GameObject's scale and position. It is recommended you do it programmatically in a script, but for now, you can do it manually in the Inspector panel. 
+3. Do not forget to add a BoxCollider2D component and a Rigidbody2D component. Think about what properties you need to set for the Rigidbody2D component. 
 
 ---
 
 ### Input System
 
+The Input System is a package in Unity that provides a new way to handle input from various devices, such as keyboards, mice, gamepads and touchscreens. It offers a more flexible and powerful way to manage input compared to the old Input Manager. It allows you to define input actions and bind them to specific controls, making it easier to handle complex input scenarios.
+
+1. In the Assets folder, double-click the InputSystem_Actions file to open the Input Actions editor. In the editor, you can define input actions and bind them to specific controls. 
+2. Create a new action map called "Paddle". You should see two default action maps called "Player" and "UI". Feel free to delete these action maps if you do not need them.
+3. In the Paddle action map, create a new action called "Move". Set the action type to "Value" and the control type to "Axis".
+4. In the "Move" action, add a 1D positive/negative binding. Set the positive binding to the D key and the negative binding to the A key.
+5. Save the asset and close the Input Actions editor. 
+
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/08.png>)
+
+6. In the Project panel, click on the InputSystem_Actions asset to select it. In the Inspector panel, click the "Generate C# Class" button. This will generate a C# script that you can use to access the input actions defined in the Input Actions editor.
+
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/09.png>)
+
+6. If you have not already, create a new script called "PaddleController". Open the script in your code editor and add the following code:
+
+```csharp
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class PaddleController : MonoBehaviour
+{
+    [Header("Paddle Settings")]
+    [SerializeField] private float speed = 5f;
+
+    private Rigidbody2D rb;
+    private float moveInput;
+    private float screenHalfWidth;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        // TODO: Set scale and position
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<float>();
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 position = rb.position;
+        position.x += moveInput * speed * Time.fixedDeltaTime;
+        rb.MovePosition(position);
+    }
+}
+```
+
+7. Drag and drop the `PaddleController` script from the Project panel onto the Paddle GameObject in the Hierarchy panel.
+9. In the Inspector panel for the Paddle GameObject, add a new component called "Player Input". Set the "Behavior" field to "Invoke Unity Events". Expand the "Events > Paddle" section. You should see the "Move" action that you created in the Input Actions editor. Click the "+" button to add a new event listener for the "Move" action. Drag and drop the Paddle GameObject from the Hierarchy panel into the object field of the new event listener. In the function dropdown, select "PaddleController > OnMove".
+
+![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/10.png>)
+
+10. Click the Play button at the top of the Unity Editor to run the game. You should be able to move the paddle left and right using the A and D keys.
+
 > Resource: [Unity Manual: Input System](https://docs.unity3d.com/Manual/com.unity.inputsystem.html)
-
----
-
-## Bricks Game Objects
 
 ---
 
