@@ -163,7 +163,7 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     // Omitted for brevity
-    
+
     [Header("References")]
     private UIManager uiManager;
 
@@ -185,7 +185,7 @@ public class Brick : MonoBehaviour
 }
 ```
 
-7. Click the Play button at the top of the Unity Editor to run the game. When the ball collides with a brick, the score should increase by the amount of points. 
+7. Click the Play button at the top of the Unity Editor to run the game. When the ball collides with a brick, the score should increase by the amount of points.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/05.png>)
 
@@ -216,28 +216,29 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
-Create three new BrickData Scriptable Objects for different types of bricks, e.g. RedBrickData, GreenBrickData, YellowBrickData and set their sprites to different brick sprites from the Sprites folder. Update the BrickController to use these new BrickData Scriptable Objects to create a more varied grid of bricks in the scene.
+Create a new BrickData Scriptable Object for each of the different types of bricks in the game. For example, you can create:
+
+- Red brick with the "element_red_rectangle" sprite
+- Green brick with the "element_green_rectangle" sprite
+- Yellow brick with the "element_yellow_rectangle" sprite
 
 ---
 
 ### Task 2
 
-Update the `BrickData` Scriptable Object script to include two new fields for point value and hit points. The point value field will represent how many points the player gets for destroying the brick, and the hit points field will represent how many times the brick needs to be hit before it is destroyed. Update the `Brick` script to use these new fields to determine how many points to add to the score when a brick is hit and when it is destroyed. 
+Update the `BrickData` script to include:
+
+- Point value field that represents how many points the player gets for destroying the brick
+- Hit points field that represents how many times the brick needs to be hit before it is destroyed
+
+Update the `Brick` script to use these new fields.
 
 ---
 
 ### Task 3
 
-Add a new UI element to display the player's remaining lives. When the ball falls below the paddle and is destroyed, decrease the player's lives by one and update the UI element to reflect the new number of lives. 
+Add new UI elements for the following:
 
----
-
-### Task 4
-
-Add a new UI element to display a "Game Over" message when the player runs out of lives. When the player's lives reach zero, display the "Game Over" message and stop the game from running.
-
----
-
-### Task 5
-
-Add a new UI element to display a "You Win!" message when the player destroys all the bricks. When there are no more bricks in the scene, display the "You Win!" message and stop the game from running.
+- Lives. Set the intial value to 3 and decrease it by 1 each time the ball collides with the bottom of the screen.
+- Game over message when the player runs out of lives
+- Win message when the player destroys all the bricks. Include the player's score in the win message
