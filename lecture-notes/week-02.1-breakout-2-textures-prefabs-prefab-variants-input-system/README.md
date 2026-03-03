@@ -1,13 +1,13 @@
-# Week 02
+# Week 02.1
 
 ---
 
 ## Important Links
 
-| Section        | Link                                                                                     |
-| -------------- | ---------------------------------------------------------------------------------------- |
-| Previous Class | [Week 01.1](../week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
-| Next Class     | [Week 02.2]()                                                                            |
+| Section        | Link                                                                                                                |
+| -------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Previous Class | [Week 01.2](lecture-notes/week-01.2-breakout-1-game-objects-materials-components-scripts/README.md)                 |
+| Next Class     | [Week 02.2](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/README.md) |
 
 ---
 
@@ -137,7 +137,9 @@ In the Inspector panel, change the "Speed" field of the Ball Controller componen
 
 ## Instantiating Prefabs
 
-In the Hierarchy panel, delete the Ball GameObject. We will instantiate the Ball prefab at runtime using a script. In the Scripts folder, create a new script called "GameManager". Open the script in your code editor and add the following code:
+In the Hierarchy panel, delete the Ball GameObject. We will instantiate the Ball prefab at runtime using a script.
+
+In the Scripts folder, create a new script called "GameManager". Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -258,13 +260,13 @@ Tags are a way to categorise GameObjects in Unity. They allow you to assign a la
 Collision detection is the process of detecting when two or more GameObjects in a game collide with each other. In Unity, collision detection is handled by the physics engine. When two GameObjects with colliders come into contact with each other, the physics engine detects the collision and can trigger events or apply forces based on the collision. For example, you can use collision detection to destroy a brick when the ball collides with it.
 
 1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Square". Name the GameObject "Brick".
-2. Add a BoxCollider2D component to the Brick GameObject. 
-3. Create a new script called "BrickController". Open the script in your code editor and add the following code:
+2. Add a BoxCollider2D component to the Brick GameObject.
+3. Create a new script called "Brick". Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
 
-public class BrickController : MonoBehaviour
+public class Brick : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -272,10 +274,133 @@ public class BrickController : MonoBehaviour
             Destroy(gameObject);
     }
 }
-``` 
+```
 
-4. Drag and drop the `BrickController` script from the Project panel onto the Brick GameObject in the Hierarchy panel.
+4. Drag and drop the `Brick` script from the Project panel onto the Brick GameObject in the Hierarchy panel.
 5. Click the Play button at the top of the Unity Editor to run the game. You should see that when the ball collides with the brick, the brick is destroyed.
+6. Drag and drop the Brick GameObject from the Hierarchy panel into the Prefabs folder in the Project panel to create a prefab of the Brick GameObject. You can then delete the Brick GameObject from the Hierarchy panel.
+
+---
+
+## Scriptable Objects
+
+A Scriptable Object is a data container that allows you to store large amounts of shared data independent from script instances. They are useful for storing data that needs to be accessed by multiple objects or scenes.
+
+1. In the Scripts folder, right-click and select "Create > Scriptable Object". Name it "BrickData". Double-click the script to open it in your code editor and add the following code:
+
+```csharp
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "BrickData", menuName = "Scriptable Objects/BrickData")]
+public class BrickData : ScriptableObject
+{
+    public Sprite sprite;
+}
+```
+
+2. Attach the BrickData script to the Brick prefab.
+
+3. In the Assets folder, create a new folder called "ScriptableObjects" and a new subfolder called "Brick". In the Brick folder, right-click and select "Create > Scriptable Objects > BrickData". Name the new asset "BlueBrickData". In the Inspector panel for the BlueBrickData asset, set the "Sprite" field to the "element_blue_rectangle" sprite from the Sprites folder.
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/00.png>)
+
+4. Update the Brick script to use the BrickData Scriptable Object to set the sprite of the brick. You can do this by adding a public field for the BrickData Scriptable Object and then setting the sprite of the Sprite Renderer component in the Start method. Here is an example of how you can update the Brick script:
+
+```csharp
+using UnityEngine;
+
+public class Brick : MonoBehaviour
+{
+    private BrickData data;
+
+    public void Initialize(BrickData brickData)
+    {
+        data = brickData;
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.sprite = data.sprite;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+            Destroy(gameObject);
+    }
+}
+```
+
+5. In the Assets folder, create a new script called "BrickController". Open the script in your code editor and add the following code:
+
+```csharp
+using UnityEngine;
+
+public class BrickController : MonoBehaviour
+{
+    [Header("Prefab Settings")]
+    [SerializeField] private GameObject brickPrefab;
+    [SerializeField] private BrickData[] bricks = new BrickData[4];
+
+    [Header("Grid Settings")]
+    [SerializeField] private int bricksPerRow = 8;
+    [SerializeField] private float brickWidth = 1f;
+    [SerializeField] private float brickHeight = 0.5f;
+    [SerializeField] private float padding = 0.1f;
+    [SerializeField] private float topOffset = 2f;
+
+    [Header("References")]
+    [SerializeField] private Transform bricksParent;
+
+    private void Start()
+    {
+        Camera camera = Camera.main;
+
+        if (camera == null)
+        {
+            Debug.LogError("Main Camera not found. Please ensure there is a camera tagged as 'MainCamera' in the scene");
+            return;
+        }
+
+        float screenTop = camera.ScreenToWorldPoint(new Vector2(0, Screen.height)).y;
+
+        float totalWidth = // TODO: Calculate the total width of the grid of bricks based on the number of bricks per row, the width of each brick and the padding between bricks 
+
+        float startX = // TODO: Calculate the starting X position based on the total width and the camera's view
+
+        float startY = // TODO: Calculate the starting Y position based on the top of the screen and the top offset
+
+        for (int row = 0; row < bricks.Length; row++)
+        {
+            for (int col = 0; col < bricksPerRow; col++)
+            {
+                float x = // TODO: Calculate the X position based on the starting X position, the column index, the width of each brick and the padding between bricks
+
+                float y = // TODO: Calculate the Y position based on the starting Y position, the row index, the height of each brick and the padding between bricks
+
+                GameObject brick = Instantiate(brickPrefab, new Vector2(x, y), Quaternion.identity, bricksParent);
+
+                Brick brickScript = brick.GetComponent<Brick>();
+                if (brickScript != null)
+                {
+                    brickScript.Initialize(bricks[row]);
+                }
+            }
+        }
+    }
+}
+```
+
+6. Complete the TODOs above.
+
+7. In the Hierarchy panel, create an empty GameObject and name it "Bricks". Drag and drop the `BrickController` script from the Project panel onto the Bricks GameObject in the Hierarchy panel. In the Inspector panel for the Bricks GameObject, you should see a new component called "Brick Controller" with several fields. Set the "Brick Prefab" field to the Brick prefab. Set the "Bricks" array size to 2 and set each element to a different BrickData Scriptable Object that you have created.
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/01.png>)
+
+8. Click the Play button at the top of the Unity Editor to run the game. You should see a grid of bricks with different sprites based on the BrickData Scriptable Objects that you assigned to each brick.
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/02.png>)
 
 ---
 
@@ -320,18 +445,4 @@ Create the following input actions:
 
 ### Task 3
 
-Create a four rows of bricks at the top of the screen. Each row should have a different sprite. You can create prefab variants for the bricks to easily create multiple rows with different sprites.
-
-You may need to do some refactoring when it comes to file structure. For example, the course lecturer's solution has a `Brick` script for collision detection and a `BrickController` script for spawning the bricks. You can choose to do it differently if you want.
-
-Click the Play button at the top of the Unity Editor to run the game. You should see the bricks at the top of the screen. 
-
-![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/12.png>)
-
----
-
-### Task 4
-
-Clean-up the Prefabs folder by creating subfolders for the different types of prefabs. For example, you can create a "Balls" subfolder for the ball prefabs, a "Paddles" subfolder for the paddle prefabs, and a "Bricks" subfolder for the brick prefabs. Move the prefabs into their respective subfolders to keep your project organised.
-
-![](<../../resources (ignore)/img/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/13.png>)
+Clean-up the Prefabs folder by creating subfolders for the different types of prefabs. For example, you can create a "Balls" subfolder for the ball prefabs and a "Paddles" subfolder for the paddle prefabs. Move the prefabs into their respective subfolders to keep your project organised.
