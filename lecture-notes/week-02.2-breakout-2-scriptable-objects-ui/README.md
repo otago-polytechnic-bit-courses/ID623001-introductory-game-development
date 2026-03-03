@@ -155,6 +155,8 @@ public class UIManager : MonoBehaviour
 
 5. In the Hierarchy panel, create an empty GameObject and name it "UI Manager". Drag and drop the `UIManager` script from the Project panel onto the UI Manager GameObject in the Hierarchy panel. In the Inspector panel for the UI Manager GameObject, you should see a new component called "UI Manager" with a field for "Score Text". Set this field to the TextMeshPro text element that you created earlier.
 
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/04.png>)
+
 6. In the Ball script, add a reference to the UIManager and update the score when the ball collides with a brick. Here is an example of how you can update the Ball script:
 
 ```csharp
