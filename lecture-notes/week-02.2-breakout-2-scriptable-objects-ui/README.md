@@ -107,6 +107,17 @@ public class BrickController : MonoBehaviour
 
                 Brick brickScript = brick.GetComponent<Brick>();
                 brickScript?.Initialise(rowData[row]);
+
+                SpriteRenderer sr = brick.GetComponent<SpriteRenderer>();
+
+                if (sr != null)
+                {
+                    Vector2 spriteSize = sr.bounds.size;
+                    brick.transform.localScale = new Vector2(
+                        brickWidth / spriteSize.x,
+                        brickHeight / spriteSize.y
+                    );
+                }
             }
         }
     }
@@ -125,7 +136,13 @@ public class BrickController : MonoBehaviour
 
 ## UI
 
-Unity's UI system allows you to display information on the screen such as scores, health bars, menus, etc. It is built on top of the Canvas system, which is a special type of GameObject that renders UI elements.
+User interfaces (UI) are an important part of any game. They allow players to interact with the game and provide feedback on their actions. 
+
+---
+
+### Canvas and TextMeshPro
+
+Canvases are the root of all UI elements in Unity. They are responsible for rendering UI elements on the screen. TextMeshPro is a powerful text rendering system that allows you to create high-quality text with advanced formatting options.
 
 1. In the Hierarchy panel, right-click and select **UI > Canvas**. This will create a new `Canvas` GameObject in the scene. The Canvas is the root of all UI elements and is responsible for rendering them on the screen.
 2. With the `Canvas` GameObject selected, right-click on it in the Hierarchy panel and select **UI > Text - TextMeshPro**. This will create a new TextMeshPro text element as a child of the Canvas. This text element will be used to display the player's score. You may need to import the **TextMeshPro Essentials** package and **TextMeshPro Examples and Extras** package if you have not already done so. Name the TextMeshPro text element `Score Text`.
@@ -143,7 +160,13 @@ public class UIManager : MonoBehaviour
 {
     [Header("UI Settings")]
     [SerializeField] private TextMeshProUGUI scoreText;
+
     private int score = 0;
+
+    private void Start()
+    {
+        scoreText.text = $"Score: {score}";
+    }
 
     public void AddScore(int points)
     {
@@ -190,6 +213,16 @@ public class Brick : MonoBehaviour
 7. Click the **Play** button at the top of the Unity Editor to run the game. When the ball collides with a brick, the score should increase by the amount of points.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/05.png>)
+
+---
+
+### Vertical Layout Group
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/06.png>)
+
+---
+
+### Fonts
 
 ---
 
