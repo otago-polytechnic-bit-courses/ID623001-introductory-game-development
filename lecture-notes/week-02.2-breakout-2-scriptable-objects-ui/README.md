@@ -113,13 +113,11 @@ public class BrickController : MonoBehaviour
 }
 ```
 
-5. Complete the TODOs above.
-
-6. In the Hierarchy panel, create an empty GameObject and name it "Bricks". Drag and drop the `BrickController` script from the Project panel onto the Bricks GameObject in the Hierarchy panel. In the Inspector panel for the Bricks GameObject, you should see a new component called "Brick Controller" with several fields. Set the "Brick Prefab" field to the Brick prefab. Set the "Bricks" array size to 2 and set each element to a different BrickData Scriptable Object that you have created.
+5. In the Hierarchy panel, create an empty GameObject and name it "Bricks". Drag and drop the `BrickController` script from the Project panel onto the Bricks GameObject in the Hierarchy panel. In the Inspector panel for the Bricks GameObject, you should see a new component called "Brick Controller" with several fields. Set the "Brick Prefab" field to the Brick prefab. Set the "Bricks" array size to 2 and set each element to a different BrickData Scriptable Object that you have created.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/01.png>)
 
-7. Click the Play button at the top of the Unity Editor to run the game. You should see a grid of bricks with different sprites based on the BrickData Scriptable Objects that you assigned to each brick.
+6. Click the Play button at the top of the Unity Editor to run the game. You should see a grid of bricks with different sprites based on the BrickData Scriptable Objects that you assigned to each brick.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/02.png>)
 
@@ -143,10 +141,13 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("UI Settings")]
     [SerializeField] private TextMeshProUGUI scoreText;
+    private int score = 0;
 
-    public void UpdateScore(int score)
+    public void AddScore(int points)
     {
+        score += points;
         scoreText.text = $"Score: {score}";
     }
 }
@@ -161,34 +162,32 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    private BrickData data;
+    // Omitted for brevity
+    
+    [Header("References")]
     private UIManager uiManager;
-    private int score = 0;
 
     private void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
     }
 
-    public void Initialize(BrickData brickData)
-    {
-        data = brickData;
-
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr?.sprite = data.sprite;
-    }
+    // Omitted for brevity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
-        {            
-            // TODO: Increase the score by 1
-            // TODO: Update the score text
+        {
+            // TODO: Add score
             Destroy(gameObject);
         }
     }
 }
 ```
+
+7. Click the Play button at the top of the Unity Editor to run the game. When the ball collides with a brick, the score should increase by the amount of points. 
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/05.png>)
 
 ---
 
@@ -217,14 +216,28 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
+Create three new BrickData Scriptable Objects for different types of bricks, e.g. RedBrickData, GreenBrickData, YellowBrickData and set their sprites to different brick sprites from the Sprites folder. Update the BrickController to use these new BrickData Scriptable Objects to create a more varied grid of bricks in the scene.
+
 ---
 
 ### Task 2
+
+Update the `BrickData` Scriptable Object script to include two new fields for point value and hit points. The point value field will represent how many points the player gets for destroying the brick, and the hit points field will represent how many times the brick needs to be hit before it is destroyed. Update the `Brick` script to use these new fields to determine how many points to add to the score when a brick is hit and when it is destroyed. 
 
 ---
 
 ### Task 3
 
+Add a new UI element to display the player's remaining lives. When the ball falls below the paddle and is destroyed, decrease the player's lives by one and update the UI element to reflect the new number of lives. 
+
 ---
 
 ### Task 4
+
+Add a new UI element to display a "Game Over" message when the player runs out of lives. When the player's lives reach zero, display the "Game Over" message and stop the game from running.
+
+---
+
+### Task 5
+
+Add a new UI element to display a "You Win!" message when the player destroys all the bricks. When there are no more bricks in the scene, display the "You Win!" message and stop the game from running.

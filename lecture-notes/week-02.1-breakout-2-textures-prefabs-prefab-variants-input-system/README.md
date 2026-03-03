@@ -150,11 +150,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BallController fastBallPrefab;
     [SerializeField] private BallController slowBallPrefab;
 
-    private BallController currentBall;
+    private BallController startBall;
 
     private void Start()
     {
-        currentBall = Instantiate(slowBallPrefab, Vector2.zero, Quaternion.identity);
+        startBall = Instantiate(slowBallPrefab, Vector2.zero, Quaternion.identity);
     }
 }
 ```
