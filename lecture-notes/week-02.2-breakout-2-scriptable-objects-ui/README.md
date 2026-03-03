@@ -27,13 +27,11 @@ public class BrickData : ScriptableObject
 }
 ```
 
-2. Attach the BrickData script to the Brick prefab.
-
-3. In the Assets folder, create a new folder called "ScriptableObjects" and a new subfolder called "Brick". In the Brick folder, right-click and select "Create > Scriptable Objects > BrickData". Name the new asset "BlueBrickData". In the Inspector panel for the BlueBrickData asset, set the "Sprite" field to the "element_blue_rectangle" sprite from the Sprites folder.
+2. In the Assets folder, create a new folder called "ScriptableObjects" and a new subfolder called "Brick". In the Brick folder, right-click and select "Create > Scriptable Objects > BrickData". Name the new asset "BlueBrickData". In the Inspector panel for the BlueBrickData asset, set the "Sprite" field to the "element_blue_rectangle" sprite from the Sprites folder.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/00.png>)
 
-4. Update the Brick script to use the BrickData Scriptable Object to set the sprite of the brick. You can do this by adding a public field for the BrickData Scriptable Object and then setting the sprite of the Sprite Renderer component in the Start method. Here is an example of how you can update the Brick script:
+3. Update the Brick script to use the BrickData Scriptable Object to set the sprite of the brick. You can do this by adding a public field for the BrickData Scriptable Object and then setting the sprite of the Sprite Renderer component in the Start method. Here is an example of how you can update the Brick script:
 
 ```csharp
 using UnityEngine;
@@ -58,7 +56,7 @@ public class Brick : MonoBehaviour
 }
 ```
 
-5. In the Assets folder, create a new script called "BrickController". Open the script in your code editor and add the following code:
+4. In the Assets folder, create a new script called "BrickController". Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -115,13 +113,13 @@ public class BrickController : MonoBehaviour
 }
 ```
 
-6. Complete the TODOs above.
+5. Complete the TODOs above.
 
-7. In the Hierarchy panel, create an empty GameObject and name it "Bricks". Drag and drop the `BrickController` script from the Project panel onto the Bricks GameObject in the Hierarchy panel. In the Inspector panel for the Bricks GameObject, you should see a new component called "Brick Controller" with several fields. Set the "Brick Prefab" field to the Brick prefab. Set the "Bricks" array size to 2 and set each element to a different BrickData Scriptable Object that you have created.
+6. In the Hierarchy panel, create an empty GameObject and name it "Bricks". Drag and drop the `BrickController` script from the Project panel onto the Bricks GameObject in the Hierarchy panel. In the Inspector panel for the Bricks GameObject, you should see a new component called "Brick Controller" with several fields. Set the "Brick Prefab" field to the Brick prefab. Set the "Bricks" array size to 2 and set each element to a different BrickData Scriptable Object that you have created.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/01.png>)
 
-8. Click the Play button at the top of the Unity Editor to run the game. You should see a grid of bricks with different sprites based on the BrickData Scriptable Objects that you assigned to each brick.
+7. Click the Play button at the top of the Unity Editor to run the game. You should see a grid of bricks with different sprites based on the BrickData Scriptable Objects that you assigned to each brick.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/02.png>)
 
