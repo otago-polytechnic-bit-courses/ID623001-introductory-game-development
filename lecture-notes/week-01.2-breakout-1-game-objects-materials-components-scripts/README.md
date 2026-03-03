@@ -4,10 +4,10 @@
 
 ## Important Links
 
-| Section    | Link                                                                                   |
-| ---------- | -------------------------------------------------------------------------------------- |
-| Previous Class | [Week 01.1](../week-01.1-github-unity-basic-game-mathematics/README.md) |
-| Next Class | [Week 02.1](../week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
+| Section        | Link                                                                                         |
+| -------------- | -------------------------------------------------------------------------------------------- |
+| Previous Class | [Week 01.1](../week-01.1-github-unity-basic-game-mathematics/README.md)                      |
+| Next Class     | [Week 02.1](../week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
 
 ---
 
@@ -19,31 +19,31 @@ Breakout is a classic arcade game where the player controls a paddle to bounce a
 
 ## Project Setup
 
-1. Open Unity Hub and create a new "2D Universal" project. Name it "Breakout".
+1. Open Unity Hub and create a new "2D Universal" project. Name it `Breakout`.
 2. In the root directory of your project, add a Unity `.gitignore` file to exclude unnecessary files from version control. Add, commit and push the `.gitignore` file to your GitHub repository. Then add, commit and push the Unity project files to your GitHub repository.
-3. In the Assets folder, create two new folders: "Materials" and "Scripts".
+3. In the `Assets` folder, create two new folders: `Materials` and `Scripts`.
 
 ---
 
 ## Ball Game Object
 
-1. In the Hierarchy panel, right-click and select "2D Object > Sprite > Circle". Name the GameObject "Ball".
-2. In the Materials folder, right-click and select "Create > 2D > Physics Material 2D". Name it "BallBounce".
+1. In the Hierarchy panel, right-click and select **2D Object > Sprite > Circle**. Name the GameObject `Ball`.
+2. In the `Materials` folder, right-click and select **Create > 2D > Physics Material 2D**. Name it `BallBounce`.
 3. In the Inspector panel, set the:
-   - `Friction` to 0 to prevent the ball from slowing down when it collides with other objects
-   - `Bounciness` to 1 to make the ball bounce back with the same speed after colliding with other objects
-   - `Bounce Combine` to "Maximum" to ensure the ball bounces as much as possible when colliding with other objects
-   - `Friction Combine` to "Minimum" to ensure the ball does not experience any friction when colliding with other objects
+   - `Friction` to `0` to prevent the ball from slowing down when it collides with other objects
+   - `Bounciness` to `1` to make the ball bounce back with the same speed after colliding with other objects
+   - `Bounce Combine` to `Maximum` to ensure the ball bounces as much as possible when colliding with other objects
+   - `Friction Combine` to `Minimum` to ensure the ball does not experience any friction when colliding with other objects
 4. Add two components to the Ball GameObject: `Rigidbody2D` and `CircleCollider2D`.
    - `Rigidbody2D` allows the ball to be affected by physics, such as gravity and collisions.
    - `CircleCollider2D` defines the shape of the ball for collision detection.
 5. In the Inspector panel, set the `Rigidbody2D` component's:
-   - `Gravity Scale` to 0 so the ball does not fall due to gravity
-   - `Collision Detection` to "Continuous" to prevent the ball from passing through objects at high speeds
-   - `Interpolate` to "Interpolate" to smooth out the ball's movement
-   - `Constraints > Freeze Rotation` to true to prevent the ball from spinning
-6. In the Inspector panel, set the `CircleCollider2D` component's `Material` to "BallBounce" to apply the physics material.
-7. In the Scripts folder, create a new script called "BallController". Open the script in your code editor and add the following code:
+   - `Gravity Scale` to `0` so the ball does not fall due to gravity
+   - `Collision Detection` to `Continuous` to prevent the ball from passing through objects at high speeds
+   - `Interpolate` to `Interpolate` to smooth out the ball's movement
+   - `Constraints > Freeze Rotation` to `true` to prevent the ball from spinning
+6. In the Inspector panel, set the `CircleCollider2D` component's `Material` to `BallBounce` to apply the physics material.
+7. In the `Scripts` folder, create a new script called `BallController`. Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -68,7 +68,7 @@ public class BallController : MonoBehaviour
         Vector2 direction = new Vector2(
             Random.Range(-1f, 1f), 1f).normalized; // Random upward direction
 
-        rb.linearVelocity = direction * speed; 
+        rb.linearVelocity = direction * speed;
     }
 
     private void FixedUpdate()
@@ -86,10 +86,10 @@ public class BallController : MonoBehaviour
 }
 ```
 
-If you look at the Inspector panel for the Ball GameObject, you should see a new component called "Ball Controller" with a "Speed" field. You can adjust the speed of the ball by changing the value in this field.
+If you look at the Inspector panel for the Ball GameObject, you should see a new component called **Ball Controller** with a **Speed** field. You can adjust the speed of the ball by changing the value in this field.
 
 8. Drag and drop the `BallController` script from the Project panel onto the Ball GameObject in the Hierarchy panel.
-9. Click the Play button at the top of the Unity Editor to run the game. You should see the ball bouncing around the scene.
+9. Click the **Play** button at the top of the Unity Editor to run the game. You should see the ball bouncing around the scene.
 
 ---
 
@@ -155,15 +155,15 @@ Create a variable in the `BallController` script to represent the size of the ba
 
 ### Task 3
 
-Change the background color of the scene to a color of your choice. You can do this by selecting the "Main Camera" GameObject in the Hierarchy panel and changing the "Background" colour in the Inspector panel.
+Change the background color of the scene to a color of your choice. You can do this by selecting the **Main Camera** GameObject in the Hierarchy panel and changing the **Background** colour in the Inspector panel.
 
-> Resource: [Unity Manual: Camera](https://docs.unity3d.com/Manual/class-Camera.html
+> Resource: [Unity Manual: Camera](https://docs.unity3d.com/Manual/class-Camera.html)
 
 ---
 
 ### Task 4
 
-Currently, the Ball GameObject's position is set to (0, 0) in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the Ball GameObject's position initial 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates.
+Currently, the Ball GameObject's position is set to `(0, 0)` in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the Ball GameObject's position initial 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates.
 
 > Resource: [Unity Manual: Camera.ScreenToWorldPoint](https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html)
 

@@ -15,7 +15,7 @@
 
 A Scriptable Object is a data container that allows you to store large amounts of shared data independent from script instances. They are useful for storing data that needs to be accessed by multiple objects or scenes.
 
-1. In the Scripts folder, right-click and select "Create > Scriptable Object". Name it "BrickData". Double-click the script to open it in your code editor and add the following code:
+1. In the `Scripts` folder, right-click and select **Create > Scriptable Object**. Name it `BrickData`. Double-click the script to open it in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -27,11 +27,11 @@ public class BrickData : ScriptableObject
 }
 ```
 
-2. In the Assets folder, create a new folder called "ScriptableObjects" and a new subfolder called "Brick". In the Brick folder, right-click and select "Create > Scriptable Objects > BrickData". Name the new asset "BlueBrickData". In the Inspector panel for the BlueBrickData asset, set the "Sprite" field to the "element_blue_rectangle" sprite from the Sprites folder.
+2. In the `Assets` folder, create a new folder called `ScriptableObjects` and a new subfolder called `Brick`. In the `Brick` folder, right-click and select **Create > Scriptable Objects > BrickData**. Name the new asset `BlueBrickData`. In the Inspector panel for the `BlueBrickData` asset, set the **Sprite** field to the `element_blue_rectangle` sprite from the `Sprites` folder.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/00.png>)
 
-3. Update the Brick script to use the BrickData Scriptable Object to set the sprite of the brick. You can do this by adding a public field for the BrickData Scriptable Object and then setting the sprite of the Sprite Renderer component in the Start method. Here is an example of how you can update the Brick script:
+3. Update the `Brick` script to use the `BrickData` Scriptable Object to set the sprite of the brick. You can do this by adding a public field for the `BrickData` Scriptable Object and then setting the sprite of the `Sprite Renderer` component in the `Start` method. Here is an example of how you can update the `Brick` script:
 
 ```csharp
 using UnityEngine;
@@ -40,7 +40,7 @@ public class Brick : MonoBehaviour
 {
     private BrickData data;
 
-    public void Initialize(BrickData brickData)
+    public void Initialise(BrickData brickData)
     {
         data = brickData;
 
@@ -56,7 +56,7 @@ public class Brick : MonoBehaviour
 }
 ```
 
-4. In the Assets folder, create a new script called "BrickController". Open the script in your code editor and add the following code:
+4. In the `Assets` folder, create a new script called `BrickController`. Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -106,18 +106,18 @@ public class BrickController : MonoBehaviour
                 GameObject brick = Instantiate(brickPrefab, new Vector2(x, y), Quaternion.identity, bricksParent);
 
                 Brick brickScript = brick.GetComponent<Brick>();
-                brickScript?.Initialize(rowData[row]);
+                brickScript?.Initialise(rowData[row]);
             }
         }
     }
 }
 ```
 
-5. In the Hierarchy panel, create an empty GameObject and name it "Bricks". Drag and drop the `BrickController` script from the Project panel onto the Bricks GameObject in the Hierarchy panel. In the Inspector panel for the Bricks GameObject, you should see a new component called "Brick Controller" with several fields. Set the "Brick Prefab" field to the Brick prefab. Set the "Bricks" array size to 2 and set each element to a different BrickData Scriptable Object that you have created.
+5. In the Hierarchy panel, create an empty GameObject and name it `Bricks`. Drag and drop the `BrickController` script from the Project panel onto the `Bricks` GameObject in the Hierarchy panel. In the Inspector panel for the `Bricks` GameObject, you should see a new component called **Brick Controller** with several fields. Set the **Brick Prefab** field to the `Brick` prefab. Set the **Bricks** array size to `2` and set each element to a different `BrickData` Scriptable Object that you have created.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/01.png>)
 
-6. Click the Play button at the top of the Unity Editor to run the game. You should see a grid of bricks with different sprites based on the BrickData Scriptable Objects that you assigned to each brick.
+6. Click the **Play** button at the top of the Unity Editor to run the game. You should see a grid of bricks with different sprites based on the `BrickData` Scriptable Objects that you assigned to each brick.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/02.png>)
 
@@ -127,13 +127,13 @@ public class BrickController : MonoBehaviour
 
 Unity's UI system allows you to display information on the screen such as scores, health bars, menus, etc. It is built on top of the Canvas system, which is a special type of GameObject that renders UI elements.
 
-1. In the Hierarchy panel, right-click and select "UI > Canvas". This will create a new Canvas GameObject in the scene. The Canvas is the root of all UI elements and is responsible for rendering them on the screen.
-2. With the Canvas GameObject selected, right-click on it in the Hierarchy panel and select "UI > Text - TextMeshPro". This will create a new TextMeshPro text element as a child of the Canvas. This text element will be used to display the player's score. You may need to import the TextMeshPro Essentials package and, TextMeshPro Examples and Extras package if you have not already to access the TextMeshPro text element. Name the TextMeshPro text element "Score Text".
+1. In the Hierarchy panel, right-click and select **UI > Canvas**. This will create a new `Canvas` GameObject in the scene. The Canvas is the root of all UI elements and is responsible for rendering them on the screen.
+2. With the `Canvas` GameObject selected, right-click on it in the Hierarchy panel and select **UI > Text - TextMeshPro**. This will create a new TextMeshPro text element as a child of the Canvas. This text element will be used to display the player's score. You may need to import the **TextMeshPro Essentials** package and **TextMeshPro Examples and Extras** package if you have not already done so. Name the TextMeshPro text element `Score Text`.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/03.png>)
 
-3. In the Inspector panel for the new TextMeshPro text element, set the "Text" field to "Score: 0". This will be the initial text that is displayed on the screen.
-4. In the Assets folder, create a new script called "UIManager". Open the script in your code editor and add the following code:
+3. In the Inspector panel for the new TextMeshPro text element, set the **Text** field to `Score: 0`. This will be the initial text that is displayed on the screen.
+4. In the `Assets` folder, create a new script called `UIManager`. Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -153,11 +153,11 @@ public class UIManager : MonoBehaviour
 }
 ```
 
-5. In the Hierarchy panel, create an empty GameObject and name it "UI Manager". Drag and drop the `UIManager` script from the Project panel onto the UI Manager GameObject in the Hierarchy panel. In the Inspector panel for the UI Manager GameObject, you should see a new component called "UI Manager" with a field for "Score Text". Set this field to the TextMeshPro text element that you created earlier.
+5. In the Hierarchy panel, create an empty GameObject and name it `UI Manager`. Drag and drop the `UIManager` script from the Project panel onto the `UI Manager` GameObject in the Hierarchy panel. In the Inspector panel for the `UI Manager` GameObject, you should see a new component called **UI Manager** with a field for **Score Text**. Set this field to the `Score Text` TextMeshPro text element that you created earlier.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/04.png>)
 
-6. In the Ball script, add a reference to the UIManager and update the score when the ball collides with a brick. Here is an example of how you can update the Ball script:
+6. In the `Brick` script, add a reference to the `UIManager` and update the score when the ball collides with a brick. Here is an example of how you can update the `Brick` script:
 
 ```csharp
 using UnityEngine;
@@ -187,7 +187,7 @@ public class Brick : MonoBehaviour
 }
 ```
 
-7. Click the Play button at the top of the Unity Editor to run the game. When the ball collides with a brick, the score should increase by the amount of points.
+7. Click the **Play** button at the top of the Unity Editor to run the game. When the ball collides with a brick, the score should increase by the amount of points.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/05.png>)
 
@@ -218,11 +218,11 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ### Task 1
 
-Create a new BrickData Scriptable Object for each of the different types of bricks in the game. For example, you can create:
+Create a new `BrickData` Scriptable Object for each of the different types of bricks in the game. For example, you can create:
 
-- Red brick with the "element_red_rectangle" sprite
-- Green brick with the "element_green_rectangle" sprite
-- Yellow brick with the "element_yellow_rectangle" sprite
+- Red brick with the `element_red_rectangle` sprite
+- Green brick with the `element_green_rectangle` sprite
+- Yellow brick with the `element_yellow_rectangle` sprite
 
 ---
 
@@ -230,8 +230,8 @@ Create a new BrickData Scriptable Object for each of the different types of bric
 
 Update the `BrickData` script to include:
 
-- Point value field that represents how many points the player gets for destroying the brick
-- Hit points field that represents how many times the brick needs to be hit before it is destroyed
+- A point value field that represents how many points the player gets for destroying the brick
+- A hit points field that represents how many times the brick needs to be hit before it is destroyed
 
 Update the `Brick` script to use these new fields.
 
@@ -241,6 +241,6 @@ Update the `Brick` script to use these new fields.
 
 Add new UI elements for the following:
 
-- Lives. Set the intial value to 3 and decrease it by 1 each time the ball collides with the bottom of the screen.
-- Game over message when the player runs out of lives
-- Win message when the player destroys all the bricks. Include the player's score in the win message
+- **Lives** — set the initial value to `3` and decrease it by `1` each time the ball collides with the bottom of the screen
+- **Game over message** — displayed when the player runs out of lives
+- **Win message** — displayed when the player destroys all the bricks; include the player's score in the win message
