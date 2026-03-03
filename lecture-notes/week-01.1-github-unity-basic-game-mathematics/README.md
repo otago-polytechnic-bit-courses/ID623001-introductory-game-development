@@ -35,7 +35,7 @@
 
 ## C# and Unity
 
-C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic, e.g., movement, collision, animation, UI, etc., are expressed through C# scripts attached to GameObjects via MonoBehaviour.
+C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic, e.g., movement, collision, animation, UI, etc., are expressed through C# scripts attached to GameObjects via `MonoBehaviour`.
 
 > Resource: <https://docs.unity3d.com/Manual/index.html>
 
@@ -43,33 +43,33 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 
 ### Installer and Project Setup
 
-1.  Download and install Unity Hub from <https://unity.com/download>.
-2.  In Unity Hub, go to the "Installs" tab and click "Install Editor". Install the recommended LTS (Long Term Support) version of Unity. This ensures you have a stable and widely supported version for development.
+1. Download and install Unity Hub from <https://unity.com/download>.
+2. In Unity Hub, go to the **Installs** tab and click **Install Editor**. Install the recommended LTS (Long Term Support) version of Unity. This ensures you have a stable and widely supported version for development.
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/00.png>)
 
-3.  Once Unity is installed, go to the "Projects" tab and click "New Project". Choose the "Universal 2D" template, name your project and select a location on your computer to save it. Then click "Create project".
+3. Once Unity is installed, go to the **Projects** tab and click **New Project**. Choose the **Universal 2D** template, name your project and select a location on your computer to save it. Then click **Create project**.
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/01.png>)
 
-4.  Unity will open with your new project. You should see the Unity Editor interface with a default scene loaded. There are several panels:
-    - The Scene view where you can see and edit your game world
-    - The Game view where you can preview your game
-    - The Hierarchy which lists all GameObjects in the scene
-    - The Inspector which shows properties of selected GameObjects
-    - The Project window which shows all assets in your project
+4. Unity will open with your new project. You should see the Unity Editor interface with a default scene loaded. There are several panels:
+   - The **Scene** view where you can see and edit your game world
+   - The **Game** view where you can preview your game
+   - The **Hierarchy** which lists all GameObjects in the scene
+   - The **Inspector** which shows properties of selected GameObjects
+   - The **Project** window which shows all assets in your project
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/02.png>)
 
-5. In the Hierarchy panel, right-click and select "2D Object > Sprite > Circle".
+5. In the Hierarchy panel, right-click and select **2D Object > Sprite > Circle**.
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/03.png>)
 
-6. In the Assets folder, right-click and select "Create > Folder". Name it "Scripts".
+6. In the `Assets` folder, right-click and select **Create > Folder**. Name it `Scripts`.
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/04.png>)
 
-7. In the Scripts folder, right-click and select "Create > MonoBehaviour Script". Name it "Demo". Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. In the `Start()` method, add the following:
+7. In the `Scripts` folder, right-click and select **Create > MonoBehaviour Script**. Name it `Demo`. Double-click the script to open it in your code editor, e.g., Microsoft Visual Studio or Microsoft Visual Studio Code. In the `Start()` method, add the following:
 
 ```csharp
 using UnityEngine;
@@ -92,15 +92,15 @@ public class Demo : MonoBehaviour
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/05.png>)
 
-8. Drag and drop the `Demo` script from the Project panel onto the Circle GameObject in the Hierarchy panel. This attaches the script to the Circle, making it a component of that GameObject.
+8. Drag and drop the `Demo` script from the Project panel onto the `Circle` GameObject in the Hierarchy panel. This attaches the script to the Circle, making it a component of that GameObject.
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/06.png>)
 
-9. Click the Play button at the top of the Unity Editor to run the game. You should see "Hello, World!" printed in the Console panel.
+9. Click the **Play** button at the top of the Unity Editor to run the game. You should see `"Hello, World!"` printed in the Console panel.
 
 ![](<../../resources (ignore)/img/week-01.1-github-unity-basic-game-mathematics/07.png>)
 
-10. You may notice an asterisk (\*) next to the scene name in the Hierarchy panel. This indicates that the scene has unsaved changes. It is recommended that every time you make changes to your scene, you save it.
+10. You may notice an asterisk (`*`) next to the scene name in the Hierarchy panel. This indicates that the scene has unsaved changes. It is recommended that every time you make changes to your scene, you save it.
 
 ---
 
@@ -108,7 +108,7 @@ public class Demo : MonoBehaviour
 
 ### 1D Mathematics
 
-The simplest coordinate system is the number line: a single axis with a defined origin (0), a positive direction and a unit of length. Every real number corresponds to exactly one point on this line.
+The simplest coordinate system is the number line: a single axis with a defined origin (`0`), a positive direction and a unit of length. Every real number corresponds to exactly one point on this line.
 
 In Unity, individual axes behave like number lines. A GameObject's x-position is a signed scalar value on the x-axis of the world coordinate system.
 
@@ -122,9 +122,9 @@ float zPos = transform.position.z;
 
 ### 2D Cartesian Space
 
-Two perpendicular number lines - the x-axis (horizontal) and y-axis (vertical) intersect at the origin (0, 0) to form a 2D coordinate system. Any point P in the plane is specified uniquely by an ordered pair (x, y).
+Two perpendicular number lines — the x-axis (horizontal) and y-axis (vertical) — intersect at the origin `(0, 0)` to form a 2D coordinate system. Any point P in the plane is specified uniquely by an ordered pair `(x, y)`.
 
-In Unity 2D projects positions are represented as `Vector2`:
+In Unity 2D projects, positions are represented as `Vector2`:
 
 ```csharp
 Vector2 playerPos = new Vector2(3f, -1.5f);
@@ -136,7 +136,7 @@ Debug.Log($"X: {playerPos.x}, Y: {playerPos.y}"); // X: 3.0, Y: -1.5
 
 ### 3D Cartesian Space
 
-3D space adds a third axis, the z-axis perpendicular to both x and y. Every point in 3D is an ordered triple (x, y, z). Unity uses a left-handed coordinate system:
+3D space adds a third axis, the z-axis, perpendicular to both x and y. Every point in 3D is an ordered triple `(x, y, z)`. Unity uses a left-handed coordinate system:
 
 | Axis | Direction                 |
 | ---- | ------------------------- |
@@ -171,8 +171,8 @@ Vector3 back    = Vector3.back;     // ( 0,  0, -1)
 
 Angles measure the amount of rotation between two directions. Two units are commonly used:
 
-- Degrees: A full rotation is 360°.
-- Radians: A full rotation is 2π ≈ 6.2832 rad. One radian is the angle formed when the arc length along a circle equals the radius of that circle.
+- **Degrees**: A full rotation is 360°.
+- **Radians**: A full rotation is 2π ≈ 6.2832 rad. One radian is the angle formed when the arc length along a circle equals the radius of that circle.
 
 The conversion between them is:
 
@@ -211,7 +211,7 @@ sin(−θ) = −sin(θ)
 cos(−θ) = cos(θ)
 ```
 
-In Unity these are used constantly. For circular motion, aiming and computing angles between directions:
+In Unity these are used constantly — for circular motion, aiming and computing angles between directions:
 
 ```csharp
 float angle = 45f * Mathf.Deg2Rad;
@@ -227,7 +227,7 @@ float phi   = Mathf.Atan2(1f, 1f) * Mathf.Rad2Deg;
 Debug.Log($"Asin(0.5) = {theta}°, Atan2(1, 1) = {phi}°"); // Asin(0.5) = 30°, Atan2(1, 1) = 45°
 ```
 
-> Use `Mathf.Atan2(y, x)` instead of `Mathf.Atan(y/x)` — it correctly handles all four quadrants and avoids division by zero when x = 0.
+> Use `Mathf.Atan2(y, x)` instead of `Mathf.Atan(y/x)` — it correctly handles all four quadrants and avoids division by zero when `x = 0`.
 
 > Resource: <https://docs.unity3d.com/ScriptReference/Mathf.html>
 
@@ -239,10 +239,10 @@ Debug.Log($"Asin(0.5) = {theta}°, Atan2(1, 1) = {phi}°"); // Asin(0.5) = 30°,
 
 A vector is a quantity with both magnitude (size) and direction. This distinguishes it from a scalar, which has magnitude only.
 
-- Scalar example: The player's health (e.g. 75 HP) is a scalar. It has no direction, just a value.
-- Vector example: The enemy's velocity (e.g. (3, 0, 0) m/s) is a vector. It has a speed of 3 m/s and points in the positive x direction.
+- **Scalar example**: The player's health (e.g. 75 HP) is a scalar. It has no direction, just a value.
+- **Vector example**: The enemy's velocity (e.g. `(3, 0, 0)` m/s) is a vector. It has a speed of 3 m/s and points in the positive x direction.
 
-Vectors are written in bold (v) or with an arrow (v→). In Unity, `Vector2` and `Vector3` are the built-in vector types.
+Vectors are written in bold (**v**) or with an arrow (v→). In Unity, `Vector2` and `Vector3` are the built-in vector types.
 
 ---
 
@@ -250,8 +250,8 @@ Vectors are written in bold (v) or with an arrow (v→). In Unity, `Vector2` and
 
 This is a conceptually important distinction that trips people up early:
 
-- A point describes a location in space. It has no length or direction on its own.
-- A vector describes a displacement or direction. It has no fixed position.
+- A **point** describes a location in space. It has no length or direction on its own.
+- A **vector** describes a displacement or direction. It has no fixed position.
 
 When should you use each? If you are describing where something is, use a point. If you are describing how something moves or faces, use a vector.
 
@@ -277,7 +277,7 @@ Negating a vector reverses its direction while keeping its magnitude:
 
 Formula breakdown:
 
-1. Each component of the vector v is multiplied by -1, which flips the sign of each component.
+1. Each component of the vector `v` is multiplied by `-1`, which flips the sign of each component.
 
 ```csharp
 Vector3 v = new Vector3(1f, -2f, 3f);
@@ -293,7 +293,7 @@ Here are some examples of how this is used in games:
 
 ### Scalar Multiplication
 
-Multiplying a vector by a scalar k scales its length by |k|. If k < 0 the direction is also reversed:
+Multiplying a vector by a scalar `k` scales its length by `|k|`. If `k < 0` the direction is also reversed:
 
 ```
 k·v = (k·x,  k·y,  k·z)
@@ -301,8 +301,8 @@ k·v = (k·x,  k·y,  k·z)
 
 Formula breakdown:
 
-1. Each component of the vector v is multiplied by the scalar k.
-2. If k > 1, the vector is stretched (longer). If 0 < k < 1, the vector is shrunk (shorter). If k < 0, the vector is reversed and scaled by |k|.
+1. Each component of the vector `v` is multiplied by the scalar `k`.
+2. If `k > 1`, the vector is stretched (longer). If `0 < k < 1`, the vector is shrunk (shorter). If `k < 0`, the vector is reversed and scaled by `|k|`.
 
 ```csharp
 Vector3 forward = Vector3.forward;
@@ -328,10 +328,10 @@ a + b = (ax + bx,  ay + by,  az + bz)
 a − b = (ax − bx,  ay − by,  az − bz)
 ```
 
-Forumla breakdown:
+Formula breakdown:
 
-1. For addition, add the corresponding components of vectors a and b to get the components of the resultant vector.
-2. For subtraction, subtract the corresponding components of vector b from vector a to get the components of the resultant vector.
+1. For addition, add the corresponding components of vectors `a` and `b` to get the components of the resultant vector.
+2. For subtraction, subtract the corresponding components of vector `b` from vector `a` to get the components of the resultant vector.
 
 The vector from point A to point B is always `B − A`:
 
@@ -357,9 +357,9 @@ The magnitude (length) of a vector is calculated using the Pythagorean theorem e
 
 Formula breakdown:
 
-1. Square each component of the vector to get x², y² and z².
-2. Sum these squared components to get x² + y² + z².
-3. Take the square root of this sum to get the magnitude |v|.
+1. Square each component of the vector to get `x²`, `y²` and `z²`.
+2. Sum these squared components to get `x² + y² + z²`.
+3. Take the square root of this sum to get the magnitude `|v|`.
 
 ```csharp
 Vector3 v = new Vector3(3f, 4f, 0f);
@@ -369,7 +369,7 @@ float magSq = v.sqrMagnitude;
 Debug.Log($"Magnitude: {mag}, Squared Magnitude: {magSq}"); // Magnitude: 5, Squared Magnitude: 25
 ```
 
-What is the calculation for the magnitude of the vector (3, 4, 0)?
+What is the calculation for the magnitude of the vector `(3, 4, 0)`?
 
 ```
 |v| = √(3² + 4² + 0²) = √(9 + 16 + 0) = √25 = 5
@@ -385,7 +385,7 @@ What is the squared magnitude?
 
 ### Unit Vectors and Normalisation
 
-A unit vector has a magnitude of exactly 1. It expresses a pure direction with no scale information. Any non-zero vector can be normalised by dividing by its magnitude:
+A unit vector has a magnitude of exactly `1`. It expresses a pure direction with no scale information. Any non-zero vector can be normalised by dividing by its magnitude:
 
 ```
 v̂ = v / |v|
@@ -393,8 +393,8 @@ v̂ = v / |v|
 
 Formula breakdown:
 
-1. Calculate the magnitude |v| of the vector v.
-2. Divide each component of v by its magnitude to get the normalised vector v̂.
+1. Calculate the magnitude `|v|` of the vector `v`.
+2. Divide each component of `v` by its magnitude to get the normalised vector `v̂`.
 
 ```csharp
 Vector3 v = new Vector3(3f, 4f, 0f);
@@ -407,7 +407,7 @@ Debug.Log($"Original: {v}, Normalised: {vHat}"); // Original: (3, 4, 0), Normali
 
 > Note: Never normalise the zero vector. It has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but mathematically is undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
 
-If you implement eight-directional movement and do not normalise the input vector, diagonal movement will be faster than horizontal/vertical movement. Why? Because the magnitude of the diagonal vector (e.g. (1, 1)) is √(1² + 1²) = √2 ≈ 1.414, which is greater than 1. Normalising it gives a unit vector in the same direction, ensuring consistent speed in all directions.
+If you implement eight-directional movement and do not normalise the input vector, diagonal movement will be faster than horizontal/vertical movement. Why? Because the magnitude of the diagonal vector (e.g. `(1, 1)`) is `√(1² + 1²) = √2 ≈ 1.414`, which is greater than `1`. Normalising it gives a unit vector in the same direction, ensuring consistent speed in all directions.
 
 Here are some examples of how this is used in games:
 
@@ -426,7 +426,7 @@ d(P, Q) = |Q − P| = √((Qx−Px)² + (Qy−Py)² + (Qz−Pz)²)
 
 Formula breakdown:
 
-1. Subtract the coordinates of P from Q to get the displacement vector Q − P.
+1. Subtract the coordinates of P from Q to get the displacement vector `Q − P`.
 2. Calculate the magnitude of this displacement vector using the formula for vector magnitude.
 
 ```csharp
@@ -437,7 +437,7 @@ float dist = Vector3.Distance(P, Q);
 Debug.Log($"Distance from P to Q: {dist}"); // Distance from P to Q: 5
 ```
 
-write the formula using the components of P and Q:
+Write the formula using the components of P and Q:
 
 ```
 d(P, Q) = √((4−1)² + (6−2)² + (3−3)²) = √(3² + 4² + 0²) = √(9 + 16 + 0) = √25 = 5
@@ -616,13 +616,13 @@ Here are some examples of how this is used in games:
 
 ### Linear Interpolation (Lerp)
 
-Linear interpolation between values a and b by parameter t (where t ∈ [0, 1]) is:
+Linear interpolation between values `a` and `b` by parameter `t` (where `t ∈ [0, 1]`) is:
 
 ```
 Lerp(a, b, t) = a + t·(b − a) = (1−t)·a + t·b
 ```
 
-When t = 0 the result is a; when t = 1 the result is b; when t = 0.5 the result is the midpoint.
+When `t = 0` the result is `a`; when `t = 1` the result is `b`; when `t = 0.5` the result is the midpoint.
 
 ```csharp
 float health = Mathf.Lerp(0f, 100f, 0.25f);
@@ -632,7 +632,7 @@ Color col = Color.Lerp(Color.red, Color.blue, 0.5f);
 Debug.Log($"Health: {health}, Position: {transform.position}, Colour: {col}"); // Health: 25, Position: (interpolated position), Colour: (0.5, 0, 0.5)
 ```
 
-> Note: Using `Time.deltaTime * speed` as the t value each frame produces an exponential ease-out rather than a constant-speed move. For constant speed use `Vector3.MoveTowards` instead.
+> Note: Using `Time.deltaTime * speed` as the `t` value each frame produces an exponential ease-out rather than a constant-speed move. For constant speed use `Vector3.MoveTowards` instead.
 
 ---
 
@@ -660,7 +660,7 @@ void Update()
 
 ## Circular Motion
 
-Uniform circular motion, i.e., moving in a circle at constant speed, is one of the most common patterns in games. Given a radius r and an angle θ (in radians), a point on a circle centred at the origin is:
+Uniform circular motion, i.e., moving in a circle at constant speed, is one of the most common patterns in games. Given a radius `r` and an angle θ (in radians), a point on a circle centred at the origin is:
 
 ```
 x = r · cos(θ)
@@ -782,7 +782,7 @@ Vector3 Normalise(Vector3 v)
 }
 ```
 
-> Hint: Divide each component by the magnitude. Return `Vector3.zero` if the magnitude is 0.
+> Hint: Divide each component by the magnitude. Return `Vector3.zero` if the magnitude is `0`.
 
 ---
 
@@ -832,4 +832,4 @@ float AngleBetween(Vector3 a, Vector3 b)
 }
 ```
 
-> Hint: `a · b = ax·bx + ay·by + az·bz`. For the angle, normalise both vectors first and clamp the dot product to [−1, 1] before passing to `Mathf.Acos`. Remember to convert the result of `Mathf.Acos` from radians to degrees.
+> Hint: `a · b = ax·bx + ay·by + az·bz`. For the angle, normalise both vectors first and clamp the dot product to `[−1, 1]` before passing to `Mathf.Acos`. Remember to convert the result of `Mathf.Acos` from radians to degrees.
