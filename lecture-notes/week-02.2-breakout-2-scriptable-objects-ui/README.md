@@ -29,7 +29,7 @@ public class BrickData : ScriptableObject
 
 2. In the `Assets` folder, create a new folder called `ScriptableObjects` and a new subfolder called `Brick`. In the `Brick` folder, right-click and select **Create > Scriptable Objects > BrickData**. Name the new asset `BlueBrickData`. In the Inspector panel for the `BlueBrickData` asset, set the **Sprite** field to the `element_blue_rectangle` sprite from the `Sprites` folder.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/00.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/00.png>)
 
 3. Update the `Brick` script to use the `BrickData` Scriptable Object to set the sprite of the brick. You can do this by adding a public field for the `BrickData` Scriptable Object and then setting the sprite of the `Sprite Renderer` component in the `Start` method. Here is an example of how you can update the `Brick` script:
 
@@ -126,11 +126,11 @@ public class BrickController : MonoBehaviour
 
 5. In the Hierarchy panel, create an empty GameObject and name it `Bricks`. Drag and drop the `BrickController` script from the Project panel onto the `Bricks` GameObject in the Hierarchy panel. In the Inspector panel for the `Bricks` GameObject, you should see a new component called **Brick Controller** with several fields. Set the **Brick Prefab** field to the `Brick` prefab. Set the **Bricks** array size to `2` and set each element to a different `BrickData` Scriptable Object that you have created.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/01.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/01.png>)
 
 6. Click the **Play** button at the top of the Unity Editor to run the game. You should see a grid of bricks with different sprites based on the `BrickData` Scriptable Objects that you assigned to each brick.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/02.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/02.png>)
 
 ---
 
@@ -147,7 +147,7 @@ Canvases are the root of all UI elements in Unity. They are responsible for rend
 1. In the Hierarchy panel, right-click and select **UI > Canvas**. This will create a new `Canvas` GameObject in the scene. The Canvas is the root of all UI elements and is responsible for rendering them on the screen.
 2. With the `Canvas` GameObject selected, right-click on it in the Hierarchy panel and select **UI > Text - TextMeshPro**. This will create a new TextMeshPro text element as a child of the Canvas. This text element will be used to display the player's score. You may need to import the **TextMeshPro Essentials** package and **TextMeshPro Examples and Extras** package if you have not already done so. Name the TextMeshPro text element `Score Text`.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/03.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/03.png>)
 
 3. In the Inspector panel for the new TextMeshPro text element, set the **Text** field to `Score: 0`. This will be the initial text that is displayed on the screen.
 4. In the `Assets` folder, create a new script called `UIManager`. Open the script in your code editor and add the following code:
@@ -178,7 +178,7 @@ public class UIManager : MonoBehaviour
 
 5. In the Hierarchy panel, create an empty GameObject and name it `UI Manager`. Drag and drop the `UIManager` script from the Project panel onto the `UI Manager` GameObject in the Hierarchy panel. In the Inspector panel for the `UI Manager` GameObject, you should see a new component called **UI Manager** with a field for **Score Text**. Set this field to the `Score Text` TextMeshPro text element that you created earlier.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/04.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/04.png>)
 
 6. In the `Brick` script, add a reference to the `UIManager` and update the score when the ball collides with a brick. Here is an example of how you can update the `Brick` script:
 
@@ -212,7 +212,7 @@ public class Brick : MonoBehaviour
 
 7. Click the **Play** button at the top of the Unity Editor to run the game. When the ball collides with a brick, the score should increase by the amount of points.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/05.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/05.png>)
 
 ---
 
@@ -223,7 +223,7 @@ A Vertical Layout Group is a component that automatically arranges its child ele
 1. In the Hierarchy panel, select the `Canvas` GameObject. Right-click on it and select **UI > Panel**. This will create a new `Panel` GameObject as a child of the Canvas. Name the new panel `Top Right Panel`.
 2. Select the `Top Right Panel` GameObject in the Hierarchy panel. In the Inspector panel, click the **Add Component** button and search for **Vertical Layout Group**. Add the `Vertical Layout Group` component to the `Top Right Panel` GameObject. Set the `Rect Transform` and `Vertical Layout Group` properties as follows:
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/06.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/06.png>)
 
 3. Drag and drop the `Score Text` TextMeshPro text element from the Hierarchy panel onto the `Top Right Panel` GameObject in the Hierarchy panel. This will make `Score Text` a child of `Top Right Panel` and it will be automatically arranged by the `Vertical Layout Group`.
 
