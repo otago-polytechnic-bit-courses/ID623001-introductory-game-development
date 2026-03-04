@@ -231,6 +231,53 @@ A Vertical Layout Group is a component that automatically arranges its child ele
 
 ### Fonts
 
+Fonts are an important part of any UI. They can help to set the tone and style of the game. You can use custom fonts in Unity by importing them into your project and then assigning them to your UI elements.
+
+
+1. In week-02.2-breakout-2-scriptable-objects-ui folder, there is a `Fonts` folder with a variety of different fonts. Copy and paste the `Fonts` folder into the `Assets` folder of your Unity project. 
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/07.png>)
+
+
+2. The fonts are in `.ttf` format, which is a common font format that can be used in Unity. Select all the font files in the `Fonts` folder, right-click and select **Create > TextMeshPro > Font Asset > SDF**. This will create a new `TMP_FontAsset` for each font file. 
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/08.png>)
+
+3. You should now have a new `TMP_FontAsset` for each font file in the `Fonts` folder. 
+
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/09.png>)
+
+4. You can assign these font assets to your TextMeshPro text elements to change their appearance. For example, you can assign a custom font to the `Score Text` TextMeshPro text element by selecting it in the Hierarchy panel and then setting the **Font Asset** field in the Inspector panel to one of the new `TMP_FontAsset` that you created.
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/11.png>)
+
+5. You can also assign the custom font to the `Score Text` TextMeshPro text element through code by adding a reference to the `TMP_FontAsset` in the `UIManager` script and then setting the font in the `Start` method. Here is an example of how you can update the `UIManager` script:
+
+```cs
+using UnityEngine;
+using TMPro;
+
+public class UIManager : MonoBehaviour
+{
+    [Header("UI Settings")]
+    // Omitted for brevity
+    [SerializeField] private TMP_FontAsset customFont;
+
+    private void Start()
+    {
+        scoreText.font = customFont;
+        // Omitted for brevity
+    }
+
+    // Omitted for brevity
+}
+```
+
+6. Drag and drop a `TMP_FontAsset` from the Project panel onto the **Custom Font** field in the Inspector panel for the `UI Manager` GameObject.
+
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/12.png>)
+
 ---
 
 ## Exercises
