@@ -218,7 +218,14 @@ public class Brick : MonoBehaviour
 
 ### Vertical Layout Group
 
+A Vertical Layout Group is a component that automatically arranges its child elements in a vertical column. It is useful for creating UI layouts that need to adapt to different screen sizes and resolutions. We will use a Vertical Layout Group to display the player's score and lives on the right side of the screen.
+
+1. In the Hierarchy panel, select the `Canvas` GameObject. Right-click on it and select **UI > Panel**. This will create a new `Panel` GameObject as a child of the Canvas. Name the new panel `Top Right Panel`.
+2. Select the `Top Right Panel` GameObject in the Hierarchy panel. In the Inspector panel, click the **Add Component** button and search for **Vertical Layout Group**. Add the `Vertical Layout Group` component to the `Top Right Panel` GameObject. Set the `Rect Transform` and `Vertical Layout Group` properties as follows:
+
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui-audio-scene-management-player-prefs/06.png>)
+
+3. Drag and drop the `Score Text` TextMeshPro text element from the Hierarchy panel onto the `Top Right Panel` GameObject in the Hierarchy panel. This will make `Score Text` a child of `Top Right Panel` and it will be automatically arranged by the `Vertical Layout Group`.
 
 ---
 
