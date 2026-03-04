@@ -247,7 +247,7 @@ Fonts are an important part of any UI. They can help to set the tone and style o
 
 4. You can assign these font assets to your TextMeshPro text elements to change their appearance. For example, you can assign a custom font to the `Score Text` TextMeshPro text element by selecting it in the Hierarchy panel and then setting the **Font Asset** field in the Inspector panel to one of the new `TMP_FontAsset` files that you created.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/11.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/10.png>)
 
 5. You can also assign the custom font to the `Score Text` TextMeshPro text element through code by adding a reference to the `TMP_FontAsset` in the `UIManager` script and then setting the font in the `Start()` method. Here is an example of how you can update the `UIManager` script:
 
@@ -273,7 +273,7 @@ public class UIManager : MonoBehaviour
 
 6. Drag and drop a `TMP_FontAsset` from the Project panel onto the **Custom Font** field in the Inspector panel for the `UI Manager` GameObject.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/12.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/11.png>)
 
 ---
 
