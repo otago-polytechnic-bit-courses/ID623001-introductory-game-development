@@ -277,6 +277,20 @@ public class UIManager : MonoBehaviour
 
 ---
 
+## Audio
+
+---
+
+## Scene Management
+
+---
+
+## Player Prefs
+
+---
+
+## Builds
+
 ## Exercises
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
