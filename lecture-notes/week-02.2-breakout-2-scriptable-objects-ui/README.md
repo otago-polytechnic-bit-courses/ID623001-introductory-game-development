@@ -180,7 +180,7 @@ public class UIManager : MonoBehaviour
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/04.png>)
 
-6. In the `Brick` script, add a reference to the `UIManager` and update the score when the ball collides with a brick. Here is an example of how you can update the `Brick` script:
+6. In the `Brick` script, add a reference to the `UIManager` and update the score when the ball collides with a brick. 
 
 ```csharp
 using UnityEngine;
@@ -249,7 +249,7 @@ Fonts are an important part of any UI. They can help to set the tone and style o
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/10.png>)
 
-5. You can also assign the custom font to the `Score Text` TextMeshPro text element through code by adding a reference to the `TMP_FontAsset` in the `UIManager` script and then setting the font in the `Start()` method. Here is an example of how you can update the `UIManager` script:
+5. You can also assign the custom font to the `Score Text` TextMeshPro text element through code by adding a reference to the `TMP_FontAsset` in the `UIManager` script and then setting the font in the `Start()` method. 
 
 ```csharp
 using UnityEngine;
