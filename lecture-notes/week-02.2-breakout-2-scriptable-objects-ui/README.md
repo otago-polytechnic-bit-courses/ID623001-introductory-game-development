@@ -303,7 +303,6 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Brick"))
         {
             audioSource.PlayOneShot(brickHitSound);
-            // Omitted for brevity
         }
     }
 }
