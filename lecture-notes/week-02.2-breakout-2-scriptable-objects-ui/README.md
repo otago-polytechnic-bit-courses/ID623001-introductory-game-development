@@ -279,6 +279,38 @@ public class UIManager : MonoBehaviour
 
 ## Audio
 
+Audio is an important part of any game. It can help to set the tone and atmosphere of the game, as well as provide feedback to the player. You can use audio in Unity by importing audio files into your project and then playing them through audio sources.
+
+1. In the `week-02.2-breakout-2-scriptable-objects-ui` folder, there is an `Audio` folder with a variety of different audio files. Copy and paste the `Audio` folder into the `Assets` folder of your Unity project.
+
+2. The audio files are in `.wav` format, which is a common audio format that can be used in Unity. You can play these audio files in your game by creating an `AudioSource` component and then assigning the audio clip to it. For example, you can add an `AudioSource` component to the `Ball` GameObject and then play a sound effect when the ball collides with a brick.
+
+3. In the `Ball` script, add a reference to the `AudioSource` and the audio clip that you want to play when the ball collides with a brick. Then, in the `OnCollisionEnter2D` method, play the audio clip when the ball collides with a brick.
+
+```csharp
+using UnityEngine;
+
+public class Ball : MonoBehaviour
+{
+    // Omitted for brevity
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip brickHitSound;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Brick"))
+        {
+            audioSource.PlayOneShot(brickHitSound);
+            // Omitted for brevity
+        }
+    }
+}
+```
+
+4. Drag and drop the `AudioSource` component from the `Ball` GameObject onto the **Audio Source** field in the Inspector panel for the `Ball` GameObject. Then, drag and drop an audio clip from the `Audio` folder onto the **Brick Hit Sound** field in the Inspector panel for the `Ball` GameObject.
+
 ---
 
 ## Scene Management
