@@ -220,12 +220,13 @@ public class Brick : MonoBehaviour
 
 A Vertical Layout Group is a component that automatically arranges its child elements in a vertical column. It is useful for creating UI layouts that need to adapt to different screen sizes and resolutions. We will use a Vertical Layout Group to display the player's score and lives on the right side of the screen.
 
-1. In the Hierarchy panel, select the `Canvas` GameObject. Right-click on it and select **UI > Panel**. This will create a new `Panel` GameObject as a child of the Canvas. Name the new panel `Top Right Panel`.
-2. Select the `Top Right Panel` GameObject in the Hierarchy panel. In the Inspector panel, click the **Add Component** button and search for **Vertical Layout Group**. Add the `Vertical Layout Group` component to the `Top Right Panel` GameObject. Set the `Rect Transform` and `Vertical Layout Group` properties as follows:
+1. In the Hierarchy panel, select the `Canvas` GameObject. Right-click on it and select **Create Empty**. Name the new GameObject `Info Container`. This will be the parent GameObject for the score and lives UI elements.
+
+2. Select the `Info Container` GameObject in the Hierarchy panel. In the Inspector panel, click the **Add Component** button and search for **Vertical Layout Group**. Add the `Vertical Layout Group` component to the `Info Container` GameObject. Set the `Rect Transform` and `Vertical Layout Group` properties as follows:
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/06.png>)
 
-3. Drag and drop the `Score Text` TextMeshPro text element from the Hierarchy panel onto the `Top Right Panel` GameObject in the Hierarchy panel. This will make `Score Text` a child of `Top Right Panel` and it will be automatically arranged by the `Vertical Layout Group`.
+3. Drag and drop the `Score Text` TextMeshPro text element from the Hierarchy panel onto the `Info Container` GameObject in the Hierarchy panel. This will make `Score Text` a child of `Info Container` and it will be automatically arranged by the `Vertical Layout Group`.
 
 ---
 
@@ -243,11 +244,9 @@ Fonts are an important part of any UI. They can help to set the tone and style o
 
 3. You should now have a new `TMP_FontAsset` for each font file in the `Fonts` folder.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/09.png>)
-
 4. You can assign these font assets to your TextMeshPro text elements to change their appearance. For example, you can assign a custom font to the `Score Text` TextMeshPro text element by selecting it in the Hierarchy panel and then setting the **Font Asset** field in the Inspector panel to one of the new `TMP_FontAsset` files that you created.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/10.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/09.png>)
 
 5. You can also assign the custom font to the `Score Text` TextMeshPro text element through code by adding a reference to the `TMP_FontAsset` in the `UIManager` script and then setting the font in the `Start()` method. 
 
@@ -273,54 +272,9 @@ public class UIManager : MonoBehaviour
 
 6. Drag and drop a `TMP_FontAsset` from the Project panel onto the **Custom Font** field in the Inspector panel for the `UI Manager` GameObject.
 
-![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/11.png>)
+![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/10.png>)
 
 ---
-
-## Audio
-
-Audio is an important part of any game. It can help to set the tone and atmosphere of the game, as well as provide feedback to the player. You can use audio in Unity by importing audio files into your project and then playing them through audio sources.
-
-1. In the `week-02.2-breakout-2-scriptable-objects-ui` folder, there is an `Audio` folder with a variety of different audio files. Copy and paste the `Audio` folder into the `Assets` folder of your Unity project.
-
-2. The audio files are in `.wav` format, which is a common audio format that can be used in Unity. You can play these audio files in your game by creating an `AudioSource` component and then assigning the audio clip to it. For example, you can add an `AudioSource` component to the `Ball` GameObject and then play a sound effect when the ball collides with a brick.
-
-3. In the `Ball` script, add a reference to the `AudioSource` and the audio clip that you want to play when the ball collides with a brick. Then, in the `OnCollisionEnter2D` method, play the audio clip when the ball collides with a brick.
-
-```csharp
-using UnityEngine;
-
-public class Ball : MonoBehaviour
-{
-    // Omitted for brevity
-
-    [Header("Audio Settings")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip brickHitSound;
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Brick"))
-        {
-            audioSource.PlayOneShot(brickHitSound);
-        }
-    }
-}
-```
-
-4. Drag and drop the `AudioSource` component from the `Ball` GameObject onto the **Audio Source** field in the Inspector panel for the `Ball` GameObject. Then, drag and drop an audio clip from the `Audio` folder onto the **Brick Hit Sound** field in the Inspector panel for the `Ball` GameObject.
-
----
-
-## Scene Management
-
----
-
-## Player Prefs
-
----
-
-## Builds
 
 ## Exercises
 
