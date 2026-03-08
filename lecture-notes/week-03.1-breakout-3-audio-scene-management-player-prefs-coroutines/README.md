@@ -4,10 +4,10 @@
 
 ## Important Links
 
-| Section        | Link                                                                               |
-| -------------- | ---------------------------------------------------------------------------------- |
-| Previous Class | [Week 02.2](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)    |
-| Next Class     | [Week 03.2](lecture-notes/week-03.2-breakout-3-animations-build-itch.io/README.md) |
+| Section        | Link                                                                                                 |
+| -------------- | ---------------------------------------------------------------------------------------------------- |
+| Previous Class | [Week 02.2](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)                      |
+| Next Class     | [Week 03.2](lecture-notes/week-03.2-breakout-3-animations-particle-systems-volume-systems/README.md) |
 
 ---
 

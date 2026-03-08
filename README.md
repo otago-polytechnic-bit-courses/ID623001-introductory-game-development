@@ -60,8 +60,8 @@ At the successful completion of this course, learners will be able to:
 | ---------------- | ---------------------------------------------------- | ----------------------------------------------- |
 | 1/Tahi           | GitHub, Unity, Basic Game Mathematics                | Game Objects, Materials, Components and Scripts |
 | 2/Rua            | Textures, Prefabs, Prefab Variants and Input System  | Scriptable Objects and UI                       |
-| 3/Toru           | Audio, Scene Management, Player Prefs and Coroutines | Animations, Optimisation, Build, Itch.io        |
-| 4/Whā            | Space Invaders 1                                     |                                                 |
+| 3/Toru           | Audio, Scene Management, Player Prefs and Coroutines | Animations, Particle Systems and Volume Systems |
+| 4/Whā            | Optimisation, Build and Itch.io                      |                                                 |
 | 5/Rima           | Space Invaders 2                                     |                                                 |
 | 6/Ono            | Space Invaders 3                                     |                                                 |
 | 7/Whitu          | Rogue-Like 1                                         |                                                 |
