@@ -185,6 +185,7 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 }
+```
 
 3. In the `Assets` folder, create a new script called `SettingsManager`. Open the script in your code editor and add the following code:
 
@@ -223,15 +224,15 @@ public class SettingsController : MonoBehaviour
 }
 ````
 
-3. In the Hierarchy panel, right-click and select **UI (Canvas) > Panel**. Name the new panel `Settings Panel`. This panel will be used to hold the settings UI elements.
+4. In the Hierarchy panel, right-click and select **UI (Canvas) > Panel**. Name the new panel `Settings Panel`. This panel will be used to hold the settings UI elements.
 
 ![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/04.png>)
 
-4. Drag and drop the `SettingsController` script from the Project panel onto the `Settings Panel` GameObject in the Hierarchy panel. Set the field for **Sound XF Slider** to a new slider that you create as a child of the `Settings Panel`.
+5. Drag and drop the `SettingsController` script from the Project panel onto the `Settings Panel` GameObject in the Hierarchy panel. Set the field for **Sound XF Slider** to a new slider that you create as a child of the `Settings Panel`.
 
 ![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/05.png>)
 
-5. You will need to write code to open the settings panel when the "Settings" button is clicked in the main menu, and to close the settings panel when the "Back" button is clicked in the settings panel.
+6. You will need to write code to open the settings panel when the "Settings" button is clicked in the main menu, and to close the settings panel when the "Back" button is clicked in the settings panel.
 
 ---
 
