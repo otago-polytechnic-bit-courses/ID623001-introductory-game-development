@@ -300,6 +300,8 @@ public class GameManager : MonoBehaviour
 }
 ```
 
+The `GoRoutine` coroutine takes approximately 4 seconds to complete, as it waits for 1 second between each step in the countdown sequence ("3", "2", "1", "Go!"). The exact number of frames will depend on the frame rate of the game, but at a typical frame rate of 60 frames per second, it would take around 240 frames to complete.
+
 5. In the Inspector panel for the `Game Manager` GameObject, set the field for **Go Text** to the `Go Text` TextMeshPro text element that you created in the Canvas.
 
 ![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/07.png>)
