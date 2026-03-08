@@ -144,8 +144,8 @@ User interfaces (UI) are an important part of any game. They allow players to in
 
 Canvases are the root of all UI elements in Unity. They are responsible for rendering UI elements on the screen. TextMeshPro is a powerful text rendering system that allows you to create high-quality text with advanced formatting options.
 
-1. In the Hierarchy panel, right-click and select **UI > Canvas**. This will create a new `Canvas` GameObject in the scene. The Canvas is the root of all UI elements and is responsible for rendering them on the screen.
-2. With the `Canvas` GameObject selected, right-click on it in the Hierarchy panel and select **UI > Text - TextMeshPro**. This will create a new TextMeshPro text element as a child of the Canvas. This text element will be used to display the player's score. You may need to import the **TextMeshPro Essentials** package and **TextMeshPro Examples and Extras** package if you have not already done so. Name the TextMeshPro text element `Score Text`.
+1. In the Hierarchy panel, right-click and select **UI (Canvas) > Canvas**. This will create a new `Canvas` GameObject in the scene. The Canvas is the root of all UI elements and is responsible for rendering them on the screen.
+2. With the `Canvas` GameObject selected, right-click on it in the Hierarchy panel and select **UI (Canvas) > Text - TextMeshPro**. This will create a new TextMeshPro text element as a child of the Canvas. This text element will be used to display the player's score. You may need to import the **TextMeshPro Essentials** package and **TextMeshPro Examples and Extras** package if you have not already done so. Name the TextMeshPro text element `Score Text`.
 
 ![](<../../resources (ignore)/img/week-02.2-breakout-2-scriptable-objects-ui/03.png>)
 
