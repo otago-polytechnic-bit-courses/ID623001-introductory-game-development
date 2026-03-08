@@ -49,6 +49,7 @@ public class AudioManager : MonoBehaviour
         tagToSound = new Dictionary<string, AudioClip>
         {
             { "Walls",  wallHitSound }
+            // Add more tags and sounds here
         };
     }
 
@@ -331,3 +332,47 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 ---
 
 ### Task 1
+
+Add a looping background music clip that plays when the `MainMenuScene` loads. Make sure the music stops or transitions when the `SampleScene` is loaded. Use `AudioSource.loop = true` and consider adding a separate `AudioSource` component dedicated to music.
+
+---
+
+### Task 2
+
+Add a lives display to the SampleScene canvas using a TextMeshProUGUI element. Update the text whenever the player loses a life using a coroutine that briefly flashes the text red using Color.Lerp before returning to white, giving the player visual feedback that they have lost a life.
+
+---
+
+### Task 3
+
+Extend the `SettingsController` to control music volume separately. Add a second `Slider` to the `Settings Panel` for music volume, stored under the key `"MusicVolume"` in `PlayerPrefs`. Update `AudioManager` to expose a `SetMusicVolume(float volume)` method that adjusts the music `AudioSource`'s `.volume` property. 
+
+---
+
+### Task 4
+
+In the `SampleScene` canvas, create a `PausePanel` that appears when the player presses **Escape**. The panel should contain a **Resume** button and a **Main Menu** button. While paused, set `Time.timeScale = 0f` to freeze gameplay, and restore it to `1f` on resume.
+
+---
+
+### Task 5
+
+In the `SampleScene` canvas, add two new panels — `GameOverPanel` and `WinPanel`. When all lives are lost, disable gameplay input and set `GameOverPanel.SetActive(true)`. When all bricks are destroyed, show `WinPanel` instead. Each panel should have a **Play Again** button that reloads `SampleScene` and a **Main Menu** button that loads `MainMenuScene`.
+
+---
+
+### Task 6
+
+Write a coroutine in `GameManager` called `SpeedUpRoutine` that gradually increases the ball's speed every `30` seconds using `WaitForSeconds`. Cap the maximum speed at a `[SerializeField] private float maxBallSpeed` value set in the Inspector. Display a **"Speed Up!"** warning message in the canvas for `2` seconds each time the speed increases, using a `TextMeshProUGUI` element that fades out with `Color.Lerp`.
+
+---
+
+### Task 7
+
+Write an event listener for the **Quit** button using `Application.Quit()`. In the Unity Editor, `Application.Quit()` has no effect, so use a coroutine to display a `"Quitting..."` message in the canvas for `2` seconds using `WaitForSeconds` before calling `Application.Quit()`, so the behaviour can still be observed during testing.
+
+---
+
+### Task 8
+
+Add a paddle hit sound and a brick hit sound to the `AudioManager`. Extend the `tagToSound` dictionary to include entries for `"Paddle"` and `"Brick"`. In the `BallController` script, call `AudioManager.Instance?.PlayCollisionSound("Paddle")` and `AudioManager.Instance?.PlayCollisionSound("Brick")` in `OnCollisionEnter2D` when the ball collides with the paddle or a brick respectively. Set the **Paddle Hit Sound** and **Brick Hit Sound** fields in the Inspector to audio clips from the `Audio` folder.
