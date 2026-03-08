@@ -4,10 +4,10 @@
 
 ## Important Links
 
-| Section        | Link                                                                            |
-| -------------- | ------------------------------------------------------------------------------- |
-| Previous Class | [Week 02.2](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md) |
-| Next Class     | [Week 03.2]()                                                                   |
+| Section        | Link                                                                               |
+| -------------- | ---------------------------------------------------------------------------------- |
+| Previous Class | [Week 02.2](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)    |
+| Next Class     | [Week 03.2](lecture-notes/week-03.2-breakout-3-animations-build-itch.io/README.md) |
 
 ---
 
@@ -15,9 +15,9 @@
 
 Audio is an important part of any game. It can help to set the tone and atmosphere of the game, as well as provide feedback to the player. You can use audio in Unity by importing audio files into your project and then playing them through audio sources.
 
-1. In the `week-03-breakout-audio-scene-management-player-prefs-builds` folder, there is an `Audio` folder with a variety of different audio files. Copy and paste the `Audio` folder into the `Assets` folder of your Unity project. 
+1. In the `week-03-breakout-audio-scene-management-player-prefs-builds` folder, there is an `Audio` folder with a variety of different audio files. Copy and paste the `Audio` folder into the `Assets` folder of your Unity project.
 
-3. In the Assets folder, create a new script called `AudioManager`. Open the script in your code editor and add the following code:
+2. In the Assets folder, create a new script called `AudioManager`. Open the script in your code editor and add the following code:
 
 ```csharp
 using UnityEngine;
@@ -36,10 +36,10 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null) 
-        { 
-            Destroy(gameObject); 
-            return; 
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -67,7 +67,7 @@ public class AudioManager : MonoBehaviour
 }
 ```
 
-4. In the `BallController` script, add a reference to the `AudioManager` and play a sound when the ball collides with a wall. 
+4. In the `BallController` script, add a reference to the `AudioManager` and play a sound when the ball collides with a wall.
 
 ```csharp
 // Omitted for brevity
@@ -99,9 +99,9 @@ Scene management is the process of loading and unloading scenes in a game. In Un
 
 ![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/01.png>)
 
-2. Drag and drop the `MainMenuScene` from the `Scenes` folder into the Hierarchy panel. 
+2. Drag and drop the `MainMenuScene` from the `Scenes` folder into the Hierarchy panel.
 
-3. Delete the `Audio Manager` GameObject from the `SampleScene` since we want the audio manager to persist across scenes and we will be creating a new one in the `MainMenuScene`. 
+3. Delete the `Audio Manager` GameObject from the `SampleScene` since we want the audio manager to persist across scenes and we will be creating a new one in the `MainMenuScene`.
 
 4. Remove the `SampleScene` by right-clicking on it in the Hierarchy panel and selecting **Remove Scene**.
 
@@ -136,7 +136,7 @@ public class MainMenuManager : MonoBehaviour
 
 6. In the Hierarchy panel, right-click and select **UI (Canvas) > Canvas**. Add text - "Breakout" and three buttons - "Play", "Settings", and "Quit" as children of the Canvas GameObject. These main menu UI elements are in an empty GameObject named `Main Container`. Arrange the text and buttons in a way that looks good to you.
 
-7. In the Hierarchy panel, create an empty GameObject and name it `Main Menu Manager`. Drag and drop the `MainMenuManager` script from the Project panel onto the `Main Menu Manager` GameObject in the Hierarchy panel. Set the field for **Play Button** to the "Play" button that you created in the Canvas. 
+7. In the Hierarchy panel, create an empty GameObject and name it `Main Menu Manager`. Drag and drop the `MainMenuManager` script from the Project panel onto the `Main Menu Manager` GameObject in the Hierarchy panel. Set the field for **Play Button** to the "Play" button that you created in the Canvas.
 
 ![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/02.png>)
 
@@ -150,11 +150,11 @@ public class MainMenuManager : MonoBehaviour
 
 Player prefs are a way to save and load player data in Unity. You can use the `PlayerPrefs` class to save and load data such as high scores, settings, and other player preferences. The `PlayerPrefs` class provides methods for saving and loading data of different types, such as integers, floats and strings.
 
-1. In the Hierarchy panel, create an empty GameObject and name it `Audio Manager`. The setuo is similar to the one we did in the `SampleScene` but this time we will be using player prefs to save and load the sound effects volume. Drag and drop the `AudioManager` script from the Project panel onto the `Audio Manager` GameObject in the Hierarchy panel. 
+1. In the Hierarchy panel, create an empty GameObject and name it `Audio Manager`. The setuo is similar to the one we did in the `SampleScene` but this time we will be using player prefs to save and load the sound effects volume. Drag and drop the `AudioManager` script from the Project panel onto the `Audio Manager` GameObject in the Hierarchy panel.
 
 2. Update the `AudioManager` script to save and load the sound effects volume using player prefs. Add the following code to the `AudioManager` script:
 
-```csharp
+````csharp
 // Omitted for brevity
 
 [RequireComponent(typeof(AudioSource))]
@@ -221,9 +221,9 @@ public class SettingsController : MonoBehaviour
         soundXFSlider.onValueChanged.RemoveAllListeners();
     }
 }
-```
+````
 
-3. In the Hierarchy panel, right-click and select **UI (Canvas) > Panel**. Name the new panel `Settings Panel`. This panel will be used to hold the settings UI elements. 
+3. In the Hierarchy panel, right-click and select **UI (Canvas) > Panel**. Name the new panel `Settings Panel`. This panel will be used to hold the settings UI elements.
 
 ![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/04.png>)
 
@@ -231,16 +231,15 @@ public class SettingsController : MonoBehaviour
 
 ![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/05.png>)
 
-5. You will need to write code to open the settings panel when the "Settings" button is clicked in the main menu, and to close the settings panel when the "Back" button is clicked in the settings panel. 
+5. You will need to write code to open the settings panel when the "Settings" button is clicked in the main menu, and to close the settings panel when the "Back" button is clicked in the settings panel.
 
 ---
-
 
 ## Coroutines
 
 Coroutines are a powerful tool in Unity that allow you to execute code over multiple frames. They are often used for tasks that require waiting, such as animations, timers or sequences of events. Coroutines are implemented using the `IEnumerator` interface and the `yield return` statement.
 
-1. Drag and drop the `SampleScene` from the `Scenes` folder into the Hierarchy panel. 
+1. Drag and drop the `SampleScene` from the `Scenes` folder into the Hierarchy panel.
 
 2. Remove the `MainMenuScene` by right-clicking on it in the Hierarchy panel and selecting **Remove Scene**.
 
@@ -345,7 +344,7 @@ Add a lives display to the SampleScene canvas using a TextMeshProUGUI element. U
 
 ### Task 3
 
-Extend the `SettingsController` to control music volume separately. Add a second `Slider` to the `Settings Panel` for music volume, stored under the key `"MusicVolume"` in `PlayerPrefs`. Update `AudioManager` to expose a `SetMusicVolume(float volume)` method that adjusts the music `AudioSource`'s `.volume` property. 
+Extend the `SettingsController` to control music volume separately. Add a second `Slider` to the `Settings Panel` for music volume, stored under the key `"MusicVolume"` in `PlayerPrefs`. Update `AudioManager` to expose a `SetMusicVolume(float volume)` method that adjusts the music `AudioSource`'s `.volume` property.
 
 ---
 
