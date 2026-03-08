@@ -1,4 +1,4 @@
-# Week 02.2
+# Week 03.1
 
 ---
 
@@ -7,7 +7,7 @@
 | Section        | Link                                                                            |
 | -------------- | ------------------------------------------------------------------------------- |
 | Previous Class | [Week 02.2](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md) |
-| Next Class     | [Week 03.1]()                                                                   |
+| Next Class     | [Week 03.2]()                                                                   |
 
 ---
 
