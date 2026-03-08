@@ -65,7 +65,7 @@ public class BrickController : MonoBehaviour
 {
     [Header("Prefab Settings")]
     [SerializeField] private GameObject brickPrefab;
-    [SerializeField] private BrickData[] bricks = new BrickData[4];
+    [SerializeField] private BrickData[] rowData = new BrickData[4];
 
     [Header("Grid Settings")]
     [SerializeField] private int bricksPerRow = 8;
