@@ -290,7 +290,7 @@ public class GameManager : MonoBehaviour
         foreach (string step in sequence)
         {
             goText.text = step;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f); // Pause the coroutine here and resume after 1 second
         }
 
         goText.gameObject.SetActive(false);
