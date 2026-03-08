@@ -154,7 +154,7 @@ Player prefs are a way to save and load player data in Unity. You can use the `P
 
 2. Update the `AudioManager` script to save and load the sound effects volume using player prefs. Add the following code to the `AudioManager` script:
 
-````csharp
+```csharp
 // Omitted for brevity
 
 [RequireComponent(typeof(AudioSource))]
