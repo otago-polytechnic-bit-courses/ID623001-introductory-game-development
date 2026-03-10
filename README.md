@@ -56,25 +56,25 @@ At the successful completion of this course, learners will be able to:
 
 ## Provisional Schedule
 
-| Week             | Session 1 Topics                                     | Session 2 Topics                                |
-| ---------------- | ---------------------------------------------------- | ----------------------------------------------- |
-| 1/Tahi           | GitHub, Unity, Basic Game Mathematics                | Game Objects, Materials, Components and Scripts |
-| 2/Rua            | Textures, Prefabs, Prefab Variants and Input System  | Scriptable Objects and UI                       |
-| 3/Toru           | Audio, Scene Management, Player Prefs and Coroutines | Animations, Particle Systems and Volume Systems |
-| 4/Whā            | Optimisation, Build and Itch.io                      |                                                 |
-| 5/Rima           | Space Invaders 2                                     |                                                 |
-| 6/Ono            | Space Invaders 3                                     |                                                 |
-| 7/Whitu          | Rogue-Like 1                                         |                                                 |
-|                  | Mid Semester Break                                   |                                                 |
-| 8/Waru           | Rogue-Like 2                                         |                                                 |
-| 9/Iwa            | Rogue-Like 3                                         |                                                 |
-| 10/Tekau         | Deployment                                           |                                                 |
-| 11/Tekau mā tahi | Assessment Work                                      |                                                 |
-| 12/Tekau mā rua  | Assessment Work                                      |                                                 |
-| 13/Tekau mā toru | Assessment Work                                      |                                                 |
-| 14/Tekau mā whā  | Assessment Work                                      |                                                 |
-| 15/Tekau mā rima | Assessment Work                                      |                                                 |
-| 16/Tekau mā ono  | Assessment Marking                                   |                                                 |
+| Week             | Session 1 Topics                                                   | Session 2 Topics                                |
+| ---------------- | ------------------------------------------------------------------ | ----------------------------------------------- |
+| 1/Tahi           | GitHub, Unity, Basic Game Mathematics                              | Game Objects, Materials, Components and Scripts |
+| 2/Rua            | Textures, Prefabs, Prefab Variants and Input System                | Scriptable Objects and UI                       |
+| 3/Toru           | Audio, Scene Management, Player Prefs and Coroutines               |                                                 |
+| 4/Whā            | Renderer and Particle Systems                                      | Optimisation, Build and Itch.io                 |
+| 5/Rima           | Tilemap, State Machines, Animations, Cinemachine and Pixel Perfect | Gamepads, Parallax and JSON Serialisation       |
+| 6/Ono            | Space Invaders 3                                                   |                                                 |
+| 7/Whitu          | Rogue-Like 1                                                       |                                                 |
+|                  | Mid Semester Break                                                 |                                                 |
+| 8/Waru           | Rogue-Like 2                                                       |                                                 |
+| 9/Iwa            | Rogue-Like 3                                                       |                                                 |
+| 10/Tekau         | Deployment                                                         |                                                 |
+| 11/Tekau mā tahi | Assessment Work                                                    |                                                 |
+| 12/Tekau mā rua  | Assessment Work                                                    |                                                 |
+| 13/Tekau mā toru | Assessment Work                                                    |                                                 |
+| 14/Tekau mā whā  | Assessment Work                                                    |                                                 |
+| 15/Tekau mā rima | Assessment Work                                                    |                                                 |
+| 16/Tekau mā ono  | Assessment Marking                                                 |                                                 |
 
 ## Resources
 

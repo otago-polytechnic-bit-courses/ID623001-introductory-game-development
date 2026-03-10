@@ -79,8 +79,10 @@ public class BallController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (obj.CompareTag("Walls"))
-            AudioManager.Instance?.PlayCollisionSound("Walls");
+        string tag = obj.CompareTag("Untagged") ? obj.transform.parent?.tag : obj.tag; // Check the tag of the collided object, or its parent if it is untagged
+
+        if (tag != null)
+            AudioManager.Instance?.PlayCollisionSound(tag);
     }
 }
 ```
@@ -307,6 +309,20 @@ The `GoRoutine` coroutine takes approximately 4 seconds to complete, as it waits
 ![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/07.png>)
 
 6. Click the **Play** button at the top of the Unity Editor to run the game. You should see the "Press Space to Start" text on the screen. When you press the spacebar, a countdown will begin, displaying "3", "2", "1", and then "Go!" before the game starts.
+
+---
+
+## Renderer
+
+
+
+---
+
+## Particle Systems
+
+---
+
+## Volume Systems
 
 ---
 
