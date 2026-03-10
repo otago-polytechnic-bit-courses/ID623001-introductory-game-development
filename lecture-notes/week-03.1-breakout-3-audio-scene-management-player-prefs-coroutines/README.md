@@ -312,20 +312,6 @@ The `GoRoutine` coroutine takes approximately 4 seconds to complete, as it waits
 
 ---
 
-## Renderer
-
-
-
----
-
-## Particle Systems
-
----
-
-## Volume Systems
-
----
-
 ## Exercises
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
