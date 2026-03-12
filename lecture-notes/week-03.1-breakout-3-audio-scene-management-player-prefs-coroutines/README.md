@@ -4,8 +4,8 @@
 
 |            | Link                                                                                                                                                               |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ← Previous | [Week 02.2 — Breakout: Scriptable Objects & UI](ID623001-introductory-game-development/lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)         |
-| → Next     | [Week 04.1 — Breakout: Renderer & Particle Systems](ID623001-introductory-game-development/lecture-notes/week-04.1-breakout-4-renderer-particle-systems/README.md) |
+| ← Previous | [Week 02.2 — Breakout: Scriptable Objects & UI](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)         |
+| → Next     | [Week 04.1 — Breakout: Renderer & Particle Systems](lecture-notes/week-04.1-breakout-4-renderer-particle-systems/README.md) |
 
 ---
 

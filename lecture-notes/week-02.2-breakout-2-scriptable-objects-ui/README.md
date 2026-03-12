@@ -4,8 +4,8 @@
 
 |            | Link                                                                                                                                              |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ← Previous | [Week 02.1 — Breakout: Textures, Prefabs & Input System]()                                                                                        |
-| → Next     | [Week 02.2. — Scriptable Objects & UI](ID623001-introductory-game-development/lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md) |
+| ← Previous | [Week 02.1 — Breakout: Textures, Prefabs & Input System](lecture-notes/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
+| → Next     | [Week 02.2. — Scriptable Objects & UI](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md) |
 
 ---
 

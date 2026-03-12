@@ -5,7 +5,7 @@
 |                  | Link                                                      |
 | ---------------- | --------------------------------------------------------- |
 | GitHub Classroom | [ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho) |
-| → Next           | [Week 01.2 — Breakout: Materials, Components & Scripts]() |
+| → Next           | [Week 01.2 — Breakout: Materials, Components & Scripts](lecture-notes/week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
 
 ---
 
