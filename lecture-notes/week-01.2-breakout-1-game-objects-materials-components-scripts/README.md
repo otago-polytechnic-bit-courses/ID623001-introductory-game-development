@@ -1,49 +1,64 @@
-# Week 01.2
+# Week 01.2 — Breakout: Materials, Components & Scripts
+
+## Navigation
+
+|            | Link                                                                                                                                                                                        |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ← Previous | [Week 01.1 — GitHub, Unity & Basic Game Mathematics](ID623001-introductory-game-development/lecture-notes/week-01.1-github-unity-basic-game-mathematics/README.md)                          |
+| → Next     | [Week 02.1 — Breakout: Textures, Prefabs & Input System](ID623001-introductory-game-development/lecture-notes/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
 
 ---
 
-## Important Links
+## 1. Breakout
 
-| Section        | Link                                                                                         |
-| -------------- | -------------------------------------------------------------------------------------------- |
-| Previous Class | [Week 01.1](../week-01.1-github-unity-basic-game-mathematics/README.md)                      |
-| Next Class     | [Week 02.1](../week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
+Breakout is a classic arcade game where the player controls a paddle to bounce a ball and break bricks. The goal is to clear all the bricks without letting the ball fall below the paddle.
 
 ---
 
-## Breakout
+## 2. Project Setup
 
-Breakout is a classic arcade game where the player controls a paddle to bounce a ball and break bricks. The goal is to break all the bricks without letting the ball fall below the paddle.
+**Step 1** — Open Unity Hub and create a new **2D Universal** project. Name it `Breakout`.
 
----
+**Step 2** — In the root directory of your project, add a Unity `.gitignore` file to exclude unnecessary files from version control. Add, commit, and push the `.gitignore` file to your GitHub repository. Then add, commit, and push the Unity project files.
 
-## Project Setup
-
-1. Open Unity Hub and create a new "2D Universal" project. Name it `Breakout`.
-2. In the root directory of your project, add a Unity `.gitignore` file to exclude unnecessary files from version control. Add, commit and push the `.gitignore` file to your GitHub repository. Then add, commit and push the Unity project files to your GitHub repository.
-3. In the `Assets` folder, create two new folders: `Materials` and `Scripts`.
+**Step 3** — In the `Assets` folder, create two new folders: `Materials` and `Scripts`.
 
 ---
 
-## Ball Game Object
+## 3. Ball GameObject
 
-1. In the Hierarchy panel, right-click and select **2D Object > Sprite > Circle**. Name the GameObject `Ball`.
-2. In the `Materials` folder, right-click and select **Create > 2D > Physics Material 2D**. Name it `BallBounce`.
-3. In the Inspector panel, set the:
-   - `Friction` to `0` to prevent the ball from slowing down when it collides with other objects
-   - `Bounciness` to `1` to make the ball bounce back with the same speed after colliding with other objects
-   - `Bounce Combine` to `Maximum` to ensure the ball bounces as much as possible when colliding with other objects
-   - `Friction Combine` to `Minimum` to ensure the ball does not experience any friction when colliding with other objects
-4. Add two components to the Ball GameObject: `Rigidbody2D` and `CircleCollider2D`.
-   - `Rigidbody2D` allows the ball to be affected by physics, such as gravity and collisions.
-   - `CircleCollider2D` defines the shape of the ball for collision detection.
-5. In the Inspector panel, set the `Rigidbody2D` component's:
-   - `Gravity Scale` to `0` so the ball does not fall due to gravity
-   - `Collision Detection` to `Continuous` to prevent the ball from passing through objects at high speeds
-   - `Interpolate` to `Interpolate` to smooth out the ball's movement
-   - `Constraints > Freeze Rotation` to `true` to prevent the ball from spinning
-6. In the Inspector panel, set the `CircleCollider2D` component's `Material` to `BallBounce` to apply the physics material.
-7. In the `Scripts` folder, create a new script called `BallController`. Open the script in your code editor and add the following code:
+**Step 1** — In the Hierarchy panel, right-click and select **2D Object > Sprite > Circle**. Name the GameObject `Ball`.
+
+**Step 2** — In the `Materials` folder, right-click and select **Create > 2D > Physics Material 2D**. Name it `BallBounce`.
+
+**Step 3** — In the Inspector panel, configure the `BallBounce` material:
+
+| Property           | Value     | Reason                                         |
+| ------------------ | --------- | ---------------------------------------------- |
+| `Friction`         | `0`       | Prevents the ball from slowing down on contact |
+| `Bounciness`       | `1`       | Ball rebounds at the same speed it arrived     |
+| `Bounce Combine`   | `Maximum` | Ensures maximum bounciness when colliding      |
+| `Friction Combine` | `Minimum` | Ensures no friction is applied on contact      |
+
+**Step 4** — Add two components to the Ball GameObject:
+
+| Component          | Purpose                                                         |
+| ------------------ | --------------------------------------------------------------- |
+| `Rigidbody2D`      | Allows the ball to be affected by physics (gravity, collisions) |
+| `CircleCollider2D` | Defines the ball's shape for collision detection                |
+
+**Step 5** — In the Inspector panel, configure the `Rigidbody2D` component:
+
+| Property                        | Value         | Reason                                                        |
+| ------------------------------- | ------------- | ------------------------------------------------------------- |
+| `Gravity Scale`                 | `0`           | Prevents the ball from falling                                |
+| `Collision Detection`           | `Continuous`  | Prevents the ball from passing through objects at high speeds |
+| `Interpolate`                   | `Interpolate` | Smooths out the ball's movement                               |
+| `Constraints > Freeze Rotation` | `true`        | Prevents the ball from spinning                               |
+
+**Step 6** — In the Inspector panel, set the `CircleCollider2D` component's `Material` to `BallBounce`.
+
+**Step 7** — In the `Scripts` folder, create a new script called `BallController`. Open it in your code editor and add the following:
 
 ```csharp
 using UnityEngine;
@@ -60,22 +75,27 @@ public class BallController : MonoBehaviour
 
     private void Awake()
     {
+        // Awake() runs before Start() — get component references here
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
+        // Pick a random upward direction, then launch the ball at the configured speed
         Vector2 direction = new Vector2(
-            Random.Range(-1f, 1f), 1f).normalized; // Random upward direction
+            Random.Range(-1f, 1f), 1f).normalized;
 
         rb.linearVelocity = direction * speed;
     }
 
     private void FixedUpdate()
     {
-        Vector2 velocity = rb.linearVelocity.normalized * speed; // Maintain a constant speed
+        // Recalculate velocity each physics step to maintain a constant speed
+        Vector2 velocity = rb.linearVelocity.normalized * speed;
 
-        if (Mathf.Abs(velocity.x) < minHorizontalVelocity) // Prevent the ball from moving vertically
+        // Clamp horizontal component — prevents the ball from travelling almost vertically,
+        // which would make the game unplayable
+        if (Mathf.Abs(velocity.x) < minHorizontalVelocity)
         {
             velocity.x = minHorizontalVelocity * Mathf.Sign(velocity.x == 0 ? 1 : velocity.x);
             velocity = velocity.normalized * speed;
@@ -86,33 +106,51 @@ public class BallController : MonoBehaviour
 }
 ```
 
-If you look at the Inspector panel for the Ball GameObject, you should see a new component called **Ball Controller** with a **Speed** field. You can adjust the speed of the ball by changing the value in this field.
+After attaching the script, the Inspector panel for the Ball GameObject will show a **Ball Controller** component with a **Speed** field you can adjust without editing code.
 
-8. Drag and drop the `BallController` script from the Project panel onto the Ball GameObject in the Hierarchy panel.
-9. Click the **Play** button at the top of the Unity Editor to run the game. You should see the ball bouncing around the scene.
+**Step 8** — Drag and drop the `BallController` script from the Project panel onto the Ball GameObject in the Hierarchy.
 
----
-
-## Lifecycle of a MonoBehaviour Script
-
-In a MonoBehaviour script, there are several special methods that are called by Unity at specific points in the game's lifecycle. These methods include:
-
-- `Awake()`: Called when the script instance is being loaded. This happens before the `Start()` method and is used to initialise variables or states before the game starts. It is called only once during the lifetime of the script instance.
-- `Start()`: Called before the first frame update. This is used to set up the initial state of the game. It is called only once during the lifetime of the script instance.
-- `Update()`: Called once per frame. This is used for regular updates, such as checking for input or moving objects. The frequency of this method depends on the frame rate of the game.
-- `FixedUpdate()`: Called at a fixed time interval and is used for physics updates. It is called multiple times per second, depending on the physics settings of the project.
-
-> Resource: [Unity Manual: MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
+**Step 9** — Click the **Play** button. You should see the ball bouncing around the scene.
 
 ---
 
-## Useful Attributes
+## 4. MonoBehaviour Lifecycle
 
-- `[SerializeField]`: This attribute allows you to serialize a private field, making it visible and editable in the Unity Inspector. This is useful for keeping variables private while still allowing designers to tweak values in the editor.
-- `[Header("Header Name")]`: This attribute adds a header above the field in the Unity Inspector, which can be used to group related fields together for better organisation and readability.
-- `[RequireComponent(typeof(ComponentType))]`: This attribute ensures that the specified component is added to the GameObject when the script is attached. If the component is not already present, Unity will automatically add it. This is useful for ensuring that necessary components are always present on a GameObject.
+Unity calls special methods on a `MonoBehaviour` script at defined points during the game's lifetime. The most important ones are:
 
-> Resource: [Unity Manual: Attributes](https://docs.unity3d.com/Manual/Attributes.html)
+| Method          | When it's called                                      | Typical use                                       |
+| --------------- | ----------------------------------------------------- | ------------------------------------------------- |
+| `Awake()`       | When the script instance is loaded — before `Start()` | Initialise component references (`GetComponent`)  |
+| `Start()`       | Before the first frame update                         | Set up initial state (position, velocity, colour) |
+| `Update()`      | Once per frame                                        | Input handling, non-physics movement              |
+| `FixedUpdate()` | At a fixed time interval (default 50×/sec)            | Physics updates — always use this for `Rigidbody` |
+
+> The frame rate affects `Update()` but never `FixedUpdate()`. Always apply forces and velocity changes in `FixedUpdate()` to keep physics deterministic.
+
+📖 Reference: [Unity — MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
+
+---
+
+## 5. Useful Attributes
+
+Attributes are placed in square brackets above a field or class to change how Unity handles them.
+
+| Attribute                       | Effect                                                                                    |
+| ------------------------------- | ----------------------------------------------------------------------------------------- |
+| `[SerializeField]`              | Makes a `private` field visible and editable in the Inspector, without making it `public` |
+| `[Header("Label")]`             | Adds a bold label above a field in the Inspector to group related fields                  |
+| `[RequireComponent(typeof(T))]` | Automatically adds component `T` if it is missing when the script is attached             |
+
+```csharp
+[RequireComponent(typeof(Rigidbody2D))]   // Unity adds Rigidbody2D automatically
+public class BallController : MonoBehaviour
+{
+    [Header("Movement Settings")]         // Bold label in the Inspector
+    [SerializeField] private float speed = 5f;  // Private but editable in Inspector
+}
+```
+
+📖 Reference: [Unity — Attributes](https://docs.unity3d.com/Manual/Attributes.html)
 
 ---
 
@@ -120,9 +158,9 @@ In a MonoBehaviour script, there are several special methods that are called by 
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
 
-- If you provide an AI tool with a prompt that is not refined enough, it may generate a not-so-useful response
-- Do not trust the AI tool's responses blindly. You must still use your judgement and may need to do additional research to determine if the response is correct
-- Acknowledge what AI tool you have used. If you use AI to help you with a file, include an XML doc comment at the top of the file
+- Refine your prompts — vague prompts yield vague responses
+- Validate AI output — don't trust it blindly
+- Acknowledge AI usage at the top of any AI-assisted file:
 
 ```csharp
 /// <summary>
@@ -139,38 +177,48 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1
+### Task 1 — Refactor `Start()`
 
-The `Start()` method has two concerns: setting the initial direction of the ball and setting the initial speed of the ball. Refactor the `Start()` method to separate these concerns into two methods.
+The `Start()` method currently has two responsibilities: choosing the initial direction and applying the initial velocity. Refactor it by extracting these into two separate private methods.
 
----
-
-### Task 2
-
-Create a variable in the `BallController` script to represent the size of the ball. In the `Start()` method, set the ball's scale to a random value. You can do this by setting the `transform.localScale` property of the Ball GameObject to a new `Vector2` with the random size for both the x and y axes.
-
-> Resource: [Unity Manual: Transform.localScale](https://docs.unity3d.com/ScriptReference/Transform-localScale.html)
+> **Hint:** create `GetLaunchDirection()` returning a `Vector2` and `LaunchBall(Vector2 direction)` applying the velocity, then call both from `Start()`.
 
 ---
 
-### Task 3
+### Task 2 — Random Ball Size
 
-Change the background color of the scene to a color of your choice. You can do this by selecting the **Main Camera** GameObject in the Hierarchy panel and changing the **Background** colour in the Inspector panel.
+Add a serialized field to `BallController` to represent the ball's size range. In `Start()`, set the ball to a random size within that range by assigning a new `Vector3` to `transform.localScale`.
 
-> Resource: [Unity Manual: Camera](https://docs.unity3d.com/Manual/class-Camera.html)
+> **Hint:** `transform.localScale = new Vector3(size, size, 1f)` where `size` is a random float. Use the same value for x and y to keep the ball circular.
 
----
-
-### Task 4
-
-Currently, the Ball GameObject's position is set to `(0, 0)` in the scene. This means the ball will always start at the center of the scene. Modify the `Start()` method in the `BallController` script to set the Ball GameObject's position initial 20 units above the bottom of the screen. You can use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates.
-
-> Resource: [Unity Manual: Camera.ScreenToWorldPoint](https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html)
+📖 Reference: [Unity — Transform.localScale](https://docs.unity3d.com/ScriptReference/Transform-localScale.html)
 
 ---
 
-### Task 5
+### Task 3 — Background Colour
 
-Currently, the Ball GameObject's colour is white. In the `Start()` method of the `BallController` script, set the ball's colour to a random colour each time the game starts. You can do this by accessing the `SpriteRenderer` component of the Ball GameObject and setting its `color` property to a new `Color` with random RGB values. Ensure there is contrast between the ball and the background colour for better visibility.
+Change the background colour of the scene to a colour of your choice.
 
-> Resource: [Unity Manual: SpriteRenderer](https://docs.unity3d.com/Manual/class-SpriteRenderer.html)
+> **Hint:** select the **Main Camera** GameObject in the Hierarchy and change the **Background** colour field in the Inspector panel.
+
+📖 Reference: [Unity — Camera](https://docs.unity3d.com/Manual/class-Camera.html)
+
+---
+
+### Task 4 — Spawn Position
+
+The ball always spawns at `(0, 0)`. Modify `Start()` to spawn the ball 20 units above the bottom of the screen, regardless of resolution. Use `Camera.main.ScreenToWorldPoint()` to convert screen coordinates to world coordinates.
+
+> **Hint:** `Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, 20f, camera.nearClipPlane))` gives you a world-space point 20 screen units from the bottom centre.
+
+📖 Reference: [Unity — Camera.ScreenToWorldPoint](https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html)
+
+---
+
+### Task 5 — Random Ball Colour
+
+The ball is currently white. In `Start()`, set the ball to a random colour each time the game starts by accessing its `SpriteRenderer` component and setting the `color` property. Ensure there is enough contrast between the ball and the background colour for the ball to be visible.
+
+> **Hint:** `new Color(Random.value, Random.value, Random.value)` gives a random RGB colour. Access the renderer with `GetComponent<SpriteRenderer>()`.
+
+📖 Reference: [Unity — SpriteRenderer](https://docs.unity3d.com/Manual/class-SpriteRenderer.html)

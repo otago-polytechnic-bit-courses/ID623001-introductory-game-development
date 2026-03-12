@@ -1,23 +1,21 @@
-# Week 03.1
+# Week 03.1 — Breakout: Audio, Scene Management, Player Prefs & Coroutines
+
+## Navigation
+
+|            | Link                                                                                                                                                               |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ← Previous | [Week 02.2 — Breakout: Scriptable Objects & UI](ID623001-introductory-game-development/lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)         |
+| → Next     | [Week 04.1 — Breakout: Renderer & Particle Systems](ID623001-introductory-game-development/lecture-notes/week-04.1-breakout-4-renderer-particle-systems/README.md) |
 
 ---
 
-## Important Links
+## 1. Audio
 
-| Section        | Link                                                                                                 |
-| -------------- | ---------------------------------------------------------------------------------------------------- |
-| Previous Class | [Week 02.2](lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)                      |
-| Next Class     | [Week 03.2](lecture-notes/week-03.2-breakout-3-animations-particle-systems-volume-systems/README.md) |
+Audio sets the tone and atmosphere of a game and gives players feedback on their actions. In Unity, audio files are played through **AudioSource** components. The `AudioManager` below uses the **Singleton pattern** so any script in any scene can trigger sounds through a single shared instance.
 
----
+**Step 1** — Copy the provided `Audio` folder into the `Assets` folder of your Unity project.
 
-## Audio
-
-Audio is an important part of any game. It can help to set the tone and atmosphere of the game, as well as provide feedback to the player. You can use audio in Unity by importing audio files into your project and then playing them through audio sources.
-
-1. In the `week-03-breakout-audio-scene-management-player-prefs-builds` folder, there is an `Audio` folder with a variety of different audio files. Copy and paste the `Audio` folder into the `Assets` folder of your Unity project.
-
-2. In the Assets folder, create a new script called `AudioManager`. Open the script in your code editor and add the following code:
+**Step 2** — In the `Scripts` folder, create a new script called `AudioManager`. Open it and add the following:
 
 ```csharp
 using UnityEngine;
@@ -26,39 +24,45 @@ using System.Collections.Generic;
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
+    // Static reference — accessible from any script via AudioManager.Instance
     public static AudioManager Instance { get; private set; }
 
-    [Header("Ball Sounds Settings")]
+    [Header("Ball Sound Settings")]
     [SerializeField] private AudioClip wallHitSound;
 
     private AudioSource audioSource;
+
+    // Maps a GameObject tag to its corresponding sound clip
     private Dictionary<string, AudioClip> tagToSound;
 
     private void Awake()
     {
+        // Singleton enforcement — destroy any duplicate that loads later
         if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);   // persist across scene loads
 
         audioSource = GetComponent<AudioSource>();
 
         tagToSound = new Dictionary<string, AudioClip>
         {
-            { "Walls",  wallHitSound }
-            // Add more tags and sounds here
+            { "Walls", wallHitSound }
+            // Add more tag → clip pairs here as you add sounds
         };
     }
 
+    // Look up the clip for the given tag and play it, if one exists
     public void PlayCollisionSound(string tag)
     {
         if (tagToSound.TryGetValue(tag, out AudioClip clip))
             PlaySound(clip);
     }
 
+    // PlayOneShot allows multiple overlapping sounds without cutting each other off
     public void PlaySound(AudioClip clip)
     {
         if (clip != null)
@@ -67,7 +71,7 @@ public class AudioManager : MonoBehaviour
 }
 ```
 
-4. In the `BallController` script, add a reference to the `AudioManager` and play a sound when the ball collides with a wall.
+**Step 3** — Update `BallController` to call `AudioManager` when the ball collides with something:
 
 ```csharp
 // Omitted for brevity
@@ -79,7 +83,12 @@ public class BallController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject obj = collision.gameObject;
-        string tag = obj.CompareTag("Untagged") ? obj.transform.parent?.tag : obj.tag; // Check the tag of the collided object, or its parent if it is untagged
+
+        // Wall colliders are children of the Walls GameObject — check the parent tag if the
+        // child itself is untagged
+        string tag = obj.CompareTag("Untagged")
+            ? obj.transform.parent?.tag
+            : obj.tag;
 
         if (tag != null)
             AudioManager.Instance?.PlayCollisionSound(tag);
@@ -87,27 +96,23 @@ public class BallController : MonoBehaviour
 }
 ```
 
-5. In the Hierarchy panel, create an empty GameObject and name it `Audio Manager`. Drag and drop the `AudioManager` script from the Project panel onto the `Audio Manager` GameObject in the Hierarchy panel. In the Inspector panel for the `Audio Manager` GameObject, you should see a new component called **Audio Manager** with a field for **Wall Hit Sound**. Set this field to one of the audio clips from the `Audio` folder.
-
-![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/00.png>)
+**Step 4** — In the Hierarchy, create an empty GameObject named `Audio Manager`. Attach the `AudioManager` script to it. In the Inspector, set the **Wall Hit Sound** field to an audio clip from the `Audio` folder.
 
 ---
 
-## Scene Management
+## 2. Scene Management
 
-Scene management is the process of loading and unloading scenes in a game. In Unity, you can use the `SceneManager` class to manage scenes. You can load a scene by name or by index, and you can also Remove Scenes when they are no longer needed.
+Scene management is the process of loading and unloading scenes in a game. Unity's `SceneManager` class lets you load scenes by name or index and remove scenes that are no longer needed.
 
-1. In the `Scenes` folder, right-click and select **Create > Scene**. Name the new scene `MainMenuScence`. Open the `MainMenuScence` scene.
+**Step 1** — In the `Scenes` folder, right-click and select **Create > Scene**. Name it `MainMenuScene`. Double-click to open it.
 
-![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/01.png>)
+**Step 2** — Drag `MainMenuScene` from the `Scenes` folder into the Hierarchy panel.
 
-2. Drag and drop the `MainMenuScene` from the `Scenes` folder into the Hierarchy panel.
+**Step 3** — Delete the `Audio Manager` GameObject from `SampleScene`. The `AudioManager` uses `DontDestroyOnLoad`, so it will persist when the scene transitions — we will create a single instance in `MainMenuScene` instead.
 
-3. Delete the `Audio Manager` GameObject from the `SampleScene` since we want the audio manager to persist across scenes and we will be creating a new one in the `MainMenuScene`.
+**Step 4** — Right-click `SampleScene` in the Hierarchy and select **Remove Scene**.
 
-4. Remove the `SampleScene` by right-clicking on it in the Hierarchy panel and selecting **Remove Scene**.
-
-5. In the `Assets` folder, create a new script called `MainMenuManager`. Open the script in your code editor and add the following code:
+**Step 5** — In the `Scripts` folder, create a new script called `MainMenuManager`. Open it and add the following:
 
 ```csharp
 using UnityEngine;
@@ -121,40 +126,55 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        // AddListener wires the button click to our method without using the Inspector event
         playButton.onClick.AddListener(OnPlayClicked);
     }
 
     private void OnPlayClicked()
     {
+        // LoadSceneAsync loads the scene in the background without freezing the game
         SceneManager.LoadSceneAsync("SampleScene");
     }
 
     private void OnDestroy()
     {
+        // Always remove listeners when the object is destroyed to avoid memory leaks
         playButton.onClick.RemoveAllListeners();
     }
 }
 ```
 
-6. In the Hierarchy panel, right-click and select **UI (Canvas) > Canvas**. Add text - "Breakout" and three buttons - "Play", "Settings", and "Quit" as children of the Canvas GameObject. These main menu UI elements are in an empty GameObject named `Main Container`. Arrange the text and buttons in a way that looks good to you.
+**Step 6** — In the Hierarchy, right-click and select **UI (Canvas) > Canvas**. Add the following UI elements inside an empty child GameObject named `Main Container`:
 
-7. In the Hierarchy panel, create an empty GameObject and name it `Main Menu Manager`. Drag and drop the `MainMenuManager` script from the Project panel onto the `Main Menu Manager` GameObject in the Hierarchy panel. Set the field for **Play Button** to the "Play" button that you created in the Canvas.
+| Element         | Type        | Text       |
+| --------------- | ----------- | ---------- |
+| Title           | TextMeshPro | `Breakout` |
+| Play button     | Button      | `Play`     |
+| Settings button | Button      | `Settings` |
+| Quit button     | Button      | `Quit`     |
 
-![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/02.png>)
+Arrange them to your preference.
 
-8. In the `Build Profiles` window, make sure that both the `MainMenuScene` and the `SampleScene` are added to the build. You can open the `Build Profiles` window by going to **File > Build Profiles**. Click on the **Add Open Scenes** button to add the currently open scene to the build. Make sure that the `MainMenuScene` is at index 0 and the `SampleScene` is at index 1.
+**Step 7** — Create an empty GameObject named `Main Menu Manager`. Attach the `MainMenuManager` script to it. In the Inspector, set the **Play Button** field to the Play button in the Canvas.
 
-![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/03.png>)
+**Step 8** — Open **File > Build Profiles**. Click **Add Open Scenes** to add the currently open scene. Repeat for `SampleScene`. Ensure the build order is:
+
+| Index | Scene           |
+| ----- | --------------- |
+| 0     | `MainMenuScene` |
+| 1     | `SampleScene`   |
+
+📖 Reference: [Unity — SceneManager](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.html)
 
 ---
 
-## Player Prefs
+## 3. Player Prefs
 
-Player prefs are a way to save and load player data in Unity. You can use the `PlayerPrefs` class to save and load data such as high scores, settings, and other player preferences. The `PlayerPrefs` class provides methods for saving and loading data of different types, such as integers, floats and strings.
+`PlayerPrefs` saves and loads small amounts of player data — integers, floats, and strings — to disk. This is useful for settings like volume that should persist between play sessions.
 
-1. In the Hierarchy panel, create an empty GameObject and name it `Audio Manager`. The setuo is similar to the one we did in the `SampleScene` but this time we will be using player prefs to save and load the sound effects volume. Drag and drop the `AudioManager` script from the Project panel onto the `Audio Manager` GameObject in the Hierarchy panel.
+**Step 1** — In the Hierarchy for `MainMenuScene`, create an empty GameObject named `Audio Manager`. Attach the `AudioManager` script to it.
 
-2. Update the `AudioManager` script to save and load the sound effects volume using player prefs. Add the following code to the `AudioManager` script:
+**Step 2** — Update `AudioManager` to load the saved volume on startup and save it whenever it changes:
 
 ```csharp
 // Omitted for brevity
@@ -163,12 +183,15 @@ Player prefs are a way to save and load player data in Unity. You can use the `P
 public class AudioManager : MonoBehaviour
 {
     // Omitted for brevity
+
+    // Public property so other scripts can read the current volume
     public float SoundXFVolume { get; private set; }
 
     private void Awake()
     {
         // Omitted for brevity
 
+        // Load the saved volume; default to 1 (full volume) if no value has been saved yet
         SoundXFVolume = PlayerPrefs.GetFloat("SoundXFVolume", 1f);
     }
 
@@ -177,6 +200,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         if (clip != null)
+            // Pass volume as the second argument to PlayOneShot
             audioSource.PlayOneShot(clip, SoundXFVolume);
     }
 
@@ -184,12 +208,12 @@ public class AudioManager : MonoBehaviour
     {
         SoundXFVolume = volume;
         PlayerPrefs.SetFloat("SoundXFVolume", volume);
-        PlayerPrefs.Save();
+        PlayerPrefs.Save();   // flush to disk immediately
     }
 }
 ```
 
-3. In the `Assets` folder, create a new script called `SettingsManager`. Open the script in your code editor and add the following code:
+**Step 3** — In the `Scripts` folder, create a new script called `SettingsController`. Open it and add the following:
 
 ```csharp
 using UnityEngine;
@@ -204,6 +228,8 @@ public class SettingsController : MonoBehaviour
     {
         soundXFSlider.minValue = 0f;
         soundXFSlider.maxValue = 1f;
+
+        // Initialise the slider to the currently saved volume
         soundXFSlider.value = AudioManager.Instance.SoundXFVolume;
 
         soundXFSlider.onValueChanged.AddListener(OnSliderChanged);
@@ -216,6 +242,7 @@ public class SettingsController : MonoBehaviour
 
     private void OnBackClicked()
     {
+        // Hide the panel rather than destroying it so it can be re-opened
         gameObject.SetActive(false);
     }
 
@@ -224,33 +251,35 @@ public class SettingsController : MonoBehaviour
         soundXFSlider.onValueChanged.RemoveAllListeners();
     }
 }
-````
+```
 
-4. In the Hierarchy panel, right-click and select **UI (Canvas) > Panel**. Name the new panel `Settings Panel`. This panel will be used to hold the settings UI elements.
+**Step 4** — In the Hierarchy, right-click the Canvas and select **UI (Canvas) > Panel**. Name it `Settings Panel`.
 
-![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/04.png>)
+**Step 5** — Attach the `SettingsController` script to `Settings Panel`. Add a **Slider** as a child of `Settings Panel` and assign it to the **Sound XF Slider** field in the Inspector.
 
-5. Drag and drop the `SettingsController` script from the Project panel onto the `Settings Panel` GameObject in the Hierarchy panel. Set the field for **Sound XF Slider** to a new slider that you create as a child of the `Settings Panel`.
+**Step 6** — Wire up the **Settings** button in `MainMenuManager` to show `Settings Panel` (`SetActive(true)`), and the **Back** button inside `Settings Panel` to call `OnBackClicked`.
 
-![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/05.png>)
-
-6. You will need to write code to open the settings panel when the "Settings" button is clicked in the main menu, and to close the settings panel when the "Back" button is clicked in the settings panel.
+📖 Reference: [Unity — PlayerPrefs](https://docs.unity3d.com/ScriptReference/PlayerPrefs.html)
 
 ---
 
-## Coroutines
+## 4. Coroutines
 
-Coroutines are a powerful tool in Unity that allow you to execute code over multiple frames. They are often used for tasks that require waiting, such as animations, timers or sequences of events. Coroutines are implemented using the `IEnumerator` interface and the `yield return` statement.
+A **coroutine** is a method that can pause its own execution and resume later, across multiple frames. This makes them ideal for timed sequences — countdowns, delays, fade effects — that would be awkward to implement inside `Update`.
 
-1. Drag and drop the `SampleScene` from the `Scenes` folder into the Hierarchy panel.
+Coroutines return `IEnumerator` and use `yield return` to pause:
 
-2. Remove the `MainMenuScene` by right-clicking on it in the Hierarchy panel and selecting **Remove Scene**.
+| Yield statement                              | Effect                                                      |
+| -------------------------------------------- | ----------------------------------------------------------- |
+| `yield return new WaitForSeconds(t)`         | Pause for `t` seconds (affected by `Time.timeScale`)        |
+| `yield return new WaitForSecondsRealtime(t)` | Pause for `t` real-time seconds (unaffected by `timeScale`) |
+| `yield return null`                          | Pause for exactly one frame                                 |
 
-3. In the Canvas GameObject, add a new TextMeshPro text element as a child of the Canvas. This text element will be used to display the countdown before the game starts. Name the TextMeshPro text element `Go Text`. Set the text to "Press Space to Start".
+**Step 1** — Drag `SampleScene` from the `Scenes` folder into the Hierarchy. Right-click `MainMenuScene` and select **Remove Scene**.
 
-![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/06.png>)
+**Step 2** — In the Canvas, add a TextMeshPro text element as a child. Name it `Go Text` and set the initial text to `Press Space to Start`.
 
-4. Update the `GameManager` script to include a coroutine that displays a countdown before the game starts. Add the following code to the `GameManager` script:
+**Step 3** — Update `GameManager` to start a countdown coroutine when the player presses Space:
 
 ```csharp
 // Omitted for brevity
@@ -264,12 +293,9 @@ public class GameManager : MonoBehaviour
     [Header("UI Settings")]
     [SerializeField] private TextMeshProUGUI goText;
 
-    // Omitted for brevity
-
     private void Start()
     {
         goText.text = "Press Space to Start";
-
         // Omitted for brevity
     }
 
@@ -277,14 +303,13 @@ public class GameManager : MonoBehaviour
     {
         // Omitted for brevity
 
+        // StartCoroutine begins the IEnumerator — Unity resumes it each frame
         StartCoroutine(GoRoutine());
     }
 
-    // Omitted for brevity
-
     private IEnumerator GoRoutine()
     {
-        gameManagerMap.Disable();
+        gameManagerMap.Disable();        // prevent the player from starting again mid-countdown
         goText.gameObject.SetActive(true);
 
         string[] sequence = { "3", "2", "1", "Go!" };
@@ -292,7 +317,7 @@ public class GameManager : MonoBehaviour
         foreach (string step in sequence)
         {
             goText.text = step;
-            yield return new WaitForSeconds(1f); // Pause the coroutine here and resume after 1 second
+            yield return new WaitForSeconds(1f);   // pause here; resume after 1 second
         }
 
         goText.gameObject.SetActive(false);
@@ -302,13 +327,13 @@ public class GameManager : MonoBehaviour
 }
 ```
 
-The `GoRoutine` coroutine takes approximately 4 seconds to complete, as it waits for 1 second between each step in the countdown sequence ("3", "2", "1", "Go!"). The exact number of frames will depend on the frame rate of the game, but at a typical frame rate of 60 frames per second, it would take around 240 frames to complete.
+> The `GoRoutine` coroutine takes approximately 4 seconds to complete, as it waits 1 second between each step in the countdown sequence (`"3"`, `"2"`, `"1"`, `"Go!"`). The exact number of frames depends on the frame rate — at 60 fps this is around 240 frames — but `WaitForSeconds` is time-based so the behaviour is consistent regardless of frame rate.
 
-5. In the Inspector panel for the `Game Manager` GameObject, set the field for **Go Text** to the `Go Text` TextMeshPro text element that you created in the Canvas.
+**Step 4** — In the Inspector for the `Game Manager` GameObject, set the **Go Text** field to the `Go Text` TextMeshPro element.
 
-![](<../../resources (ignore)/img/week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/07.png>)
+**Step 5** — Click **Play**. You should see `Press Space to Start`. Pressing Space triggers the `3 → 2 → 1 → Go!` countdown before the ball spawns.
 
-6. Click the **Play** button at the top of the Unity Editor to run the game. You should see the "Press Space to Start" text on the screen. When you press the spacebar, a countdown will begin, displaying "3", "2", "1", and then "Go!" before the game starts.
+📖 Reference: [Unity — Coroutines](https://docs.unity3d.com/Manual/Coroutines.html)
 
 ---
 
@@ -316,9 +341,9 @@ The `GoRoutine` coroutine takes approximately 4 seconds to complete, as it waits
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
 
-- If you provide an AI tool with a prompt that is not refined enough, it may generate a not-so-useful response
-- Do not trust the AI tool's responses blindly. You must still use your judgement and may need to do additional research to determine if the response is correct
-- Acknowledge what AI tool you have used. If you use AI to help you with a file, include an XML doc comment at the top of the file
+- Refine your prompts — vague prompts yield vague responses
+- Validate AI output — don't trust it blindly
+- Acknowledge AI usage at the top of any AI-assisted file:
 
 ```csharp
 /// <summary>
@@ -335,48 +360,64 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1
+### Task 1 — Background Music
 
-Add a looping background music clip that plays when the `MainMenuScene` loads. Make sure the music stops or transitions when the `SampleScene` is loaded. Use `AudioSource.loop = true` and consider adding a separate `AudioSource` component dedicated to music.
+Add a looping background music clip that plays when `MainMenuScene` loads. Make sure the music stops or transitions when `SampleScene` is loaded. Use `AudioSource.loop = true` and consider adding a separate `AudioSource` component dedicated to music.
 
----
-
-### Task 2
-
-Add a lives display to the SampleScene canvas using a TextMeshProUGUI element. Update the text whenever the player loses a life using a coroutine that briefly flashes the text red using Color.Lerp before returning to white, giving the player visual feedback that they have lost a life.
+> **Hint:** set `audioSource.loop = true` and call `audioSource.Play()` in `Awake`. Use `OnSceneLoaded` from `SceneManager.sceneLoaded` to detect when `SampleScene` loads and stop the music accordingly.
 
 ---
 
-### Task 3
+### Task 2 — Lives Flash Effect
 
-Extend the `SettingsController` to control music volume separately. Add a second `Slider` to the `Settings Panel` for music volume, stored under the key `"MusicVolume"` in `PlayerPrefs`. Update `AudioManager` to expose a `SetMusicVolume(float volume)` method that adjusts the music `AudioSource`'s `.volume` property.
+Add a lives display to the `SampleScene` canvas using a `TextMeshProUGUI` element. Update the text whenever the player loses a life using a coroutine that briefly flashes the text red using `Color.Lerp` before returning to white, giving the player clear visual feedback.
 
----
-
-### Task 4
-
-In the `SampleScene` canvas, create a `PausePanel` that appears when the player presses **Escape**. The panel should contain a **Resume** button and a **Main Menu** button. While paused, set `Time.timeScale = 0f` to freeze gameplay, and restore it to `1f` on resume.
+> **Hint:** `yield return null` advances one frame at a time — use it inside a loop with `Color.Lerp(Color.red, Color.white, t)` where `t` increases each frame.
 
 ---
 
-### Task 5
+### Task 3 — Music Volume Setting
 
-In the `SampleScene` canvas, add two new panels — `GameOverPanel` and `WinPanel`. When all lives are lost, disable gameplay input and set `GameOverPanel.SetActive(true)`. When all bricks are destroyed, show `WinPanel` instead. Each panel should have a **Play Again** button that reloads `SampleScene` and a **Main Menu** button that loads `MainMenuScene`.
+Extend `SettingsController` to control music volume separately. Add a second `Slider` to `Settings Panel` for music volume, stored under the key `"MusicVolume"` in `PlayerPrefs`. Update `AudioManager` to expose a `SetMusicVolume(float volume)` method that adjusts the music `AudioSource`'s `.volume` property.
 
----
-
-### Task 6
-
-Write a coroutine in `GameManager` called `SpeedUpRoutine` that gradually increases the ball's speed every `30` seconds using `WaitForSeconds`. Cap the maximum speed at a `[SerializeField] private float maxBallSpeed` value set in the Inspector. Display a **"Speed Up!"** warning message in the canvas for `2` seconds each time the speed increases, using a `TextMeshProUGUI` element that fades out with `Color.Lerp`.
+> **Hint:** store a reference to the music `AudioSource` as a separate private field in `AudioManager`, distinct from the sound effects source.
 
 ---
 
-### Task 7
+### Task 4 — Pause Panel
 
-Write an event listener for the **Quit** button using `Application.Quit()`. In the Unity Editor, `Application.Quit()` has no effect, so use a coroutine to display a `"Quitting..."` message in the canvas for `2` seconds using `WaitForSeconds` before calling `Application.Quit()`, so the behaviour can still be observed during testing.
+In the `SampleScene` canvas, create a `PausePanel` that appears when the player presses **Escape**. The panel should contain a **Resume** button and a **Main Menu** button. While paused, set `Time.timeScale = 0f` to freeze gameplay and restore it to `1f` on resume.
+
+> **Hint:** use `WaitForSecondsRealtime` instead of `WaitForSeconds` in any coroutines that need to run while paused — `Time.timeScale = 0` stops `WaitForSeconds`.
 
 ---
 
-### Task 8
+### Task 5 — Game Over and Win Panels
 
-Add a paddle hit sound and a brick hit sound to the `AudioManager`. Extend the `tagToSound` dictionary to include entries for `"Paddle"` and `"Brick"`. In the `BallController` script, call `AudioManager.Instance?.PlayCollisionSound("Paddle")` and `AudioManager.Instance?.PlayCollisionSound("Brick")` in `OnCollisionEnter2D` when the ball collides with the paddle or a brick respectively. Set the **Paddle Hit Sound** and **Brick Hit Sound** fields in the Inspector to audio clips from the `Audio` folder.
+In the `SampleScene` canvas, add two new panels — `GameOverPanel` and `WinPanel`. When all lives are lost, disable gameplay input and show `GameOverPanel`. When all bricks are destroyed, show `WinPanel`. Each panel should have a **Play Again** button that reloads `SampleScene` and a **Main Menu** button that loads `MainMenuScene`.
+
+> **Hint:** use `SceneManager.LoadSceneAsync("SampleScene")` for Play Again. Disable paddle input when either panel is shown by calling `paddleMap.Disable()`.
+
+---
+
+### Task 6 — Speed Up Coroutine
+
+Write a coroutine in `GameManager` called `SpeedUpRoutine` that gradually increases the ball's speed every 30 seconds using `WaitForSeconds`. Cap the speed at a `[SerializeField] private float maxBallSpeed` value set in the Inspector. Display a **"Speed Up!"** message in the canvas for 2 seconds each time the speed increases, using a `TextMeshProUGUI` element that fades out with `Color.Lerp`.
+
+> **Hint:** `yield return new WaitForSeconds(30f)` waits between increases. Fade the text alpha from `1f` to `0f` over the 2-second window using `Color.Lerp(visibleColour, transparentColour, t)`.
+
+---
+
+### Task 7 — Quit Button
+
+Wire up the **Quit** button using `Application.Quit()`. Since `Application.Quit()` has no effect in the Unity Editor, use a coroutine to display a `"Quitting..."` message in the canvas for 2 seconds using `WaitForSeconds` before calling it, so the behaviour can still be observed during testing.
+
+> **Hint:** `yield return new WaitForSeconds(2f)` then `Application.Quit()`. Wrap the call in `#if !UNITY_EDITOR` / `#endif` if you want to suppress it entirely when running in the Editor.
+
+---
+
+### Task 8 — Paddle and Brick Sounds
+
+Add a paddle hit sound and a brick hit sound to `AudioManager`. Extend the `tagToSound` dictionary with entries for `"Paddle"` and `"Brick"`. In `BallController.OnCollisionEnter2D`, call `AudioManager.Instance?.PlayCollisionSound("Paddle")` or `PlayCollisionSound("Brick")` based on the tag of the collided object. Assign the new clips in the Inspector.
+
+> **Hint:** make sure the `Paddle` and `Brick` GameObjects (and their prefabs) have their **Tag** fields set to `"Paddle"` and `"Brick"` respectively — otherwise `CompareTag` will not match.
