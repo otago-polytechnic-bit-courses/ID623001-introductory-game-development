@@ -5,7 +5,7 @@
 |            | Link                                                                                                                                                                                                                                                    |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ← Previous | [Week 02.1 — Breakout: Textures, Prefabs & Input System](../week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
-| → Next     | [Week 02.2. — Scriptable Objects & UI](../week-02.2-breakout-2-scriptable-objects-ui/README.md)                                           |
+| → Next     | [Week 03.1. — Audio, Scene Management, Player Prefs & Coroutines](../week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/README.md)                                           |
 
 ---
 
