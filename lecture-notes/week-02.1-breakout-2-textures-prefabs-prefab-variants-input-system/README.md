@@ -4,8 +4,8 @@
 
 |            | Link                                                                                                                                                                                   |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ← Previous | [Week 01.2 — Breakout: Materials, Components & Scripts](./lecture-notes/week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
-| → Next     | [Week 02.2 — Breakout: Scriptable Objects & UI](./lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)                             |
+| ← Previous | [Week 01.2 — Breakout: Materials, Components & Scripts](https://github.com/otago-polytechnic-bit-courses/ID623002-introductory-game-development/tree/s1-26/lecture-notes/week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
+| → Next     | [Week 02.2 — Breakout: Scriptable Objects & UI](https://github.com/otago-polytechnic-bit-courses/ID623002-introductory-game-development/tree/s1-26/lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)                             |
 
 ---
 
