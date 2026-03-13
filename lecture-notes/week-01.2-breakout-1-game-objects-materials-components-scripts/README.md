@@ -2,8 +2,8 @@
 
 ## Navigation
 
-|            | Link                                                                                                                                                                                        |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|            | Link                                                                                                                                                                                                                                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ← Previous | [Week 01.1 — GitHub, Unity & Basic Game Mathematics](https://github.com/otago-polytechnic-bit-courses/ID623002-introductory-game-development/tree/s1-26/lecture-notes/week-01.1-github-unity-basic-game-mathematics/README.md)                          |
 | → Next     | [Week 02.1 — Breakout: Textures, Prefabs & Input System](https://github.com/otago-polytechnic-bit-courses/ID623002-introductory-game-development/tree/s1-26/lecture-notes/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
 

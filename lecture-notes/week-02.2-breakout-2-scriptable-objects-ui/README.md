@@ -2,10 +2,10 @@
 
 ## Navigation
 
-|            | Link                                                                                                                                              |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+|            | Link                                                                                                                                                                                                                                                    |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ← Previous | [Week 02.1 — Breakout: Textures, Prefabs & Input System](https://github.com/otago-polytechnic-bit-courses/ID623002-introductory-game-development/tree/s1-26/lecture-notes/week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
-| → Next     | [Week 02.2. — Scriptable Objects & UI](https://github.com/otago-polytechnic-bit-courses/ID623002-introductory-game-development/tree/s1-26/lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md) |
+| → Next     | [Week 02.2. — Scriptable Objects & UI](https://github.com/otago-polytechnic-bit-courses/ID623002-introductory-game-development/tree/s1-26/lecture-notes/week-02.2-breakout-2-scriptable-objects-ui/README.md)                                           |
 
 ---
 

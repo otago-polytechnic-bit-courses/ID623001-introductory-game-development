@@ -2,9 +2,9 @@
 
 ## Navigation
 
-|                  | Link                                                      |
-| ---------------- | --------------------------------------------------------- |
-| GitHub Classroom | [ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho) |
+|                  | Link                                                                                                                                                                                                                                               |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GitHub Classroom | [ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho)                                                                                                                                                                                          |
 | → Next           | [Week 01.2 — Breakout: Materials, Components & Scripts](https://github.com/otago-polytechnic-bit-courses/ID623002-introductory-game-development/tree/s1-26/lecture-notes/week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
 
 ---
