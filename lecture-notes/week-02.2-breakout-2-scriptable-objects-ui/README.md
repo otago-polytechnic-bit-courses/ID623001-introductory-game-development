@@ -1,23 +1,23 @@
-# Week 02.2 — Breakout: Scriptable Objects & UI
+# Week 02.2 - Breakout: Scriptable Objects and UI
 
 ## Navigation
 
 |            | Link                                                                                                                                                                                                                                                    |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ← Previous | [Week 02.1 — Breakout: Textures, Prefabs & Input System](../week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
-| → Next     | [Week 03.1. — Audio, Scene Management, Player Prefs & Coroutines](../week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/README.md)                                           |
+| ← Previous | [Week 02.1 - Breakout: Textures, Prefabs and Input System](../week-02.1-breakout-2-textures-prefabs-prefab-variants-input-system/README.md) |
+| → Next     | [Week 03.1. - Audio, Scene Management, Player Prefs and Coroutines](../week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/README.md)                                           |
 
 ---
 
 ## 1. Scriptable Objects
 
-A **Scriptable Object** is a data container that stores shared data independently from script instances. They are useful for data that needs to be accessed by multiple objects or scenes — for example, storing the sprite and point value for each brick type in one place rather than duplicating it across every brick instance.
+A **Scriptable Object** is a data container that stores shared data independently from script instances. They are useful for data that needs to be accessed by multiple objects or scenes - for example, storing the sprite and point value for each brick type in one place rather than duplicating it across every brick instance.
 
 ---
 
 ### 1.1 Creating a Scriptable Object
 
-**Step 1** — In the `Scripts` folder, right-click and select **Create > Scriptable Object**. Name it `BrickData`. Open it in your code editor and add the following:
+**Step 1** - In the `Scripts` folder, right-click and select **Create > Scriptable Object**. Name it `BrickData`. Open it in your code editor and add the following:
 
 ```csharp
 using UnityEngine;
@@ -30,9 +30,9 @@ public class BrickData : ScriptableObject
 }
 ```
 
-**Step 2** — In the `Assets` folder, create a new folder called `ScriptableObjects` with a subfolder called `Brick`. Inside `Brick`, right-click and select **Create > Scriptable Objects > BrickData**. Name the asset `BlueBrickData`. In the Inspector, set the **Sprite** field to the `element_blue_rectangle` sprite from the `Sprites` folder.
+**Step 2** - In the `Assets` folder, create a new folder called `ScriptableObjects` with a subfolder called `Brick`. Inside `Brick`, right-click and select **Create > Scriptable Objects > BrickData**. Name the asset `BlueBrickData`. In the Inspector, set the **Sprite** field to the `element_blue_rectangle` sprite from the `Sprites` folder.
 
-**Step 3** — Update the `Brick` script to accept a `BrickData` asset and apply its sprite:
+**Step 3** - Update the `Brick` script to accept a `BrickData` asset and apply its sprite:
 
 ```csharp
 using UnityEngine;
@@ -41,7 +41,7 @@ public class Brick : MonoBehaviour
 {
     private BrickData data;
 
-    // Called by BrickController after Instantiate() — passes in the data for this brick
+    // Called by BrickController after Instantiate() - passes in the data for this brick
     public void Initialise(BrickData brickData)
     {
         data = brickData;
@@ -58,7 +58,7 @@ public class Brick : MonoBehaviour
 }
 ```
 
-**Step 4** — In the `Scripts` folder, create a new script called `BrickController`. Open it and add the following:
+**Step 4** - In the `Scripts` folder, create a new script called `BrickController`. Open it and add the following:
 
 ```csharp
 using UnityEngine;
@@ -94,7 +94,7 @@ public class BrickController : MonoBehaviour
 
         float totalWidth = // TODO: bricksPerRow * (brickWidth + padding) - padding
 
-        float startX = // TODO: centre the grid — (-totalWidth / 2f) + (brickWidth / 2f)
+        float startX = // TODO: centre the grid - (-totalWidth / 2f) + (brickWidth / 2f)
 
         float startY = // TODO: screenTop - topOffset
 
@@ -132,7 +132,7 @@ public class BrickController : MonoBehaviour
 }
 ```
 
-**Step 5** — In the Hierarchy panel, create an empty GameObject and name it `Bricks`. Drag and drop the `BrickController` script onto it. In the Inspector, set:
+**Step 5** - In the Hierarchy panel, create an empty GameObject and name it `Bricks`. Drag and drop the `BrickController` script onto it. In the Inspector, set:
 
 | Field             | Value                                                                       |
 | ----------------- | --------------------------------------------------------------------------- |
@@ -140,25 +140,25 @@ public class BrickController : MonoBehaviour
 | **Row Data**      | Set the array size and assign a different `BrickData` asset to each element |
 | **Bricks Parent** | The `Bricks` GameObject itself                                              |
 
-**Step 6** — Click **Play**. You should see a grid of bricks, each using the sprite from its assigned `BrickData` asset.
+**Step 6** - Click **Play**. You should see a grid of bricks, each using the sprite from its assigned `BrickData` asset.
 
 ---
 
 ## 2. UI
 
-User interfaces let players interact with the game and provide feedback on their actions. Unity's UI system is built around a **Canvas** — the root of all UI elements.
+User interfaces let players interact with the game and provide feedback on their actions. Unity's UI system is built around a **Canvas** - the root of all UI elements.
 
 ---
 
 ### 2.1 Canvas and TextMeshPro
 
-**Step 1** — In the Hierarchy panel, right-click and select **UI (Canvas) > Canvas**. This creates a `Canvas` GameObject that renders all UI elements on screen.
+**Step 1** - In the Hierarchy panel, right-click and select **UI (Canvas) > Canvas**. This creates a `Canvas` GameObject that renders all UI elements on screen.
 
-**Step 2** — Right-click the `Canvas` GameObject and select **UI (Canvas) > Text - TextMeshPro**. This creates a TextMeshPro text element as a child of the Canvas. Name it `Score Text`. Import the **TextMeshPro Essentials** package if prompted.
+**Step 2** - Right-click the `Canvas` GameObject and select **UI (Canvas) > Text - TextMeshPro**. This creates a TextMeshPro text element as a child of the Canvas. Name it `Score Text`. Import the **TextMeshPro Essentials** package if prompted.
 
-**Step 3** — In the Inspector for `Score Text`, set the **Text** field to `Score: 0`.
+**Step 3** - In the Inspector for `Score Text`, set the **Text** field to `Score: 0`.
 
-**Step 4** — In the `Scripts` folder, create a new script called `UIManager`. Open it and add the following:
+**Step 4** - In the `Scripts` folder, create a new script called `UIManager`. Open it and add the following:
 
 ```csharp
 using UnityEngine;
@@ -185,9 +185,9 @@ public class UIManager : MonoBehaviour
 }
 ```
 
-**Step 5** — In the Hierarchy, create an empty GameObject named `UI Manager`. Attach the `UIManager` script to it. In the Inspector, set the **Score Text** field to the `Score Text` element.
+**Step 5** - In the Hierarchy, create an empty GameObject named `UI Manager`. Attach the `UIManager` script to it. In the Inspector, set the **Score Text** field to the `Score Text` element.
 
-**Step 6** — Update the `Brick` script to find the `UIManager` and call `AddScore` when a brick is destroyed:
+**Step 6** - Update the `Brick` script to find the `UIManager` and call `AddScore` when a brick is destroyed:
 
 ```csharp
 using UnityEngine;
@@ -218,7 +218,7 @@ public class Brick : MonoBehaviour
 }
 ```
 
-**Step 7** — Click **Play**. The score should increase each time the ball hits a brick.
+**Step 7** - Click **Play**. The score should increase each time the ball hits a brick.
 
 ---
 
@@ -226,25 +226,25 @@ public class Brick : MonoBehaviour
 
 A **Vertical Layout Group** automatically stacks its child UI elements in a column, adapting to different screen sizes. We will use one to keep the score and lives display neatly aligned.
 
-**Step 1** — In the Hierarchy, select the `Canvas` GameObject, right-click and select **Create Empty**. Name it `Info Container`.
+**Step 1** - In the Hierarchy, select the `Canvas` GameObject, right-click and select **Create Empty**. Name it `Info Container`.
 
-**Step 2** — Select `Info Container`. In the Inspector, click **Add Component** and add a **Vertical Layout Group**. Configure the `Rect Transform` anchor and the layout group padding and spacing to position it on the right side of the screen.
+**Step 2** - Select `Info Container`. In the Inspector, click **Add Component** and add a **Vertical Layout Group**. Configure the `Rect Transform` anchor and the layout group padding and spacing to position it on the right side of the screen.
 
-**Step 3** — Drag the `Score Text` element in the Hierarchy onto `Info Container` to make it a child. The Vertical Layout Group will automatically arrange it and any future children.
+**Step 3** - Drag the `Score Text` element in the Hierarchy onto `Info Container` to make it a child. The Vertical Layout Group will automatically arrange it and any future children.
 
 ---
 
 ### 2.3 Fonts
 
-Custom fonts set the visual tone of your game. Unity uses **TMP Font Assets** — a compiled format that TextMeshPro can render with high quality at any size.
+Custom fonts set the visual tone of your game. Unity uses **TMP Font Assets** - a compiled format that TextMeshPro can render with high quality at any size.
 
-**Step 1** — Copy the provided `Fonts` folder (found in the `week-02.2` resources) into your project's `Assets` folder.
+**Step 1** - Copy the provided `Fonts` folder (found in the `week-02.2` resources) into your project's `Assets` folder.
 
-**Step 2** — Select all `.ttf` font files in the `Fonts` folder, right-click and select **Create > TextMeshPro > Font Asset > SDF**. This generates a `TMP_FontAsset` for each font.
+**Step 2** - Select all `.ttf` font files in the `Fonts` folder, right-click and select **Create > TextMeshPro > Font Asset > SDF**. This generates a `TMP_FontAsset` for each font.
 
-**Step 3** — To assign a font in the Inspector, select `Score Text` in the Hierarchy and set the **Font Asset** field to one of the new `TMP_FontAsset` files.
+**Step 3** - To assign a font in the Inspector, select `Score Text` in the Hierarchy and set the **Font Asset** field to one of the new `TMP_FontAsset` files.
 
-**Step 4** — To assign a font through code, update `UIManager`:
+**Step 4** - To assign a font through code, update `UIManager`:
 
 ```csharp
 using UnityEngine;
@@ -267,7 +267,7 @@ public class UIManager : MonoBehaviour
 }
 ```
 
-**Step 5** — In the Inspector for the `UI Manager` GameObject, drag a `TMP_FontAsset` from the Project panel onto the **Custom Font** field.
+**Step 5** - In the Inspector for the `UI Manager` GameObject, drag a `TMP_FontAsset` from the Project panel onto the **Custom Font** field.
 
 ---
 
@@ -275,8 +275,8 @@ public class UIManager : MonoBehaviour
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
 
-- Refine your prompts — vague prompts yield vague responses
-- Validate AI output — don't trust it blindly
+- Refine your prompts - vague prompts yield vague responses
+- Validate AI output - don't trust it blindly
 - Acknowledge AI usage at the top of any AI-assisted file:
 
 ```csharp
@@ -294,7 +294,7 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1 — Brick Variety
+### Task 1 - Brick Variety
 
 Create a new `BrickData` Scriptable Object for each brick type below and assign the matching sprite:
 
@@ -308,7 +308,7 @@ Assign them to different rows in the `BrickController`'s **Row Data** array and 
 
 ---
 
-### Task 2 — Brick Stats
+### Task 2 - Brick Stats
 
 Extend `BrickData` with two new fields and update `Brick` to use them:
 
@@ -323,7 +323,7 @@ Update `Brick` so it tracks remaining hit points, decrements on each collision, 
 
 ---
 
-### Task 3 — Lives, Game Over & Win
+### Task 3 - Lives, Game Over and Win
 
 Add three new UI features to the game:
 

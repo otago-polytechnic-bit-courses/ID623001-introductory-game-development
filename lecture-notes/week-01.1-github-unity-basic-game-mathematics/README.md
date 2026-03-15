@@ -1,11 +1,11 @@
-# Week 01.1 — GitHub, Unity & Basic Game Mathematics
+# Week 01.1 - GitHub, Unity and Basic Game Mathematics
 
 ## Navigation
 
 |                  | Link                                                                                                                                                                                                                                               |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | GitHub Classroom | [ID623002-S1-26](https://classroom.github.com/a/tSkpt5Ho)                                                                                                                                                                                          |
-| → Next           | [Week 01.2 — Breakout: Materials, Components & Scripts](../week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
+| → Next           | [Week 01.2 - Breakout: Materials, Components and Scripts](../week-01.2-breakout-1-game-objects-materials-components-scripts/README.md) |
 
 ---
 
@@ -35,7 +35,7 @@
 
 ## 2. C# and Unity
 
-C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic — movement, collision, animation, UI — is expressed through C# scripts attached to GameObjects via `MonoBehaviour`.
+C# is a strongly-typed, object-oriented programming language used as Unity's primary scripting language. All game logic - movement, collision, animation, UI - is expressed through C# scripts attached to GameObjects via `MonoBehaviour`.
 
 📖 Reference: [Unity Manual](https://docs.unity3d.com/Manual/index.html)
 
@@ -43,13 +43,13 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 
 ### 2.1 Installer and Project Setup
 
-**Step 1** — Download and install Unity Hub from [unity.com/download](https://unity.com/download).
+**Step 1** - Download and install Unity Hub from [unity.com/download](https://unity.com/download).
 
-**Step 2** — In Unity Hub, go to the **Installs** tab and click **Install Editor**. Install the recommended LTS (Long Term Support) version. This ensures you have a stable, widely supported version for development.
+**Step 2** - In Unity Hub, go to the **Installs** tab and click **Install Editor**. Install the recommended LTS (Long Term Support) version. This ensures you have a stable, widely supported version for development.
 
-**Step 3** — Go to the **Projects** tab and click **New Project**. Choose the **Universal 2D** template, name your project, select a save location, then click **Create project**.
+**Step 3** - Go to the **Projects** tab and click **New Project**. Choose the **Universal 2D** template, name your project, select a save location, then click **Create project**.
 
-**Step 4** — Unity will open with a default scene loaded. The editor has five main panels:
+**Step 4** - Unity will open with a default scene loaded. The editor has five main panels:
 
 | Panel         | Purpose                                     |
 | ------------- | ------------------------------------------- |
@@ -59,11 +59,11 @@ C# is a strongly-typed, object-oriented programming language used as Unity's pri
 | **Inspector** | Shows properties of the selected GameObject |
 | **Project**   | Shows all assets in your project            |
 
-**Step 5** — In the Hierarchy panel, right-click and select **2D Object > Sprite > Circle**.
+**Step 5** - In the Hierarchy panel, right-click and select **2D Object > Sprite > Circle**.
 
-**Step 6** — In the `Assets` folder, right-click and select **Create > Folder**. Name it `Scripts`.
+**Step 6** - In the `Assets` folder, right-click and select **Create > Folder**. Name it `Scripts`.
 
-**Step 7** — In the `Scripts` folder, right-click and select **Create > MonoBehaviour Script**. Name it `Demo`. Double-click to open it in your code editor and add the following to the `Start()` method:
+**Step 7** - In the `Scripts` folder, right-click and select **Create > MonoBehaviour Script**. Name it `Demo`. Double-click to open it in your code editor and add the following to the `Start()` method:
 
 ```csharp
 using UnityEngine;
@@ -84,11 +84,11 @@ public class Demo : MonoBehaviour
 }
 ```
 
-**Step 8** — Drag and drop the `Demo` script from the Project panel onto the `Circle` GameObject in the Hierarchy. This attaches the script as a component of that GameObject.
+**Step 8** - Drag and drop the `Demo` script from the Project panel onto the `Circle` GameObject in the Hierarchy. This attaches the script as a component of that GameObject.
 
-**Step 9** — Click the **Play** button at the top of the editor. You should see `"Hello, World!"` printed in the Console panel.
+**Step 9** - Click the **Play** button at the top of the editor. You should see `"Hello, World!"` printed in the Console panel.
 
-**Step 10** — You may notice an asterisk (`*`) next to the scene name in the Hierarchy. This means the scene has unsaved changes. Save regularly as you work.
+**Step 10** - You may notice an asterisk (`*`) next to the scene name in the Hierarchy. This means the scene has unsaved changes. Save regularly as you work.
 
 ---
 
@@ -110,7 +110,7 @@ float zPos = transform.position.z;
 
 ### 3.2 2D Cartesian Space
 
-Two perpendicular number lines — the x-axis (horizontal) and y-axis (vertical) — intersect at the origin `(0, 0)` to form a 2D coordinate system. Any point P in the plane is specified uniquely by an ordered pair `(x, y)`.
+Two perpendicular number lines - the x-axis (horizontal) and y-axis (vertical) - intersect at the origin `(0, 0)` to form a 2D coordinate system. Any point P in the plane is specified uniquely by an ordered pair `(x, y)`.
 
 In Unity 2D projects, positions are represented as `Vector2`:
 
@@ -124,7 +124,7 @@ Debug.Log($"X: {playerPos.x}, Y: {playerPos.y}"); // X: 3, Y: -1.5
 
 ### 3.3 3D Cartesian Space
 
-3D space adds a third axis — the z-axis — perpendicular to both x and y. Every point in 3D is an ordered triple `(x, y, z)`. Unity uses a **left-handed** coordinate system:
+3D space adds a third axis - the z-axis - perpendicular to both x and y. Every point in 3D is an ordered triple `(x, y, z)`. Unity uses a **left-handed** coordinate system:
 
 | Axis | Direction                 |
 | ---- | ------------------------- |
@@ -132,7 +132,7 @@ Debug.Log($"X: {playerPos.x}, Y: {playerPos.y}"); // X: 3, Y: -1.5
 | +y   | Up                        |
 | +z   | Forward (into the screen) |
 
-> **Left-handed vs right-handed:** In a right-handed system (standard mathematics and OpenGL), +z points _out of_ the screen. Unity's left-handed system has +z pointing _into_ the screen. This affects how cross products work — results point in the opposite direction compared to a right-handed system. Keep this in mind when working with physics or importing assets from other tools.
+> **Left-handed vs right-handed:** In a right-handed system (standard mathematics and OpenGL), +z points _out of_ the screen. Unity's left-handed system has +z pointing _into_ the screen. This affects how cross products work - results point in the opposite direction compared to a right-handed system. Keep this in mind when working with physics or importing assets from other tools.
 
 Unity provides convenient constants for the cardinal directions:
 
@@ -151,7 +151,7 @@ Vector3 down = Vector3.down;  // ( 0, -1,  0)
 Vector3 back = Vector3.back;  // ( 0,  0, -1)
 ```
 
-📖 Reference: [Unity — Transform](https://docs.unity3d.com/Manual/class-Transform.html)
+📖 Reference: [Unity - Transform](https://docs.unity3d.com/Manual/class-Transform.html)
 
 ---
 
@@ -200,7 +200,7 @@ sin(−θ) = −sin(θ)
 cos(−θ) =  cos(θ)
 ```
 
-In Unity these are used constantly — for circular motion, aiming, and computing angles between directions:
+In Unity these are used constantly - for circular motion, aiming, and computing angles between directions:
 
 ```csharp
 float angle = 45f * Mathf.Deg2Rad;
@@ -216,9 +216,9 @@ float phi   = Mathf.Atan2(1f, 1f) * Mathf.Rad2Deg;
 Debug.Log($"Asin(0.5) = {theta}°, Atan2(1,1) = {phi}°"); // Asin(0.5) = 30°, Atan2(1,1) = 45°
 ```
 
-> Use `Mathf.Atan2(y, x)` instead of `Mathf.Atan(y/x)` — it correctly handles all four quadrants and avoids division by zero when `x = 0`.
+> Use `Mathf.Atan2(y, x)` instead of `Mathf.Atan(y/x)` - it correctly handles all four quadrants and avoids division by zero when `x = 0`.
 
-📖 Reference: [Unity — Mathf](https://docs.unity3d.com/ScriptReference/Mathf.html)
+📖 Reference: [Unity - Mathf](https://docs.unity3d.com/ScriptReference/Mathf.html)
 
 ---
 
@@ -228,7 +228,7 @@ Debug.Log($"Asin(0.5) = {theta}°, Atan2(1,1) = {phi}°"); // Asin(0.5) = 30°, 
 
 A **vector** is a quantity with both magnitude (size) and direction. This distinguishes it from a **scalar**, which has magnitude only.
 
-- **Scalar example:** a player's health (e.g. 75 HP) has no direction — just a value.
+- **Scalar example:** a player's health (e.g. 75 HP) has no direction - just a value.
 - **Vector example:** an enemy's velocity (e.g. `(3, 0, 0)` m/s) has a speed of 3 m/s pointing in the +x direction.
 
 Vectors are written in bold (**v**) or with an arrow (v→). In Unity, `Vector2` and `Vector3` are the built-in vector types.
@@ -283,9 +283,9 @@ Multiplying a vector by a scalar `k` scales its length by `|k|`. If `k < 0` the 
 k · v = (k·x,  k·y,  k·z)
 ```
 
-- `k > 1` — vector is stretched (longer)
-- `0 < k < 1` — vector is shrunk (shorter)
-- `k < 0` — vector is reversed and scaled by `|k|`
+- `k > 1` - vector is stretched (longer)
+- `0 < k < 1` - vector is shrunk (shorter)
+- `k < 0` - vector is reversed and scaled by `|k|`
 
 ```csharp
 Vector3 forward = Vector3.forward;
@@ -339,7 +339,7 @@ Step by step for `v = (3, 4, 0)`:
 ```csharp
 Vector3 v    = new Vector3(3f, 4f, 0f);
 float   mag  = v.magnitude;       // 5
-float   magSq = v.sqrMagnitude;   // 25 — cheaper, avoids sqrt; use for comparisons
+float   magSq = v.sqrMagnitude;   // 25 - cheaper, avoids sqrt; use for comparisons
 
 Debug.Log($"Magnitude: {mag}, Squared Magnitude: {magSq}");
 ```
@@ -365,7 +365,7 @@ transform.position += dir * speed * Time.deltaTime;
 Debug.Log($"Original: {v}, Normalised: {vHat}");
 ```
 
-> Never normalise the zero vector — it has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but is mathematically undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
+> Never normalise the zero vector - it has no direction. `Vector3.zero.normalized` returns `Vector3.zero` in Unity but is mathematically undefined. Check `v.magnitude > 0f` before normalising if the vector may be zero.
 
 **Diagonal movement gotcha:** if you do not normalise an 8-directional input vector, diagonal movement will be faster than axis-aligned movement. The diagonal vector `(1, 1)` has magnitude `√2 ≈ 1.414`. Normalising gives a unit vector in the same direction, ensuring consistent speed in all directions.
 
@@ -423,11 +423,11 @@ For **unit vectors** this simplifies to `θ = arccos(a · b)`, which is why norm
 
 | `a · b` (unit vectors) | Meaning                          |
 | ---------------------- | -------------------------------- |
-| `= 1`                  | θ = 0° — same direction          |
-| `> 0`                  | θ < 90° — roughly same direction |
-| `= 0`                  | θ = 90° — perpendicular          |
-| `< 0`                  | θ > 90° — roughly opposite       |
-| `= −1`                 | θ = 180° — exactly opposite      |
+| `= 1`                  | θ = 0° - same direction          |
+| `> 0`                  | θ < 90° - roughly same direction |
+| `= 0`                  | θ = 90° - perpendicular          |
+| `< 0`                  | θ > 90° - roughly opposite       |
+| `= −1`                 | θ = 180° - exactly opposite      |
 
 ```csharp
 Vector3 forward = transform.forward;
@@ -446,7 +446,7 @@ Debug.Log($"Angle to enemy: {angle}°");
 
 Common uses in games: detecting whether an enemy is in front of or behind the player, field-of-view checks, aiming.
 
-📖 Reference: [Unity — Vector3.Dot](https://docs.unity3d.com/ScriptReference/Vector3.Dot.html)
+📖 Reference: [Unity - Vector3.Dot](https://docs.unity3d.com/ScriptReference/Vector3.Dot.html)
 
 ---
 
@@ -485,7 +485,7 @@ else              Debug.Log("Enemy is to the left");
 
 Common uses in games: computing surface normals for lighting and physics, determining left/right relative orientation, building rotation axes.
 
-📖 Reference: [Unity — Vector3.Cross](https://docs.unity3d.com/ScriptReference/Vector3.Cross.html)
+📖 Reference: [Unity - Vector3.Cross](https://docs.unity3d.com/ScriptReference/Vector3.Cross.html)
 
 ---
 
@@ -499,7 +499,7 @@ A single global coordinate system quickly becomes impractical. When a sword is a
 | ---------------- | ---------------------------------------------------------------------- |
 | **World space**  | The global fixed coordinate system. All objects ultimately exist here. |
 | **Local space**  | Relative to a specific GameObject's own position and orientation.      |
-| **Camera space** | Relative to the camera — used in rendering and screen-space effects.   |
+| **Camera space** | Relative to the camera - used in rendering and screen-space effects.   |
 
 ---
 
@@ -521,7 +521,7 @@ Debug.Log($"World: {worldPos}, Local: {localPos}");
 
 > Understanding which space a vector lives in is one of the most common sources of bugs in Unity. Always be explicit about whether you are working in world or local space.
 
-📖 Reference: [Unity — Transform](https://docs.unity3d.com/ScriptReference/Transform.html)
+📖 Reference: [Unity - Transform](https://docs.unity3d.com/ScriptReference/Transform.html)
 
 ---
 
@@ -532,7 +532,7 @@ Unity's `Mathf` class provides game-relevant maths utilities. All values are `fl
 | Function                   | Description                             | Example                          |
 | -------------------------- | --------------------------------------- | -------------------------------- |
 | `Mathf.Clamp(v, min, max)` | Restricts `v` to the range `[min, max]` | Keeping health between 0 and 100 |
-| `Mathf.Abs(v)`             | Absolute value — distance from zero     | `Abs(-5f)` → `5`                 |
+| `Mathf.Abs(v)`             | Absolute value - distance from zero     | `Abs(-5f)` → `5`                 |
 | `Mathf.Pow(v, exp)`        | `v` raised to the power `exp`           | `Pow(4f, 2f)` → `16`             |
 | `Mathf.Sqrt(v)`            | Square root                             | `Sqrt(16f)` → `4`                |
 | `Mathf.Round(v)`           | Rounds to nearest integer               | `Round(3.7f)` → `4`              |
@@ -552,13 +552,13 @@ float roll    = Random.Range(0f, 1f);
 Debug.Log($"Health: {health}, Abs: {dist}, Pow: {squared}, Sqrt: {root}, Random: {roll}");
 ```
 
-📖 Reference: [Unity — Mathf](https://docs.unity3d.com/ScriptReference/Mathf.html)
+📖 Reference: [Unity - Mathf](https://docs.unity3d.com/ScriptReference/Mathf.html)
 
 ---
 
 ## 7. Interpolation
 
-Interpolation computes a value that sits between two known values. It is used constantly in games for smooth movement, fading effects, and animation blending — for example: smoothly following a player with the camera, fading UI elements in and out, or blending between animation states.
+Interpolation computes a value that sits between two known values. It is used constantly in games for smooth movement, fading effects, and animation blending - for example: smoothly following a player with the camera, fading UI elements in and out, or blending between animation states.
 
 ---
 
@@ -602,13 +602,13 @@ void Update()
 }
 ```
 
-📖 Reference: [Unity — Vector3.Lerp](https://docs.unity3d.com/ScriptReference/Vector3.Lerp.html)
+📖 Reference: [Unity - Vector3.Lerp](https://docs.unity3d.com/ScriptReference/Vector3.Lerp.html)
 
 ---
 
 ## 8. Circular Motion
 
-Uniform circular motion — moving in a circle at constant speed — is one of the most common patterns in games. Given a radius `r` and an angle θ (in radians), a point on a circle centred at the origin is:
+Uniform circular motion - moving in a circle at constant speed - is one of the most common patterns in games. Given a radius `r` and an angle θ (in radians), a point on a circle centred at the origin is:
 
 ```
 x = r · cos(θ)
@@ -643,7 +643,7 @@ void Update()
 
 Common uses in games: enemy ships circling the player, planets orbiting a star, spinning collectibles.
 
-📖 Reference: [Unity — Mathf.Sin](https://docs.unity3d.com/ScriptReference/Mathf.Sin.html)
+📖 Reference: [Unity - Mathf.Sin](https://docs.unity3d.com/ScriptReference/Mathf.Sin.html)
 
 ---
 
@@ -651,8 +651,8 @@ Common uses in games: enemy ships circling the player, planets orbiting a star, 
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
 
-- Refine your prompts — vague prompts yield vague responses
-- Validate AI output — don't trust it blindly
+- Refine your prompts - vague prompts yield vague responses
+- Validate AI output - don't trust it blindly
 - Acknowledge AI usage at the top of any AI-assisted file:
 
 ```csharp
@@ -670,7 +670,7 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1 — Degrees to Radians
+### Task 1 - Degrees to Radians
 
 Write a method that converts an angle in degrees to radians **without** using `Mathf.Deg2Rad`, then verify the result against Unity's constant.
 
@@ -694,7 +694,7 @@ Test cases:
 
 ---
 
-### Task 2 — Vector Magnitude
+### Task 2 - Vector Magnitude
 
 Write a method that computes the magnitude of a 3D vector **without** using `.magnitude` or `Vector3.Distance`.
 
@@ -717,7 +717,7 @@ Test cases:
 
 ---
 
-### Task 3 — Normalise a Vector
+### Task 3 - Normalise a Vector
 
 Write a method that normalises a vector **without** using `.normalized`.
 
@@ -739,7 +739,7 @@ Test cases:
 
 ---
 
-### Task 4 — Distance Between Two Points
+### Task 4 - Distance Between Two Points
 
 Write a method that computes the distance between two 3D points **without** using `Vector3.Distance`.
 
@@ -761,7 +761,7 @@ Test cases:
 
 ---
 
-### Task 5 — Dot Product and Angle
+### Task 5 - Dot Product and Angle
 
 Write a method that computes the dot product of two vectors **without** using `Vector3.Dot`, then use the result to find the angle between them.
 
@@ -781,8 +781,8 @@ Test cases:
 
 | Input                               | Expected output       |
 | ----------------------------------- | --------------------- |
-| `Vector3.right` and `Vector3.right` | `0°` — same direction |
-| `Vector3.right` and `Vector3.up`    | `90°` — perpendicular |
-| `Vector3.right` and `Vector3.left`  | `180°` — opposite     |
+| `Vector3.right` and `Vector3.right` | `0°` - same direction |
+| `Vector3.right` and `Vector3.up`    | `90°` - perpendicular |
+| `Vector3.right` and `Vector3.left`  | `180°` - opposite     |
 
 > **Hint:** `a · b = ax·bx + ay·by + az·bz`. For the angle, normalise both vectors first and clamp the dot product to `[−1, 1]` before passing to `Mathf.Acos`. Remember to convert the result from radians to degrees.
