@@ -97,7 +97,7 @@ public class Brick : MonoBehaviour
     private Coroutine flashCoroutine;
     private int currentHitPoints;
 
-    [Header("Effects Settings")]
+    [Header("Effects")]
     [SerializeField] private GameObject explosionPrefab;
 
     private void Awake()
@@ -110,7 +110,7 @@ public class Brick : MonoBehaviour
         uiManager = FindAnyObjectByType<UIManager>();
     }
 
-    public void Initialise(BrickData brickData)
+    public void Initialize(BrickData brickData)
     {
         data = brickData;
         currentHitPoints = data.hitPoints;
@@ -218,9 +218,9 @@ main.startColor = data.particleColour;
 
 A **Trail** sub-emitter (or the built-in **Trails** module) leaves a fading path behind a moving object, giving the ball a sense of speed.
 
-**Step 1** - Select the `Ball` prefab in the Project panel and open it for editing.
+**Step 1** - In the Project panel, double-click the `Ball` prefab to open it for editing. The Hierarchy will show just the `Ball` root.
 
-**Step 2** - In the Hierarchy (with the prefab open), right-click the `Ball` root and select **Effects > Particle System**. Name it `BallTrail`.
+**Step 2** - Right-click the `Ball` root in the Hierarchy and select **Effects > Particle System**. Name it `BallTrail`.
 
 **Step 3** - Configure the `BallTrail` Particle System:
 
@@ -266,15 +266,7 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1 - Hit Tint
-
-Add a `hitColour` field (`Color`) to `BrickData`. Update `FlashRoutine` in `Brick` to use `data.hitColour` instead of a hard-coded colour. Assign a different hit colour to each `BrickData` asset and verify each brick flashes its own colour in Play mode.
-
-> **Hint:** `sr.color = data.hitColour;` inside `FlashRoutine`, then `sr.color = Color.white;` to restore.
-
----
-
-### Task 2 - Paddle Hit Effect
+### Task 1 - Paddle Hit Effect
 
 Create a new particle prefab called `PaddleHit` that emits a short upward spray of particles when the ball bounces off the paddle. In `BallController`, add `OnCollisionEnter2D` and spawn the prefab when the collided object is tagged `"Paddle"`.
 
@@ -282,7 +274,7 @@ Create a new particle prefab called `PaddleHit` that emits a short upward spray 
 
 ---
 
-### Task 3 - Speed-Based Trail Colour
+### Task 2 - Speed-Based Trail Colour
 
 Change the `BallTrail` particle colour based on the ball's current speed. In `BallController.Update`, read `rb.linearVelocity.magnitude` and map it to a colour between blue (slow) and orange (fast) using `Color.Lerp`. Apply the result to `ps.main.startColor`.
 
@@ -290,7 +282,7 @@ Change the `BallTrail` particle colour based on the ball's current speed. In `Ba
 
 ---
 
-### Task 4 - Background Renderer
+### Task 3 - Background Renderer
 
 Add a background sprite to the scene using a **Sprite Renderer** on a new `Background` GameObject. Set its **Sorting Layer** to `Background` and **Order in Layer** to `0`. In a `Start` method, scale it to fill the camera's viewport using `Camera.main.orthographicSize` and `camera.aspect`.
 
@@ -298,7 +290,7 @@ Add a background sprite to the scene using a **Sprite Renderer** on a new `Backg
 
 ---
 
-### Task 5 - Screen Burst Effect
+### Task 4 - Screen Burst Effect
 
 Create a particle prefab called `ScreenBurst` using a **Rectangle** shape. Add a public method to `UIManager` called `ShowBurst()` that spawns it at the world origin and destroys it after it finishes playing. Call `ShowBurst()` from a button in the Canvas to test it independently of any game event.
 
