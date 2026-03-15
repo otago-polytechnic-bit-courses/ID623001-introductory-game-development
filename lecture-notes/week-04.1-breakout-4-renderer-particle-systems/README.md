@@ -5,7 +5,7 @@
 |            | Link                                                                                                                                                           |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ← Previous | [Week 03.1 - Breakout: Audio, Scene Management, Player Prefs and Coroutines](../week-03.1-breakout-3-audio-scene-management-player-prefs-coroutines/README.md) |
-| → Next     | [Week 04.2 - Breakout: Optimisation, Build and Itch.io](../week-04.2-breakout-4-optimisation-build-itch.io/README.md)                                          |
+| → Next     | [Week 05.1 - Breakout: Saving Data and Build & Deploy](../week-05.1-breakout-5-saving-data-build-deploy/README.md)                                             |
 
 ---
 
@@ -27,7 +27,7 @@ Unity renders 2D sprites in a defined order. **Sorting Layers** are named groups
 | Gameplay   |
 | Effects    |
 
-**Step 2** - In the Hierarchy, select the `Brick` prefab. In the `Sprite Renderer` component, set:
+**Step 2** - Select the `Brick` prefab. In the `Sprite Renderer` component, set:
 
 | Property           | Value      |
 | ------------------ | ---------- |
@@ -54,14 +54,32 @@ using System.Collections;
 
 public class Brick : MonoBehaviour
 {
-    // Omitted for brevity
-
+    private BrickData data;
+    private UIManager uiManager;
     private SpriteRenderer sr;
     private Coroutine flashCoroutine;
+    private int currentHitPoints;
+
+    [Header("Effects")]
+    [SerializeField] private GameObject explosionPrefab;
 
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        uiManager = FindAnyObjectByType<UIManager>();
+    }
+
+    public void Initialize(BrickData brickData)
+    {
+        data = brickData;
+        currentHitPoints = data.hitPoints;
+
+        if (sr != null && data.sprite != null)
+            sr.sprite = data.sprite;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -73,6 +91,7 @@ public class Brick : MonoBehaviour
 
         if (currentHitPoints <= 0)
         {
+            SpawnExplosion();
             uiManager?.AddScore(data.pointValue);
             Destroy(gameObject);
         }
@@ -88,9 +107,25 @@ public class Brick : MonoBehaviour
 
     private IEnumerator FlashRoutine()
     {
-        sr.color = Color.white * new Color(1f, 0.3f, 0.3f);   // tint red
+        sr.color = new Color(1f, 0.3f, 0.3f);   // tint red
         yield return new WaitForSeconds(0.1f);
-        sr.color = Color.white;                                // restore
+        sr.color = Color.white;                  // restore
+    }
+
+    private void SpawnExplosion()
+    {
+        if (explosionPrefab == null)
+            return;
+
+        GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        ParticleSystem ps = fx.GetComponent<ParticleSystem>();
+        if (ps != null)
+        {
+            ParticleSystem.MainModule main = ps.main;
+            main.startColor = data.particleColour;
+            Destroy(fx, ps.main.duration + ps.main.startLifetime.constantMax);
+        }
     }
 }
 ```
@@ -120,7 +155,7 @@ public class RendererController : MonoBehaviour
 {
     [Header("Renderer Settings")]
     [SerializeField] private Color highlightColour = Color.yellow;
-    [SerializeField] private Color defaultColour = Color.white;
+    [SerializeField] private Color defaultColour   = Color.white;
 
     private SpriteRenderer sr;
 
@@ -180,56 +215,14 @@ A **Particle System** emits and simulates many small sprites or meshes to create
 
 Rather than placing particle effects in the scene manually, we spawn them at runtime from a script using `Instantiate`, then destroy them once they finish playing.
 
-**Step 1** - Update `Brick` to spawn the explosion effect when it is destroyed:
+**Step 1** - The `Brick` script already contains `SpawnExplosion` and `explosionPrefab` from section 1.2. Verify the `SpawnExplosion` call is present inside `OnCollisionEnter2D` when `currentHitPoints <= 0`:
 
 ```csharp
-using UnityEngine;
-using System.Collections;
-
-public class Brick : MonoBehaviour
+if (currentHitPoints <= 0)
 {
-    // Omitted for brevity
-
-    [Header("Effects")]
-    [SerializeField] private GameObject explosionPrefab;
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.gameObject.CompareTag("Ball"))
-            return;
-
-        currentHitPoints--;
-
-        if (currentHitPoints <= 0)
-        {
-            SpawnExplosion();
-            uiManager?.AddScore(data.pointValue);
-            Destroy(gameObject);
-        }
-        else
-        {
-            if (flashCoroutine != null)
-                StopCoroutine(flashCoroutine);
-
-            flashCoroutine = StartCoroutine(FlashRoutine());
-        }
-    }
-
-    private void SpawnExplosion()
-    {
-        if (explosionPrefab == null)
-            return;
-
-        // Spawn at the brick's position with no rotation
-        GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
-        // Destroy the effect GameObject after it has finished playing
-        ParticleSystem ps = fx.GetComponent<ParticleSystem>();
-        if (ps != null)
-            Destroy(fx, ps.main.duration + ps.main.startLifetime.constantMax);
-    }
-
-    // Omitted for brevity
+    SpawnExplosion();
+    uiManager?.AddScore(data.pointValue);
+    Destroy(gameObject);
 }
 ```
 
@@ -252,34 +245,20 @@ using UnityEngine;
 public class BrickData : ScriptableObject
 {
     public Sprite sprite;
-    public int pointValue;
-    public int hitPoints;
-    public Color particleColour = Color.white;
+    public int    pointValue     = 100;
+    public int    hitPoints      = 1;
+    public Color  particleColour = Color.white;   // new field
 }
 ```
 
-**Step 2** - Update `SpawnExplosion` in `Brick` to apply the colour:
+**Step 2** - `SpawnExplosion` in `Brick` already applies `data.particleColour` from section 1.2. For reference, the relevant lines are:
 
 ```csharp
-private void SpawnExplosion()
-{
-    if (explosionPrefab == null)
-        return;
-
-    GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
-    ParticleSystem ps = fx.GetComponent<ParticleSystem>();
-
-    if (ps != null)
-    {
-        // ParticleSystem.MainModule is a struct - must modify a local copy then assign it back
-        ParticleSystem.MainModule main = ps.main;
-        main.startColor = data.particleColour;
-
-        Destroy(fx, ps.main.duration + ps.main.startLifetime.constantMax);
-    }
-}
+ParticleSystem.MainModule main = ps.main;
+main.startColor = data.particleColour;   // drives colour from BrickData
 ```
+
+> `ParticleSystem.MainModule` is a struct — Unity requires you to copy it into a local variable, modify it, and the assignment back to `main` updates the system automatically.
 
 **Step 3** - In the Project panel, select each `BrickData` asset (e.g. `BlueBrickData`) and set the **Particle Colour** field to match the brick's sprite colour.
 
@@ -339,9 +318,9 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1 - Hit Tint from BrickData
+### Task 1 - Hit Tint
 
-Currently all bricks flash the same hard-coded red. Extend `BrickData` with a `hitColour` field (`Color`) and update `FlashRoutine` in `Brick` to use `data.hitColour` instead. Assign a different hit colour to each `BrickData` asset and verify each brick flashes its own colour.
+Add a `hitColour` field (`Color`) to `BrickData`. Update `FlashRoutine` in `Brick` to use `data.hitColour` instead of a hard-coded colour. Assign a different hit colour to each `BrickData` asset and verify each brick flashes its own colour in Play mode.
 
 > **Hint:** `sr.color = data.hitColour;` inside `FlashRoutine`, then `sr.color = Color.white;` to restore.
 
@@ -349,7 +328,7 @@ Currently all bricks flash the same hard-coded red. Extend `BrickData` with a `h
 
 ### Task 2 - Paddle Hit Effect
 
-Create a new particle prefab called `PaddleHit` that emits a short upward spray of particles when the ball bounces off the paddle. Spawn it from `BallController.OnCollisionEnter2D` when the collided object is tagged `"Paddle"`.
+Create a new particle prefab called `PaddleHit` that emits a short upward spray of particles when the ball bounces off the paddle. In `BallController`, add `OnCollisionEnter2D` and spawn the prefab when the collided object is tagged `"Paddle"`.
 
 > **Hint:** set the **Shape** module to `Edge` and orient it horizontally so particles spray upward. Use `collision.contacts[0].point` for the spawn position so the effect appears at the exact contact point.
 
@@ -357,22 +336,22 @@ Create a new particle prefab called `PaddleHit` that emits a short upward spray 
 
 ### Task 3 - Speed-Based Trail Colour
 
-Change the `BallTrail` particle colour based on the ball's current speed. Use the `Gradient` mode in the **Start Color** field at runtime by accessing `ps.main.startColor` in `BallController.Update`. Map a slow speed to blue and a high speed to orange using `Color.Lerp`.
+Change the `BallTrail` particle colour based on the ball's current speed. In `BallController.Update`, read `rb.linearVelocity.magnitude` and map it to a colour between blue (slow) and orange (fast) using `Color.Lerp`. Apply the result to `ps.main.startColor`.
 
-> **Hint:** `float t = Mathf.InverseLerp(minSpeed, maxSpeed, rb.linearVelocity.magnitude)` gives a 0–1 value you can pass into `Color.Lerp(slowColour, fastColour, t)`.
+> **Hint:** `float t = Mathf.InverseLerp(minSpeed, maxSpeed, rb.linearVelocity.magnitude)` gives a 0–1 value to pass into `Color.Lerp`.
 
 ---
 
 ### Task 4 - Background Renderer
 
-Add a background image to the scene using a **Sprite Renderer** on a new `Background` GameObject. Set its **Sorting Layer** to `Background` and **Order in Layer** to `0` so it always renders behind all other objects. Scale it to fill the camera's viewport using `Camera.main.orthographicSize` and `camera.aspect` in a `Start` method.
+Add a background sprite to the scene using a **Sprite Renderer** on a new `Background` GameObject. Set its **Sorting Layer** to `Background` and **Order in Layer** to `0`. In a `Start` method, scale it to fill the camera's viewport using `Camera.main.orthographicSize` and `camera.aspect`.
 
 > **Hint:** `transform.localScale = new Vector3(width, height, 1f)` where `width = camera.orthographicSize * 2f * camera.aspect` and `height = camera.orthographicSize * 2f`.
 
 ---
 
-### Task 5 - Game Over Particle Burst
+### Task 5 - Screen Burst Effect
 
-When the player loses their last life, trigger a large particle burst across the whole screen. Create a new particle prefab called `GameOverBurst` using a **Rectangle** shape scaled to fill the screen. Spawn it from `UIManager.ShowGameOver()` at the world origin. Ensure the burst uses the `Effects` sorting layer and is destroyed after it finishes.
+Create a particle prefab called `ScreenBurst` using a **Rectangle** shape. Add a public method to `UIManager` called `ShowBurst()` that spawns it at the world origin and destroys it after it finishes playing. Call `ShowBurst()` from a button in the Canvas to test it independently of any game event.
 
-> **Hint:** set **Emission > Burst Count** to `80` or higher. Use `Camera.main.ScreenToWorldPoint` to calculate the correct rectangle scale to match the screen bounds.
+> **Hint:** set **Emission > Burst Count** to `80` or higher. Use `Camera.main.ScreenToWorldPoint` to size the rectangle to match the screen bounds. Destroy with `Destroy(fx, ps.main.duration + ps.main.startLifetime.constantMax)`.
