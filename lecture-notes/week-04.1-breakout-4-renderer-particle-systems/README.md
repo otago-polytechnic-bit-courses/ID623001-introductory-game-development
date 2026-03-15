@@ -79,11 +79,13 @@ We create the explosion prefab **first**, before writing any code that reference
 
 ---
 
-### 1.2 Tinting Sprites at Runtime
+### 1.2 Flashing Sprites at Runtime
 
-Now that the explosion prefab exists, we can write the `Brick` script that references it. You can read and write the `color` property on a `SpriteRenderer` to tint a sprite without replacing it. A white sprite tinted with `Color.red` appears red; tinting with `Color.white` restores the original appearance.
+Now that the explosion prefab exists, we can write the `Brick` script that references it. Rather than tinting the sprite's colour (which looks wrong on coloured artwork), we swap the `SpriteRenderer`'s sprite to a plain flash sprite for a brief moment, then swap back. This works reliably regardless of what the original sprite looks like.
 
-**Step 1** - Update the `Brick` script:
+**Step 1** - Create a plain white sprite to use as the flash. In your art assets, add a solid white rectangle the same dimensions as your brick sprite. Import it into Unity and place it in your `Sprites` folder. Name it something like `BrickFlash`.
+
+**Step 2** - Update the `Brick` script:
 
 ```csharp
 using UnityEngine;
@@ -97,8 +99,11 @@ public class Brick : MonoBehaviour
     private Coroutine flashCoroutine;
     private int currentHitPoints;
 
-    [Header("Effects")]
+    [Header("Effects Settings")]
     [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private Sprite flashSprite;
+
+    private Sprite defaultSprite;
 
     private void Awake()
     {
@@ -116,7 +121,10 @@ public class Brick : MonoBehaviour
         currentHitPoints = data.hitPoints;
 
         if (sr != null && data.sprite != null)
+        {
             sr.sprite = data.sprite;
+            defaultSprite = data.sprite;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -143,9 +151,12 @@ public class Brick : MonoBehaviour
 
     private IEnumerator FlashRoutine()
     {
-        sr.color = new Color(1f, 0.3f, 0.3f);
+        if (flashSprite != null)
+            sr.sprite = flashSprite;
+
         yield return new WaitForSeconds(0.1f);
-        sr.color = Color.white;
+
+        sr.sprite = defaultSprite;
     }
 
     private void SpawnExplosion()
@@ -166,7 +177,9 @@ public class Brick : MonoBehaviour
 }
 ```
 
-**Step 2** - Click **Play**. Bricks with more than one hit point should briefly flash red when struck before turning white again.
+**Step 3** - Select the `Brick` prefab in the Project panel. Drag your `BrickFlash` sprite into the **Flash Sprite** field in the Inspector.
+
+**Step 4** - Click **Play**. Bricks with more than one hit point should briefly flash white when struck before returning to their original sprite.
 
 ---
 
@@ -266,7 +279,15 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1 - Paddle Hit Effect
+### Task 1 - Per-Brick Flash Sprite
+
+Add a `flashSprite` field (`Sprite`) to `BrickData`. Update `Brick` to read `data.flashSprite` instead of using the serialized field on the prefab, so each brick type can define its own flash sprite. Assign a different flash sprite to each `BrickData` asset and verify each brick uses its own flash in Play mode.
+
+> **Hint:** In `FlashRoutine`, replace `flashSprite` with `data.flashSprite`. You can remove the `[SerializeField] private Sprite flashSprite` field from `Brick` once `BrickData` owns it.
+
+---
+
+### Task 2 - Paddle Hit Effect
 
 Create a new particle prefab called `PaddleHit` that emits a short upward spray of particles when the ball bounces off the paddle. In `BallController`, add `OnCollisionEnter2D` and spawn the prefab when the collided object is tagged `"Paddle"`.
 
@@ -274,7 +295,7 @@ Create a new particle prefab called `PaddleHit` that emits a short upward spray 
 
 ---
 
-### Task 2 - Speed-Based Trail Colour
+### Task 3 - Speed-Based Trail Colour
 
 Change the `BallTrail` particle colour based on the ball's current speed. In `BallController.Update`, read `rb.linearVelocity.magnitude` and map it to a colour between blue (slow) and orange (fast) using `Color.Lerp`. Apply the result to `ps.main.startColor`.
 
@@ -282,7 +303,7 @@ Change the `BallTrail` particle colour based on the ball's current speed. In `Ba
 
 ---
 
-### Task 3 - Background Renderer
+### Task 4 - Background Renderer
 
 Add a background sprite to the scene using a **Sprite Renderer** on a new `Background` GameObject. Set its **Sorting Layer** to `Background` and **Order in Layer** to `0`. In a `Start` method, scale it to fill the camera's viewport using `Camera.main.orthographicSize` and `camera.aspect`.
 
@@ -290,7 +311,7 @@ Add a background sprite to the scene using a **Sprite Renderer** on a new `Backg
 
 ---
 
-### Task 4 - Screen Burst Effect
+### Task 5 - Screen Burst Effect
 
 Create a particle prefab called `ScreenBurst` using a **Rectangle** shape. Add a public method to `UIManager` called `ShowBurst()` that spawns it at the world origin and destroys it after it finishes playing. Call `ShowBurst()` from a button in the Canvas to test it independently of any game event.
 
