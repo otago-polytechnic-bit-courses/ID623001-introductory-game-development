@@ -42,140 +42,6 @@ Unity renders 2D sprites in a defined order. **Sorting Layers** are named groups
 
 ---
 
-### 1.2 Tinting Sprites at Runtime
-
-You can read and write the `color` property on a `SpriteRenderer` to tint a sprite without replacing it. A white sprite tinted with `Color.red` appears red; tinting with `Color.white` restores the original appearance.
-
-**Step 1** - Update the `Brick` script to flash the sprite when it is hit but not yet destroyed:
-
-```csharp
-using UnityEngine;
-using System.Collections;
-
-public class Brick : MonoBehaviour
-{
-    private BrickData data;
-    private UIManager uiManager;
-    private SpriteRenderer sr;
-    private Coroutine flashCoroutine;
-    private int currentHitPoints;
-
-    [Header("Effects")]
-    [SerializeField] private GameObject explosionPrefab;
-
-    private void Awake()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
-
-    private void Start()
-    {
-        uiManager = FindAnyObjectByType<UIManager>();
-    }
-
-    public void Initialise(BrickData brickData)
-    {
-        data = brickData;
-        currentHitPoints = data.hitPoints;
-
-        if (sr != null && data.sprite != null)
-            sr.sprite = data.sprite;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.gameObject.CompareTag("Ball"))
-            return;
-
-        currentHitPoints--;
-
-        if (currentHitPoints <= 0)
-        {
-            SpawnExplosion();
-            uiManager?.AddScore(data.pointValue);
-            Destroy(gameObject);
-        }
-        else
-        {
-            // Cancel any in-progress flash before starting a new one
-            if (flashCoroutine != null)
-                StopCoroutine(flashCoroutine);
-
-            flashCoroutine = StartCoroutine(FlashRoutine());
-        }
-    }
-
-    private IEnumerator FlashRoutine()
-    {
-        sr.color = new Color(1f, 0.3f, 0.3f);   // tint red
-        yield return new WaitForSeconds(0.1f);
-        sr.color = Color.white;                  // restore
-    }
-
-    private void SpawnExplosion()
-    {
-        if (explosionPrefab == null)
-            return;
-
-        GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
-        ParticleSystem ps = fx.GetComponent<ParticleSystem>();
-        if (ps != null)
-        {
-            ParticleSystem.MainModule main = ps.main;
-            main.startColor = data.particleColour;
-            Destroy(fx, ps.main.duration + ps.main.startLifetime.constantMax);
-        }
-    }
-}
-```
-
-**Step 2** - Click **Play**. Bricks with more than one hit point should briefly flash red when struck before turning white again.
-
----
-
-### 1.3 Materials and Shaders
-
-A **Material** defines how a surface is rendered - which shader to use and what parameters (colour, texture, etc.) to pass to it. In 2D games the default **Sprite-Lit-Default** shader is sufficient for most cases, but swapping to a custom material lets you add effects like outlines or glow.
-
-**Step 1** - In the `Materials` folder, right-click and select **Create > 2D > Lit > Sprite Lit Default**. Name it `BrickMaterial`.
-
-**Step 2** - Select the `Brick` prefab. In the `Sprite Renderer` component, set the **Material** field to `BrickMaterial`.
-
-**Step 3** - In the `Scripts` folder, create a script called `RendererController`. Open it and add the following:
-
-```csharp
-using UnityEngine;
-
-/// <summary>
-/// Demonstrates runtime material property changes on a SpriteRenderer.
-/// Attach to any GameObject with a SpriteRenderer.
-/// </summary>
-public class RendererController : MonoBehaviour
-{
-    [Header("Renderer Settings")]
-    [SerializeField] private Color highlightColour = Color.yellow;
-    [SerializeField] private Color defaultColour   = Color.white;
-
-    private SpriteRenderer sr;
-
-    private void Awake()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
-
-    // Call this from other scripts or UI events to highlight the object
-    public void SetHighlight(bool on)
-    {
-        sr.color = on ? highlightColour : defaultColour;
-    }
-}
-```
-
-📖 Reference: [Unity - Materials](https://docs.unity3d.com/Manual/Materials.html)
-
----
-
 ## 2. Particle Systems
 
 A **Particle System** emits and simulates many small sprites or meshes to create visual effects such as explosions, sparks, smoke, or trails. Each emitted object is called a **particle** and has its own position, velocity, colour, and lifetime.
@@ -183,6 +49,8 @@ A **Particle System** emits and simulates many small sprites or meshes to create
 ---
 
 ### 2.1 Creating a Particle System
+
+We create the explosion prefab **first**, before writing any code that references it.
 
 **Step 1** - In the Hierarchy, right-click and select **Effects > Particle System**. Name it `BrickExplosion`. Unity creates a looping burst of particles by default.
 
@@ -211,24 +79,104 @@ A **Particle System** emits and simulates many small sprites or meshes to create
 
 ---
 
+### 1.2 Tinting Sprites at Runtime
+
+Now that the explosion prefab exists, we can write the `Brick` script that references it. You can read and write the `color` property on a `SpriteRenderer` to tint a sprite without replacing it. A white sprite tinted with `Color.red` appears red; tinting with `Color.white` restores the original appearance.
+
+**Step 1** - Update the `Brick` script:
+
+```csharp
+using UnityEngine;
+using System.Collections;
+
+public class Brick : MonoBehaviour
+{
+    private BrickData data;
+    private UIManager uiManager;
+    private SpriteRenderer sr;
+    private Coroutine flashCoroutine;
+    private int currentHitPoints;
+
+    [Header("Effects Settings")]
+    [SerializeField] private GameObject explosionPrefab;
+
+    private void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        uiManager = FindAnyObjectByType<UIManager>();
+    }
+
+    public void Initialize(BrickData brickData)
+    {
+        data = brickData;
+        currentHitPoints = data.hitPoints;
+
+        if (sr != null && data.sprite != null)
+            sr.sprite = data.sprite;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Ball"))
+            return;
+
+        currentHitPoints--;
+
+        if (currentHitPoints <= 0)
+        {
+            SpawnExplosion();
+            uiManager?.AddScore(data.pointValue);
+            Destroy(gameObject);
+        }
+        else
+        {
+            if (flashCoroutine != null)
+                StopCoroutine(flashCoroutine);
+
+            flashCoroutine = StartCoroutine(FlashRoutine());
+        }
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        sr.color = new Color(1f, 0.3f, 0.3f);
+        yield return new WaitForSeconds(0.1f);
+        sr.color = Color.white;
+    }
+
+    private void SpawnExplosion()
+    {
+        if (explosionPrefab == null)
+            return;
+
+        GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        ParticleSystem ps = fx.GetComponent<ParticleSystem>();
+        if (ps != null)
+        {
+            ParticleSystem.MainModule main = ps.main;
+            main.startColor = data.particleColour;
+            Destroy(fx, ps.main.duration + ps.main.startLifetime.constantMax);
+        }
+    }
+}
+```
+
+**Step 2** - Click **Play**. Bricks with more than one hit point should briefly flash red when struck before turning white again.
+
+---
+
 ### 2.2 Spawning Particles from Code
 
 Rather than placing particle effects in the scene manually, we spawn them at runtime from a script using `Instantiate`, then destroy them once they finish playing.
 
-**Step 1** - The `Brick` script already contains `SpawnExplosion` and `explosionPrefab` from section 1.2. Verify the `SpawnExplosion` call is present inside `OnCollisionEnter2D` when `currentHitPoints <= 0`:
+**Step 1** - Select the `Brick` prefab in the Project panel. In the Inspector, drag the `BrickExplosion` prefab into the **Explosion Prefab** field.
 
-```csharp
-if (currentHitPoints <= 0)
-{
-    SpawnExplosion();
-    uiManager?.AddScore(data.pointValue);
-    Destroy(gameObject);
-}
-```
-
-**Step 2** - Select the `Brick` prefab in the Project panel. In the Inspector, drag the `BrickExplosion` prefab into the **Explosion Prefab** field.
-
-**Step 3** - Click **Play**. Each brick should spawn a burst of particles when destroyed.
+**Step 2** - Click **Play**. Each brick should spawn a burst of particles when destroyed.
 
 ---
 
@@ -245,17 +193,17 @@ using UnityEngine;
 public class BrickData : ScriptableObject
 {
     public Sprite sprite;
-    public int    pointValue     = 100;
-    public int    hitPoints      = 1;
-    public Color  particleColour = Color.white;   // new field
+    public int pointValue = 100;
+    public int hitPoints = 1;
+    public Color particleColour = Color.white;
 }
 ```
 
-**Step 2** - `SpawnExplosion` in `Brick` already applies `data.particleColour` from section 1.2. For reference, the relevant lines are:
+**Step 2** - `SpawnExplosion` in `Brick` already applies `data.particleColour`. For reference, the relevant lines are:
 
 ```csharp
 ParticleSystem.MainModule main = ps.main;
-main.startColor = data.particleColour;   // drives colour from BrickData
+main.startColor = data.particleColour;
 ```
 
 > `ParticleSystem.MainModule` is a struct — Unity requires you to copy it into a local variable, modify it, and the assignment back to `main` updates the system automatically.
@@ -263,6 +211,18 @@ main.startColor = data.particleColour;   // drives colour from BrickData
 **Step 3** - In the Project panel, select each `BrickData` asset (e.g. `BlueBrickData`) and set the **Particle Colour** field to match the brick's sprite colour.
 
 **Step 4** - Click **Play**. Each brick colour should now produce a matching explosion.
+
+---
+
+### 1.3 Materials and Shaders
+
+A **Material** defines how a surface is rendered - which shader to use and what parameters (colour, texture, etc.) to pass to it. In 2D games the default **Sprite-Lit-Default** shader is sufficient for most cases, but swapping to a custom material lets you add effects like outlines or glow.
+
+**Step 1** - In the `Materials` folder, right-click and select **Create > 2D > Lit > Sprite Lit Default**. Name it `BrickMaterial`.
+
+**Step 2** - Select the `Brick` prefab. In the `Sprite Renderer` component, set the **Material** field to `BrickMaterial`.
+
+📖 Reference: [Unity - Materials](https://docs.unity3d.com/Manual/Materials.html)
 
 ---
 
