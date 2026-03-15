@@ -214,18 +214,6 @@ main.startColor = data.particleColour;
 
 ---
 
-### 1.3 Materials and Shaders
-
-A **Material** defines how a surface is rendered - which shader to use and what parameters (colour, texture, etc.) to pass to it. In 2D games the default **Sprite-Lit-Default** shader is sufficient for most cases, but swapping to a custom material lets you add effects like outlines or glow.
-
-**Step 1** - In the `Materials` folder, right-click and select **Create > 2D > Lit > Sprite Lit Default**. Name it `BrickMaterial`.
-
-**Step 2** - Select the `Brick` prefab. In the `Sprite Renderer` component, set the **Material** field to `BrickMaterial`.
-
-📖 Reference: [Unity - Materials](https://docs.unity3d.com/Manual/Materials.html)
-
----
-
 ### 2.4 Particle Trail on the Ball
 
 A **Trail** sub-emitter (or the built-in **Trails** module) leaves a fading path behind a moving object, giving the ball a sense of speed.
