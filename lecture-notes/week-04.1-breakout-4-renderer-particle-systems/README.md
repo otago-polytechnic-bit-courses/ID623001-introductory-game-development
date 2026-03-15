@@ -219,7 +219,7 @@ ParticleSystem.MainModule main = ps.main;
 main.startColor = data.particleColour;
 ```
 
-> `ParticleSystem.MainModule` is a struct — Unity requires you to copy it into a local variable, modify it, and the assignment back to `main` updates the system automatically.
+> `ParticleSystem.MainModule` is a struct - Unity requires you to copy it into a local variable, modify it, and the assignment back to `main` updates the system automatically.
 
 **Step 3** - In the Project panel, select each `BrickData` asset (e.g. `BlueBrickData`) and set the **Particle Colour** field to match the brick's sprite colour.
 
@@ -246,7 +246,7 @@ A **Trail** sub-emitter (or the built-in **Trails** module) leaves a fading path
 | Main                | **Start Size**       | `0.15`                 | Slightly smaller than the ball                   |
 | Main                | **Simulation Space** | `World`                | Particles stay at the position they were emitted |
 | Emission            | **Rate over Time**   | `40`                   | Dense trail                                      |
-| Shape               | (Disable module)     | —                      | Particles emit from the ball's exact centre      |
+| Shape               | (Disable module)     | -                      | Particles emit from the ball's exact centre      |
 | Color over Lifetime | (Enable)             | Fade alpha `255` → `0` | Trail fades behind the ball                      |
 | Renderer            | **Sorting Layer**    | `Effects`              | Renders above gameplay sprites                   |
 
