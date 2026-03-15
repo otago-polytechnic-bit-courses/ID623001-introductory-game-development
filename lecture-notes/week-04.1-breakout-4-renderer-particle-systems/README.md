@@ -73,7 +73,7 @@ public class Brick : MonoBehaviour
         uiManager = FindAnyObjectByType<UIManager>();
     }
 
-    public void Initialize(BrickData brickData)
+    public void Initialise(BrickData brickData)
     {
         data = brickData;
         currentHitPoints = data.hitPoints;
