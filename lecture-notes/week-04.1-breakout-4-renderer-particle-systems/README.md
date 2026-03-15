@@ -120,7 +120,7 @@ public class RendererController : MonoBehaviour
 {
     [Header("Renderer Settings")]
     [SerializeField] private Color highlightColour = Color.yellow;
-    [SerializeField] private Color defaultColour   = Color.white;
+    [SerializeField] private Color defaultColour = Color.white;
 
     private SpriteRenderer sr;
 
@@ -252,9 +252,9 @@ using UnityEngine;
 public class BrickData : ScriptableObject
 {
     public Sprite sprite;
-    public int    pointValue;
-    public int    hitPoints;
-    public Color  particleColour = Color.white;   // new field
+    public int pointValue;
+    public int hitPoints;
+    public Color particleColour = Color.white;
 }
 ```
 
