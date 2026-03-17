@@ -5,7 +5,7 @@
 |            | Link                                                                                                                                                           |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ← Previous | [Week 04.1 - Breakout: Renderer and Particle Systems](../week-04.1-breakout-4-renderer-particle-systems/README.md) |
-| → Next     | [Week 05.1 - Breakout: Polish and Juice](../week-05.1-breakout-5-polish-and-juice/README.md)                                                                 |
+| → Next     | [Week 05.2 - TBC]()                                                                 |
 
 ---
 
