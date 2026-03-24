@@ -227,32 +227,77 @@ main.startColor = data.particleColour;
 
 ---
 
-### 2.4 Particle Trail on the Ball
+### 2.4 Trail Renderer on the Ball
 
-A **Trail** sub-emitter (or the built-in **Trails** module) leaves a fading path behind a moving object, giving the ball a sense of speed.
+A **Trail Renderer** leaves a fading path behind a moving object, giving the ball a sense of speed and direction. Unity's built-in Trail Renderer component handles this cleanly without the complexity of a Particle System - it automatically tracks world-space positions and tapers the trail to a point.
 
-**Step 1** - In the Project panel, double-click the `Ball` prefab to open it for editing. The Hierarchy will show just the `Ball` root.
+**Step 1** - In the Project panel, double-click the `Ball` prefab to open it for editing.
 
-**Step 2** - Right-click the `Ball` root in the Hierarchy and select **Effects > Particle System**. Name it `BallTrail`.
+**Step 2** - With the `Ball` root selected in the Hierarchy, click **Add Component** and search for **Trail Renderer**. Add it.
 
-**Step 3** - Configure the `BallTrail` Particle System:
+**Step 3** - Configure the `Trail Renderer` component in the Inspector:
 
-| Module              | Property             | Value                  | Reason                                           |
-| ------------------- | -------------------- | ---------------------- | ------------------------------------------------ |
-| Main                | **Duration**         | `1`                    | Trail refreshes continuously                     |
-| Main                | **Loop**             | `true`                 | Runs for the lifetime of the ball                |
-| Main                | **Start Lifetime**   | `0.15`                 | Particles disappear quickly                      |
-| Main                | **Start Speed**      | `0`                    | Trail particles should not move on their own     |
-| Main                | **Start Size**       | `0.15`                 | Slightly smaller than the ball                   |
-| Main                | **Simulation Space** | `World`                | Particles stay at the position they were emitted |
-| Emission            | **Rate over Time**   | `40`                   | Dense trail                                      |
-| Shape               | (Disable module)     | -                      | Particles emit from the ball's exact centre      |
-| Color over Lifetime | (Enable)             | Fade alpha `255` → `0` | Trail fades behind the ball                      |
-| Renderer            | **Sorting Layer**    | `Effects`              | Renders above gameplay sprites                   |
+| Property            | Value                   | Reason                                        |
+| ------------------- | ----------------------- | --------------------------------------------- |
+| **Time**            | `0.3`                   | How long the trail lingers before fading      |
+| **Min Vertex Distance** | `0.05`              | Keeps the curve smooth around corners         |
+| **Width (Start)**   | Match ball sprite width | Trail is flush with the ball edge             |
+| **Width (End)**     | `0`                     | Tapers to a sharp point at the tail           |
+| **Material**        | `Particles/Additive`    | Glows against dark backgrounds                |
+| **Sorting Layer**   | `Effects`               | Renders above gameplay sprites                |
 
-**Step 4** - Save the prefab. Click **Play** and verify the ball leaves a fading trail.
+**Step 4** - Create a new script called `TrailEffect` and attach it to the `Ball` prefab:
 
-📖 Reference: [Unity - Particle System Trails](https://docs.unity3d.com/Manual/PartSysTrailsModule.html)
+```csharp
+using UnityEngine;
+
+[RequireComponent(typeof(TrailRenderer))]
+public class TrailEffect : MonoBehaviour
+{
+    [Header("Speed Settings")]
+    [SerializeField] private float minSpeed = 3f;
+    [SerializeField] private float maxSpeed = 10f;
+
+    [Header("Colour Settings")]
+    [SerializeField] private Color slowColor = Color.blue;
+    [SerializeField] private Color fastColor = new Color(1f, 0.5f, 0f); // orange
+
+    private TrailRenderer trail;
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        trail = GetComponent<TrailRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+
+        // Match trail width to the ball's actual sprite size
+        float ballWidth = GetComponent<SpriteRenderer>().bounds.size.x;
+        trail.startWidth = ballWidth;
+        trail.endWidth = 0f;
+
+        trail.time = 0.3f;
+        trail.minVertexDistance = 0.05f;
+
+        // Additive blending makes the trail glow against dark backgrounds
+        trail.material = new Material(Shader.Find("Particles/Additive"));
+    }
+
+    void Update()
+    {
+        float t = Mathf.InverseLerp(minSpeed, maxSpeed, rb.linearVelocity.magnitude);
+        Color currentColor = Color.Lerp(slowColor, fastColor, t);
+
+        trail.startColor = currentColor;
+        trail.endColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0f);
+    }
+}
+```
+
+**Step 5** - Save the prefab. Click **Play** and verify the ball leaves a glowing trail that shifts from blue at low speed to orange at high speed.
+
+> If `Particles/Additive` is not available, create a Material manually: right-click in the Project panel, select **Create > Material**, and set the Shader to `Particles/Additive`. Drag it into the Trail Renderer's **Material** slot.
+
+📖 Reference: [Unity - Trail Renderer](https://docs.unity3d.com/Manual/class-TrailRenderer.html)
 
 ---
 
@@ -291,15 +336,23 @@ Add a `flashSprite` field (`Sprite`) to `BrickData`. Update `Brick` to read `dat
 
 Create a new particle prefab called `PaddleHit` that emits a short upward spray of particles when the ball bounces off the paddle. In `BallController`, add `OnCollisionEnter2D` and spawn the prefab when the collided object is tagged `"Paddle"`.
 
-> **Hint:** set the **Shape** module to `Edge` and orient it horizontally so particles spray upward. Use `collision.contacts[0].point` for the spawn position so the effect appears at the exact contact point.
+> **Hint:** Set the **Shape** module to `Edge` and orient it horizontally so particles spray upward. Use `collision.contacts[0].point` for the spawn position so the effect appears at the exact contact point.
 
 ---
 
 ### Task 3 - Speed-Based Trail Colour
 
-Change the `BallTrail` particle colour based on the ball's current speed. In `BallController.Update`, read `rb.linearVelocity.magnitude` and map it to a colour between blue (slow) and orange (fast) using `Color.Lerp`. Apply the result to `ps.main.startColor`.
+The `TrailEffect` script from Section 2.4 already implements speed-based colour. Extend or customise it by adjusting the following fields in the Inspector on the `Ball` prefab:
 
-> **Hint:** `float t = Mathf.InverseLerp(minSpeed, maxSpeed, rb.linearVelocity.magnitude)` gives a 0–1 value to pass into `Color.Lerp`.
+| Field          | Description                                          |
+| -------------- | ---------------------------------------------------- |
+| `minSpeed`     | Speed at which the trail shows the slow colour       |
+| `maxSpeed`     | Speed at which the trail shows the fast colour       |
+| `slowColor`    | Colour displayed at or below `minSpeed`              |
+| `fastColor`    | Colour displayed at or above `maxSpeed`              |
+| `trail.time`   | Increase to lengthen the trail, decrease to shorten  |
+
+> **Hint:** `float t = Mathf.InverseLerp(minSpeed, maxSpeed, rb.linearVelocity.magnitude)` gives a 0–1 value to pass into `Color.Lerp`. The `endColor` alpha is set to `0` so the tail always fades out cleanly regardless of the current colour.
 
 ---
 
@@ -315,4 +368,4 @@ Add a background sprite to the scene using a **Sprite Renderer** on a new `Backg
 
 Create a particle prefab called `ScreenBurst` using a **Rectangle** shape. Add a public method to `UIManager` called `ShowBurst()` that spawns it at the world origin and destroys it after it finishes playing. Call `ShowBurst()` from a button in the Canvas to test it independently of any game event.
 
-> **Hint:** set **Emission > Burst Count** to `80` or higher. Use `Camera.main.ScreenToWorldPoint` to size the rectangle to match the screen bounds. Destroy with `Destroy(fx, ps.main.duration + ps.main.startLifetime.constantMax)`.
+> **Hint:** Set **Emission > Burst Count** to `80` or higher. Use `Camera.main.ScreenToWorldPoint` to size the rectangle to match the screen bounds. Destroy with `Destroy(fx, ps.main.duration + ps.main.startLifetime.constantMax)`.

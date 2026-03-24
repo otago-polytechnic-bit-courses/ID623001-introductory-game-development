@@ -1,6 +1,6 @@
 # Course Directive
 
-<img src="./resources (ignore)/img/logo.jpg" alt="Otago Polytechnic Logo" width="200" height="auto" />
+<img src="./resources (ignore) (ignore)/img/logo.jpg" alt="Otago Polytechnic Logo" width="200" height="auto" />
 
 # ID623002: Introductory Game Development
 
@@ -76,7 +76,7 @@ At the successful completion of this course, learners will be able to:
 | 15/Tekau mā rima | Assessment Work                                                    |                                                 |
 | 16/Tekau mā ono  | Assessment Marking                                                 |                                                 |
 
-## Resources
+## resources (ignore)
 
 ### Software
 
@@ -84,7 +84,7 @@ This course will be taught using [Unity](https://unity.com/download) and [Micros
 
 ### Readings
 
-No textbook is required for this course. URLs to useful resources will be provided in the lecture notes.
+No textbook is required for this course. URLs to useful resources (ignore) will be provided in the lecture notes.
 
 ## Course Requirements and Expectations
 

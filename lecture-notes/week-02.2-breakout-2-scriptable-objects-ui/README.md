@@ -238,7 +238,7 @@ A **Vertical Layout Group** automatically stacks its child UI elements in a colu
 
 Custom fonts set the visual tone of your game. Unity uses **TMP Font Assets** - a compiled format that TextMeshPro can render with high quality at any size.
 
-**Step 1** - Copy the provided `Fonts` folder (found in the `week-02.2` resources) into your project's `Assets` folder.
+**Step 1** - Copy the provided `Fonts` folder (found in the `week-02.2` resources (ignore)) into your project's `Assets` folder.
 
 **Step 2** - Select all `.ttf` font files in the `Fonts` folder, right-click and select **Create > TextMeshPro > Font Asset > SDF**. This generates a `TMP_FontAsset` for each font.
 
