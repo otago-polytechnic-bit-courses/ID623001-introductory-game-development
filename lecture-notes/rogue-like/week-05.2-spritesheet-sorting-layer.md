@@ -10,7 +10,7 @@ In this module, you will develop **Rogue-Like** using **Unity**. Create a new **
 
 In the **lecture-notes** folder, you will find a zip folder called `07-assets`. Download and extract the folder. Copy the folders into your **Unity** project. The folder should be placed in the `Assets` folder of your project.
 
-![](../resources (ignore)/img/07-images/07-image-1.png)
+![](../../resources%20(ignore)/img/07-images/07-image-1.png)
 
 In the **Assets > Art Characters** folder, you will find a spritesheet called `Characters`. This spritesheet contains all different characters for your game. 
 
@@ -21,11 +21,11 @@ Click on the `Characters` spritesheet in the **Project** window. In the **Inspec
 - **Filter Mode**: `Point (no filter)`. This setting is used to determine how the sprite is rendered. Point filtering is used for pixel art to avoid blurring.
 - **Max Size**: `64`. This setting determines the maximum size of the sprite. If the sprite is larger than this size, it will be scaled down to fit.
 
-![](../resources (ignore)/img/07-images/07-image-2.png)
+![](../../resources%20(ignore)/img/07-images/07-image-2.png)
 
 Click on the **Edit Sprite** button in the **Inspector** window. This will open the **Sprite Editor** window. 
 
-![](../resources (ignore)/img/07-images/07-image-3.png)
+![](../../resources%20(ignore)/img/07-images/07-image-3.png)
 
 In the **Sprite Editor** window, click on the **Slice** button in the top left corner. This will open the **Slice** window. Set the following settings:
 
@@ -36,17 +36,17 @@ Click on the **Slice** button in the **Slice** window. This will slice the sprit
 
 Click on the **Apply** button in the top right corner of the **Sprite Editor** window. This will apply the changes to the spritesheet. You should now see individual sprites in the **Project** window.
 
-![](../resources (ignore)/img/07-images/07-image-4.png)
+![](../../resources%20(ignore)/img/07-images/07-image-4.png)
 
 Drag and drop a character sprite into the **Scene** window. This will create a new **GameObject** in the **Hierarchy** window.
 
-![](../resources (ignore)/img/07-images/07-image-5.png)
+![](../../resources%20(ignore)/img/07-images/07-image-5.png)
 
 Similar to above, drag and drop a gun sprite into the **Scene** window. This will create a new **GameObject** in the **Hierarchy** window. Create a new `Empty GameObject` in the **Hierarchy** window and name it `Player`. Drag and drop the character and gun sprites into the `Player` GameObject. This will make the character and gun sprites children of the `Player` GameObject.
 
 > **Note:** You do not need to slice the gun spritesheet. The gun sprites are already sliced and ready to use.
 
-![](../resources (ignore)/img/07-images/07-image-6.png)
+![](../../resources%20(ignore)/img/07-images/07-image-6.png)
 
 ---
 
@@ -56,29 +56,29 @@ Similar to above, drag and drop a gun sprite into the **Scene** window. This wil
 
 In the **Inspector** window, create a new sorting layer called `Player`. You should now have two sorting layers: `Default` and `Player`.
 
-![](../resources (ignore)/img/07-images/07-image-7.png)
+![](../../resources%20(ignore)/img/07-images/07-image-7.png)
 
 Click on the `Player` GameObject in the **Hierarchy** window. In the **Inspector** window, set the **Sprite Renderer > Additional Settings > Sorting Layer** to `Player` and **Sprite Renderer > Additional Settings > Sorting Layer Order** to `0`. This will set the sorting layer of the `Player` GameObject to `Player`.
 
-![](../resources (ignore)/img/07-images/07-image-8.png)
+![](../../resources%20(ignore)/img/07-images/07-image-8.png)
 
 Apply the same settings to the gun sprite. This will set the sorting layer of the gun sprite to `Player`. However, set the **Sorting Layer Order** to `1`. This will set the sorting layer of the gun sprite to be rendered on top of the character sprite. This will make the gun sprite appear on top of the character sprite.
 
-![](../resources (ignore)/img/07-images/07-image-9.png)
+![](../../resources%20(ignore)/img/07-images/07-image-9.png)
 
 In the **Assets** folder, create a new folder called `Scripts`. In the `Scripts` folder, create a new C# script called `PlayerController`. This script will be used to control the player character. 
 
 > **Note:** In the formative assessment, you will write the code to control the player character.
 
-![](../resources (ignore)/img/07-images/07-image-10.png)
+![](../../resources%20(ignore)/img/07-images/07-image-10.png)
 
 Add a `Circle Collider 2D` component to the `Player` GameObject.
 
-![](../resources (ignore)/img/07-images/07-image-11.png)
+![](../../resources%20(ignore)/img/07-images/07-image-11.png)
 
 Add a `Rigidbody2D` component to the `Player` GameObject.
 
-![](../resources (ignore)/img/07-images/07-image-12.png)
+![](../../resources%20(ignore)/img/07-images/07-image-12.png)
 
 ---
 

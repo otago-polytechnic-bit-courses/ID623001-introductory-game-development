@@ -46,11 +46,11 @@ What is happening in the code above?
 
 In the **Hierarchy** window, select the `Player` object. In the **Inspector** window, drag and drop the `Gun` object into the `Gun Transform` field of the `PlayerController` script.
 
-![](../resources (ignore)/img/08-images/08-image-1.png)
+![](../../resources%20(ignore)/img/08-images/08-image-1.png)
 
 Click on the **Play** button. Move the mouse around the screen. You should see the gun rotate to face the mouse position.
 
-![](../resources (ignore)/img/08-images/08-image-2.png)
+![](../../resources%20(ignore)/img/08-images/08-image-2.png)
 
 ---
 
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
 Click on the **Play** button. Move the mouse around the screen. You should see the player and gun flip to face the mouse position.
 
-![](../resources (ignore)/img/08-images/08-image-3.png)
+![](../../resources%20(ignore)/img/08-images/08-image-3.png)
 
 ---
 
@@ -104,7 +104,7 @@ Currently, the player is not animated. To animate the player, we need to create 
 
 To open the **Animation** window, go to **Window > Animation > Animation**. This will open the **Animation** window.
 
-![](../resources (ignore)/img/08-images/08-image-4.png)
+![](../../resources%20(ignore)/img/08-images/08-image-4.png)
 
 ---
 
@@ -112,11 +112,11 @@ To open the **Animation** window, go to **Window > Animation > Animation**. This
 
 In the **Hierarchy** window, select the `Player` object. In the **Animation** window, click on the **Create** button. In the **Assets** folder, create a new folder called `Animations`. Name the animation `PlayerIdle`. This will create a new animation clip called `PlayerIdle` in the `Animations` folder.
 
-![](../resources (ignore)/img/08-images/08-image-5.png)
+![](../../resources%20(ignore)/img/08-images/08-image-5.png)
 
 In this animation clip, the gun will move up and down while the player is idle. In the **Hierarchy** window, select the `Guns_0` **Game Object**. Drag the slider from `0` to `0.2`. 
 
-![](../resources (ignore)/img/08-images/08-image-6.png)
+![](../../resources%20(ignore)/img/08-images/08-image-6.png)
 
 Click the **Record** button in the **Animation** window. This will start recording the animation.
 
@@ -124,15 +124,15 @@ In the **Inspector** window, change the `Y` position of the `Guns_0` **Game Obje
 
 You should see a new **Property** in the **Animation** window called `Guns_0 : Position` and two keyframes. The first keyframe is at `0` and the second keyframe is at `0.2`.
 
-![](../resources (ignore)/img/08-images/08-image-9.png)
+![](../../resources%20(ignore)/img/08-images/08-image-9.png)
 
 Move the slider to `0.4` and create a new keyframe. Change the `Y` position of the `Guns_0` **Game Object** to `0`.  
 
-![](../resources (ignore)/img/08-images/08-image-10.png)
+![](../../resources%20(ignore)/img/08-images/08-image-10.png)
 
 In the first keyframe, change the `Y` position of the `Guns_0` **Game Object** to `0`. 
 
-![](../resources (ignore)/img/08-images/08-image-7.png)
+![](../../resources%20(ignore)/img/08-images/08-image-7.png)
 
 ---
 
@@ -140,11 +140,11 @@ In the first keyframe, change the `Y` position of the `Guns_0` **Game Object** t
 
 Create a new animation clip called `PlayerWalk` in the `Animations` folder. 
 
-![](../resources (ignore)/img/08-images/08-image-11.png)
+![](../../resources%20(ignore)/img/08-images/08-image-11.png)
 
 Drag the slider from `0` to `0.2`. Click the **Record** button in the **Animation** window. In the **Hierarchy** window, select the `Characters_0` **Game Object**. In the **Inspector** window, change the `Z` rotation of the `Characters_0` **Game Object** to `7`. In the first keyframe, change the `Z` rotation of the `Characters_0` **Game Object** to `-7`. Add another keyframe at `0.1` and change the `Z` rotation of the `Characters_0` **Game Object** to `0`.
 
-![](../resources (ignore)/img/08-images/08-image-12.png)
+![](../../resources%20(ignore)/img/08-images/08-image-12.png)
 
 ---
 
@@ -154,36 +154,36 @@ To open the **Animator** window, go to **Window > Animation > Animator**. This w
 
 You should see the following:
 
-![](../resources (ignore)/img/08-images/08-image-13.png)
+![](../../resources%20(ignore)/img/08-images/08-image-13.png)
 
 In the **Animator** window, click on the **Parameter** tab. 
 
-![](../resources (ignore)/img/08-images/08-image-14.png)
+![](../../resources%20(ignore)/img/08-images/08-image-14.png)
 
 Click on the **+** button and create a new **Bool** parameter called `isMoving`. This will be used to determine if the player is moving or not.
 
-![](../resources (ignore)/img/08-images/08-image-15.png)
+![](../../resources%20(ignore)/img/08-images/08-image-15.png)
 
 Left-click on the `PlayerIdle` animation clip and select **Make Transition**. 
 
-![](../resources (ignore)/img/08-images/08-image-16.png)
+![](../../resources%20(ignore)/img/08-images/08-image-16.png)
 
 
 Drag the arrow to the `PlayerWalk` animation clip. This will create a transition from the `PlayerIdle` animation clip to the `PlayerWalk` animation clip.
 
-![](../resources (ignore)/img/08-images/08-image-17.png)
+![](../../resources%20(ignore)/img/08-images/08-image-17.png)
 
 Click on the transition arrow. In the **Inspector** window, uncheck the **Has Exit Time** checkbox and set the **Condition** to `isMoving` is `true`. **Has Exit Time** is used to determine if the animation should exit or not. By unchecking this, we are telling Unity that the animation should exit immediately when the condition is met.
 
-![](../resources (ignore)/img/08-images/08-image-18.png)
+![](../../resources%20(ignore)/img/08-images/08-image-18.png)
 
 Left-click on the `PlayerWalk` animation clip and select **Make Transition**. Drag the arrow to the `PlayerIdle` animation clip. 
 
-![](../resources (ignore)/img/08-images/08-image-19.png)
+![](../../resources%20(ignore)/img/08-images/08-image-19.png)
 
 Click on the transition arrow. In the **Inspector** window, uncheck the **Has Exit Time** checkbox and set the **Condition** to `isMoving` is `false`.
 
-![](../resources (ignore)/img/08-images/08-image-20.png)
+![](../../resources%20(ignore)/img/08-images/08-image-20.png)
 
 In the `PlayerController` script, update to the following:
 
@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour
 
 In the **Hierarchy** window, select the `Player` object. In the **Inspector** window, drag and drop the `Animator` component into the `Animator` field of the `PlayerController` script.
 
-![](../resources (ignore)/img/08-images/08-image-21.png)
+![](../../resources%20(ignore)/img/08-images/08-image-21.png)
 
 Click on the **Play** button. Move the player around the screen. You should see the player animate when moving and idle when not moving.
 
@@ -231,11 +231,11 @@ Click on the **Play** button. Move the player around the screen. You should see 
 
 To create a tilemap, go to **GameObject > 2D Object > Tilemap > Rectangular**. 
 
-![](../resources (ignore)/img/08-images/08-image-22.png)
+![](../../resources%20(ignore)/img/08-images/08-image-22.png)
 
 This will create a new `Grid` **Game Object** with a `Tilemap` **Game Object** inside it. The `Grid` **Game Object** is used to define the size of the tilemap and the `Tilemap` **Game Object** is used to store the tiles.
 
-![](../resources (ignore)/img/08-images/08-image-23.png)
+![](../../resources%20(ignore)/img/08-images/08-image-23.png)
 
 ---
 
@@ -245,27 +245,27 @@ This will create a new `Grid` **Game Object** with a `Tilemap` **Game Object** i
 
 To create a tile palette, go to **Window > 2D > Tile Palette**. This will open the **Tile Palette** window.
 
-![](../resources (ignore)/img/08-images/08-image-24.png)
+![](../../resources%20(ignore)/img/08-images/08-image-24.png)
 
 Create a new tile palette by clicking on the **Create New Palette** button. 
 
-![](../resources (ignore)/img/08-images/08-image-25.png)
+![](../../resources%20(ignore)/img/08-images/08-image-25.png)
 
 In the **Create New Palette** window, name the tile palette `Dungeon 3` and click on the **Create** button.
 
-![](../resources (ignore)/img/08-images/08-image-26.png)
+![](../../resources%20(ignore)/img/08-images/08-image-26.png)
 
 Save the tile palette in the `Assets > Tilesets > Dungeon 3` folder. 
 
-![](../resources (ignore)/img/08-images/08-image-27.png)
+![](../../resources%20(ignore)/img/08-images/08-image-27.png)
 
 Drag and drop the `Dungeon 3 Tiles` **Sprite Sheet** into the tile palette. This will create a new tile palette with the tiles from the sprite sheet.
 
-![](../resources (ignore)/img/08-images/08-image-28.png)
+![](../../resources%20(ignore)/img/08-images/08-image-28.png)
 
 You should see the `Dungeon 3` tile palette in the **Tile Palette** window.
 
-![](../resources (ignore)/img/08-images/08-image-29.png)
+![](../../resources%20(ignore)/img/08-images/08-image-29.png)
 
 Click on **Paint with basic brush** and select a tile from the tile palette. 
 
@@ -273,7 +273,7 @@ Click on **Paint with basic brush** and select a tile from the tile palette.
 
 1. Create a room using the tiles from the tile palette. Here is an example of a room created using the tiles from the tile palette.
 
-![](../resources (ignore)/img/08-images/08-image-30.png)
+![](../../resources%20(ignore)/img/08-images/08-image-30.png)
 
 2. Add a `Tilemap Collider 2D` component to the `Tilemap` **Game Object**. This will allow the player to collide with the tiles in the tilemap. Set the **Used By Composite** checkbox to `true`. This will allow the `Tilemap Collider 2D` to be used by the `Composite Collider 2D` component.
 
@@ -285,7 +285,7 @@ Click on **Paint with basic brush** and select a tile from the tile palette.
 
 5. Click on `Dungeon 3 Tiles_24` in the `Assets > Tilesets > Dungeon 3` folder. In the **Inspector** window, set the **Collider Type** to `None`. This will allow the player to walk on the tiles in the tilemap without colliding with them.
 
-![](../resources (ignore)/img/08-images/08-image-31.png)
+![](../../resources%20(ignore)/img/08-images/08-image-31.png)
 
 ---
 

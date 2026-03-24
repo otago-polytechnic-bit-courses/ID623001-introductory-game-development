@@ -26,7 +26,7 @@ This will allow you to access the `PlayerController` class from other classes. F
 
 Create a **Game Object** for an enemy. The setup should be similar to the player.
 
-![](../resources (ignore)/img/09-images/09-image-1.png)
+![](../../resources%20(ignore)/img/09-images/09-image-1.png)
 
 **Task:** Create an idling and walking animation for the enemy. 
 
@@ -68,7 +68,7 @@ What is happening in the code above?
 
 In the `Update` method, we are checking if the player is within a certain range of the enemy. If the player is within that range, we set the direction of the enemy to move towards the player. If the player is outside that range, we set the direction to zero, which stops the enemy from moving.
 
-![](../resources (ignore)/img/09-images/09-image-2.png)
+![](../../resources%20(ignore)/img/09-images/09-image-2.png)
 
 **Task:** Write some code so that when the enemy is moving left or right, the enemy is facing the direction it is moving.
 
@@ -78,7 +78,7 @@ In the `Update` method, we are checking if the player is within a certain range 
 
 Create a **Game Object** for a bullet. A bullet should have a **Box Collider 2D** and a **Rigidbody 2D** component. In the **Scripts** folder, create a new **Script** called `BulletController` and attach it to the bullet. 
 
-![](../resources (ignore)/img/09-images/09-image-3.png)
+![](../../resources%20(ignore)/img/09-images/09-image-3.png)
 
 **Tasks:** 
 
@@ -92,7 +92,7 @@ Create a **Game Object** for a bullet. A bullet should have a **Box Collider 2D*
 
 Create a new **Game Object** called `BasicRoom`. Move the `Grid` and `Tilemap` **Game Objects** into the `BasicRoom` **Game Object**. Drag and drop the `BasicRoom` **Game Object** into the **Prefabs** folder.
 
-![](../resources (ignore)/img/09-images/09-image-4.png)
+![](../../resources%20(ignore)/img/09-images/09-image-4.png)
 ---
 
 ## Main Camera
@@ -146,11 +146,11 @@ What is happening in the code above?
 - In the `Update` method, we are checking if the target is not null. If it is not null, we move the camera towards the target's position using `Vector3.MoveTowards`. The camera will move at a speed of `speed` units per second.
 - The `ChangeTarget` method allows us to change the target of the camera. This is useful when we want to change the target from the player to another object, such as an enemy.
 
-![](../resources (ignore)/img/09-images/09-image-5.png)
+![](../../resources%20(ignore)/img/09-images/09-image-5.png)
 
 **Task:** Add a `BasicRoom` **Prefab** to the scene. You should be able to move the `Player` **Game Object** between the rooms. However, the camera will not follow the `Player` **Game Object** when it moves between rooms.
 
-![](../resources (ignore)/img/09-images/09-image-6.png)
+![](../../resources%20(ignore)/img/09-images/09-image-6.png)
 
 ---
 
@@ -185,7 +185,7 @@ In the `OnTriggerEnter2D` method, we are checking if the player has entered the 
 
 Create a new **Game Object** called `RoomTrigger` and add a **Box Collider 2D** component to it. Set the `Is Trigger` property to true, and set the `Size - X` property to `16` and the `Size - Y` property to `8`.
 
-![](../resources (ignore)/img/09-images/09-image-7.png)
+![](../../resources%20(ignore)/img/09-images/09-image-7.png)
 
 ---
 
@@ -204,7 +204,7 @@ In the **Project Settings** window, click on **Physics 2D**. In the **Layer Coll
 - Player and PlayerBullet
 - PlayerBullet and PlayerBullet
 
-![](../resources (ignore)/img/09-images/09-image-8.png)
+![](../../resources%20(ignore)/img/09-images/09-image-8.png)
 
 > **Note:** Assign the following layers to the corresponding **Game Objects/Prefabs**:
 

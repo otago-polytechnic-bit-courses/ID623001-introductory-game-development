@@ -4,19 +4,19 @@
 
 In the **Hierarchy** window, remove the `SampleScene`. Create a new **Scene** called `GenerationTest`. In the **Assets > Art > Map** folder, drag and drop `Map_Rooms_15` into the **Hierarchy** window. This will create a new **Game Object** called `Map_Rooms_15`.
 
-![](../resources (ignore)/img/10-images/10-image-1.png)
+![](../../resources%20(ignore)/img/10-images/10-image-1.png)
 
 In the **Hierarchy** window, create a new **Game Object** called `LevelGenerator` and a child **Game Object** called `GenerationPoint`. The `LevelGenerator` will be responsible for generating the levels, while the `GenerationPoint` will be used to determine where the next room will be generated.
 
-![](../resources (ignore)/img/10-images/10-image-2.png)
+![](../../resources%20(ignore)/img/10-images/10-image-2.png)
 
 Rename `Map_Rooms_15` to `RoomLayout` and drag and drop it into the **Prefabs > Rooms** folder. Delete the `RoomLayout` from the **Hierarchy** window.
 
-![](../resources (ignore)/img/10-images/10-image-3.png)
+![](../../resources%20(ignore)/img/10-images/10-image-3.png)
 
 In the **Assets > Scripts** folder, create a new script called `LevelGenerator` and attach it to the `LevelGenerator` **Game Object**. 
 
-![](../resources (ignore)/img/10-images/10-image-4.png)
+![](../../resources%20(ignore)/img/10-images/10-image-4.png)
 
 Open the script and add the following code:
 
@@ -46,7 +46,7 @@ public class LevelGenerator : MonoBehaviour
 
 Click on the `LevelGenerator` **Game Object** and in the **Inspector** window, drag and drop the `RoomLayout` **Prefab** into the `Room Layout` field, set the `Distance To End` to `10` and drag and drop the `GenerationPoint` **Game Object** into the `Generation Point` field.
 
-![](../resources (ignore)/img/10-images/10-image-5.png)
+![](../../resources%20(ignore)/img/10-images/10-image-5.png)
 
 Click on the `Play` button. You should see a blue room appear in the **Scene** window.
 
@@ -131,7 +131,7 @@ What is happening in the code above?
 
 Click on the `Play` button. You should see a series of rooms generated in a random direction. Press `R` to regenerate the rooms.
 
-![](../resources (ignore)/img/10-images/10-image-6.png)
+![](../../resources%20(ignore)/img/10-images/10-image-6.png)
 
 > **Note:** You will notice that some rooms are overlapping. This is because the `LevelGenerator` is generating rooms in a random direction without checking if the room already exists. 
 
@@ -186,7 +186,7 @@ In the **Hierarchy** window, click on the `LevelGenerator` **Game Object** and i
 
 Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping. Press `R` to regenerate the rooms.
 
-![](../resources (ignore)/img/10-images/10-image-7.png)
+![](../../resources%20(ignore)/img/10-images/10-image-7.png)
 
 ---
 
@@ -238,7 +238,7 @@ public class LevelGenerator : MonoBehaviour
 
 Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping, and the last room should be red. Press `R` to regenerate the rooms.
 
-![](../resources (ignore)/img/10-images/10-image-8.png)
+![](../../resources%20(ignore)/img/10-images/10-image-8.png)
 
 ---
 
@@ -246,17 +246,17 @@ Click on the `Play` button. You should see a series of rooms generated in a rand
 
 In the **Hierarchy** window, unpack the `BasicRoom` **Prefab** and rename it to `RoomRight`. Delete the `Grid` **Game Object**. In the **Assets > Art > Map** folder, drag and drop `Maps_Rooms_0` in the `RoomRight` **Game Object**. 
 
-![](../resources (ignore)/img/10-images/10-image-9.png)
+![](../../resources%20(ignore)/img/10-images/10-image-9.png)
 
 Drag and drop the `RoomRight` **Game Object** into the **Assets > Prefabs > Rooms** folder. 
 
-![](../resources (ignore)/img/10-images/10-image-10.png)
+![](../../resources%20(ignore)/img/10-images/10-image-10.png)
 
 Repeat the above steps to create the following rooms:
 
 `RoomDown`, `RoomLeft`, `RoomLeftDown`, `RoomLeftRight`, `RoomLeftRightDown`, `RoomRight`, `RoomRightDown`, `RoomUp`, `RoomUpDown`, `RoomUpLeft`, `RoomUpLeftDown`, `RoomUpLeftRight`, `RoomUpLeftRightDown`, `RoomUpRight` and `RoomUpRightDown`
 
-![](../resources (ignore)/img/10-images/10-image-11.png)
+![](../../resources%20(ignore)/img/10-images/10-image-11.png)
 
 In the `LevelGenerator` script, update the code with the following:
 
@@ -281,7 +281,7 @@ public class LevelGenerator : MonoBehaviour
 
 In the `GenerationTest` **Scene**, click on the `LevelGenerator` **Game Object** and in the **Inspector** window, drag and drop the `RoomDown`, `RoomLeft`, `RoomLeftDown`, `RoomLeftRight`, `RoomLeftRightDown`, `RoomRight`, `RoomRightDown`, `RoomUp`, `RoomUpDown`, `RoomUpLeft`, `RoomUpLeftDown`, `RoomUpLeftRight`, `RoomUpLeftRightDown`, `RoomUpRight` and `RoomUpRightDown` **Prefabs** into the corresponding fields in the `Room Prefabs` section. 
 
-![](../resources (ignore)/img/10-images/10-image-12.png)
+![](../../resources%20(ignore)/img/10-images/10-image-12.png)
 
 In the `LevelGenerator` script, update the code with the following: 
 
@@ -362,7 +362,7 @@ The `CreateRoomOutline` method checks the surrounding positions of a room to det
 
 Click on the `Play` button. You should see the outlines of the rooms generated around the rooms. Press `R` to regenerate the rooms.
 
-![](../resources (ignore)/img/10-images/10-image-13.png)
+![](../../resources%20(ignore)/img/10-images/10-image-13.png)
 
 ---
 
