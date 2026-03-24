@@ -1,27 +1,31 @@
-## Random Generation
+## 1. Random Generation
 
-**Random Generation** is a technique used in game development to create content that is not pre-defined. This can include levels, items, enemies and more. 
+**Random Generation** is a technique used in game development to create content that is not pre-defined — levels, items, enemies and more.
 
-In the **Hierarchy** window, remove the `SampleScene`. Create a new **Scene** called `GenerationTest`. In the **Assets > Art > Map** folder, drag and drop `Map_Rooms_15` into the **Hierarchy** window. This will create a new **Game Object** called `Map_Rooms_15`.
+**Step 1** - Remove the `SampleScene`. Create a new scene called `GenerationTest`. In the **Assets > Art > Map** folder, drag `Map_Rooms_15` into the Hierarchy. This creates a new GameObject in the scene.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-1.png)
 
-In the **Hierarchy** window, create a new **Game Object** called `LevelGenerator` and a child **Game Object** called `GenerationPoint`. The `LevelGenerator` will be responsible for generating the levels, while the `GenerationPoint` will be used to determine where the next room will be generated.
+**Step 2** - In the Hierarchy, create a new empty GameObject called `LevelGenerator`. Add a child empty GameObject called `GenerationPoint`. The `LevelGenerator` will manage room generation; `GenerationPoint` tracks where the next room will be placed.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-2.png)
 
-Rename `Map_Rooms_15` to `RoomLayout` and drag and drop it into the **Prefabs > Rooms** folder. Delete the `RoomLayout` from the **Hierarchy** window.
+**Step 3** - Rename `Map_Rooms_15` to `RoomLayout`. Drag it into the **Prefabs > Rooms** folder to make it a prefab. Delete the instance from the Hierarchy.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-3.png)
 
-In the **Assets > Scripts** folder, create a new script called `LevelGenerator` and attach it to the `LevelGenerator` **Game Object**. 
+---
+
+## 2. LevelGenerator Script
+
+**Step 1** - In the `Scripts` folder, create a new script called `LevelGenerator` and attach it to the `LevelGenerator` GameObject.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-4.png)
 
-Open the script and add the following code:
+**Step 2** - Open the script and add the following code to generate the first room:
 
-```cs
-// Omitted for brevity
+```csharp
+using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -44,41 +48,35 @@ public class LevelGenerator : MonoBehaviour
 }
 ```
 
-Click on the `LevelGenerator` **Game Object** and in the **Inspector** window, drag and drop the `RoomLayout` **Prefab** into the `Room Layout` field, set the `Distance To End` to `10` and drag and drop the `GenerationPoint` **Game Object** into the `Generation Point` field.
+**Step 3** - Select the `LevelGenerator` GameObject. In the Inspector, drag the `RoomLayout` prefab into the **Room Layout** field, set **Distance To End** to `10`, and drag the `GenerationPoint` child into the **Generation Point** field.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-5.png)
 
-Click on the `Play` button. You should see a blue room appear in the **Scene** window.
+**Step 4** - Click **Play**. A single blue room should appear in the scene.
 
 ---
 
-## More Rooms
+## 3. Generating More Rooms
 
-Currently, the `LevelGenerator` only generates one room. You need to write the code to generate more rooms. In the `LevelGenerator` script, add the following code:
+Update `LevelGenerator` to generate a chain of rooms in random directions:
 
-
-```cs
-// Omitted for brevity
+```csharp
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelGenerator : MonoBehaviour
 {
     // Omitted for brevity
 
-    [SerializeField] private enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
+    private enum Direction { Up, Down, Left, Right }
+
     [SerializeField] private Direction direction;
     [SerializeField] private float xOffset = 18f;
     [SerializeField] private float yOffset = 10f;
 
     void Start()
     {
-        // Omitted for brevity
+        // Omitted for brevity — spawn the start room here
 
         direction = (Direction)Random.Range(0, 4);
         MoveGenerationPoint();
@@ -123,33 +121,32 @@ public class LevelGenerator : MonoBehaviour
 
 What is happening in the code above?
 
-- `Direction` enum is used to determine the direction in which the next room will be generated.
-- `direction` variable is used to store the current direction.
-- `xOffset` and `yOffset` variables are used to determine the distance between the rooms.
-- `MoveGenerationPoint` method is used to move the `GenerationPoint` **Game Object** in the direction specified by the `direction` variable.
-- `Start` method generates the first room and then generates the rest of the rooms in a random direction.
+| Element | Purpose |
+| --- | --- |
+| `Direction` enum | Defines the four cardinal directions a room can be placed in |
+| `xOffset` / `yOffset` | The world-space distance between adjacent rooms |
+| `MoveGenerationPoint` | Moves `generationPoint` by the appropriate offset based on the current direction |
+| `R` key reload | Reloads the active scene so the layout can be regenerated at runtime |
 
-Click on the `Play` button. You should see a series of rooms generated in a random direction. Press `R` to regenerate the rooms.
+Click **Play**. You should see a chain of rooms generated in random directions. Press **R** to regenerate.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-6.png)
 
-> **Note:** You will notice that some rooms are overlapping. This is because the `LevelGenerator` is generating rooms in a random direction without checking if the room already exists. 
+> **Note:** Some rooms may overlap. This is because the generator picks directions randomly without checking whether a room already exists at that position.
 
 ---
 
-## Overlapping Rooms
+## 4. Preventing Overlapping Rooms
 
-To prevent overlapping rooms, you need to check if the room already exists before generating it. 
+Use `Physics2D.OverlapCircle` to detect existing rooms before placing a new one.
 
-**Tasks:**
-1. Create a new layer called `RoomLayout` and assign it to the `RoomLayout` **Prefab**.
-2. Add a `BoxCollider2D` component to the `RoomLayout` **Prefab** and set the `Size X` to `3` and `Size Y` to `3`.
+**Step 1** - Create a new layer called `RoomLayout` and assign it to the `RoomLayout` prefab.
 
-In the `LevelGenerator` script, add the following code:
+**Step 2** - Add a `BoxCollider2D` component to the `RoomLayout` prefab. Set **Size X** to `3` and **Size Y** to `3`.
 
-```cs
-// Omitted for brevity
+**Step 3** - Update `LevelGenerator`:
 
+```csharp
 public class LevelGenerator : MonoBehaviour
 {
     // Omitted for brevity
@@ -162,40 +159,39 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < distanceToEnd; i++)
         {
-            // Omitted for brevity
+            Instantiate(roomLayout, generationPoint.position, generationPoint.rotation);
 
             direction = (Direction)Random.Range(0, 4);
             MoveGenerationPoint();
 
             while (Physics2D.OverlapCircle(generationPoint.position, 0.2f, roomLayerMask))
             {
+                direction = (Direction)Random.Range(0, 4);
                 MoveGenerationPoint();
             }
         }
     }
-
-    // Omitted for brevity
 }
 ```
 
-What is happening in the code above?
+`Physics2D.OverlapCircle` checks whether a collider exists within a small radius at `generationPoint`. If one is found, `MoveGenerationPoint` is called again with a new random direction. This continues until a free position is found.
 
-The `Physics2D.OverlapCircle` method is used to check if there is already a room at the `GenerationPoint` position. If there is, the `MoveGenerationPoint` method is called to move the `GenerationPoint` to a new position.
+**Step 4** - Select the `LevelGenerator` GameObject. In the Inspector, set the **Room Layer Mask** field to the `RoomLayout` layer.
 
-In the **Hierarchy** window, click on the `LevelGenerator` **Game Object** and in the **Inspector** window, click on the `Room Layer Mask` field and select the `RoomLayout` layer.
-
-Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping. Press `R` to regenerate the rooms.
+Click **Play** and press **R** several times. Rooms should no longer overlap.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-7.png)
 
 ---
 
-## Tracking Generated Rooms
+## 5. Tracking Generated Rooms
 
-To keep track of the generated rooms, you can use a `List` to store the positions of the generated rooms. In the `LevelGenerator` script, update the code as follows:
+Use a `List` to track all generated rooms and identify the start and end rooms:
 
-```cs
-// Omitted for brevity
+```csharp
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -211,62 +207,67 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < distanceToEnd; i++)
         {
             GameObject newRoom = Instantiate(roomLayout, generationPoint.position, generationPoint.rotation);
+            layoutRoomGOs.Add(newRoom);
 
-            layoutRoomGOs.Add(newRoom); // Add the new room to the list of generated rooms
-
-            // Check if the room is the end room
+            // Mark the final room as the end room
             if (i + 1 == distanceToEnd)
             {
                 SpriteRenderer newRoomSr = newRoom.GetComponent<SpriteRenderer>();
                 if (newRoomSr != null)
                 {
-                    newRoomSr.color = endColor; // Set the end room color, i.e., red
-                    layoutRoomGOs.RemoveAt(layoutRoomGOs.Count - 1); // Remove the last room from the list
-                    endRoom = newRoom; // Set the end room
+                    newRoomSr.color = endColor;
+                    layoutRoomGOs.RemoveAt(layoutRoomGOs.Count - 1); // Keep end room separate
+                    endRoom = newRoom;
                 }
             }
 
-            // Omitted for brevity
+            direction = (Direction)Random.Range(0, 4);
+            MoveGenerationPoint();
+
+            while (Physics2D.OverlapCircle(generationPoint.position, 0.2f, roomLayerMask))
+            {
+                direction = (Direction)Random.Range(0, 4);
+                MoveGenerationPoint();
+            }
         }
     }
-
-    // Omitted for brevity
 }
 ```
 
-> **Note:** Please carefully read the code comments to understand what is happening in the code above.
-
-Click on the `Play` button. You should see a series of rooms generated in a random direction without overlapping, and the last room should be red. Press `R` to regenerate the rooms.
+Click **Play**. The first room should be blue, the last room red, and all others white. Press **R** to regenerate.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-8.png)
 
 ---
 
-## Room Outlines
+## 6. Room Outline Prefabs
 
-In the **Hierarchy** window, unpack the `BasicRoom` **Prefab** and rename it to `RoomRight`. Delete the `Grid` **Game Object**. In the **Assets > Art > Map** folder, drag and drop `Maps_Rooms_0` in the `RoomRight` **Game Object**. 
+Each room needs walls that match its surrounding connections — e.g., a room with exits to the north and east needs a different wall layout to one with only a southern exit.
+
+**Step 1** - In the Hierarchy, unpack the `BasicRoom` prefab and rename it `RoomRight`. Remove the `Grid` GameObject. From the **Assets > Art > Map** folder, drag `Maps_Rooms_0` into the `RoomRight` GameObject.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-9.png)
 
-Drag and drop the `RoomRight` **Game Object** into the **Assets > Prefabs > Rooms** folder. 
+**Step 2** - Drag `RoomRight` into the **Assets > Prefabs > Rooms** folder.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-10.png)
 
-Repeat the above steps to create the following rooms:
+**Step 3** - Repeat this process to create the following room prefabs, each using its corresponding map sprite:
 
-`RoomDown`, `RoomLeft`, `RoomLeftDown`, `RoomLeftRight`, `RoomLeftRightDown`, `RoomRight`, `RoomRightDown`, `RoomUp`, `RoomUpDown`, `RoomUpLeft`, `RoomUpLeftDown`, `RoomUpLeftRight`, `RoomUpLeftRightDown`, `RoomUpRight` and `RoomUpRightDown`
+`RoomDown`, `RoomLeft`, `RoomLeftDown`, `RoomLeftRight`, `RoomLeftRightDown`, `RoomRight`, `RoomRightDown`, `RoomUp`, `RoomUpDown`, `RoomUpLeft`, `RoomUpLeftDown`, `RoomUpLeftRight`, `RoomUpLeftRightDown`, `RoomUpRight`, `RoomUpRightDown`
 
 ![](../../resources%20(ignore)/img/10-images/10-image-11.png)
 
-In the `LevelGenerator` script, update the code with the following:
+**Step 4** - Add a serialisable class to hold references to all room prefabs, and add it to `LevelGenerator`:
 
-```cs
-// Omitted for brevity
-
+```csharp
 [System.Serializable]
 public class RoomPrefabs
 {
-    public GameObject roomDown, roomLeft, roomLeftDown, roomLeftRight, roomLeftRightDown, roomRight, roomRightDown, roomUp, roomUpDown, roomUpLeft, roomUpLeftDown, roomUpLeftRight, roomUpLeftRightDown, roomUpRight, roomUpRightDown;
+    public GameObject roomDown, roomLeft, roomLeftDown, roomLeftRight,
+        roomLeftRightDown, roomRight, roomRightDown, roomUp, roomUpDown,
+        roomUpLeft, roomUpLeftDown, roomUpLeftRight, roomUpLeftRightDown,
+        roomUpRight, roomUpRightDown;
 }
 
 public class LevelGenerator : MonoBehaviour
@@ -274,20 +275,20 @@ public class LevelGenerator : MonoBehaviour
     // Omitted for brevity
 
     [SerializeField] private RoomPrefabs roomPrefabs;
-
-    // Omitted for brevity
 }
-``` 
+```
 
-In the `GenerationTest` **Scene**, click on the `LevelGenerator` **Game Object** and in the **Inspector** window, drag and drop the `RoomDown`, `RoomLeft`, `RoomLeftDown`, `RoomLeftRight`, `RoomLeftRightDown`, `RoomRight`, `RoomRightDown`, `RoomUp`, `RoomUpDown`, `RoomUpLeft`, `RoomUpLeftDown`, `RoomUpLeftRight`, `RoomUpLeftRightDown`, `RoomUpRight` and `RoomUpRightDown` **Prefabs** into the corresponding fields in the `Room Prefabs` section. 
+**Step 5** - Select the `LevelGenerator` GameObject. In the Inspector, assign all 15 room prefabs to the corresponding fields in the **Room Prefabs** section.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-12.png)
 
-In the `LevelGenerator` script, update the code with the following: 
+---
 
-```cs
-// Omitted for brevity
+## 7. Creating Room Outlines
 
+Add the following to `LevelGenerator` to generate the correct wall prefab for each layout room based on which adjacent rooms exist:
+
+```csharp
 public class LevelGenerator : MonoBehaviour
 {
     // Omitted for brevity
@@ -296,9 +297,9 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        // Omitted for brevity
+        // Omitted for brevity — after generating all layout rooms:
 
-        CreateRoomOutline(Vector3.zero);
+        CreateRoomOutline(Vector3.zero); // Start room
         foreach (GameObject roomGO in layoutRoomGOs)
         {
             CreateRoomOutline(roomGO.transform.position);
@@ -306,66 +307,66 @@ public class LevelGenerator : MonoBehaviour
         CreateRoomOutline(endRoom.transform.position);
     }
 
-    // Omitted for brevity
-
     public void CreateRoomOutline(Vector3 roomPosition)
     {
         bool isRoomAbove = Physics2D.OverlapCircle(roomPosition + new Vector3(0, yOffset, 0), 0.2f, roomLayerMask);
         bool isRoomBelow = Physics2D.OverlapCircle(roomPosition + new Vector3(0, -yOffset, 0), 0.2f, roomLayerMask);
-        bool isRoomLeft = Physics2D.OverlapCircle(roomPosition + new Vector3(-xOffset, 0, 0), 0.2f, roomLayerMask);
+        bool isRoomLeft  = Physics2D.OverlapCircle(roomPosition + new Vector3(-xOffset, 0, 0), 0.2f, roomLayerMask);
         bool isRoomRight = Physics2D.OverlapCircle(roomPosition + new Vector3(xOffset, 0, 0), 0.2f, roomLayerMask);
 
         int directionCount = 0;
-
-        if(isRoomAbove) directionCount++;
-        if(isRoomBelow) directionCount++;
-        if(isRoomLeft) directionCount++;
-        if(isRoomRight) directionCount++;
+        if (isRoomAbove) directionCount++;
+        if (isRoomBelow) directionCount++;
+        if (isRoomLeft)  directionCount++;
+        if (isRoomRight) directionCount++;
 
         switch (directionCount)
         {
-            case 1: // Only one room is adjacent
-                if (isRoomAbove) 
-                {
-                    generatedOutlines.Add(Instantiate(roomPrefabs.roomUp, roomPosition, transform.rotation));
-                }
-                if (isRoomBelow) 
-                {
-                    generatedOutlines.Add(Instantiate(roomPrefabs.roomDown, roomPosition, transform.rotation));
-                }
-                if (isRoomLeft) 
-                {
-                    generatedOutlines.Add(Instantiate(roomPrefabs.roomLeft, roomPosition, transform.rotation));
-                }
-                if (isRoomRight) 
-                {
-                    generatedOutlines.Add(Instantiate(roomPrefabs.roomRight, roomPosition, transform.rotation));
-                }
+            case 1:
+                if (isRoomAbove) generatedOutlines.Add(Instantiate(roomPrefabs.roomUp, roomPosition, transform.rotation));
+                if (isRoomBelow) generatedOutlines.Add(Instantiate(roomPrefabs.roomDown, roomPosition, transform.rotation));
+                if (isRoomLeft)  generatedOutlines.Add(Instantiate(roomPrefabs.roomLeft, roomPosition, transform.rotation));
+                if (isRoomRight) generatedOutlines.Add(Instantiate(roomPrefabs.roomRight, roomPosition, transform.rotation));
                 break;
-            case 2: // Two rooms are adjacent
+            case 2:
+                // TODO: handle two adjacent rooms
                 break;
-            case 3: // Three rooms are adjacent
+            case 3:
+                // TODO: handle three adjacent rooms
                 break;
-            case 4: // All four rooms are adjacent
+            case 4:
+                // TODO: handle all four adjacent rooms
                 break;
             default:
-                // Add a Debug.Log if no rooms are detected
+                Debug.Log($"No adjacent rooms found at {roomPosition}");
                 break;
         }
     }
 }
 ```
 
-What is happening in the `CreateRoomOutline` method?
+`CreateRoomOutline` uses `Physics2D.OverlapCircle` to check each of the four cardinal positions around a room. It counts how many adjacent rooms exist and selects the matching wall prefab from `roomPrefabs`.
 
-The `CreateRoomOutline` method checks the surrounding positions of a room to determine which outlines to create based on the presence of adjacent rooms. It uses `Physics2D.OverlapCircle` to check for existing rooms in the four cardinal directions (up, down, left, right). Depending on which directions have rooms, it instantiates the corresponding outline prefab at the specified position.
-
-Click on the `Play` button. You should see the outlines of the rooms generated around the rooms. Press `R` to regenerate the rooms.
+Click **Play**. You should see wall outlines appear around each room. Press **R** to regenerate the layout.
 
 ![](../../resources%20(ignore)/img/10-images/10-image-13.png)
 
 ---
 
-## Tilemap Room Outlines
+## Exercises
 
-You should have the knowledge to create a tilemap outline for the rooms. Use the `BasicRoom` **Prefab** to support your tilemap outlines.
+---
+
+### Task 1 — Complete Room Outline Cases
+
+The `switch` statement in `CreateRoomOutline` currently only handles `case 1`. Complete `case 2`, `case 3`, and `case 4` to instantiate the correct prefab for every possible combination of adjacent rooms.
+
+> **Hint:** For `case 2`, use `if/else if` chains to check each combination of two directions (e.g. `isRoomAbove && isRoomRight` → `roomUpRight`). Repeat the pattern for three and four directions.
+
+---
+
+### Task 2 — Tilemap Room Outlines
+
+Use the `BasicRoom` prefab as a base to create tilemap versions of each directional room. Replace the sprite-based room outlines with tilemap rooms that include proper floors, walls and colliders.
+
+> **Hint:** Each tilemap room prefab should contain its own `Grid` and `Tilemap` GameObjects, painted with the correct wall openings to match the exit directions.

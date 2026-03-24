@@ -1,111 +1,174 @@
-## Rogue-Like Game
+## 1. Rogue-Like Game
 
-In this module, you will develop **Rogue-Like** using **Unity**. Create a new **Unity** project using the **2D (Built-In Render Pipeline)** template. Name your project `rogue-like` and select a location to save your project. Click on the **Create project** button.
+In this module, you will develop a **Rogue-Like** game using **Unity**. Create a new Unity project using the **2D (Built-In Render Pipeline)** template. Name your project `rogue-like` and select a location to save it. Click the **Create project** button.
 
 ---
 
-## Spritesheet
+## 2. Spritesheet
 
-**Spritesheet** is a collection of images combined into a single image. It is used to reduce the number of draw calls in a game, which can improve performance. In this module, you will use a **spritesheet** to create a character for your game.
+A **spritesheet** is a collection of images combined into a single image file. It is used to reduce the number of draw calls in a game, which can improve performance.
 
-In the **lecture-notes > rogue-like** folder, you will find a zip folder called `assets`. Download and extract the folder. Copy the folders into your **Unity** project. The folder should be placed in the `Assets` folder of your project.
+**Step 1** - In the **lecture-notes > rogue-like** folder, find the zip folder called `assets`. Download and extract it, then copy the folders into the `Assets` folder of your Unity project.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-1.png)
 
-In the **Assets > Art Characters** folder, you will find a spritesheet called `Characters`. This spritesheet contains all different characters for your game. 
+**Step 2** - In the **Assets > Art > Characters** folder, click on the `Characters` spritesheet. In the Inspector panel, configure the following settings:
 
-Click on the `Characters` spritesheet in the **Project** window. In the **Inspector** window, change the following settings:
-
-- **Sprite Mode**: `Multiple`. This allows you to slice the spritesheet into individual sprites.
-- **Pixels Per Unit**: `16`. This determines how many pixels in the spritesheet correspond to one unit in the game world.
-- **Filter Mode**: `Point (no filter)`. This setting is used to determine how the sprite is rendered. Point filtering is used for pixel art to avoid blurring.
-- **Max Size**: `64`. This setting determines the maximum size of the sprite. If the sprite is larger than this size, it will be scaled down to fit.
+| Property         | Value               | Reason                                                        |
+| ---------------- | ------------------- | ------------------------------------------------------------- |
+| `Sprite Mode`    | `Multiple`          | Allows the spritesheet to be sliced into individual sprites   |
+| `Pixels Per Unit`| `16`                | Matches the pixel art scale to one Unity world unit           |
+| `Filter Mode`    | `Point (no filter)` | Prevents blurring on pixel art sprites                        |
+| `Max Size`       | `64`                | Scales down the texture if it exceeds this size               |
 
 ![](../../resources%20(ignore)/img/07-images/07-image-2.png)
 
-Click on the **Edit Sprite** button in the **Inspector** window. This will open the **Sprite Editor** window. 
+**Step 3** - Click the **Sprite Editor** button in the Inspector panel to open the Sprite Editor window.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-3.png)
 
-In the **Sprite Editor** window, click on the **Slice** button in the top left corner. This will open the **Slice** window. Set the following settings:
+**Step 4** - In the Sprite Editor window, click the **Slice** button. In the Slice popup, configure the following:
 
-- **Type**: `Grid By Cell Size`. This will slice the spritesheet into a grid based on the cell size.
-- **Pixel Size**: `16`. This will slice the spritesheet into 16x16 pixel sprites.
+| Property     | Value               |
+| ------------ | ------------------- |
+| `Type`       | `Grid By Cell Size` |
+| `Pixel Size` | `16`                |
 
-Click on the **Slice** button in the **Slice** window. This will slice the spritesheet into individual sprites. You should see a grid of sprites in the **Sprite Editor** window.
-
-Click on the **Apply** button in the top right corner of the **Sprite Editor** window. This will apply the changes to the spritesheet. You should now see individual sprites in the **Project** window.
+Click **Slice**, then click **Apply** in the top-right corner. You should now see individual sprites in the Project panel.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-4.png)
 
-Drag and drop a character sprite into the **Scene** window. This will create a new **GameObject** in the **Hierarchy** window.
+**Step 5** - Drag a character sprite into the Scene window. This creates a new GameObject in the Hierarchy.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-5.png)
 
-Similar to above, drag and drop a gun sprite into the **Scene** window. This will create a new **GameObject** in the **Hierarchy** window. Create a new `Empty GameObject` in the **Hierarchy** window and name it `Player`. Drag and drop the character and gun sprites into the `Player` GameObject. This will make the character and gun sprites children of the `Player` GameObject.
+**Step 6** - Drag a gun sprite into the Scene window. Create an **Empty GameObject** in the Hierarchy and name it `Player`. Drag both the character sprite and gun sprite onto the `Player` GameObject to make them its children.
 
-> **Note:** You do not need to slice the gun spritesheet. The gun sprites are already sliced and ready to use.
+> **Note:** You do not need to slice the gun spritesheet — the gun sprites are already ready to use.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-6.png)
 
 ---
 
-## Sorting Layer
+## 3. Sorting Layers
 
-**Sorting Layer** is used to determine the order in which sprites are rendered. Sprites with a higher sorting layer will be rendered on top of sprites with a lower sorting layer.
+**Sorting Layers** determine the render order of sprites. Sprites on a higher sorting layer appear in front of sprites on a lower layer.
 
-In the **Inspector** window, create a new sorting layer called `Player`. You should now have two sorting layers: `Default` and `Player`.
+**Step 1** - In the Inspector panel, create a new sorting layer called `Player`. You should now have two sorting layers: `Default` and `Player`.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-7.png)
 
-Click on the `Player` GameObject in the **Hierarchy** window. In the **Inspector** window, set the **Sprite Renderer > Additional Settings > Sorting Layer** to `Player` and **Sprite Renderer > Additional Settings > Sorting Layer Order** to `0`. This will set the sorting layer of the `Player` GameObject to `Player`.
+**Step 2** - Select the character sprite child of the `Player` GameObject. In the Inspector panel, set **Sprite Renderer > Additional Settings > Sorting Layer** to `Player` and **Order in Layer** to `0`.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-8.png)
 
-Apply the same settings to the gun sprite. This will set the sorting layer of the gun sprite to `Player`. However, set the **Sorting Layer Order** to `1`. This will set the sorting layer of the gun sprite to be rendered on top of the character sprite. This will make the gun sprite appear on top of the character sprite.
+**Step 3** - Select the gun sprite child. Apply the same `Player` sorting layer, but set **Order in Layer** to `1`. This ensures the gun renders on top of the character sprite.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-9.png)
 
-In the **Assets** folder, create a new folder called `Scripts`. In the `Scripts` folder, create a new C# script called `PlayerController`. This script will be used to control the player character. 
+---
 
-> **Note:** In the formative assessment, you will write the code to control the player character.
+## 4. Physics Components
 
-![](../../resources%20(ignore)/img/07-images/07-image-10.png)
-
-Add a `Circle Collider 2D` component to the `Player` GameObject.
+**Step 1** - Select the `Player` GameObject in the Hierarchy. Add a `CircleCollider2D` component to define the player's collision shape.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-11.png)
 
-Add a `Rigidbody2D` component to the `Player` GameObject.
+**Step 2** - Add a `Rigidbody2D` component to the `Player` GameObject to enable physics simulation. In Unity 6, configure the following:
+
+| Property        | Value      | Reason                                  |
+| --------------- | ---------- | --------------------------------------- |
+| `Gravity Scale` | `0`        | Prevents the player from falling        |
+| `Body Type`     | `Dynamic`  | Allows physics-driven movement          |
 
 ![](../../resources%20(ignore)/img/07-images/07-image-12.png)
 
 ---
 
-## Formative Assessment
+## 5. PlayerController Script
 
-Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:
+**Step 1** - In the `Assets` folder, create a new folder called `Scripts`. Inside `Scripts`, create a new C# script called `PlayerController` and attach it to the `Player` GameObject.
 
-- If you provide an AI tool with a prompt that is not refined enough, it may generate a not-so-useful response
-- Do not trust the AI tool's responses blindly. You **must** still use your judgement and may need to do additional research to determine if the response is correct
-- Acknowledge what AI tool you have used. In the assessment's repository **README.md** file, please include what prompt(s) you provided to the AI tool and how you used the response(s) to help you with your work
+![](../../resources%20(ignore)/img/07-images/07-image-10.png)
 
 ---
 
-### Task 1
+## 6. MonoBehaviour Lifecycle
 
-In the `PlayerController` script, write the code to move the player character using both the **WASD** keys and the **Arrow** keys. The player character should move in the direction of the key pressed.
+Unity calls special methods on a `MonoBehaviour` at defined points during the game's lifetime. The most important ones are:
+
+| Method          | When it's called                                      | Typical use                                       |
+| --------------- | ----------------------------------------------------- | ------------------------------------------------- |
+| `Awake()`       | When the script instance is loaded — before `Start()` | Initialise component references (`GetComponent`)  |
+| `Start()`       | Before the first frame update                         | Set up initial state (position, velocity, colour) |
+| `Update()`      | Once per frame                                        | Input handling, non-physics movement              |
+| `FixedUpdate()` | At a fixed time interval (default 50×/sec)            | Physics updates — always use this for `Rigidbody` |
+
+> The frame rate affects `Update()` but never `FixedUpdate()`. Always apply forces and velocity changes in `FixedUpdate()` to keep physics deterministic.
+
+📖 Reference: [Unity — MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
 
 ---
 
-### Task 2
+## 7. Unity 6 Physics Note
 
-In the `PlayerController` script, write the code to dash the player character using the **Space** key. The player character should dash in the direction it is currently moving. The dash should last for 0.5 seconds and should have a cooldown of 2 seconds.
+In Unity 6, `Rigidbody2D.velocity` has been renamed to `Rigidbody2D.linearVelocity`. Always use `linearVelocity` when setting or reading a Rigidbody2D's velocity:
 
-> **Note:** The player character should not be able to dash again until the cooldown is over.
+```csharp
+// Unity 6 — correct
+rb.linearVelocity = direction * speed;
+
+// Legacy (Unity 2022 and earlier) — avoid
+rb.velocity = direction * speed;
+```
 
 ---
 
-### Task 3
+## Exercises
 
-Write the code that allows the player character to swap between two weapons. The player character should be able to swap between the gun and a sword. The player character should be able to swap weapons using the **Q** key. 
+Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
+
+- Refine your prompts — vague prompts yield vague responses
+- Validate AI output — don't trust it blindly
+- Acknowledge AI usage at the top of any AI-assisted file:
+
+```csharp
+/// <summary>
+/// Brief description of what this script does.
+/// </summary>
+/// <remarks>
+/// AI-Assisted: This file was developed with assistance from [AI Tool Name]
+/// Prompts:
+///   - "Your first prompt here"
+///   - "Your second prompt here"
+/// Usage: Describe how you used the AI responses.
+/// </remarks>
+```
+
+---
+
+### Task 1 — Player Movement
+
+Configure the player to move using either the **WASD** keys or the **Arrow** keys. The player should move in the direction of the key pressed.
+
+📖 Reference: [Unity — Input.GetAxisRaw](https://docs.unity3d.com/ScriptReference/Input.GetAxisRaw.html)
+
+---
+
+### Task 2 — Dash
+
+In the `PlayerController` script, write the code to dash the player using the **Space** key. The player should dash in the direction it is currently moving. The dash should last `0.5` seconds and have a cooldown of `2` seconds.
+
+> **Note:** The player should not be able to dash again until the cooldown has expired.
+
+> **Hint:** Use a `Coroutine` to handle the dash duration and cooldown. Use a `bool` flag to track whether a dash is available.
+
+📖 Reference: [Unity — Coroutines](https://docs.unity3d.com/Manual/Coroutines.html)
+
+---
+
+### Task 3 — Weapon Swap
+
+Write the code that allows the player to swap between two weapons using the **Q** key. The player should be able to toggle between a gun and a sword.
+
+> **Hint:** Store references to both weapon GameObjects and toggle `SetActive(true)` / `SetActive(false)` on each when **Q** is pressed.

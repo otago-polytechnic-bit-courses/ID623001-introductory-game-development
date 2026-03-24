@@ -1,18 +1,15 @@
-## Rotating The Gun
+## 1. Rotating the Gun
 
-In the `PlayerController` script, update to the following:
+To make the gun point toward the mouse cursor, update `PlayerController` with the following:
 
-```cs
-using System.Collections;
-using System.Collections.Generic;
+```csharp
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{    
+{
     // Omitted for brevity
 
     [SerializeField] private Rigidbody2D rb;
-
     [SerializeField] private Transform gunTransform;
 
     private Camera mainCamera;
@@ -37,72 +34,64 @@ public class PlayerController : MonoBehaviour
 
 What is happening in the code above?
 
-- `Vector3 mousePosition` variable stores the current position of the mouse in screen space.
-- `Vector3 cursorPoint` variable converts the player's position from world space to screen space using the `WorldToScreenPoint` method of the camera.
-- `Vector2 offset` variable calculates the difference between the mouse position and the player position.
-- `float angle` variable calculates the angle between the player and the mouse position using the `Mathf.Atan2` method.
-- `gunTransform.rotation` variable sets the rotation of the gun to the angle calculated above using the `Quaternion.Euler` method.
-- `Quaternion.Euler` method converts the angle from degrees to radians.
+| Expression | Purpose |
+| --- | --- |
+| `mousePosition` | Stores the current mouse position in screen space |
+| `cursorPoint` | Converts the player's world position to screen space using `WorldToScreenPoint` |
+| `offset` | The vector from the player to the mouse in screen space |
+| `angle` | The angle between the player and the mouse, calculated with `Mathf.Atan2` |
+| `gunTransform.rotation` | Applies the angle as a rotation using `Quaternion.Euler` |
 
-In the **Hierarchy** window, select the `Player` object. In the **Inspector** window, drag and drop the `Gun` object into the `Gun Transform` field of the `PlayerController` script.
+**Step 1** - In the Hierarchy, select the `Player` GameObject. In the Inspector, drag the `Gun` child GameObject into the **Gun Transform** field of the `PlayerController` component.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-1.png)
 
-Click on the **Play** button. Move the mouse around the screen. You should see the gun rotate to face the mouse position.
+**Step 2** - Click **Play** and move the mouse. The gun should rotate to face the cursor.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-2.png)
 
 ---
 
-## Direction
+## 2. Facing Direction
 
-When the player moves left, the player and gun should flip to face the left direction. When the player moves right, the player and gun should flip to face the right direction. To do this, we need to check the mouse position and flip the player and gun accordingly.
+When the mouse is to the left of the player, both the player sprite and gun should flip horizontally. Update the `Update()` method in `PlayerController`:
 
-In the `PlayerController` script, update to the following:
-
-```cs
-// Omitted for brevity
-
-public class PlayerController : MonoBehaviour
+```csharp
+void Update()
 {
     // Omitted for brevity
 
-    void Update()
+    Vector3 mousePosition = Input.mousePosition;
+    Vector3 cursorPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
+
+    if (mousePosition.x < cursorPoint.x)
     {
-        // Omitted for brevity
-
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 cursorPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
-
-        if (mousePosition.x < cursorPoint.x)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-            gunTransform.localScale = new Vector3(-1f, -1f, 1f);
-        }
-        else 
-        {
-            transform.localScale = Vector3.one;
-            gunTransform.localScale = Vector3.one;
-        }
-
-        Vector2 offset = new Vector2(mousePosition.x - cursorPoint.x, mousePosition.y - cursorPoint.y);
-        float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        gunTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        transform.localScale = new Vector3(-1f, 1f, 1f);
+        gunTransform.localScale = new Vector3(-1f, -1f, 1f);
     }
+    else
+    {
+        transform.localScale = Vector3.one;
+        gunTransform.localScale = Vector3.one;
+    }
+
+    Vector2 offset = new Vector2(mousePosition.x - cursorPoint.x, mousePosition.y - cursorPoint.y);
+    float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+    gunTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 }
 ```
 
-Click on the **Play** button. Move the mouse around the screen. You should see the player and gun flip to face the mouse position.
+Click **Play** and move the mouse to each side of the player. The character and gun should flip to face the cursor direction.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-3.png)
 
 ---
 
-## Animation
+## 3. Animation
 
-Currently, the player is not animated. To animate the player, we need to create an animation controller and animation clips.
+### Opening the Animation Window
 
-To open the **Animation** window, go to **Window > Animation > Animation**. This will open the **Animation** window.
+Go to **Window > Animation > Animation** to open the Animation window.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-4.png)
 
@@ -110,27 +99,21 @@ To open the **Animation** window, go to **Window > Animation > Animation**. This
 
 ### Idle Animation
 
-In the **Hierarchy** window, select the `Player` object. In the **Animation** window, click on the **Create** button. In the **Assets** folder, create a new folder called `Animations`. Name the animation `PlayerIdle`. This will create a new animation clip called `PlayerIdle` in the `Animations` folder.
+**Step 1** - In the Hierarchy, select the `Player` GameObject. In the Animation window, click **Create**. In the `Assets` folder, create a new folder called `Animations`. Name the new animation clip `PlayerIdle`.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-5.png)
 
-In this animation clip, the gun will move up and down while the player is idle. In the **Hierarchy** window, select the `Guns_0` **Game Object**. Drag the slider from `0` to `0.2`. 
+**Step 2** - In the Hierarchy, select the `Guns_0` child GameObject. Move the timeline slider to `0.2`. Click the **Record** button in the Animation window.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-6.png)
 
-Click the **Record** button in the **Animation** window. This will start recording the animation.
-
-In the **Inspector** window, change the `Y` position of the `Guns_0` **Game Object** to `-0.1`. This will move the gun down.
-
-You should see a new **Property** in the **Animation** window called `Guns_0 : Position` and two keyframes. The first keyframe is at `0` and the second keyframe is at `0.2`.
+**Step 3** - In the Inspector, set the `Y` position of `Guns_0` to `-0.1`. You should see a `Guns_0 : Position` property appear in the Animation window with two keyframes — one at `0` and one at `0.2`.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-9.png)
 
-Move the slider to `0.4` and create a new keyframe. Change the `Y` position of the `Guns_0` **Game Object** to `0`.  
+**Step 4** - Move the slider to `0.4`, create a new keyframe, and set the `Y` position back to `0`.
 
-![](../../resources%20(ignore)/img/08-images/08-image-10.png)
-
-In the first keyframe, change the `Y` position of the `Guns_0` **Game Object** to `0`. 
+**Step 5** - Go back to the first keyframe (at `0`) and confirm the `Y` position is `0`.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-7.png)
 
@@ -138,11 +121,11 @@ In the first keyframe, change the `Y` position of the `Guns_0` **Game Object** t
 
 ### Walk Animation
 
-Create a new animation clip called `PlayerWalk` in the `Animations` folder. 
+**Step 1** - Create a new animation clip called `PlayerWalk` in the `Animations` folder.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-11.png)
 
-Drag the slider from `0` to `0.2`. Click the **Record** button in the **Animation** window. In the **Hierarchy** window, select the `Characters_0` **Game Object**. In the **Inspector** window, change the `Z` rotation of the `Characters_0` **Game Object** to `7`. In the first keyframe, change the `Z` rotation of the `Characters_0` **Game Object** to `-7`. Add another keyframe at `0.1` and change the `Z` rotation of the `Characters_0` **Game Object** to `0`.
+**Step 2** - Move the slider to `0.2`. Click **Record**. Select the `Characters_0` child GameObject. Set its `Z` rotation to `7`. On the first keyframe (at `0`), set the `Z` rotation to `-7`. Add a keyframe at `0.1` and set `Z` rotation to `0`.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-12.png)
 
@@ -150,54 +133,46 @@ Drag the slider from `0` to `0.2`. Click the **Record** button in the **Animatio
 
 ### Animator
 
-To open the **Animator** window, go to **Window > Animation > Animator**. This will open the **Animator** window.
-
-You should see the following:
+**Step 1** - Go to **Window > Animation > Animator** to open the Animator window.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-13.png)
 
-In the **Animator** window, click on the **Parameter** tab. 
+**Step 2** - In the Animator window, click the **Parameters** tab, then click **+** and create a new **Bool** parameter named `isMoving`.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-14.png)
 
-Click on the **+** button and create a new **Bool** parameter called `isMoving`. This will be used to determine if the player is moving or not.
-
 ![](../../resources%20(ignore)/img/08-images/08-image-15.png)
 
-Left-click on the `PlayerIdle` animation clip and select **Make Transition**. 
+**Step 3** - Right-click on the `PlayerIdle` state and select **Make Transition**. Drag the arrow to the `PlayerWalk` state.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-16.png)
 
-
-Drag the arrow to the `PlayerWalk` animation clip. This will create a transition from the `PlayerIdle` animation clip to the `PlayerWalk` animation clip.
-
 ![](../../resources%20(ignore)/img/08-images/08-image-17.png)
 
-Click on the transition arrow. In the **Inspector** window, uncheck the **Has Exit Time** checkbox and set the **Condition** to `isMoving` is `true`. **Has Exit Time** is used to determine if the animation should exit or not. By unchecking this, we are telling Unity that the animation should exit immediately when the condition is met.
+**Step 4** - Select the transition arrow. In the Inspector, uncheck **Has Exit Time** and add a condition: `isMoving` is `true`.
+
+> **Has Exit Time** controls whether an animation must finish before transitioning. Unchecking it allows an immediate transition as soon as the condition is met.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-18.png)
 
-Left-click on the `PlayerWalk` animation clip and select **Make Transition**. Drag the arrow to the `PlayerIdle` animation clip. 
+**Step 5** - Create a transition from `PlayerWalk` back to `PlayerIdle`. Set the condition to `isMoving` is `false`, and also uncheck **Has Exit Time**.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-19.png)
 
-Click on the transition arrow. In the **Inspector** window, uncheck the **Has Exit Time** checkbox and set the **Condition** to `isMoving` is `false`.
-
 ![](../../resources%20(ignore)/img/08-images/08-image-20.png)
 
-In the `PlayerController` script, update to the following:
+---
 
-```cs
-// Omitted for brevity
+### Driving the Animator from Script
 
+Add the following to `PlayerController` to update the animator parameter based on movement:
+
+```csharp
 public class PlayerController : MonoBehaviour
 {
     // Omitted for brevity
 
-    [SerializeField]
-    private Animator animator;
-
-    // Omitted for brevity
+    [SerializeField] private Animator animator;
 
     void Update()
     {
@@ -215,25 +190,23 @@ public class PlayerController : MonoBehaviour
 }
 ```
 
-> **Note:** You may have a different variable name for the `movement` variable.
+> **Note:** `movement` should match whatever variable name you used for player input in your earlier tasks.
 
-In the **Hierarchy** window, select the `Player` object. In the **Inspector** window, drag and drop the `Animator` component into the `Animator` field of the `PlayerController` script.
+In the Inspector, drag the `Animator` component from the `Player` GameObject into the **Animator** field of the `PlayerController` script.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-21.png)
 
-Click on the **Play** button. Move the player around the screen. You should see the player animate when moving and idle when not moving.
+Click **Play**. The player should play the walk animation while moving and the idle animation when still.
 
 ---
 
-## Tilemaps
+## 4. Tilemaps
 
-**Tilemaps** are a way to create 2D environments using tiles. Tiles are small images that can be used to create larger images. Unity has a built-in tilemap system that allows you to create tilemaps easily.
+**Tilemaps** provide a built-in system for constructing 2D environments from small, reusable tile images.
 
-To create a tilemap, go to **GameObject > 2D Object > Tilemap > Rectangular**. 
+**Step 1** - Go to **GameObject > 2D Object > Tilemap > Rectangular**. This creates a `Grid` GameObject in the Hierarchy with a `Tilemap` child.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-22.png)
-
-This will create a new `Grid` **Game Object** with a `Tilemap` **Game Object** inside it. The `Grid` **Game Object** is used to define the size of the tilemap and the `Tilemap` **Game Object** is used to store the tiles.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-23.png)
 
@@ -241,64 +214,60 @@ This will create a new `Grid` **Game Object** with a `Tilemap` **Game Object** i
 
 ### Tile Palette
 
-**Tile Palettes** are used to create and edit tiles. A tile palette is a collection of tiles that can be used to create a tilemap. You can create a tile palette by dragging and dropping images into the tile palette.
+A **Tile Palette** is a collection of tiles used to paint a tilemap.
 
-To create a tile palette, go to **Window > 2D > Tile Palette**. This will open the **Tile Palette** window.
+**Step 1** - Go to **Window > 2D > Tile Palette** to open the Tile Palette window.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-24.png)
 
-Create a new tile palette by clicking on the **Create New Palette** button. 
+**Step 2** - Click **Create New Palette**. Name the palette `Dungeon 3` and click **Create**. Save it in the `Assets > Tilesets > Dungeon 3` folder.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-25.png)
 
-In the **Create New Palette** window, name the tile palette `Dungeon 3` and click on the **Create** button.
-
 ![](../../resources%20(ignore)/img/08-images/08-image-26.png)
-
-Save the tile palette in the `Assets > Tilesets > Dungeon 3` folder. 
 
 ![](../../resources%20(ignore)/img/08-images/08-image-27.png)
 
-Drag and drop the `Dungeon 3 Tiles` **Sprite Sheet** into the tile palette. This will create a new tile palette with the tiles from the sprite sheet.
+**Step 3** - Drag the `Dungeon 3 Tiles` sprite sheet into the Tile Palette window. The tiles will be extracted and displayed in the palette.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-28.png)
 
-You should see the `Dungeon 3` tile palette in the **Tile Palette** window.
-
 ![](../../resources%20(ignore)/img/08-images/08-image-29.png)
 
-Click on **Paint with basic brush** and select a tile from the tile palette. 
+---
 
-**Tasks:** 
+## Exercises
 
-1. Create a room using the tiles from the tile palette. Here is an example of a room created using the tiles from the tile palette.
+---
+
+### Task 1 — Paint a Room
+
+Select **Paint with basic brush** in the Tile Palette and paint a room using tiles from the palette. Here is an example layout:
 
 ![](../../resources%20(ignore)/img/08-images/08-image-30.png)
 
-2. Add a `Tilemap Collider 2D` component to the `Tilemap` **Game Object**. This will allow the player to collide with the tiles in the tilemap. Set the **Used By Composite** checkbox to `true`. This will allow the `Tilemap Collider 2D` to be used by the `Composite Collider 2D` component.
+---
 
-3. Add a `Composite Collider 2D` component to the `Tilemap` **Game Object**. This will allow the player to collide with the tiles in the tilemap as a single collider. 
+### Task 2 — Tilemap Collider
 
-> **Note:** When you add a `Composite Collider 2D` component, a `Rigidbody 2D` component will be added automatically. 
+Add a `Tilemap Collider 2D` component to the `Tilemap` GameObject. Enable the **Used By Composite** checkbox. Then add a `Composite Collider 2D` component to the same GameObject.
 
-4. In the `Rigidbody 2D` component, set the **Body Type** to `Kinematic`. This will allow the player to collide with the tiles in the tilemap without being affected by gravity.
+> **Note:** Adding `Composite Collider 2D` will automatically add a `Rigidbody2D`. Set its **Body Type** to `Kinematic` so gravity does not affect the tilemap.
 
-5. Click on `Dungeon 3 Tiles_24` in the `Assets > Tilesets > Dungeon 3` folder. In the **Inspector** window, set the **Collider Type** to `None`. This will allow the player to walk on the tiles in the tilemap without colliding with them.
+---
+
+### Task 3 — Floor Tiles
+
+Click on `Dungeon 3 Tiles_24` in the `Assets > Tilesets > Dungeon 3` folder. In the Inspector, set its **Collider Type** to `None`. This allows the player to walk across floor tiles without colliding with them.
 
 ![](../../resources%20(ignore)/img/08-images/08-image-31.png)
 
 ---
 
-## Formative Assessment
+### Task 4 — Normalise Diagonal Movement
 
-Learning to use AI tools is an important skill. While AI tools are powerful, you **must** be aware of the following:
+You will notice that the player moves faster when moving diagonally, because both the X and Y axes contribute simultaneously. Write the code to normalise the movement vector so the player moves at a constant speed in all directions.
 
-- If you provide an AI tool with a prompt that is not refined enough, it may generate a not-so-useful response
-- Do not trust the AI tool's responses blindly. You **must** still use your judgement and may need to do additional research to determine if the response is correct
-- Acknowledge what AI tool you have used. In the assessment's repository **README.md** file, please include what prompt(s) you provided to the AI tool and how you used the response(s) to help you with your work
+> **Hint:** Call `.normalized` on your movement `Vector2` before multiplying by speed. Only normalise when the magnitude is greater than zero to avoid dividing by zero.
 
----
-
-### Task 1
-
-You will notice that the player moves faster when moving diagonally. This is because the player is moving in both the `X` and `Y` directions at the same time. Write the code to normalise the movement vector so that the player moves at a constant speed in all directions.
+📖 Reference: [Unity — Vector2.normalized](https://docs.unity3d.com/ScriptReference/Vector2-normalized.html)

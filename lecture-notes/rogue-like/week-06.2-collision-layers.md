@@ -1,48 +1,45 @@
-## Player
+## 1. Singleton Pattern
 
-In the `PlayerController` **Script**, add the following code:
+A **Singleton** ensures that only one instance of a class exists at a time, and provides global access to it. Add the following to `PlayerController`:
 
 ```csharp
-public static PlayerController Instance;
-
-void Awake()
+public class PlayerController : MonoBehaviour
 {
-    if (Instance == null)
+    public static PlayerController Instance;
+
+    void Awake()
     {
-        Instance = this;
-    }
-    else
-    {
-        Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
 ```
 
-This will allow you to access the `PlayerController` class from other classes. For example, you can access the `PlayerController` class from the `EnemyController` class.
+This allows other scripts — such as `EnemyController` — to access the player via `PlayerController.Instance` without needing a serialised reference.
 
 ---
 
-## Enemy
+## 2. Enemy
 
-Create a **Game Object** for an enemy. The setup should be similar to the player.
+**Step 1** - Create a new GameObject for an enemy. The setup should mirror the player: a sprite, a `CircleCollider2D`, and a `Rigidbody2D`.
 
 ![](../../resources%20(ignore)/img/09-images/09-image-1.png)
 
-**Task:** Create an idling and walking animation for the enemy. 
-
-Create a new **Script** called `EnemyController` and attach it to the enemy. Add the following code to the script:
+**Step 2** - In the `Scripts` folder, create a new script called `EnemyController` and attach it to the enemy GameObject. Add the following code:
 
 ```csharp
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float speed = 2f;   
-    
+    [SerializeField] private float speed = 2f;
     [SerializeField] private Rigidbody2D rb;
-
     [SerializeField] private float rangeToPlayer;
 
     private Vector3 direction;
@@ -59,51 +56,40 @@ public class EnemyController : MonoBehaviour
         }
 
         direction.Normalize();
-        rb.velocity = direction * speed;
+        rb.linearVelocity = direction * speed;
     }
 }
 ```
 
-What is happening in the code above?
+What is happening in `Update()`?
 
-In the `Update` method, we are checking if the player is within a certain range of the enemy. If the player is within that range, we set the direction of the enemy to move towards the player. If the player is outside that range, we set the direction to zero, which stops the enemy from moving.
+- `Vector3.Distance` checks whether the player is within `rangeToPlayer` units.
+- If the player is in range, `direction` is set toward the player's position.
+- If not, `direction` is zeroed so the enemy stops moving.
+- `direction.Normalize()` ensures the enemy moves at a constant speed regardless of distance.
+- `rb.linearVelocity` applies the movement. Note that Unity 6 uses `linearVelocity` rather than the legacy `velocity`.
 
 ![](../../resources%20(ignore)/img/09-images/09-image-2.png)
 
-**Task:** Write some code so that when the enemy is moving left or right, the enemy is facing the direction it is moving.
-
 ---
 
-## Bullet 
+## 3. Bullet
 
-Create a **Game Object** for a bullet. A bullet should have a **Box Collider 2D** and a **Rigidbody 2D** component. In the **Scripts** folder, create a new **Script** called `BulletController` and attach it to the bullet. 
+**Step 1** - Create a new GameObject for a bullet. Add a `BoxCollider2D` and a `Rigidbody2D` component to it.
+
+**Step 2** - In the `Scripts` folder, create a new script called `BulletController` and attach it to the bullet GameObject.
 
 ![](../../resources%20(ignore)/img/09-images/09-image-3.png)
 
-**Tasks:** 
-
-1. Write the code to make the bullet **Game Object** move in the direction it is facing. The bullet **Game Object** should be destroyed when it collides with an enemy. 
-2. Drag and drop the bullet **Game Object** into the **Prefabs** folder. Delete the bullet **Game Object** from the **Hierarchy**.
-3. Write the code to make the `Player` **Game Object** shoot a bullet. The bullet should be instantiated at the `Player` **Game Object** position and move in the direction the `Player` is facing.
-
 ---
 
-## Room
+## 4. Camera Controller
 
-Create a new **Game Object** called `BasicRoom`. Move the `Grid` and `Tilemap` **Game Objects** into the `BasicRoom` **Game Object**. Drag and drop the `BasicRoom` **Game Object** into the **Prefabs** folder.
+The camera should smoothly follow the player as they move between rooms.
 
-![](../../resources%20(ignore)/img/09-images/09-image-4.png)
----
-
-## Main Camera
-
-You are going to write the code to make the camera follow the `Player` **Game Object**. For example, if the `Player` **Game Object** moves from one room to another, the camera should follow the `Player` **Game Object**. 
-
-Create a new **Script** called `CameraController` and attach it to the **Main Camera**. 
+**Step 1** - In the `Scripts` folder, create a new script called `CameraController` and attach it to the **Main Camera**. Add the following code:
 
 ```csharp
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -111,7 +97,6 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance;
 
     [SerializeField] private float speed = 30f;
-
     [SerializeField] private Transform target;
 
     void Awake()
@@ -130,7 +115,11 @@ public class CameraController : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, target.position.y, transform.position.z), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                new Vector3(target.position.x, target.position.y, transform.position.z),
+                speed * Time.deltaTime
+            );
         }
     }
 
@@ -141,28 +130,23 @@ public class CameraController : MonoBehaviour
 }
 ```
 
-What is happening in the code above?
+What is happening in this script?
 
-- In the `Update` method, we are checking if the target is not null. If it is not null, we move the camera towards the target's position using `Vector3.MoveTowards`. The camera will move at a speed of `speed` units per second.
-- The `ChangeTarget` method allows us to change the target of the camera. This is useful when we want to change the target from the player to another object, such as an enemy.
+| Element | Purpose |
+| --- | --- |
+| `Instance` | Singleton — allows `Room` scripts to call `CameraController.Instance.ChangeTarget()` |
+| `Vector3.MoveTowards` | Smoothly moves the camera toward the target at a fixed units-per-second rate |
+| `ChangeTarget` | Allows other scripts to redirect the camera to a new target (e.g. a room centre) |
 
 ![](../../resources%20(ignore)/img/09-images/09-image-5.png)
 
-**Task:** Add a `BasicRoom` **Prefab** to the scene. You should be able to move the `Player` **Game Object** between the rooms. However, the camera will not follow the `Player` **Game Object** when it moves between rooms.
-
-![](../../resources%20(ignore)/img/09-images/09-image-6.png)
-
 ---
 
-## Room Trigger
+## 5. Room Trigger
 
-You need a way to trigger the camera to change its target when the player enters a new room.
-
-In the **Scripts** folder, create a new **Script** called `Room` and attach it to the `BasicRoom` **Prefab**. In the `Room` **Script**, add the following code:
+**Step 1** - In the `Scripts` folder, create a new script called `Room` and attach it to the `BasicRoom` prefab. Add the following code:
 
 ```csharp
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -177,37 +161,110 @@ public class Room : MonoBehaviour
 }
 ```
 
-> **Note:** Make sure you create a **Tag** called `Player` and assign it to the `Player` **Game Object**.
+When the player enters the trigger collider of a room, the camera's target is updated to that room's transform — snapping focus to the new room.
 
-What is happening in the code above?
+> **Note:** Create a **Tag** called `Player` and assign it to the `Player` GameObject. Tags are case-sensitive.
 
-In the `OnTriggerEnter2D` method, we are checking if the player has entered the trigger collider of the room. If the player has entered the trigger collider, we call the `ChangeTarget` method of the `CameraController` class and pass in the transform of the room as the new target.
+**Step 2** - Create a new **Empty GameObject** called `RoomTrigger`. Add a `BoxCollider2D` component and configure it as follows:
 
-Create a new **Game Object** called `RoomTrigger` and add a **Box Collider 2D** component to it. Set the `Is Trigger` property to true, and set the `Size - X` property to `16` and the `Size - Y` property to `8`.
+| Property    | Value  |
+| ----------- | ------ |
+| `Is Trigger`| `true` |
+| `Size X`    | `16`   |
+| `Size Y`    | `8`    |
 
 ![](../../resources%20(ignore)/img/09-images/09-image-7.png)
 
 ---
 
-## Collision Layers
+## 6. Collision Layers
 
-**Collision layers** are used to determine which objects can collide with each other. 
+**Collision Layers** control which GameObjects can physically collide with each other, preventing unwanted interactions.
 
-In the **Hierarchy** window, click on any **Game Object**. In the **Inspector** window, click on the **Layer dropdown > Add Layer...**. Add the following layers:
+**Step 1** - In the Inspector, click the **Layer** dropdown on any GameObject and select **Add Layer...**. Add the following layers:
 
-- Player
-- PlayerBullet
-- IgnoreBullet
+- `Player`
+- `PlayerBullet`
+- `IgnoreBullet`
 
-In the **Project Settings** window, click on **Physics 2D**. In the **Layer Collision Matrix**, uncheck the following boxes:
+**Step 2** - Go to **Edit > Project Settings > Physics 2D**. In the **Layer Collision Matrix**, uncheck the following pairs:
 
-- Player and PlayerBullet
-- PlayerBullet and PlayerBullet
+| Layer A       | Layer B       | Reason                                           |
+| ------------- | ------------- | ------------------------------------------------ |
+| `Player`      | `PlayerBullet`| Prevents the player's own bullets hitting themselves |
+| `PlayerBullet`| `PlayerBullet`| Prevents bullets colliding with each other       |
 
 ![](../../resources%20(ignore)/img/09-images/09-image-8.png)
 
-> **Note:** Assign the following layers to the corresponding **Game Objects/Prefabs**:
+**Step 3** - Assign layers to the following GameObjects and prefabs:
 
-- `Player` **Game Object** should be assigned to the `Player` layer
-- `PlayerBullet` **Prefab** should be assigned to the `PlayerBullet` layer
-- `RoomTrigger` **Game Object** should be assigned to the `IgnoreBullet` layer
+| GameObject / Prefab | Layer          |
+| ------------------- | -------------- |
+| `Player`            | `Player`       |
+| `PlayerBullet`      | `PlayerBullet` |
+| `RoomTrigger`       | `IgnoreBullet` |
+
+---
+
+## Exercises
+
+Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
+
+- Refine your prompts — vague prompts yield vague responses
+- Validate AI output — don't trust it blindly
+- Acknowledge AI usage at the top of any AI-assisted file:
+
+```csharp
+/// <summary>
+/// Brief description of what this script does.
+/// </summary>
+/// <remarks>
+/// AI-Assisted: This file was developed with assistance from [AI Tool Name]
+/// Prompts:
+///   - "Your first prompt here"
+///   - "Your second prompt here"
+/// Usage: Describe how you used the AI responses.
+/// </remarks>
+```
+
+---
+
+### Task 1 — Enemy Facing Direction
+
+Write the code so that the enemy flips horizontally to face the direction it is currently moving.
+
+> **Hint:** Compare `rb.linearVelocity.x` to zero and set `transform.localScale` accordingly, similar to how the player handles facing direction.
+
+---
+
+### Task 2 — Bullet Movement and Destruction
+
+Write the code in `BulletController` to move the bullet in the direction it is facing. The bullet should be destroyed when it collides with an enemy.
+
+> **Hint:** Set `rb.linearVelocity` in `Start()` using `transform.right * speed`. Use `OnTriggerEnter2D` or `OnCollisionEnter2D` and call `Destroy(gameObject)` on collision.
+
+---
+
+### Task 3 — Bullet Prefab
+
+Drag the bullet GameObject into the **Prefabs** folder in the Project panel to create a prefab. Delete the original from the Hierarchy.
+
+---
+
+### Task 4 — Shooting
+
+Write the code to make the player shoot a bullet when the **left mouse button** is pressed. The bullet should be instantiated at the player's position, facing the direction the gun is pointing.
+
+> **Hint:** Use `Instantiate(bulletPrefab, transform.position, gunTransform.rotation)` inside `Update()` when `Input.GetMouseButtonDown(0)` is true.
+
+📖 Reference: [Unity — Object.Instantiate](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html)
+
+---
+
+### Task 5 — Basic Room Prefab
+
+Create a new GameObject called `BasicRoom`. Move the `Grid` and `Tilemap` GameObjects inside it. Drag the `BasicRoom` GameObject into the **Prefabs** folder. Add a `BasicRoom` prefab instance to the scene and confirm the player can move between rooms.
+
+![](../../resources%20(ignore)/img/09-images/09-image-4.png)
+
+![](../../resources%20(ignore)/img/09-images/09-image-6.png)
