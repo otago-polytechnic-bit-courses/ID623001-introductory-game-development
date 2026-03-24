@@ -1,6 +1,6 @@
 ## 1. Rogue-Like Game
 
-In this module, you will develop a **Rogue-Like** game using **Unity**. Create a new Unity project using the **2D (Built-In Render Pipeline)** template. Name your project `rogue-like` and select a location to save it. Click the **Create project** button.
+In this module, you will develop a **Rogue-Like** game using **Unity**. Create a new Unity project. Name your project `rogue-like` and select a location to save it. Click the **Create project** button.
 
 ---
 
