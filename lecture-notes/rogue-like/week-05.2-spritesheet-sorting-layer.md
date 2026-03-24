@@ -151,8 +151,6 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 Configure the player to move using either the **WASD** keys or the **Arrow** keys. The player should move in the direction of the key pressed.
 
-📖 Reference: [Unity — Input.GetAxisRaw](https://docs.unity3d.com/ScriptReference/Input.GetAxisRaw.html)
-
 ---
 
 ### Task 2 — Dash
