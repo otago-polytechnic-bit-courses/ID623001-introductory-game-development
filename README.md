@@ -1,6 +1,6 @@
 # Course Directive
 
-<img src="./resources (ignore) (ignore)/img/logo.jpg" alt="Otago Polytechnic Logo" width="200" height="auto" />
+<img src="./resources (ignore)/img/logo.jpg" alt="Otago Polytechnic Logo" width="200" height="auto" />
 
 # ID623002: Introductory Game Development
 
