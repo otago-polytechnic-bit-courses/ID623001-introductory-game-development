@@ -8,7 +8,7 @@ In this module, you will develop **Rogue-Like** using **Unity**. Create a new **
 
 **Spritesheet** is a collection of images combined into a single image. It is used to reduce the number of draw calls in a game, which can improve performance. In this module, you will use a **spritesheet** to create a character for your game.
 
-In the **lecture-notes** folder, you will find a zip folder called `07-assets`. Download and extract the folder. Copy the folders into your **Unity** project. The folder should be placed in the `Assets` folder of your project.
+In the **lecture-notes > rogue-like** folder, you will find a zip folder called `assets`. Download and extract the folder. Copy the folders into your **Unity** project. The folder should be placed in the `Assets` folder of your project.
 
 ![](../../resources%20(ignore)/img/07-images/07-image-1.png)
 
