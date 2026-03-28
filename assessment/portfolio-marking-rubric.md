@@ -1,4 +1,4 @@
-# Portfolio - Marking Rubric (100 marks)
+# Marking Rubric (100 marks)
 
 ---
 
@@ -31,8 +31,7 @@
 | Band | Marks   | Criteria                                                                                                                                     |
 | ---- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | A    | 2.4-3   | Both selected Tier 3 mechanics fully implemented and working seamlessly. Mechanics add meaningful depth to the game and are well-integrated. |
-| B    | 2-2.3   | Both Tier 3 mechanics implemented with minor issues. Mechanics are functional and reasonably integrated.                                     |_Author: Grayson Orr_  
-_Course: ID623002: Introductory Game Development_
+| B    | 2-2.3   | Both Tier 3 mechanics implemented with minor issues. Mechanics are functional and reasonably integrated.                                     |
 | C    | 1.5-1.9 | Only one Tier 3 mechanic fully implemented, or both present but with significant issues or poor integration.                                 |
 | D/E  | 0-1.4   | Tier 3 mechanics largely missing or non-functional.                                                                                          |
 
@@ -242,3 +241,4 @@ _Course: ID623002: Introductory Game Development_
 | B    | 0.7     | Commit messages are generally clear and follow a naming convention with minor inconsistencies. Commits are reasonably regular and focused.                                                                                         |
 | C    | 0.5-0.6 | Commit messages vary in quality. Some are vague or do not reflect the changes made. Commits may be infrequent or inconsistently sized.                                                                                             |
 | D/E  | 0-0.4   | Commit messages are unclear, missing or do not follow any convention. Very few commits or large monolithic commits indicate poor version control habits.                                                                           |
+
