@@ -110,20 +110,6 @@ Unity calls special methods on a `MonoBehaviour` at defined points during the ga
 
 ---
 
-## 7. Unity 6 Physics Note
-
-In Unity 6, `Rigidbody2D.velocity` has been renamed to `Rigidbody2D.linearVelocity`. Always use `linearVelocity` when setting or reading a Rigidbody2D's velocity:
-
-```csharp
-// Unity 6 — correct
-rb.linearVelocity = direction * speed;
-
-// Legacy (Unity 2022 and earlier) — avoid
-rb.velocity = direction * speed;
-```
-
----
-
 ## Exercises
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
