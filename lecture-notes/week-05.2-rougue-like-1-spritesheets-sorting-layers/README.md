@@ -1,4 +1,4 @@
-## 1. Rogue-Like Game
+# Week 05.2 - Rogue-Like: Spritesheets and Sorting Layers
 
 In this module, you will develop a **Rogue-Like** game using **Unity**. Create a new Unity project. Name your project `rogue-like` and select a location to save it. Click the **Create project** button.
 
@@ -10,22 +10,22 @@ A **spritesheet** is a collection of images combined into a single image file. I
 
 **Step 1** - In the **lecture-notes > rogue-like** folder, find the zip folder called `assets`. Download and extract it, then copy the folders into the `Assets` folder of your Unity project.
 
-![](../../resources%20(ignore)/img/07-images/07-image-1.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-1.png>)
 
 **Step 2** - In the **Assets > Art > Characters** folder, click on the `Characters` spritesheet. In the Inspector panel, configure the following settings:
 
-| Property         | Value               | Reason                                                        |
-| ---------------- | ------------------- | ------------------------------------------------------------- |
-| `Sprite Mode`    | `Multiple`          | Allows the spritesheet to be sliced into individual sprites   |
-| `Pixels Per Unit`| `16`                | Matches the pixel art scale to one Unity world unit           |
-| `Filter Mode`    | `Point (no filter)` | Prevents blurring on pixel art sprites                        |
-| `Max Size`       | `64`                | Scales down the texture if it exceeds this size               |
+| Property          | Value               | Reason                                                      |
+| ----------------- | ------------------- | ----------------------------------------------------------- |
+| `Sprite Mode`     | `Multiple`          | Allows the spritesheet to be sliced into individual sprites |
+| `Pixels Per Unit` | `16`                | Matches the pixel art scale to one Unity world unit         |
+| `Filter Mode`     | `Point (no filter)` | Prevents blurring on pixel art sprites                      |
+| `Max Size`        | `64`                | Scales down the texture if it exceeds this size             |
 
-![](../../resources%20(ignore)/img/07-images/07-image-2.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-2.png>)
 
 **Step 3** - Click the **Sprite Editor** button in the Inspector panel to open the Sprite Editor window.
 
-![](../../resources%20(ignore)/img/07-images/07-image-3.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-3.png>)
 
 **Step 4** - In the Sprite Editor window, click the **Slice** button. In the Slice popup, configure the following:
 
@@ -36,17 +36,17 @@ A **spritesheet** is a collection of images combined into a single image file. I
 
 Click **Slice**, then click **Apply** in the top-right corner. You should now see individual sprites in the Project panel.
 
-![](../../resources%20(ignore)/img/07-images/07-image-4.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-4.png>)
 
 **Step 5** - Drag a character sprite into the Scene window. This creates a new GameObject in the Hierarchy.
 
-![](../../resources%20(ignore)/img/07-images/07-image-5.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-5.png>)
 
 **Step 6** - Drag a gun sprite into the Scene window. Create an **Empty GameObject** in the Hierarchy and name it `Player`. Drag both the character sprite and gun sprite onto the `Player` GameObject to make them its children.
 
 > **Note:** You do not need to slice the gun spritesheet — the gun sprites are already ready to use.
 
-![](../../resources%20(ignore)/img/07-images/07-image-6.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-6.png>)
 
 ---
 
@@ -56,15 +56,15 @@ Click **Slice**, then click **Apply** in the top-right corner. You should now se
 
 **Step 1** - In the Inspector panel, create a new sorting layer called `Player`. You should now have two sorting layers: `Default` and `Player`.
 
-![](../../resources%20(ignore)/img/07-images/07-image-7.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-7.png>)
 
 **Step 2** - Select the character sprite child of the `Player` GameObject. In the Inspector panel, set **Sprite Renderer > Additional Settings > Sorting Layer** to `Player` and **Order in Layer** to `0`.
 
-![](../../resources%20(ignore)/img/07-images/07-image-8.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-8.png>)
 
 **Step 3** - Select the gun sprite child. Apply the same `Player` sorting layer, but set **Order in Layer** to `1`. This ensures the gun renders on top of the character sprite.
 
-![](../../resources%20(ignore)/img/07-images/07-image-9.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-9.png>)
 
 ---
 
@@ -72,16 +72,16 @@ Click **Slice**, then click **Apply** in the top-right corner. You should now se
 
 **Step 1** - Select the `Player` GameObject in the Hierarchy. Add a `CircleCollider2D` component to define the player's collision shape.
 
-![](../../resources%20(ignore)/img/07-images/07-image-11.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-11.png>)
 
 **Step 2** - Add a `Rigidbody2D` component to the `Player` GameObject to enable physics simulation. In Unity 6, configure the following:
 
-| Property        | Value      | Reason                                  |
-| --------------- | ---------- | --------------------------------------- |
-| `Gravity Scale` | `0`        | Prevents the player from falling        |
-| `Body Type`     | `Dynamic`  | Allows physics-driven movement          |
+| Property        | Value     | Reason                           |
+| --------------- | --------- | -------------------------------- |
+| `Gravity Scale` | `0`       | Prevents the player from falling |
+| `Body Type`     | `Dynamic` | Allows physics-driven movement   |
 
-![](../../resources%20(ignore)/img/07-images/07-image-12.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-12.png>)
 
 ---
 
@@ -89,7 +89,7 @@ Click **Slice**, then click **Apply** in the top-right corner. You should now se
 
 **Step 1** - In the `Assets` folder, create a new folder called `Scripts`. Inside `Scripts`, create a new C# script called `PlayerController` and attach it to the `Player` GameObject.
 
-![](../../resources%20(ignore)/img/07-images/07-image-10.png)
+![](<../../resources%20(ignore)/img/07-images/07-image-10.png>)
 
 ---
 
@@ -167,6 +167,6 @@ In the `PlayerController` script, write the code to dash the player using the **
 
 ### Task 3 — Weapon Swap
 
-Write the code that allows the player to swap between two weapons using the **Q** key. The player should be able to toggle between a gun and a sword.
+Write the code that allows the player to swap between two weapons using the **Q** key. The player should have two weapon sprites as children of the `Player` GameObject. Pressing **Q** should toggle which weapon is active, allowing the player to switch between them.
 
 > **Hint:** Store references to both weapon GameObjects and toggle `SetActive(true)` / `SetActive(false)` on each when **Q** is pressed.

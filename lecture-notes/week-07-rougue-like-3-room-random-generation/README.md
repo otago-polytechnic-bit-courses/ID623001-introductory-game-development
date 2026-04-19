@@ -1,18 +1,20 @@
+# Week 07 - Rogue-Like: Room Random Generation
+
 ## 1. Random Generation
 
 **Random Generation** is a technique used in game development to create content that is not pre-defined — levels, items, enemies and more.
 
 **Step 1** - Remove the `SampleScene`. Create a new scene called `GenerationTest`. In the **Assets > Art > Map** folder, drag `Map_Rooms_15` into the Hierarchy. This creates a new GameObject in the scene.
 
-![](../../resources%20(ignore)/img/10-images/10-image-1.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-1.png>)
 
 **Step 2** - In the Hierarchy, create a new empty GameObject called `LevelGenerator`. Add a child empty GameObject called `GenerationPoint`. The `LevelGenerator` will manage room generation; `GenerationPoint` tracks where the next room will be placed.
 
-![](../../resources%20(ignore)/img/10-images/10-image-2.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-2.png>)
 
 **Step 3** - Rename `Map_Rooms_15` to `RoomLayout`. Drag it into the **Prefabs > Rooms** folder to make it a prefab. Delete the instance from the Hierarchy.
 
-![](../../resources%20(ignore)/img/10-images/10-image-3.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-3.png>)
 
 ---
 
@@ -20,7 +22,7 @@
 
 **Step 1** - In the `Scripts` folder, create a new script called `LevelGenerator` and attach it to the `LevelGenerator` GameObject.
 
-![](../../resources%20(ignore)/img/10-images/10-image-4.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-4.png>)
 
 **Step 2** - Open the script and add the following code to generate the first room:
 
@@ -50,7 +52,7 @@ public class LevelGenerator : MonoBehaviour
 
 **Step 3** - Select the `LevelGenerator` GameObject. In the Inspector, drag the `RoomLayout` prefab into the **Room Layout** field, set **Distance To End** to `10`, and drag the `GenerationPoint` child into the **Generation Point** field.
 
-![](../../resources%20(ignore)/img/10-images/10-image-5.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-5.png>)
 
 **Step 4** - Click **Play**. A single blue room should appear in the scene.
 
@@ -121,16 +123,16 @@ public class LevelGenerator : MonoBehaviour
 
 What is happening in the code above?
 
-| Element | Purpose |
-| --- | --- |
-| `Direction` enum | Defines the four cardinal directions a room can be placed in |
-| `xOffset` / `yOffset` | The world-space distance between adjacent rooms |
+| Element               | Purpose                                                                          |
+| --------------------- | -------------------------------------------------------------------------------- |
+| `Direction` enum      | Defines the four cardinal directions a room can be placed in                     |
+| `xOffset` / `yOffset` | The world-space distance between adjacent rooms                                  |
 | `MoveGenerationPoint` | Moves `generationPoint` by the appropriate offset based on the current direction |
-| `R` key reload | Reloads the active scene so the layout can be regenerated at runtime |
+| `R` key reload        | Reloads the active scene so the layout can be regenerated at runtime             |
 
 Click **Play**. You should see a chain of rooms generated in random directions. Press **R** to regenerate.
 
-![](../../resources%20(ignore)/img/10-images/10-image-6.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-6.png>)
 
 > **Note:** Some rooms may overlap. This is because the generator picks directions randomly without checking whether a room already exists at that position.
 
@@ -180,7 +182,7 @@ public class LevelGenerator : MonoBehaviour
 
 Click **Play** and press **R** several times. Rooms should no longer overlap.
 
-![](../../resources%20(ignore)/img/10-images/10-image-7.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-7.png>)
 
 ---
 
@@ -236,7 +238,7 @@ public class LevelGenerator : MonoBehaviour
 
 Click **Play**. The first room should be blue, the last room red, and all others white. Press **R** to regenerate.
 
-![](../../resources%20(ignore)/img/10-images/10-image-8.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-8.png>)
 
 ---
 
@@ -246,17 +248,17 @@ Each room needs walls that match its surrounding connections — e.g., a room wi
 
 **Step 1** - In the Hierarchy, unpack the `BasicRoom` prefab and rename it `RoomRight`. Remove the `Grid` GameObject. From the **Assets > Art > Map** folder, drag `Maps_Rooms_0` into the `RoomRight` GameObject.
 
-![](../../resources%20(ignore)/img/10-images/10-image-9.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-9.png>)
 
 **Step 2** - Drag `RoomRight` into the **Assets > Prefabs > Rooms** folder.
 
-![](../../resources%20(ignore)/img/10-images/10-image-10.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-10.png>)
 
 **Step 3** - Repeat this process to create the following room prefabs, each using its corresponding map sprite:
 
 `RoomDown`, `RoomLeft`, `RoomLeftDown`, `RoomLeftRight`, `RoomLeftRightDown`, `RoomRight`, `RoomRightDown`, `RoomUp`, `RoomUpDown`, `RoomUpLeft`, `RoomUpLeftDown`, `RoomUpLeftRight`, `RoomUpLeftRightDown`, `RoomUpRight`, `RoomUpRightDown`
 
-![](../../resources%20(ignore)/img/10-images/10-image-11.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-11.png>)
 
 **Step 4** - Add a serialisable class to hold references to all room prefabs, and add it to `LevelGenerator`:
 
@@ -280,7 +282,7 @@ public class LevelGenerator : MonoBehaviour
 
 **Step 5** - Select the `LevelGenerator` GameObject. In the Inspector, assign all 15 room prefabs to the corresponding fields in the **Room Prefabs** section.
 
-![](../../resources%20(ignore)/img/10-images/10-image-12.png)
+![](<../../resources%20(ignore)/img/10-images/10-image-12.png>)
 
 ---
 
@@ -348,8 +350,6 @@ public class LevelGenerator : MonoBehaviour
 `CreateRoomOutline` uses `Physics2D.OverlapCircle` to check each of the four cardinal positions around a room. It counts how many adjacent rooms exist and selects the matching wall prefab from `roomPrefabs`.
 
 Click **Play**. You should see wall outlines appear around each room. Press **R** to regenerate the layout.
-
-![](../../resources%20(ignore)/img/10-images/10-image-13.png)
 
 ---
 

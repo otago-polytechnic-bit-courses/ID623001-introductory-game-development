@@ -1,3 +1,5 @@
+# Week 06.2 - Rogue-Like: Collision Layers
+
 ## 1. Singleton Pattern
 
 A **Singleton** ensures that only one instance of a class exists at a time, and provides global access to it. Add the following to `PlayerController`:
@@ -29,7 +31,7 @@ This allows other scripts — such as `EnemyController` — to access the player
 
 **Step 1** - Create a new GameObject for an enemy. The setup should mirror the player: a sprite, a `CircleCollider2D`, and a `Rigidbody2D`.
 
-![](../../resources%20(ignore)/img/09-images/09-image-1.png)
+![](<../../resources%20(ignore)/img/09-images/09-image-1.png>)
 
 **Step 2** - In the `Scripts` folder, create a new script called `EnemyController` and attach it to the enemy GameObject. Add the following code:
 
@@ -69,7 +71,7 @@ What is happening in `Update()`?
 - `direction.Normalize()` ensures the enemy moves at a constant speed regardless of distance.
 - `rb.linearVelocity` applies the movement. Note that Unity 6 uses `linearVelocity` rather than the legacy `velocity`.
 
-![](../../resources%20(ignore)/img/09-images/09-image-2.png)
+![](<../../resources%20(ignore)/img/09-images/09-image-2.png>)
 
 ---
 
@@ -79,7 +81,7 @@ What is happening in `Update()`?
 
 **Step 2** - In the `Scripts` folder, create a new script called `BulletController` and attach it to the bullet GameObject.
 
-![](../../resources%20(ignore)/img/09-images/09-image-3.png)
+![](<../../resources%20(ignore)/img/09-images/09-image-3.png>)
 
 ---
 
@@ -132,13 +134,13 @@ public class CameraController : MonoBehaviour
 
 What is happening in this script?
 
-| Element | Purpose |
-| --- | --- |
-| `Instance` | Singleton — allows `Room` scripts to call `CameraController.Instance.ChangeTarget()` |
-| `Vector3.MoveTowards` | Smoothly moves the camera toward the target at a fixed units-per-second rate |
-| `ChangeTarget` | Allows other scripts to redirect the camera to a new target (e.g. a room centre) |
+| Element               | Purpose                                                                              |
+| --------------------- | ------------------------------------------------------------------------------------ |
+| `Instance`            | Singleton — allows `Room` scripts to call `CameraController.Instance.ChangeTarget()` |
+| `Vector3.MoveTowards` | Smoothly moves the camera toward the target at a fixed units-per-second rate         |
+| `ChangeTarget`        | Allows other scripts to redirect the camera to a new target (e.g. a room centre)     |
 
-![](../../resources%20(ignore)/img/09-images/09-image-5.png)
+![](<../../resources%20(ignore)/img/09-images/09-image-5.png>)
 
 ---
 
@@ -167,13 +169,13 @@ When the player enters the trigger collider of a room, the camera's target is up
 
 **Step 2** - Create a new **Empty GameObject** called `RoomTrigger`. Add a `BoxCollider2D` component and configure it as follows:
 
-| Property    | Value  |
-| ----------- | ------ |
-| `Is Trigger`| `true` |
-| `Size X`    | `16`   |
-| `Size Y`    | `8`    |
+| Property     | Value  |
+| ------------ | ------ |
+| `Is Trigger` | `true` |
+| `Size X`     | `16`   |
+| `Size Y`     | `8`    |
 
-![](../../resources%20(ignore)/img/09-images/09-image-7.png)
+![](<../../resources%20(ignore)/img/09-images/09-image-7.png>)
 
 ---
 
@@ -189,12 +191,12 @@ When the player enters the trigger collider of a room, the camera's target is up
 
 **Step 2** - Go to **Edit > Project Settings > Physics 2D**. In the **Layer Collision Matrix**, uncheck the following pairs:
 
-| Layer A       | Layer B       | Reason                                           |
-| ------------- | ------------- | ------------------------------------------------ |
-| `Player`      | `PlayerBullet`| Prevents the player's own bullets hitting themselves |
-| `PlayerBullet`| `PlayerBullet`| Prevents bullets colliding with each other       |
+| Layer A        | Layer B        | Reason                                               |
+| -------------- | -------------- | ---------------------------------------------------- |
+| `Player`       | `PlayerBullet` | Prevents the player's own bullets hitting themselves |
+| `PlayerBullet` | `PlayerBullet` | Prevents bullets colliding with each other           |
 
-![](../../resources%20(ignore)/img/09-images/09-image-8.png)
+![](<../../resources%20(ignore)/img/09-images/09-image-8.png>)
 
 **Step 3** - Assign layers to the following GameObjects and prefabs:
 
@@ -265,6 +267,6 @@ Write the code to make the player shoot a bullet when the **left mouse button** 
 
 Create a new GameObject called `BasicRoom`. Move the `Grid` and `Tilemap` GameObjects inside it. Drag the `BasicRoom` GameObject into the **Prefabs** folder. Add a `BasicRoom` prefab instance to the scene and confirm the player can move between rooms.
 
-![](../../resources%20(ignore)/img/09-images/09-image-4.png)
+![](<../../resources%20(ignore)/img/09-images/09-image-4.png>)
 
-![](../../resources%20(ignore)/img/09-images/09-image-6.png)
+![](<../../resources%20(ignore)/img/09-images/09-image-6.png>)
