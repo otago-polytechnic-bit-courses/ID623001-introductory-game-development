@@ -62,9 +62,9 @@ At the successful completion of this course, learners will be able to:
 | 2/Rua            | Textures, Prefabs, Prefab Variants and Input System  | Scriptable Objects and UI                       |
 | 3/Toru           | Audio, Scene Management, Player Prefs and Coroutines |                                                 |
 | 4/Whā            | Renderer and Particle Systems                        | Build and Itch.io                               |
-| 5/Rima           | Spritesheet and Sorting Layer                                                    | Rogue-Like                                      |
-| 6/Ono            | Rogue-Like                                           | Rogue-Like                                      |
-| 7/Whitu          | Rogue-Like                                           | Rogue-Like                                      |
+| 5/Rima           | Spritesheets and Sorting Layers                      |                                                 |
+| 6/Ono            | Animations, Tilemaps and Tile Palettes               | Collision Layers                                |
+| 7/Whitu          | Random Room Generation                               |                                                 |
 |                  | Mid Semester Break                                   |                                                 |
 | 8/Waru           |                                                      |                                                 |
 | 9/Iwa            |                                                      |                                                 |
