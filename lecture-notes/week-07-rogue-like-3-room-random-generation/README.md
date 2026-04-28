@@ -2,7 +2,7 @@
 
 ## 1. Random Generation
 
-**Random Generation** is a technique used in game development to create content that is not pre-defined — levels, items, enemies and more.
+**Random Generation** is a technique used in game development to create content that is not pre-defined - levels, items, enemies and more.
 
 **Step 1** - Remove the `SampleScene`. Create a new scene called `GenerationTest`. In the **Assets > Art > Map** folder, drag `Map_Rooms_15` into the Hierarchy. This creates a new GameObject in the scene.
 
@@ -78,7 +78,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        // Omitted for brevity — spawn the start room here
+        // Omitted for brevity - spawn the start room here
 
         direction = (Direction)Random.Range(0, 4);
         MoveGenerationPoint();
@@ -244,7 +244,7 @@ Click **Play**. The first room should be blue, the last room red, and all others
 
 ## 6. Room Outline Prefabs
 
-Each room needs walls that match its surrounding connections — e.g., a room with exits to the north and east needs a different wall layout to one with only a southern exit.
+Each room needs walls that match its surrounding connections - e.g., a room with exits to the north and east needs a different wall layout to one with only a southern exit.
 
 **Step 1** - In the Hierarchy, unpack the `BasicRoom` prefab and rename it `RoomRight`. Remove the `Grid` GameObject. From the **Assets > Art > Map** folder, drag `Maps_Rooms_0` into the `RoomRight` GameObject.
 
@@ -299,7 +299,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        // Omitted for brevity — after generating all layout rooms:
+        // Omitted for brevity - after generating all layout rooms:
 
         CreateRoomOutline(Vector3.zero); // Start room
         foreach (GameObject roomGO in layoutRoomGOs)
@@ -357,7 +357,7 @@ Click **Play**. You should see wall outlines appear around each room. Press **R*
 
 ---
 
-### Task 1 — Complete Room Outline Cases
+### Task 1 - Complete Room Outline Cases
 
 The `switch` statement in `CreateRoomOutline` currently only handles `case 1`. Complete `case 2`, `case 3`, and `case 4` to instantiate the correct prefab for every possible combination of adjacent rooms.
 
@@ -365,7 +365,7 @@ The `switch` statement in `CreateRoomOutline` currently only handles `case 1`. C
 
 ---
 
-### Task 2 — Tilemap Room Outlines
+### Task 2 - Tilemap Room Outlines
 
 Use the `BasicRoom` prefab as a base to create tilemap versions of each directional room. Replace the sprite-based room outlines with tilemap rooms that include proper floors, walls and colliders.
 
