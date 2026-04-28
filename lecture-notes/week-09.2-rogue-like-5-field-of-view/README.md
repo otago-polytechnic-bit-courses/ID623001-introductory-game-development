@@ -1,6 +1,6 @@
 # Week 09.2 - Rogue-Like: Field of View
 
-**Field of View (FOV)** is a technique used to limit what an enemy can detect. Rather than always knowing where the player is, an enemy only reacts when the player is within a certain angle and distance — and not hidden behind a wall.
+**Field of View (FOV)** is a technique used to limit what an enemy can detect. Rather than always knowing where the player is, an enemy only reacts when the player is within a certain angle and distance - and not hidden behind a wall.
 
 This is a core mechanic in stealth and roguelike games.
 
@@ -29,14 +29,14 @@ Without FOV, enemies always know where the player is regardless of distance or d
 
 The first step is checking whether the player is close enough and within the viewing angle.
 
-**Step 1** — Add the following fields to `EnemyController`:
+**Step 1** - Add the following fields to `EnemyController`:
 
 ```csharp
 [SerializeField] private float viewRange = 8f;
 [SerializeField] private float viewAngle = 90f;
 ```
 
-**Step 2** — Add a `CanSeePlayer()` method:
+**Step 2** - Add a `CanSeePlayer()` method:
 
 ```csharp
 public bool CanSeePlayer()
@@ -66,7 +66,7 @@ What is happening here?
 | `viewAngle / 2f`              | The angle is compared to half the total cone width, since the cone extends equally on both sides   |
 | `transform.right`             | The enemy's forward-facing direction in a 2D top-down game                                         |
 
-**Step 3** — Update `EnemyController` to use `CanSeePlayer()` instead of a plain distance check:
+**Step 3** - Update `EnemyController` to use `CanSeePlayer()` instead of a plain distance check:
 
 ```csharp
 void Update()
@@ -92,15 +92,15 @@ Click **Play**. The enemy should only move when the player is within its viewing
 
 The angle check alone does not account for walls. A **raycast** fires an invisible ray from the enemy toward the player and checks what it hits first. If it hits a wall before reaching the player, line of sight is blocked.
 
-**Step 1** — Create a new layer called `Wall` and assign it to all wall GameObjects and tilemaps.
+**Step 1** - Create a new layer called `Wall` and assign it to all wall GameObjects and tilemaps.
 
-**Step 2** — Add a `wallLayer` field to `EnemyController`:
+**Step 2** - Add a `wallLayer` field to `EnemyController`:
 
 ```csharp
 [SerializeField] private LayerMask wallLayer;
 ```
 
-**Step 3** — Update `CanSeePlayer()` to include the raycast:
+**Step 3** - Update `CanSeePlayer()` to include the raycast:
 
 ```csharp
 public bool CanSeePlayer()
@@ -126,7 +126,7 @@ public bool CanSeePlayer()
 }
 ```
 
-**Step 4** — Select the `EnemyController` GameObject. In the Inspector, set the **Wall Layer** field to the `Wall` layer.
+**Step 4** - Select the `EnemyController` GameObject. In the Inspector, set the **Wall Layer** field to the `Wall` layer.
 
 Click **Play**. The enemy should now lose sight of the player when a wall comes between them.
 
@@ -136,7 +136,7 @@ Click **Play**. The enemy should now lose sight of the player when a wall comes 
 
 ## 5. Visualising the FOV in the Editor
 
-It is difficult to tune `viewRange` and `viewAngle` without being able to see the cone. `OnDrawGizmosSelected` draws debug shapes in the Scene view whenever the GameObject is selected — it has no effect in the built game.
+It is difficult to tune `viewRange` and `viewAngle` without being able to see the cone. `OnDrawGizmosSelected` draws debug shapes in the Scene view whenever the GameObject is selected - it has no effect in the built game.
 
 Add this to `EnemyController`:
 
@@ -187,7 +187,7 @@ The enemy will now only begin chasing when it can actually see the player, and w
 
 ---
 
-### Task 1 — Alert State
+### Task 1 - Alert State
 
 Add an `Alert` state between `Idle` and `Chase`. When the enemy spots the player it enters `Alert` for 1 second (playing a visual indicator such as a colour change) before transitioning to `Chase`. If it loses sight during the alert period, it returns to `Idle`.
 
@@ -195,7 +195,7 @@ Add an `Alert` state between `Idle` and `Chase`. When the enemy spots the player
 
 ---
 
-### Task 2 — Last Known Position
+### Task 2 - Last Known Position
 
 When the enemy loses sight of the player, make it walk to the player's last known position before giving up and returning to `Idle`.
 
@@ -203,7 +203,7 @@ When the enemy loses sight of the player, make it walk to the player's last know
 
 ---
 
-### Task 3 — FOV Mesh
+### Task 3 - FOV Mesh
 
 Instead of the Gizmo lines, draw the actual FOV cone as a filled `Mesh` in the game view using `MeshFilter` and `MeshRenderer`. Cast rays at small angle increments within the cone and build triangles between them.
 

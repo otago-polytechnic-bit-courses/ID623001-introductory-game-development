@@ -1,6 +1,6 @@
-# Week 08.2 — Rogue-Like: State Machines
+# Week 08.2 - Rogue-Like: State Machines
 
-A **State Machine** is a way of organising a game object's behaviour into a set of distinct states — such as Idle, Chase, and Attack — where only one state is active at a time and rules control when the object transitions between them.
+A **State Machine** is a way of organising a game object's behaviour into a set of distinct states - such as Idle, Chase, and Attack - where only one state is active at a time and rules control when the object transitions between them.
 
 State machines are used extensively in games: enemy AI, animation controllers, game flow management, and UI menus all commonly use this pattern.
 
@@ -8,9 +8,9 @@ State machines are used extensively in games: enemy AI, animation controllers, g
 
 ## 1. How This Fits
 
-The state machine lives entirely inside `EnemyController`, which already sits on the enemy GameObject from previous weeks. There is nothing new to add to the Hierarchy or drag into the Inspector for the basic enum version — you are replacing the logic already inside `Update()`.
+The state machine lives entirely inside `EnemyController`, which already sits on the enemy GameObject from previous weeks. There is nothing new to add to the Hierarchy or drag into the Inspector for the basic enum version - you are replacing the logic already inside `Update()`.
 
-For the class-based version in section 4, each state becomes its own script file in your `Scripts` folder. They do not get attached to any GameObject directly — instead `EnemyController` creates and manages them in code.
+For the class-based version in section 4, each state becomes its own script file in your `Scripts` folder. They do not get attached to any GameObject directly - instead `EnemyController` creates and manages them in code.
 
 Here is how the pieces relate:
 
@@ -33,7 +33,7 @@ Without a state machine, AI logic quickly becomes a tangle of nested `if` statem
 
 The simplest state machine uses an `enum` to define all possible states and a `switch` statement to run the correct logic each frame.
 
-**Step 1** — Define an `EnemyState` enum and add it to `EnemyController`:
+**Step 1** - Define an `EnemyState` enum and add it to `EnemyController`:
 
 ```csharp
 using UnityEngine;
@@ -117,7 +117,7 @@ void Update()
         case EnemyState.Idle:
             if (stateChanged)
             {
-                Debug.Log("Entered Idle — reset patrol timer");
+                Debug.Log("Entered Idle - reset patrol timer");
                 // Run any one-time setup here
             }
             // Per-frame idle logic
@@ -130,7 +130,7 @@ void Update()
         case EnemyState.Attack:
             if (stateChanged)
             {
-                Debug.Log("Entered Attack — start attack animation");
+                Debug.Log("Entered Attack - start attack animation");
             }
             // Per-frame attack logic
             break;
@@ -144,7 +144,7 @@ void Update()
 
 For more complex AI, each state can be its own class. This is cleaner when states have a lot of logic and makes it easy to add new states without changing existing ones.
 
-**Step 1** — Create a base `State` class and concrete state classes:
+**Step 1** - Create a base `State` class and concrete state classes:
 
 ```csharp
 public abstract class State
@@ -194,7 +194,7 @@ public class ChaseState : State
 }
 ```
 
-**Step 2** — Update `EnemyController` to manage the current state object:
+**Step 2** - Update `EnemyController` to manage the current state object:
 
 ```csharp
 public class EnemyController : MonoBehaviour
@@ -236,11 +236,11 @@ What changed compared to the enum approach?
 
 Unity's built-in **Animator** is itself a visual state machine. Each state plays an animation clip, and **Transitions** between states are triggered by parameters you set from code.
 
-**Step 1** — In the Animator window, create states for `Idle`, `Walk`, and `Attack`. Connect them with transitions.
+**Step 1** - In the Animator window, create states for `Idle`, `Walk`, and `Attack`. Connect them with transitions.
 
-**Step 2** — Add parameters in the Animator: a `float` called `Speed` and a `trigger` called `Attack`.
+**Step 2** - Add parameters in the Animator: a `float` called `Speed` and a `trigger` called `Attack`.
 
-**Step 3** — Set the parameters from `EnemyController`:
+**Step 3** - Set the parameters from `EnemyController`:
 
 ```csharp
 [SerializeField] private Animator animator;
@@ -265,7 +265,7 @@ The Animator handles transitions automatically once the parameters are set. This
 
 ---
 
-### Task 1 — Add a Flee State
+### Task 1 - Add a Flee State
 
 Add a `Flee` state to the enum state machine. When the enemy's health drops below 25%, it should move directly away from the player instead of toward it.
 
@@ -273,7 +273,7 @@ Add a `Flee` state to the enum state machine. When the enemy's health drops belo
 
 ---
 
-### Task 2 — Add a Patrol State
+### Task 2 - Add a Patrol State
 
 Add a `Patrol` state where the enemy moves between two waypoints when the player is out of range. The enemy should switch to `Chase` when the player comes close.
 
@@ -281,7 +281,7 @@ Add a `Patrol` state where the enemy moves between two waypoints when the player
 
 ---
 
-### Task 3 — Class-Based Attack State
+### Task 3 - Class-Based Attack State
 
 Using the class-based approach, create an `AttackState` that fires a bullet at the player every 2 seconds. The state should transition back to `ChaseState` if the player moves out of attack range.
 

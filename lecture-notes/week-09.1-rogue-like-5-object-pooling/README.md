@@ -2,7 +2,7 @@
 
 **Object Pooling** is a performance technique where a fixed set of GameObjects is created once at the start of the game and reused, rather than instantiated and destroyed repeatedly during gameplay.
 
-It is especially important for bullets, enemies, and particle effects — objects that are created and destroyed at high frequency.
+It is especially important for bullets, enemies, and particle effects - objects that are created and destroyed at high frequency.
 
 ---
 
@@ -20,7 +20,7 @@ The pool is managed by a single `ObjectPool` script on an empty GameObject in th
 
 ## 2. The Problem
 
-Every time `Instantiate` is called, Unity allocates memory for a new object. Every time `Destroy` is called, that memory is marked for cleanup by the **garbage collector** — a process that can cause small but noticeable freezes during gameplay. In a roguelike where the player fires constantly and many enemies are active at once, this adds up quickly.
+Every time `Instantiate` is called, Unity allocates memory for a new object. Every time `Destroy` is called, that memory is marked for cleanup by the **garbage collector** - a process that can cause small but noticeable freezes during gameplay. In a roguelike where the player fires constantly and many enemies are active at once, this adds up quickly.
 
 Object pooling solves this by recycling objects. Instead of creating and destroying, objects are simply **activated** and **deactivated**.
 
@@ -28,11 +28,11 @@ Object pooling solves this by recycling objects. Instead of creating and destroy
 
 ## 3. Creating a Pool
 
-**Step 1** — In the Hierarchy, create a new empty GameObject called `BulletPool`.
+**Step 1** - In the Hierarchy, create a new empty GameObject called `BulletPool`.
 
-**Step 2** — In the `Scripts` folder, create a new script called `ObjectPool` and attach it to `BulletPool`.
+**Step 2** - In the `Scripts` folder, create a new script called `ObjectPool` and attach it to `BulletPool`.
 
-**Step 3** — Add the following code:
+**Step 3** - Add the following code:
 
 ```csharp
 using System.Collections.Generic;
@@ -68,7 +68,7 @@ public class ObjectPool : MonoBehaviour
             return obj;
         }
 
-        // Pool is empty — create a new one as a fallback
+        // Pool is empty - create a new one as a fallback
         GameObject newObj = Instantiate(prefab, transform);
         return newObj;
     }
@@ -91,7 +91,7 @@ What is happening in the code above?
 | `ReturnToPool()`       | Deactivates the object and puts it back in the queue         |
 | Fallback `Instantiate` | Handles the rare case where all pooled objects are in use    |
 
-**Step 4** — Select `BulletPool` in the Hierarchy. In the Inspector, drag the `PlayerBullet` prefab into the **Prefab** field and set **Pool Size** to `20`.
+**Step 4** - Select `BulletPool` in the Hierarchy. In the Inspector, drag the `PlayerBullet` prefab into the **Prefab** field and set **Pool Size** to `20`.
 
 ---
 
@@ -100,10 +100,10 @@ What is happening in the code above?
 Update `PlayerController` to request a bullet from the pool instead of instantiating one:
 
 ```csharp
-// Before — creates a new object every shot
+// Before - creates a new object every shot
 // Instantiate(bulletPrefab, transform.position, gunTransform.rotation);
 
-// After — retrieves a pooled object
+// After - retrieves a pooled object
 void Update()
 {
     if (Input.GetMouseButtonDown(0))
@@ -235,7 +235,7 @@ GameObject enemy  = PoolManager.Instance.Get("Enemy");
 
 ---
 
-### Task 1 — Enemy Pool
+### Task 1 - Enemy Pool
 
 Create a second pool for enemies using the single `ObjectPool` script on a new `EnemyPool` GameObject. Spawn enemies from the pool at random positions around the edge of the room every few seconds using a `Coroutine`.
 
@@ -243,7 +243,7 @@ Create a second pool for enemies using the single `ObjectPool` script on a new `
 
 ---
 
-### Task 2 — Pool Size Warning
+### Task 2 - Pool Size Warning
 
 Add a `Debug.LogWarning` message to the `Get()` fallback branch that alerts you when the pool has run out of objects. Use this to tune your pool size during testing.
 
@@ -251,7 +251,7 @@ Add a `Debug.LogWarning` message to the `Get()` fallback branch that alerts you 
 
 ---
 
-### Task 3 — Return on Room Exit
+### Task 3 - Return on Room Exit
 
 When the player moves to a new room, return all active enemies to the pool so the old room is cleared.
 
