@@ -94,10 +94,9 @@ public class LevelGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        // If the R key is pressed, reload the active scene to regenerate the layout. 
+        
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void MoveGenerationPoint()
