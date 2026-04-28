@@ -44,7 +44,7 @@ Click **Slice**, then click **Apply** in the top-right corner. You should now se
 
 **Step 6** - Drag a gun sprite into the Scene window. Create an **Empty GameObject** in the Hierarchy and name it `Player`. Drag both the character sprite and gun sprite onto the `Player` GameObject to make them its children.
 
-> **Note:** You do not need to slice the gun spritesheet — the gun sprites are already ready to use.
+> **Note:** You do not need to slice the gun spritesheet - the gun sprites are already ready to use.
 
 ![](<../../resources%20(ignore)/img/07-images/07-image-6.png>)
 
@@ -99,14 +99,14 @@ Unity calls special methods on a `MonoBehaviour` at defined points during the ga
 
 | Method          | When it's called                                      | Typical use                                       |
 | --------------- | ----------------------------------------------------- | ------------------------------------------------- |
-| `Awake()`       | When the script instance is loaded — before `Start()` | Initialise component references (`GetComponent`)  |
+| `Awake()`       | When the script instance is loaded - before `Start()` | Initialise component references (`GetComponent`)  |
 | `Start()`       | Before the first frame update                         | Set up initial state (position, velocity, colour) |
 | `Update()`      | Once per frame                                        | Input handling, non-physics movement              |
-| `FixedUpdate()` | At a fixed time interval (default 50×/sec)            | Physics updates — always use this for `Rigidbody` |
+| `FixedUpdate()` | At a fixed time interval (default 50×/sec)            | Physics updates - always use this for `Rigidbody` |
 
 > The frame rate affects `Update()` but never `FixedUpdate()`. Always apply forces and velocity changes in `FixedUpdate()` to keep physics deterministic.
 
-📖 Reference: [Unity — MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
+📖 Reference: [Unity - MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
 
 ---
 
@@ -114,8 +114,8 @@ Unity calls special methods on a `MonoBehaviour` at defined points during the ga
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
 
-- Refine your prompts — vague prompts yield vague responses
-- Validate AI output — don't trust it blindly
+- Refine your prompts - vague prompts yield vague responses
+- Validate AI output - don't trust it blindly
 - Acknowledge AI usage at the top of any AI-assisted file:
 
 ```csharp
@@ -133,13 +133,13 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1 — Player Movement
+### Task 1 - Player Movement
 
 Configure the player to move using either the **WASD** keys or the **Arrow** keys. The player should move in the direction of the key pressed.
 
 ---
 
-### Task 2 — Dash
+### Task 2 - Dash
 
 In the `PlayerController` script, write the code to dash the player using the **Space** key. The player should dash in the direction it is currently moving. The dash should last `0.5` seconds and have a cooldown of `2` seconds.
 
@@ -147,11 +147,11 @@ In the `PlayerController` script, write the code to dash the player using the **
 
 > **Hint:** Use a `Coroutine` to handle the dash duration and cooldown. Use a `bool` flag to track whether a dash is available.
 
-📖 Reference: [Unity — Coroutines](https://docs.unity3d.com/Manual/Coroutines.html)
+📖 Reference: [Unity - Coroutines](https://docs.unity3d.com/Manual/Coroutines.html)
 
 ---
 
-### Task 3 — Weapon Swap
+### Task 3 - Weapon Swap
 
 Write the code that allows the player to swap between two weapons using the **Q** key. The player should have two weapon sprites as children of the `Player` GameObject. Pressing **Q** should toggle which weapon is active, allowing the player to switch between them.
 

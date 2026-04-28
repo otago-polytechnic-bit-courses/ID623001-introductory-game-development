@@ -1,4 +1,4 @@
-# Week 08.1 — Rogue-Like: Pathfinding Algorithms
+# Week 08.1 - Rogue-Like: Pathfinding Algorithms
 
 Pathfinding algorithms are used in games to find a route between two points in a world. They power enemy navigation, NPC movement, and any system that needs to avoid obstacles and reach a goal.
 
@@ -14,7 +14,7 @@ Three scripts work together to make pathfinding work:
 | `Pathfinder`     | The enemy GameObject             | Finds a route from A to B through the grid      |
 | `EnemyNavigator` | The enemy GameObject             | Moves the enemy along the found path each frame |
 
-One important concept to understand is **coordinate conversion**. Unity positions (like `transform.position`) are `Vector2` values in world units. The grid works in `Vector2Int` tile coordinates — whole numbers like `(3, 5)`. To convert between them, divide the world position by `cellSize` and round to the nearest integer:
+One important concept to understand is **coordinate conversion**. Unity positions (like `transform.position`) are `Vector2` values in world units. The grid works in `Vector2Int` tile coordinates - whole numbers like `(3, 5)`. To convert between them, divide the world position by `cellSize` and round to the nearest integer:
 
 ```csharp
 Vector2Int WorldToGrid(Vector2 worldPos)
@@ -39,7 +39,7 @@ SetPath(path);
 
 ## 2. The Problem
 
-When an enemy needs to move toward the player, it cannot simply walk in a straight line — walls, gaps, and other obstacles block the way. A pathfinding algorithm solves this by searching through available positions in the world to find a valid route.
+When an enemy needs to move toward the player, it cannot simply walk in a straight line - walls, gaps, and other obstacles block the way. A pathfinding algorithm solves this by searching through available positions in the world to find a valid route.
 
 The world is usually represented as a **grid** or **graph** of nodes. Each node represents a position, and connections between nodes represent valid moves.
 
@@ -49,7 +49,7 @@ The world is usually represented as a **grid** or **graph** of nodes. Each node 
 
 **Breadth-First Search (BFS)** is the simplest pathfinding approach. It explores all neighbouring nodes level by level until it finds the target.
 
-**Step 1** — Add a `GridManager` script to manage the grid. Each cell stores whether it is walkable.
+**Step 1** - Add a `GridManager` script to manage the grid. Each cell stores whether it is walkable.
 
 ```csharp
 public class GridManager : MonoBehaviour
@@ -80,7 +80,7 @@ public class GridManager : MonoBehaviour
 }
 ```
 
-**Step 2** — Implement BFS in a separate `Pathfinder` script:
+**Step 2** - Implement BFS in a separate `Pathfinder` script:
 
 ```csharp
 using System.Collections.Generic;
@@ -154,7 +154,7 @@ What is happening in the code above?
 
 ## 4. A\* (A-Star)
 
-**A\*** improves on BFS by using a **heuristic** — an estimate of how far each node is from the goal. This guides the search toward the target rather than expanding in every direction equally.
+**A\*** improves on BFS by using a **heuristic** - an estimate of how far each node is from the goal. This guides the search toward the target rather than expanding in every direction equally.
 
 The key formula is:
 
@@ -162,11 +162,11 @@ The key formula is:
 f(n) = g(n) + h(n)
 ```
 
-- `g(n)` — the actual cost to reach node `n` from the start
-- `h(n)` — the estimated cost from `n` to the goal (the heuristic)
-- `f(n)` — the total estimated cost; A\* always expands the node with the lowest `f`
+- `g(n)` - the actual cost to reach node `n` from the start
+- `h(n)` - the estimated cost from `n` to the goal (the heuristic)
+- `f(n)` - the total estimated cost; A\* always expands the node with the lowest `f`
 
-**Step 1** — Add a `NodeData` class to track costs:
+**Step 1** - Add a `NodeData` class to track costs:
 
 ```csharp
 public class NodeData
@@ -179,7 +179,7 @@ public class NodeData
 }
 ```
 
-**Step 2** — Implement A\* in the `Pathfinder` script:
+**Step 2** - Implement A\* in the `Pathfinder` script:
 
 ```csharp
 public List<Vector2Int> FindPathAStar(Vector2Int start, Vector2Int end)
@@ -288,7 +288,7 @@ public class EnemyNavigator : MonoBehaviour
 
 ---
 
-### Task 1 — Visualise the Path
+### Task 1 - Visualise the Path
 
 Draw the found path on screen using `Debug.DrawLine` so you can see where the enemy intends to travel during Play mode.
 
@@ -296,7 +296,7 @@ Draw the found path on screen using `Debug.DrawLine` so you can see where the en
 
 ---
 
-### Task 2 — Mark Obstacles
+### Task 2 - Mark Obstacles
 
 Add the ability to mark cells in the grid as unwalkable by clicking on them in Play mode. Pathfinding should automatically avoid these cells.
 
@@ -304,7 +304,7 @@ Add the ability to mark cells in the grid as unwalkable by clicking on them in P
 
 ---
 
-### Task 3 — Recalculate on Move
+### Task 3 - Recalculate on Move
 
 Make the enemy recalculate its path every few seconds so it reacts if the player moves to a new position.
 

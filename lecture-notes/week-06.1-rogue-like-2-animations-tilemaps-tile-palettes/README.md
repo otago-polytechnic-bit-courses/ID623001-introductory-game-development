@@ -109,7 +109,7 @@ Go to **Window > Animation > Animation** to open the Animation window.
 
 ![](<../../resources%20(ignore)/img/08-images/08-image-6.png>)
 
-**Step 3** - In the Inspector, set the `Y` position of `Guns_0` to `-0.1`. You should see a `Guns_0 : Position` property appear in the Animation window with two keyframes — one at `0` and one at `0.2`.
+**Step 3** - In the Inspector, set the `Y` position of `Guns_0` to `-0.1`. You should see a `Guns_0 : Position` property appear in the Animation window with two keyframes - one at `0` and one at `0.2`.
 
 ![](<../../resources%20(ignore)/img/08-images/08-image-9.png>)
 
@@ -242,7 +242,7 @@ A **Tile Palette** is a collection of tiles used to paint a tilemap.
 
 ---
 
-### Task 1 — Paint a Room
+### Task 1 - Paint a Room
 
 Select **Paint with basic brush** in the Tile Palette and paint a room using tiles from the palette. Here is an example layout:
 
@@ -250,7 +250,7 @@ Select **Paint with basic brush** in the Tile Palette and paint a room using til
 
 ---
 
-### Task 2 — Tilemap Collider
+### Task 2 - Tilemap Collider
 
 Add a `Tilemap Collider 2D` component to the `Tilemap` GameObject. Enable the **Used By Composite** checkbox. Then add a `Composite Collider 2D` component to the same GameObject.
 
@@ -258,7 +258,7 @@ Add a `Tilemap Collider 2D` component to the `Tilemap` GameObject. Enable the **
 
 ---
 
-### Task 3 — Floor Tiles
+### Task 3 - Floor Tiles
 
 Click on `Dungeon 3 Tiles_24` in the `Assets > Tilesets > Dungeon 3` folder. In the Inspector, set its **Collider Type** to `None`. This allows the player to walk across floor tiles without colliding with them.
 
@@ -266,10 +266,10 @@ Click on `Dungeon 3 Tiles_24` in the `Assets > Tilesets > Dungeon 3` folder. In 
 
 ---
 
-### Task 4 — Normalise Diagonal Movement
+### Task 4 - Normalise Diagonal Movement
 
 You will notice that the player moves faster when moving diagonally, because both the X and Y axes contribute simultaneously. Write the code to normalise the movement vector so the player moves at a constant speed in all directions.
 
 > **Hint:** Call `.normalized` on your movement `Vector2` before multiplying by speed. Only normalise when the magnitude is greater than zero to avoid dividing by zero.
 
-📖 Reference: [Unity — Vector2.normalized](https://docs.unity3d.com/ScriptReference/Vector2-normalized.html)
+📖 Reference: [Unity - Vector2.normalized](https://docs.unity3d.com/ScriptReference/Vector2-normalized.html)

@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 }
 ```
 
-This allows other scripts — such as `EnemyController` — to access the player via `PlayerController.Instance` without needing a serialised reference.
+This allows other scripts - such as `EnemyController` - to access the player via `PlayerController.Instance` without needing a serialised reference.
 
 ---
 
@@ -136,7 +136,7 @@ What is happening in this script?
 
 | Element               | Purpose                                                                              |
 | --------------------- | ------------------------------------------------------------------------------------ |
-| `Instance`            | Singleton — allows `Room` scripts to call `CameraController.Instance.ChangeTarget()` |
+| `Instance`            | Singleton - allows `Room` scripts to call `CameraController.Instance.ChangeTarget()` |
 | `Vector3.MoveTowards` | Smoothly moves the camera toward the target at a fixed units-per-second rate         |
 | `ChangeTarget`        | Allows other scripts to redirect the camera to a new target (e.g. a room centre)     |
 
@@ -163,7 +163,7 @@ public class Room : MonoBehaviour
 }
 ```
 
-When the player enters the trigger collider of a room, the camera's target is updated to that room's transform — snapping focus to the new room.
+When the player enters the trigger collider of a room, the camera's target is updated to that room's transform - snapping focus to the new room.
 
 > **Note:** Create a **Tag** called `Player` and assign it to the `Player` GameObject. Tags are case-sensitive.
 
@@ -212,8 +212,8 @@ When the player enters the trigger collider of a room, the camera's target is up
 
 Learning to use AI tools is an important skill. While AI tools are powerful, you must be aware of the following:
 
-- Refine your prompts — vague prompts yield vague responses
-- Validate AI output — don't trust it blindly
+- Refine your prompts - vague prompts yield vague responses
+- Validate AI output - don't trust it blindly
 - Acknowledge AI usage at the top of any AI-assisted file:
 
 ```csharp
@@ -231,7 +231,7 @@ Learning to use AI tools is an important skill. While AI tools are powerful, you
 
 ---
 
-### Task 1 — Enemy Facing Direction
+### Task 1 - Enemy Facing Direction
 
 Write the code so that the enemy flips horizontally to face the direction it is currently moving.
 
@@ -239,7 +239,7 @@ Write the code so that the enemy flips horizontally to face the direction it is 
 
 ---
 
-### Task 2 — Bullet Movement and Destruction
+### Task 2 - Bullet Movement and Destruction
 
 Write the code in `BulletController` to move the bullet in the direction it is facing. The bullet should be destroyed when it collides with an enemy.
 
@@ -247,23 +247,23 @@ Write the code in `BulletController` to move the bullet in the direction it is f
 
 ---
 
-### Task 3 — Bullet Prefab
+### Task 3 - Bullet Prefab
 
 Drag the bullet GameObject into the **Prefabs** folder in the Project panel to create a prefab. Delete the original from the Hierarchy.
 
 ---
 
-### Task 4 — Shooting
+### Task 4 - Shooting
 
 Write the code to make the player shoot a bullet when the **left mouse button** is pressed. The bullet should be instantiated at the player's position, facing the direction the gun is pointing.
 
 > **Hint:** Use `Instantiate(bulletPrefab, transform.position, gunTransform.rotation)` inside `Update()` when `Input.GetMouseButtonDown(0)` is true.
 
-📖 Reference: [Unity — Object.Instantiate](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html)
+📖 Reference: [Unity - Object.Instantiate](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html)
 
 ---
 
-### Task 5 — Basic Room Prefab
+### Task 5 - Basic Room Prefab
 
 Create a new GameObject called `BasicRoom`. Move the `Grid` and `Tilemap` GameObjects inside it. Drag the `BasicRoom` GameObject into the **Prefabs** folder. Add a `BasicRoom` prefab instance to the scene and confirm the player can move between rooms.
 
