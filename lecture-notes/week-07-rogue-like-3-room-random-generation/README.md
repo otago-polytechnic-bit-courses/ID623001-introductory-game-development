@@ -92,12 +92,12 @@ Add `Room` to each room prefab. The trigger collider on the prefab should be lar
 
 **Key data structures:**
 
-| Element                                 | Purpose                                                                                |
-| --------------------------------------- | -------------------------------------------------------------------------------------- |
-| `roomPositions`                         | World positions of all mid-path rooms                                                  |
-| `startRoomPosition` / `endRoomPosition` | Tracked separately from mid rooms                                                      |
-| `markers`                               | Temporary GameObjects used for overlap detection; destroyed after outlines are created |
-| `roomParent`                            | A parent `Transform` created at runtime to keep the Hierarchy tidy                     |
+| Element                               | Purpose                                                                             |
+| ------------------------------------- | ----------------------------------------------------------------------------------- |
+| `roomPositions`                       | World positions of all mid-path rooms                                               |
+| `startRoomPosition` / `endRoomPosition` | Tracked separately from mid rooms                                                 |
+| `markers`                             | Temporary GameObjects used for overlap detection; destroyed after outlines are created |
+| `roomParent`                          | A parent `Transform` created at runtime to keep the Hierarchy tidy                  |
 
 ```csharp
 using System.Collections.Generic;
