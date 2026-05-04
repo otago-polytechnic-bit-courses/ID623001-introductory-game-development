@@ -1,0 +1,1714 @@
+fileFormatVersion: 2
+guid: 5851bbaf0e1df5047a88e089cc3dfad9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3655937455755613673
+    second: Dungeon 3 Tiles_0
+  - first:
+      213: 7337586253288862240
+    second: Dungeon 3 Tiles_1
+  - first:
+      213: -835166498351216420
+    second: Dungeon 3 Tiles_2
+  - first:
+      213: 4744020429336640658
+    second: Dungeon 3 Tiles_3
+  - first:
+      213: 3457807282816443868
+    second: Dungeon 3 Tiles_4
+  - first:
+      213: -6732313225457089637
+    second: Dungeon 3 Tiles_5
+  - first:
+      213: 6628126061698548955
+    second: Dungeon 3 Tiles_6
+  - first:
+      213: 931472943983982794
+    second: Dungeon 3 Tiles_7
+  - first:
+      213: 5573219515350242965
+    second: Dungeon 3 Tiles_8
+  - first:
+      213: 8980704888411998019
+    second: Dungeon 3 Tiles_9
+  - first:
+      213: 3312002698223643438
+    second: Dungeon 3 Tiles_10
+  - first:
+      213: 1381827616372992917
+    second: Dungeon 3 Tiles_11
+  - first:
+      213: -5009983402482158361
+    second: Dungeon 3 Tiles_12
+  - first:
+      213: 527167932597142272
+    second: Dungeon 3 Tiles_13
+  - first:
+      213: 66016557669465358
+    second: Dungeon 3 Tiles_14
+  - first:
+      213: -1300231745513010978
+    second: Dungeon 3 Tiles_15
+  - first:
+      213: 2844091750262684325
+    second: Dungeon 3 Tiles_16
+  - first:
+      213: 6159706023409530428
+    second: Dungeon 3 Tiles_17
+  - first:
+      213: -9060502732138936691
+    second: Dungeon 3 Tiles_18
+  - first:
+      213: 4956702041070911888
+    second: Dungeon 3 Tiles_19
+  - first:
+      213: -988229489590471566
+    second: Dungeon 3 Tiles_20
+  - first:
+      213: -8989283108758996039
+    second: Dungeon 3 Tiles_21
+  - first:
+      213: 3326699731224250177
+    second: Dungeon 3 Tiles_22
+  - first:
+      213: -7001825905528482988
+    second: Dungeon 3 Tiles_23
+  - first:
+      213: -8090610831901472619
+    second: Dungeon 3 Tiles_24
+  - first:
+      213: -4518487594764221939
+    second: Dungeon 3 Tiles_25
+  - first:
+      213: -5931736768423006507
+    second: Dungeon 3 Tiles_26
+  - first:
+      213: -3253298316317581724
+    second: Dungeon 3 Tiles_27
+  - first:
+      213: 3649789223742618440
+    second: Dungeon 3 Tiles_28
+  - first:
+      213: -644076000571866953
+    second: Dungeon 3 Tiles_29
+  - first:
+      213: -3287126823844143436
+    second: Dungeon 3 Tiles_30
+  - first:
+      213: -2068204867732720832
+    second: Dungeon 3 Tiles_31
+  - first:
+      213: -7371603545826890942
+    second: Dungeon 3 Tiles_32
+  - first:
+      213: -2410878825516708010
+    second: Dungeon 3 Tiles_33
+  - first:
+      213: 4675882738195911705
+    second: Dungeon 3 Tiles_34
+  - first:
+      213: -8307441365927215203
+    second: Dungeon 3 Tiles_35
+  - first:
+      213: -3868700370360645775
+    second: Dungeon 3 Tiles_36
+  - first:
+      213: -5047828505470712564
+    second: Dungeon 3 Tiles_37
+  - first:
+      213: -325789672736397918
+    second: Dungeon 3 Tiles_38
+  - first:
+      213: 7670822486083741400
+    second: Dungeon 3 Tiles_39
+  - first:
+      213: -2968737573592130273
+    second: Dungeon 3 Tiles_40
+  - first:
+      213: -6177627867033092359
+    second: Dungeon 3 Tiles_41
+  - first:
+      213: 4756110704759647410
+    second: Dungeon 3 Tiles_42
+  - first:
+      213: 3420471785539091119
+    second: Dungeon 3 Tiles_43
+  - first:
+      213: -2885233697130298753
+    second: Dungeon 3 Tiles_44
+  - first:
+      213: 3774431065559668329
+    second: Dungeon 3 Tiles_45
+  - first:
+      213: -574768229984665478
+    second: Dungeon 3 Tiles_46
+  - first:
+      213: -6020694021347884796
+    second: Dungeon 3 Tiles_47
+  - first:
+      213: 7253849532512794574
+    second: Dungeon 3 Tiles_48
+  - first:
+      213: 4651313105747557779
+    second: Dungeon 3 Tiles_49
+  - first:
+      213: -7077969517784282599
+    second: Dungeon 3 Tiles_50
+  - first:
+      213: -7066682537258270709
+    second: Dungeon 3 Tiles_51
+  - first:
+      213: 1865486546612259305
+    second: Dungeon 3 Tiles_52
+  - first:
+      213: -8590821579263364657
+    second: Dungeon 3 Tiles_53
+  - first:
+      213: 4191797077859552102
+    second: Dungeon 3 Tiles_54
+  - first:
+      213: 1709024126395330982
+    second: Dungeon 3 Tiles_55
+  - first:
+      213: -6271816966975509910
+    second: Dungeon 3 Tiles_56
+  - first:
+      213: 9125485704482948038
+    second: Dungeon 3 Tiles_57
+  - first:
+      213: -6850318249678622518
+    second: Dungeon 3 Tiles_58
+  - first:
+      213: -3698005227450203972
+    second: Dungeon 3 Tiles_59
+  - first:
+      213: -8476048603180547956
+    second: Dungeon 3 Tiles_60
+  - first:
+      213: 8103137727684544357
+    second: Dungeon 3 Tiles_61
+  - first:
+      213: 3691226864553452613
+    second: Dungeon 3 Tiles_62
+  - first:
+      213: -2145330862517919594
+    second: Dungeon 3 Tiles_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 128
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 128
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45898f342b256ca47b0c3b2888b6cc3d
+      internalID: 3655937455755613673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186f14bd1f500c6448b6864be6e4e1ee
+      internalID: 7337586253288862240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 643c1f34fd635de40b28b414fc870fa3
+      internalID: -835166498351216420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1770f3bcab17149429988c47ef737452
+      internalID: 4744020429336640658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5fbfc9de41063143b94c6a909149f37
+      internalID: 3457807282816443868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8a5dc7cb1895d4099c5d64b2193895
+      internalID: -6732313225457089637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 613365e86af05ab408cb80f8d6aa1aa5
+      internalID: 6628126061698548955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224068fe693bbac4cb474afbcd1f96e7
+      internalID: 931472943983982794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f871e98489f00f6458f05874d5a4a3df
+      internalID: 5573219515350242965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fada6331ab491149aca0b5e47bc83ca
+      internalID: 8980704888411998019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256ee1e9911d81345be73a377c75f418
+      internalID: 3312002698223643438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f53b8cba27c97444b7dc9a3c1812fd4
+      internalID: 1381827616372992917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79bf7b06668b1f840856b95db6c88fef
+      internalID: -5009983402482158361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_13
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea73018126448f748bd7c561bcf4a706
+      internalID: 527167932597142272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b3ae97264befc49982304c0df9bb6f
+      internalID: 66016557669465358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75044f0145433f4429a6b82594a011c3
+      internalID: -1300231745513010978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f042d7bcabe89af4c9f05f1f2b4a80a4
+      internalID: 2844091750262684325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84dc222f6f055c439271b5252c40159
+      internalID: 6159706023409530428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8472aa4ccf333934da901e5643ffe7f6
+      internalID: -9060502732138936691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99a45c64cc136440ac6d4b57d3087ea
+      internalID: 4956702041070911888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4df2b3ec682b74cbe8f0c90e471a93
+      internalID: -988229489590471566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_21
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14b7f720bcee33e4d9dcd1fac73b8510
+      internalID: -8989283108758996039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18c93c224dcd994b9f43fc070419a21
+      internalID: 3326699731224250177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_23
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e4c5da222d26445a353bf3bcebffb1
+      internalID: -7001825905528482988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d241e8868c3c26a43b431efea226f0fb
+      internalID: -8090610831901472619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_25
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 968fc90e8d7fe1b4c8c917e6837f855f
+      internalID: -4518487594764221939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_26
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16cad20af625546408730276e013b447
+      internalID: -5931736768423006507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_27
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c844b43c575c58041a874bc3efff8821
+      internalID: -3253298316317581724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_28
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256ee7a661d8b1c4caca0e8afb144348
+      internalID: 3649789223742618440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_29
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eca719349393814c8a97d8f46213aee
+      internalID: -644076000571866953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_30
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670a2310db2280647ad8070de79b7488
+      internalID: -3287126823844143436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_31
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d33c0c4aaee9a469d3e5077d0344ea
+      internalID: -2068204867732720832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bf273809647e44b8195665890424e8
+      internalID: -7371603545826890942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_33
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79403f80eb8a713469fd2875479e1b65
+      internalID: -2410878825516708010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_34
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aa45ce88cf1c0f44929efce2e47fac5
+      internalID: 4675882738195911705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_35
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad5cafe0ae730174b8da76d2de0cf157
+      internalID: -8307441365927215203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_36
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07998e1d59df3c84b8775b592f8433f8
+      internalID: -3868700370360645775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_37
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eea7a8b3cb6d4904093ad97488911eb3
+      internalID: -5047828505470712564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_38
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a233224f5eca049a16dd5b9c2490df
+      internalID: -325789672736397918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_39
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e737a5648b4864aa98102d25a5cbd2
+      internalID: 7670822486083741400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67fa27ee39a37d943bb44c49a6974073
+      internalID: -2968737573592130273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_41
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aebad74b3cd10a74baf815abaf610cce
+      internalID: -6177627867033092359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_42
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccc255ed7b7bf541b8b24abfc99d5c9
+      internalID: 4756110704759647410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_43
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99ed768afedd46640b43a745b6446970
+      internalID: 3420471785539091119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_44
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01527f02dae4fda4fa0ff2b5b8f34363
+      internalID: -2885233697130298753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_45
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af1102b43b19fbe4086c8f0bd0d81fe0
+      internalID: 3774431065559668329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_46
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def39a4df66678345a6cb9f1e0967c41
+      internalID: -574768229984665478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_47
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb6b6a9ba1f5414cbad4b65434ead18
+      internalID: -6020694021347884796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7b734da645a8f409b6b6f9829fa896
+      internalID: 7253849532512794574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_49
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adefb740ed77214ab7cca223d151ba4
+      internalID: 4651313105747557779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_50
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef5d1dc204975d4da51f8e655dbe6cf
+      internalID: -7077969517784282599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_51
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffd5fe37999c6dd47a6758df7e273bd2
+      internalID: -7066682537258270709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_52
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 735eb4410e102f04ca8d3dc33439c6bd
+      internalID: 1865486546612259305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_53
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5efe180b4923fcd4ab62640268580207
+      internalID: -8590821579263364657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_54
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8160f321b8fd9e14c982d8e21739d1da
+      internalID: 4191797077859552102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_55
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002f78651d1252b44978f21a946b34cc
+      internalID: 1709024126395330982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca3a3bcfc25d824f81c8b107e69662d
+      internalID: -6271816966975509910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_57
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979cb149e32bd5e44b63a311aa7344b8
+      internalID: 9125485704482948038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_58
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f92f5fd217e591448817bb70082f1df
+      internalID: -6850318249678622518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_59
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7afc6509465854a488a70da8753545ac
+      internalID: -3698005227450203972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_60
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60df8f962d71b674f84aa566f3d3330c
+      internalID: -8476048603180547956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_61
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc4f410b73e59d840b8ce8179d23d8c6
+      internalID: 8103137727684544357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_62
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc8c43d8c0d3b74b8f04ad901c05841
+      internalID: 3691226864553452613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon 3 Tiles_63
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc0abdc1a5e342041bf6c31c357d0dc0
+      internalID: -2145330862517919594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4358012b89f70d045bf5a05f5c35f679
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Dungeon 3 Tiles_0: 3655937455755613673
+      Dungeon 3 Tiles_1: 7337586253288862240
+      Dungeon 3 Tiles_10: 3312002698223643438
+      Dungeon 3 Tiles_11: 1381827616372992917
+      Dungeon 3 Tiles_12: -5009983402482158361
+      Dungeon 3 Tiles_13: 527167932597142272
+      Dungeon 3 Tiles_14: 66016557669465358
+      Dungeon 3 Tiles_15: -1300231745513010978
+      Dungeon 3 Tiles_16: 2844091750262684325
+      Dungeon 3 Tiles_17: 6159706023409530428
+      Dungeon 3 Tiles_18: -9060502732138936691
+      Dungeon 3 Tiles_19: 4956702041070911888
+      Dungeon 3 Tiles_2: -835166498351216420
+      Dungeon 3 Tiles_20: -988229489590471566
+      Dungeon 3 Tiles_21: -8989283108758996039
+      Dungeon 3 Tiles_22: 3326699731224250177
+      Dungeon 3 Tiles_23: -7001825905528482988
+      Dungeon 3 Tiles_24: -8090610831901472619
+      Dungeon 3 Tiles_25: -4518487594764221939
+      Dungeon 3 Tiles_26: -5931736768423006507
+      Dungeon 3 Tiles_27: -3253298316317581724
+      Dungeon 3 Tiles_28: 3649789223742618440
+      Dungeon 3 Tiles_29: -644076000571866953
+      Dungeon 3 Tiles_3: 4744020429336640658
+      Dungeon 3 Tiles_30: -3287126823844143436
+      Dungeon 3 Tiles_31: -2068204867732720832
+      Dungeon 3 Tiles_32: -7371603545826890942
+      Dungeon 3 Tiles_33: -2410878825516708010
+      Dungeon 3 Tiles_34: 4675882738195911705
+      Dungeon 3 Tiles_35: -8307441365927215203
+      Dungeon 3 Tiles_36: -3868700370360645775
+      Dungeon 3 Tiles_37: -5047828505470712564
+      Dungeon 3 Tiles_38: -325789672736397918
+      Dungeon 3 Tiles_39: 7670822486083741400
+      Dungeon 3 Tiles_4: 3457807282816443868
+      Dungeon 3 Tiles_40: -2968737573592130273
+      Dungeon 3 Tiles_41: -6177627867033092359
+      Dungeon 3 Tiles_42: 4756110704759647410
+      Dungeon 3 Tiles_43: 3420471785539091119
+      Dungeon 3 Tiles_44: -2885233697130298753
+      Dungeon 3 Tiles_45: 3774431065559668329
+      Dungeon 3 Tiles_46: -574768229984665478
+      Dungeon 3 Tiles_47: -6020694021347884796
+      Dungeon 3 Tiles_48: 7253849532512794574
+      Dungeon 3 Tiles_49: 4651313105747557779
+      Dungeon 3 Tiles_5: -6732313225457089637
+      Dungeon 3 Tiles_50: -7077969517784282599
+      Dungeon 3 Tiles_51: -7066682537258270709
+      Dungeon 3 Tiles_52: 1865486546612259305
+      Dungeon 3 Tiles_53: -8590821579263364657
+      Dungeon 3 Tiles_54: 4191797077859552102
+      Dungeon 3 Tiles_55: 1709024126395330982
+      Dungeon 3 Tiles_56: -6271816966975509910
+      Dungeon 3 Tiles_57: 9125485704482948038
+      Dungeon 3 Tiles_58: -6850318249678622518
+      Dungeon 3 Tiles_59: -3698005227450203972
+      Dungeon 3 Tiles_6: 6628126061698548955
+      Dungeon 3 Tiles_60: -8476048603180547956
+      Dungeon 3 Tiles_61: 8103137727684544357
+      Dungeon 3 Tiles_62: 3691226864553452613
+      Dungeon 3 Tiles_63: -2145330862517919594
+      Dungeon 3 Tiles_7: 931472943983982794
+      Dungeon 3 Tiles_8: 5573219515350242965
+      Dungeon 3 Tiles_9: 8980704888411998019
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
