@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bcd999ac0b424c0b89ab8c5af145861, type: 3}
+  m_Name: Eye
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  sprite: {fileID: 6954847684770999777, guid: ff04e4a59675fad49995a9d7f974bc3d, type: 3}
+  name: Eye
+  enemyType: 2
+  health: 500
+  damage: 30
+  moveSpeed: 2
+  defense: 10
+  attackRange: 1.5
+  attackCooldown: 1
+  detectionRange: 12
+  projectileSpeed: 0
+  xpReward: 100

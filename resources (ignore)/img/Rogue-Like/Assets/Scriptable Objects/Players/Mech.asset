@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e8bcb50eaa24ff184324ea662e63aa, type: 3}
+  m_Name: Mech
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  sprite: {fileID: 872264628, guid: a47294d8f066c634d90ee371916313ff, type: 3}
+  name: Mech
+  playerType: 0
+  health: 75
+  damage: 28
+  moveSpeed: 5
+  defense: 0
+  critChance: 0
+  critMultiplier: 0.1
