@@ -66,10 +66,10 @@ At the successful completion of this course, learners will be able to:
 | 6/Ono            | Animations, Tilemaps and Tile Palettes               | Collision Layers                                |
 | 7/Whitu          | Random Room Generation                               |                                                 |
 |                  | Mid Semester Break                                   |                                                 |
-| 8/Waru           | Pathfinding Algorithms                               | State Machines                                  |
+| 8/Waru           | Pathfinding Algorithms                               |                                                 |
 | 9/Iwa            | Object Pooling                                       | Field of View                                   |
 | 10/Tekau         | Raycasting                                           | Cinemachine                                     |
-| 11/Tekau mā tahi | Parallelax Scrolling                                 |                                                 |
+| 11/Tekau mā tahi | Parallax Scrolling                                   |                                                 |
 | 12/Tekau mā rua  | Assessment Work                                      |                                                 |
 | 13/Tekau mā toru | Assessment Work                                      |                                                 |
 | 14/Tekau mā whā  | Assessment Work                                      |                                                 |
