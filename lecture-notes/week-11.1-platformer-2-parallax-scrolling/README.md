@@ -22,17 +22,18 @@ A static background makes a 2D game feel flat — everything appears to be on th
 
 ## 3. Scene Setup
 
-**Step 1** — In the **Assets > Art** folder, find your background art. You should have several layers — for example: sky, far mountains, near mountains, trees, and foreground bushes. Each should be a wide sprite that spans the visible width of the camera.
+**Step 1** — In this assset pack - [Parallex Background Plains](https://vvvka.itch.io/parallex-background-plains), you should have several layers — for example: sky, far mountains, near mountains, trees, and foreground bushes. Each should be a wide sprite that spans the visible width of the camera.
 
 **Step 2** — In the Hierarchy, create an empty GameObject called `Background`. Create a child GameObject for each layer and name them clearly:
 
 ```
 Background
-├── Layer_Sky
-├── Layer_Mountains_Far
-├── Layer_Mountains_Near
-├── Layer_Trees
-└── Layer_Foreground
+├── clouds
+├── forrest
+├── grass
+├── hill
+├── plains
+└── sky
 ```
 
 **Step 3** — Add a `SpriteRenderer` to each layer child and assign the corresponding sprite. Stack them in the Scene view from back to front using their Z position or **Sorting Layers**.
@@ -97,11 +98,18 @@ The `parallaxFactor` for each layer should decrease as the layer gets further fr
 
 | Layer               | Example parallaxFactor | Effect                                   |
 | ------------------- | ---------------------- | ---------------------------------------- |
-| Sky (furthest back) | `0.0`                  | Does not move — feels infinitely distant |
-| Far mountains       | `0.1`                  | Barely drifts — very far away            |
-| Near mountains      | `0.3`                  | Slow drift — mid distance                |
-| Trees               | `0.5`                  | Noticeable movement — close background   |
-| Foreground bushes   | `0.8`                  | Fast movement — just behind the player   |
+| sky and clouds | `0.0`                  | Does not move — feels infinitely distant |
+| hill       | `0.1`                  | Barely drifts — very far away            |
+| forrest      | `0.3`                  | Slow drift — mid distance                |
+| plains               | `0.5`                  | Noticeable movement — close background   |
+| grass   | `0.8`                  | Fast movement — just behind the player   |
+
+├── clouds
+├── forrest
+├── grass
+├── hill
+├── plains
+└── sky
 
 Select each layer in the Hierarchy and set the `parallaxFactor` on its `ParallaxLayer` component in the Inspector.
 
@@ -219,28 +227,3 @@ Each `ParallaxLayer` component exposes the following fields:
 | `Infinite Horizontal` | `bool`  | Whether to loop the layer horizontally                                             |
 | `Scroll Speed`        | `float` | Automatic horizontal scroll per second (0 = no auto-scroll)                        |
 
----
-
-## Exercises
-
----
-
-### Task 1 — Layer Your Scene
-
-Add at least four parallax layers to your platformer level with different `parallaxFactor` values. Play the scene and tune the values until the depth feels convincing. Toggle `infiniteHorizontal` on and off to observe the difference.
-
----
-
-### Task 2 — Foreground Parallax
-
-Add a layer in front of the player (a higher sorting order than the player sprite) with a `parallaxFactor` greater than `1`. This simulates nearby objects such as tall grass or cave stalactites.
-
-> **Hint:** Make sure the foreground sprite has transparent gaps so the player remains visible behind it. A `parallaxFactor` of `1.2` to `1.5` is a good starting range.
-
----
-
-### Task 3 — Cloud Layer
-
-Add a cloud layer that scrolls automatically using the `scrollSpeed` field, giving the impression of wind. Combine it with `infiniteHorizontal` so the clouds loop seamlessly.
-
-> **Hint:** Set `parallaxFactor` to a low value like `0.1` so the clouds are also affected by camera movement in addition to their auto-scroll. Adjust `scrollSpeed` in Play mode to find a speed that feels natural for your level's atmosphere.
