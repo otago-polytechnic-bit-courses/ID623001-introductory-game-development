@@ -104,13 +104,6 @@ The `parallaxFactor` for each layer should decrease as the layer gets further fr
 | plains               | `0.5`                  | Noticeable movement — close background   |
 | grass   | `0.8`                  | Fast movement — just behind the player   |
 
-├── clouds
-├── forrest
-├── grass
-├── hill
-├── plains
-└── sky
-
 Select each layer in the Hierarchy and set the `parallaxFactor` on its `ParallaxLayer` component in the Inspector.
 
 ---
